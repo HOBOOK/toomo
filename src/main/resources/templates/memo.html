@@ -3,46 +3,24 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorator="layout/layout_main">
+
 <th:block layout:fragment="title">TOMO | 메모</th:block>
-<section layout:fragment="content" class="container_main">
+
+<section ng-app="MyApp" ng-controller="memoController" layout:fragment="content" class="container_main">
     <nav class="nav">
         네비
     </nav>
     <div class="main">
-        <div class="container_context">
-            <article class="memo">
-                <div class="container_memo">
-                    <p>메모메모메모메모메모메모메모메모메모메모메모메모메모메모
-                        메모메모메모메모메모메모메모메모메모메모메모메모메모메모메모
-                        메모메모메모메모메모메모메모메모메모메모메모메모메모메모메모
-                        메모메모메모메모메모메모메모메모메모메모메모메모메모메모메모
-                        메모메모메모메모메모메모메모메모메모메모메모메모메모메모메모
-                        메모메모메모메모메모메모메모메모메모메모메모메모메모메모메모
-                        메모메모메모메모메모메모메모메모메모메모메모메모메모메모메모
-                        메모메모메모메모메모메모메모메모메모메모메모메모메모메모메모
-                        메모메모메모메모메모메모메모메모메모메모메모메모메모메모메모
-                        메모메모메모메모메모메모메모메모메모메모메모메모메모메모메모
-                        메모메모메모메모메모메모메모메모메모메모메모메모메모메모메모
-                        메모메모메모메모메모메모메모메모메모메모메모메모메모메모메모
-                        메모메모메모메모메모메모메모메모메모메모메모메모메모메모메모
-                        메모메모메모메모메모메모메모메모메모메모메모메모메모메모메모
-
-                    </p>
-                </div>
-            </article>
-            <article class="memo">
-                <div class="container_memo">
-                    <p>메모</p>
-                </div>
-            </article>
-            <article class="memo">
-                <div class="container_memo">
-                    <p>메모</p>
+        <div class="container_context" id="memo_parent">
+            <article ng-repeat="memo in memos" class="memo" id="memo_{{memo.id}}">
+                <div  class="container_memo">
+                    <button ng-click="removeMemo(memo)">제거</button>
+                    <p>{{memo.context}}</p>
                 </div>
             </article>
         </div>
     </div>
     <div class="button_add_memo">
-        +
+        <input type="button" ng-click="addMemo()" value="동적버튼 Action">
     </div>
 </section>

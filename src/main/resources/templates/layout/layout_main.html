@@ -6,8 +6,36 @@
         <title>
             <th:block layout:fragment="title">TOMO</th:block>
         </title>
-        <link rel="stylesheet" href="css/index.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+        <link rel="stylesheet" href="css/main.css">
     </head>
+
+    <script>
+        var app = angular.module('MyApp', [])
+        app.controller('memoController', function ($scope, $compile) {
+            $scope.memos = [{
+                    id: '0',
+                    context: 'hello world'
+                },
+                {
+                    id: '1',
+                    context: 'hello world2'
+                }
+            ];
+            $scope.addMemo = function () {
+                $scope.memos.unshift({
+                    id: '2',
+                    context: 'hello?'
+                });
+            }
+            $scope.removeMemo = function (memo){
+                var index = $scope.memos.indexOf(memo);
+                $scope.memos.splice(index,1);
+            }
+        });
+    </script>
     <body>
         <header>
             <div class="logo">

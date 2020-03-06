@@ -106,6 +106,14 @@ nav{
 .memo:hover:after{
     right:5px;
 }
+
+.memo.ng-enter{
+    opacity: 0;
+    transition: all .5s ease;
+}
+.memo.ng-enter-active{
+    opacity:1;
+}
 .container_memo{
     width: 100%;
     height: 100%;
