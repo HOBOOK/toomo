@@ -7,13 +7,14 @@
             <th:block layout:fragment="title">TOMO</th:block>
         </title>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular-animate.min.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.0/css/all.css">
         <link rel="stylesheet" href="css/main.css">
     </head>
 
     <script>
-        var app = angular.module('MyApp', [])
+        var app = angular.module('MyApp', ['ngAnimate'])
         app.controller('memoController', function ($scope, $compile) {
             $scope.memos = [{
                     id: '0',
@@ -38,13 +39,13 @@
     </script>
     <body>
         <header>
-            <div class="logo">
-                로고
+            <div class="logo" style="height: 100%;">
+                <a href="./memo"><img src="img/logo.png" height="32" alt="logo" style="margin:6px;"/></a>
             </div>
             <div class="menu">
-                <ul>
-                    <li><a href="./memo">메모</a></li>
-                    <li><a href="./manage">관리</a></li>
+                <ul style="float: left; display: inline-block;">
+                    <li style="display: inline-block;"><a href="./memo">메모</a></li>
+                    <li style="display: inline-block;"><a href="./manage">관리</a></li>
                 </ul>
             </div>
             <div class="account">

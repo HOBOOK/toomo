@@ -52,6 +52,8 @@ nav{
 
 .button_add_memo{
     position: fixed;
+    text-align: center;
+    line-height: 48px;
     bottom: 50px;
     right: 50px;
     border-radius: 100%;
@@ -61,9 +63,12 @@ nav{
     cursor: pointer;
     border: 1px solid rgba(0,0,0,0.3);
     box-shadow: 3px 3px 3px 1px rgba(0,0,0,0.1);
+    transition: all .3s ease-in-out;
 }
 .button_add_memo:hover{
-    background-color: mediumspringgreen;
+    background-color: lightgoldenrodyellow;
+    width: 52px;
+    height: 52px;
 }
 
 .memo{
@@ -77,8 +82,28 @@ nav{
     border: 1px solid rgba(0,0,0,0.05);
     border-radius: 2px;
 }
+.memo.ng-move,
+.memo.ng-enter {
+    -webkit-transition:all linear 0.5s;
+    transition:all linear 0.5s;
+}
+.memo.ng-leave {
+    -webkit-transition:all linear 0.0s;
+    transition:all linear 0.0s;
+}
+.memo.ng-leave.ng-leave-active,
+.memo.ng-move,
+.memo.ng-enter {
+    opacity:0;
+}
+.memo.ng-leave,
+.memo.ng-move.ng-move-active,
+.memo.ng-enter.ng-enter-active {
+    opacity:1;
+}
 .memo::before,
 .memo::after {
+    visibility: visible;
     content: '';
     position: absolute;
     bottom: 10px;
@@ -86,7 +111,31 @@ nav{
     height: 10px;
     box-shadow: 0 5px 14px rgba(0,0,0,0.7);
     z-index: -1;
-    transition: all .3s ease-in-out;
+    animation: fadeIn 2s;
+    -webkit-animation: fadeIn 2s;
+    transition: all 1s ease-in-out;
+}
+@keyframes fadeIn {
+    0% {
+        visibility: hidden;
+        opacity: 0;
+    }
+    50%{
+        visibility: visible;
+        opacity: 0;
+    }
+    to {
+        visibility: visible;
+        opacity: 1;
+    }
+}
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
 }
 .memo::before{
     left:15px;
@@ -105,14 +154,6 @@ nav{
 }
 .memo:hover:after{
     right:5px;
-}
-
-.memo.ng-enter{
-    opacity: 0;
-    transition: all .5s ease;
-}
-.memo.ng-enter-active{
-    opacity:1;
 }
 .container_memo{
     width: 100%;
