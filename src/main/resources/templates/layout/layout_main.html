@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            <th:block layout:fragment="title">TOMO</th:block>
+        </title>
+        <link rel="stylesheet" href="css/index.css">
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                로고
+            </div>
+            <div class="menu">
+                <ul>
+                    <li><a href="./memo">메모</a></li>
+                    <li><a href="./manage">관리</a></li>
+                </ul>
+            </div>
+            <div class="account">
+                로그인
+            </div>
+        </header>
+        <div class="container">
+            <section layout:fragment="content"></section>
+        </div>
+    </body>
+</html>
