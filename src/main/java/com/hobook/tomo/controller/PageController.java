@@ -15,7 +15,7 @@ public class PageController {
     @RequestMapping(value = "/memo", method = RequestMethod.GET)
     public String goMemo()
     {
-        return "index";
+        return "memo";
     }
 
     @RequestMapping(value = "/manage", method = RequestMethod.GET)
