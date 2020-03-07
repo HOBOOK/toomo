@@ -23,9 +23,17 @@
 .far.fa-trash-alt{
     cursor: pointer;
     color: #333333;
+    transition: all 0.2s ease-in-out;
 }
-
+.far.fa-trash-alt:hover {
+    color: #555555;
+}
 .fas.fa-check{
     cursor: pointer;
     color: #333333;
+    transition: all 0.2s ease-in-out;
+}
+.fas.fa-check:hover{
+    cursor: pointer;
+    color: #555555;
 }
