@@ -6,6 +6,8 @@ public class Memo {
     private String dateOfCreate;
     private int state; //0:보여짐, 1:가려짐, 2>= 제거
 
+    private int fix;
+
     public String getId() {
         return id;
     }
@@ -36,6 +38,14 @@ public class Memo {
 
     public void setState(int state) {
         this.state = state;
+    }
+
+    public int getFix() {
+        return fix;
+    }
+
+    public void setFix(int fix) {
+        this.fix = fix;
     }
 
 
