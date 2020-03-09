@@ -1,26 +1,66 @@
+/*//////////////////////////////////////////////////////////////////
+[ FONT ]*/
+
+@font-face {
+    font-family: Poppins-Regular;
+    src: url('../fonts/poppins/Poppins-Regular.ttf');
+}
+
+@font-face {
+    font-family: Poppins-Bold;
+    src: url('../fonts/poppins/Poppins-Bold.ttf');
+}
+
+@font-face {
+    font-family: Poppins-Medium;
+    src: url('../fonts/poppins/Poppins-Medium.ttf');
+}
+
+@font-face {
+    font-family: Raleway-Regular;
+    src: url('../fonts/raleway/Raleway-Regular.ttf');
+}
+
+@font-face {
+    font-family: Raleway-Black;
+    src: url('../fonts/raleway/Raleway-Black.ttf');
+}
+
+@font-face {
+    font-family: Raleway-SemiBold;
+    src: url('../fonts/raleway/Raleway-SemiBold.ttf');
+}
+
+@font-face {
+    font-family: Raleway-Bold;
+    src: url('../fonts/raleway/Raleway-Bold.ttf');
+}
+
+
 html,body {
     -ms-user-select: none; -moz-user-select: -moz-none; -webkit-user-select: none; -khtml-user-select: none; user-select:none;
-    font-family: Verdana;
+    font-family: Raleway-Regular;
     max-width: 100%;
     min-width: 100%;
+    min-height: 700px;
     max-height: 100%;
     height: 100%;
     padding: 0;
     margin: 0;
-    overflow: hidden;
 }
 .container{
     width:100%;
     height:100%;
     display: flex;
     align-items: center;
-    background-color: whitesmoke;
+    background-color: white;
 }
 
 .container_login{
     margin: 0 auto;
     max-width: 95%;
-    width: 480px;
+
+    width: 430px;
     display: inline-block;
 }
 
@@ -39,7 +79,6 @@ html,body {
 .form_login{
     background-color: transparent;
     border: 1px solid rgba(0,0,0,0.1);
-    border-radius: 3px;
     padding: 15px;
 }
 
@@ -54,6 +93,7 @@ html,body {
 }
 /*---------------------------------------------*/
 a {
+    text-decoration: none;
     font-size: 14px;
     line-height: 1.7;
     color: #666666;
@@ -147,9 +187,10 @@ iframe {
 [ Utility ]*/
 .txt1 {
     font-family: Raleway-Regular;
-    font-size: 16px;
+    font-size: 14px;
     color: #999999;
     line-height: 1.4;
+    float: right;
 }
 
 .bo1 {
@@ -182,14 +223,15 @@ iframe {
 
 .input100 {
     font-family: Raleway-SemiBold;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 1.2;
     color: #686868;
 
     display: block;
     width: 100%;
-    background: #e6e6e6;
-    height: 62px;
+    background: transparent;
+    border-bottom: 1px solid #e6e6e6;
+    height: 48px;
     border-radius: 3px;
     padding: 0 30px 0 65px;
 }
@@ -201,12 +243,14 @@ iframe {
     display: block;
     position: absolute;
     border-radius: 3px;
+    border-bottom: 1px solid #e6e6e6;
     bottom: 0;
     left: 0;
     z-index: -1;
     width: 100%;
     height: 100%;
     box-shadow: 0px 0px 0px 0px;
+
     color: rgba(211,63,141, 0.6);
 }
 
@@ -269,13 +313,13 @@ iframe {
 
 .label-checkbox100 {
     font-family: Raleway-Regular;
-    font-size: 16px;
-    color: #999999;
+    font-size: 14px;
+    color: #666666;
     line-height: 1.2;
 
     display: block;
     position: relative;
-    padding-left: 26px;
+    padding-left: 30px;
     cursor: pointer;
 }
 
@@ -309,7 +353,9 @@ iframe {
 
 .input-checkbox100:checked + .label-checkbox100::before {
     content: url( "/img/check.png" );
-    color: #d33f8d;
+    color: white;
+    border: 2px solid royalblue;
+    background: royalblue;
 }
 
 
@@ -328,7 +374,7 @@ iframe {
 
 .login100-form-btn {
     font-family: Raleway-Bold;
-    font-size: 16px;
+    font-size: 18px;
     line-height: 1.5;
     color: #fff;
     text-transform: uppercase;
@@ -336,7 +382,7 @@ iframe {
     width: 100%;
     height: 62px;
     border-radius: 3px;
-    background: #d33f8d;
+    background: slateblue;
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-box;
@@ -353,7 +399,7 @@ iframe {
 }
 
 .login100-form-btn:hover {
-    background: #333333;
+    background: royalblue;
 }
 
 /*------------------------------------------------------------------
@@ -428,7 +474,7 @@ iframe {
     content: attr(data-validate);
     position: absolute;
     max-width: 70%;
-    background-color: transparent;
+    background-color: white;
     color:#c80000;
     border-radius: 3px;
     padding: 4px 25px 4px 10px;
@@ -443,7 +489,7 @@ iframe {
 
     font-size: 13px;
     line-height: 1.4;
-    text-align: center;
+    text-align: left;
 
     visibility: hidden;
     opacity: 0;
@@ -466,6 +512,7 @@ iframe {
     -ms-transform: translateY(-50%);
     -o-transform: translateY(-50%);
     transform: translateY(-50%);
+    right: 13px;
 }
 
 .alert-validate:hover:before {

@@ -1,8 +1,6 @@
 
 (function ($) {
     "use strict";
-
-
     /*==================================================================
     [ Validate ]*/
     var input = $('.validate-input .input100');
@@ -16,7 +14,7 @@
                 check=false;
             }
         }
-
+        window.location.href="http://localhost:8080/memo";
         return check;
     });
 
