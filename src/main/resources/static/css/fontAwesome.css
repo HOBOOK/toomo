@@ -1,39 +1,17 @@
-.fas.fa-thumbtack{
-    display: inline-block;
-    position: absolute;
-    top: 0;
-    right: 0;
-    transform: rotate(30deg);
-    font-size: 24px;
-    color: whitesmoke;
-    -webkit-filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.1));
-    filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.1));
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    z-index: 20;
-}
-.fas.fa-thumbtack.fix{
-    color: red;
-}
-
-.fas.fa-thumbtack:hover{
-    top:1%;
-}
-
 .far.fa-trash-alt{
     cursor: pointer;
-    color: #333333;
+    color: #505050;
     transition: all 0.2s ease-in-out;
 }
 .far.fa-trash-alt:hover {
-    color: #555555;
+    color: #333333;
 }
 .fas.fa-check{
     cursor: pointer;
-    color: #333333;
+    color: #505050;
     transition: all 0.2s ease-in-out;
 }
 .fas.fa-check:hover{
     cursor: pointer;
-    color: #555555;
+    color: #333333;
 }

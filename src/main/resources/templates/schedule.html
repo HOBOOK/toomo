@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/layout_main"
+      ng-app="calendar">
+<th:block layout:fragment="title">TOMO | 일정</th:block>
+<th:block layout:fragment="js">
+    <script src="js/moment.js"></script>
+    <script type="text/javascript">
+        moment.locale('kr', {
+            months : "1월_2월_3월_4월_5월_6월_7월_8월_9월_10월_11월_12월".split("_"),
+            monthsShort :  "1월_2월_3월_4월_5월_6월_7월_8월_9월_10월_11월_12월".split("_"),
+            weekdays : "일요일_월요일_화요일_수요일_목요일_금요일_토요일".split("_"),
+            weekdaysShort : "일._월._화._수._목._금_토.".split("_"),
+            weekdaysMin :"일._월._화._수._목._금_토.".split("_"),
+            longDateFormat : {
+                LT : "HH:mm",
+                LTS : "HH:mm:ss",
+                L : "DD/MM/YYYY",
+                LL : "D MMMM YYYY",
+                LLL : "D MMMM YYYY LT",
+                LLLL : "dddd D MMMM YYYY LT"
+            },
+            ordinal : function (number) {
+                return number + '일'
+            }
+        });
+    </script>
+    <script src="js/calendar.js"></script>
+</th:block>
+<th:block layout:fragment="css">
+    <link rel="stylesheet" href="css/schedule.css">
+    <link rel="stylesheet" href="css/calendar.css">
+</th:block>
+
+<section ng-app="calendar" layout:fragment="content" class="container_main">
+    <div class="main">
+        <div class="container_context">
+            <div ng-controller="calendarWidget">
+                <calendar selected="day">
+
+                </calendar>
+            </div>
+        </div>
+    </div>
+</section>

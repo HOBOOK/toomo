@@ -1,0 +1,93 @@
+calendar{
+    float:left;
+    display:block;
+    height: 100%;
+.border-box;
+    background:white;
+    width:100%;
+    border:solid 1px #CCC;
+    margin-bottom:10px;
+}
+calendar .cal_header{
+    float:left;
+    width:100%;
+    height:80px;
+    background-color: white;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    color:#999999;
+}
+calendar .cal_header *{
+    height: 80px;
+    line-height:80px !important;
+    display:inline-block;
+    vertical-align:middle;
+}
+calendar .cal_header i{
+    float:left;
+    width:40px;
+    font-size:1.125em;
+    font-weight:bold;
+    position:relative;
+.border-box;
+    padding:0 10px;
+    cursor:pointer;
+}
+calendar .cal_header i.fa-angle-left {
+    text-align:left;
+}
+calendar .cal_header i.fa-angle-right{
+    text-align:right;
+    margin-left:-40px;
+}
+calendar .cal_header span{
+    float:left;
+    font-weight:bold;
+    text-transform:uppercase;
+.border-box;
+    padding-left:50px;
+    margin-left:-40px;
+    text-align:center;
+    padding-right:40px;
+    color:inherit;
+}
+
+calendar div.week{
+    float:left;
+    width:100%;
+    height: 100%;
+}
+calendar div.week span.day{
+    float:left;
+    width:14.28%;
+
+.border-box;
+    border-left:solid 1px @border-colour;
+    font-size:0.75em;
+    text-align:center;
+    background:white;
+    cursor:pointer;
+    color:black;
+    max-height: 25%;
+    height: calc(16.67vh - 20px);
+    line-height: calc(16.67vh - 20px);
+    display: inline-block;
+    vertical-align: middle;
+
+}
+calendar div.week span.day:first-child{
+    border-left: none;
+}
+calendar div.week span.day.today{
+    background:#E4FFE3;
+}
+calendar div.week span.day.different-month{
+    color:#C0C0C0;
+}
+calendar div.week span.day.selected {
+    background:#50C3A0;
+    color:white;
+}
+calendar div.week.names>span {
+    color:#44A88A;
+    font-weight:bold;
+}

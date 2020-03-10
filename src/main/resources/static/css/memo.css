@@ -1,38 +1,40 @@
+
 .far.fa-sticky-note{
-    color: #666666;
+    color: royalblue;
     font-size: 30px;
-    animation: menuOn 1s;
-    -moz-animation: menuOn 1s; /* Firefox */
-    -webkit-animation: menuOn 1s; /* Safari and Chrome */
-    -o-animation: menuOn 1s; /* Opera */
-    line-height: 60px;
+    animation: menuOn 0.3s;
+    -moz-animation: menuOn 0.3s; /* Firefox */
+    -webkit-animation: menuOn 0.3s; /* Safari and Chrome */
+    -o-animation: menuOn 0.3s; /* Opera */
 }
-.fas.fa-tasks{
-    line-height: 60px;
-    color: #999999;
-    font-size: 24px;
-    animation: menuOff 1s;
-    -moz-animation: menuOff 1s; /* Firefox */
-    -webkit-animation: menuOff 1s; /* Safari and Chrome */
-    -o-animation: menuOff 1s; /* Opera */
+
+.memo-pin{
+    cursor: pointer;
+    position: absolute;
+    top:0;
+    right: 0;
+    float: right;
+    -webkit-filter: opacity(0.2) drop-shadow(0 0 0 white);
+    filter: opacity(0.2) drop-shadow(0 0 0 white);
+
 }
+.memo-pin.fix{
+    -webkit-filter: opacity(.7) drop-shadow(0 0 0 red);
+    filter: opacity(.7) drop-shadow(0 0 0 red);
+}
+
+.memo-pin:hover{
+    -webkit-filter: opacity(.7) drop-shadow(0 0 0 red);
+    filter: opacity(.7) drop-shadow(0 0 0 red);
+}
+
 @keyframes menuOn {
     0% {
         font-size: 24px;
         color: #999999;
     }
-    50% {
+    100% {
         font-size: 30px;
-        color: #666666;
-    }
-}
-@keyframes menuOff{
-    0% {
-        font-size: 30px;
-        color: #666666;
-    }
-    50% {
-        font-size: 24px;
-        color: #999999;
+        color: royalblue;
     }
 }

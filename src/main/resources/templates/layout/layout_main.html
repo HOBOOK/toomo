@@ -10,31 +10,30 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular-animate.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular-sanitize.min.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <th:block layout:fragment="js"></th:block>
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.0/css/all.css">
         <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/header.css">
         <link rel="stylesheet" href="css/fontAwesome.css">
         <th:block layout:fragment="css"></th:block>
     </head>
 
     <script src="js/memo.js"></script>
     <body>
-        <header>
-            <div class="logo" style="height: 60px;line-height: 60px;top:0;left:14px;position: absolute;">
-                <a href="./memo"><img src="img/logo.png" height="32" alt="logo" style="margin-top:14px;"/></a>
-            </div>
-            <div class="menu">
-                <ul style="float: left; display: inline-block;">
-                    <a href="./memo"><li style="display: inline-block;"><span><i class="far fa-sticky-note"></i></span>메모</li></a>
-                    <a href="./manage"><li style="display: inline-block;"><span><i class="fas fa-tasks"></i></span>관리</li></a>
-                </ul>
-            </div>
-            <div class="account">
-                <a href="/login">로그인</a>
-            </div>
-        </header>
+        <header th:replace="fragments/header :: header"></header>
         <div class="container">
+            <nav>
+                <div class="menu">
+                    <ul style="display: inline-block;">
+                        <a href="./memo"><li style="display: inline-block;"><span><i class="far fa-sticky-note"></i></span><br/><br/>Notes</li></a>
+                        <a href="./schedule"><li style="display: inline-block;"><span><i class="far fa-calendar-alt"></i></span><br/><br/>Schedule</li></a>
+                        <a href="./manage"><li style="display: inline-block;"><span><i class="fas fa-tasks"></i></span><br/><br/>Manage</li></a>
+                    </ul>
+                </div>
+            </nav>
             <section layout:fragment="content"></section>
         </div>
+
     </body>
 </html>

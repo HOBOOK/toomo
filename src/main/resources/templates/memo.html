@@ -6,14 +6,11 @@
 <th:block layout:fragment="title">TOMO | 메모</th:block>
 <th:block layout:fragment="css"><link rel="stylesheet" href="css/memo.css"></th:block>
 <section ng-app="MyApp" ng-controller="memoController" layout:fragment="content" class="container_main">
-    <nav class="nav">
-        네비
-    </nav>
     <div class="main">
         <div class="container_context" id="memo_parent">
             <article ng-repeat="memo in memos | orderBy:['!-fix', '-dateOfCreate'] | filter:{ state: 0}" class="memo" id="memo_{{memo.id}}">
-                <i ng-click="setPin(false, memo)" ng-show="memo.fix=='1'" class="fas fa-thumbtack fix"></i>
-                <i ng-click="setPin(true, memo)" ng-show="memo.fix=='0'" class="fas fa-thumbtack"></i>
+                <img src="img/pin.png" height="32" ng-click="setPin(false, memo)" ng-show="memo.fix=='1'" class="memo-pin fix"></img>
+                <img src="img/pin.png" height="32" ng-click="setPin(true, memo)" ng-show="memo.fix=='0'" class="memo-pin"></img>
                 <div  class="container_memo" ng-click="editMemo(memo.id)">
                     <div class="bar_memo">
                         <div ng-show="config.editMode && config.editTarget==memo.id">
@@ -36,7 +33,7 @@
                         {{memo.context}}
                     </div>
                 </div>
-                <div ng-show="config.editMode && config.editTarget!=memo.id" style="position:absolute; z-index: 10; width: 302px; height: 372px; background-color: rgba(0,0,0,0.05);top:0;left:0;"></div>
+                <div ng-show="config.editMode && config.editTarget!=memo.id" style="position:absolute; z-index: 10; width: 280px; height: 350px; background-color: rgba(0,0,0,0.05);top:0;left:0;"></div>
             </article>
         </div>
     </div>

@@ -1,0 +1,19 @@
+
+.far.fa-calendar-alt{
+    color: royalblue;
+    font-size: 30px;
+    animation: menuOn 0.3s;
+    -moz-animation: menuOn 0.3s; /* Firefox */
+    -webkit-animation: menuOn 0.3s; /* Safari and Chrome */
+    -o-animation: menuOn 0.3s; /* Opera */
+}
+@keyframes menuOn {
+    0% {
+        font-size: 24px;
+        color: #999999;
+    }
+    100% {
+        font-size: 30px;
+        color: royalblue;
+    }
+}

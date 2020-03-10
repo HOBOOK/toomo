@@ -21,7 +21,19 @@ public class PageController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String goHome()
     {
-        return "memo";
+        return "index";
+    }
+
+    @RequestMapping(value = "/schedule", method = RequestMethod.GET)
+    public String goSchedule()
+    {
+        return "schedule";
+    }
+
+    @RequestMapping(value = "/calendar", method = RequestMethod.GET)
+    public String goCalendar()
+    {
+        return "calendar";
     }
 
     @RequestMapping(value = "/manage", method = RequestMethod.GET)
