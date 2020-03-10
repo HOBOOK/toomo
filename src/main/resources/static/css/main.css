@@ -63,6 +63,37 @@ header{
 header div{
     display: inline-block;
 }
+.menu{
+    height: 100%;
+    margin-left:200px;
+}
+.menu ul{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+.menu li{
+    height: 100%;
+    line-height: 60px;
+    width: 100px;
+    text-align: center;
+    color: #666666;
+}
+.menu span{
+    padding-right: 10px;
+}
+.menu a{
+    text-decoration: none;
+}
+
+.account{
+    float: right;
+    line-height: 60px;
+    margin-right: 20px;
+}
+.account a{
+    text-decoration: none;
+}
 .container_main{
     display: block;
     width: 100%;

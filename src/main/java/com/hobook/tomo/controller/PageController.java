@@ -6,14 +6,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class PageController {
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String goHome()
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String goLogin()
     {
-        return "index";
+        return "login";
     }
 
     @RequestMapping(value = "/memo", method = RequestMethod.GET)
     public String goMemo()
+    {
+        return "memo";
+    }
+
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String goHome()
     {
         return "memo";
     }

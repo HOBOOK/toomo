@@ -14,22 +14,23 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.0/css/all.css">
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/fontAwesome.css">
+        <th:block layout:fragment="css"></th:block>
     </head>
 
     <script src="js/memo.js"></script>
     <body>
         <header>
-            <div class="logo" style="height: 100%;">
-                <a href="./memo"><img src="img/logo.png" height="32" alt="logo" style="margin:6px;"/></a>
+            <div class="logo" style="height: 60px;line-height: 60px;top:0;left:14px;position: absolute;">
+                <a href="./memo"><img src="img/logo.png" height="32" alt="logo" style="margin-top:14px;"/></a>
             </div>
             <div class="menu">
                 <ul style="float: left; display: inline-block;">
-                    <li style="display: inline-block;"><a href="./memo">메모</a></li>
-                    <li style="display: inline-block;"><a href="./manage">관리</a></li>
+                    <a href="./memo"><li style="display: inline-block;"><span><i class="far fa-sticky-note"></i></span>메모</li></a>
+                    <a href="./manage"><li style="display: inline-block;"><span><i class="fas fa-tasks"></i></span>관리</li></a>
                 </ul>
             </div>
             <div class="account">
-                로그인
+                <a href="/login">로그인</a>
             </div>
         </header>
         <div class="container">

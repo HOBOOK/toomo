@@ -1,0 +1,38 @@
+.fas.fa-tasks{
+    color: #666666;
+    font-size: 30px;
+    line-height: 60px;
+    animation: menuOn 1s;
+    -moz-animation: menuOn 1s; /* Firefox */
+    -webkit-animation: menuOn 1s; /* Safari and Chrome */
+    -o-animation: menuOn 1s; /* Opera */
+}
+.far.fa-sticky-note{
+    color: #999999;
+    font-size: 24px;
+    line-height: 60px;
+    animation: menuOff 1s;
+    -moz-animation: menuOff 1s; /* Firefox */
+    -webkit-animation: menuOff 1s; /* Safari and Chrome */
+    -o-animation: menuOff 1s; /* Opera */
+}
+@keyframes menuOn {
+    0% {
+        font-size: 24px;
+        color: #999999;
+    }
+    50% {
+        font-size: 30px;
+        color: #666666;
+    }
+}
+@keyframes menuOff{
+    0% {
+        font-size: 30px;
+        color: #666666;
+    }
+    50% {
+        font-size: 24px;
+        color: #999999;
+    }
+}

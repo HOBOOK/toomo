@@ -3,9 +3,8 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorator="layout/layout_main">
-
 <th:block layout:fragment="title">TOMO | 메모</th:block>
-
+<th:block layout:fragment="css"><link rel="stylesheet" href="css/memo.css"></th:block>
 <section ng-app="MyApp" ng-controller="memoController" layout:fragment="content" class="container_main">
     <nav class="nav">
         네비
