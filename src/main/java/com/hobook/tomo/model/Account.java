@@ -23,10 +23,10 @@ public class Account {
     private String profileImageUrl;
 
     @Builder
-    public Account(Long id, String name, String email, String password, String profileImageUrl)
+    public Account(Long id, String nickname, String email, String password, String profileImageUrl)
     {
         this.id = id;
-        this.nickname = name;
+        this.nickname = nickname;
         this.email = email;
         this.pwd = password;
         this.profileImageUrl = profileImageUrl;

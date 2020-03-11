@@ -21,8 +21,10 @@ public class AccountDto {
     public Account toEntitiy(){
         return Account.builder()
                 .id(id)
+                .nickname(nickname)
                 .email(email)
                 .password(pwd)
+                .profileImageUrl(profileImageUrl)
                 .build();
     }
 
