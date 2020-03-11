@@ -14,7 +14,7 @@ calendar .cal_header{
     height:80px;
     background-color: white;
     border-bottom: 1px solid rgba(0,0,0,0.1);
-    color:#999999;
+    color:#333333;
 }
 calendar .cal_header *{
     height: 80px;

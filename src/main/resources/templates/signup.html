@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>TOMO | 로그인</title>
+    <title>TOMO | 회원가입</title>
 
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.0/css/all.css">
@@ -16,9 +16,16 @@
                 <img src="img/logo.png" alt="logo" height="50px"/>
             </div>
             <div class="panel_login">
-                <form class="form_login validate-form">
+                <form class="form_login validate-form" action="/signup/" method="post" autocomplete="off">
+                    <div class="wrap-input100 validate-input m-b-16" data-validate = "! 닉네임을 입력해주세요.">
+                        <input class="input100" type="text" name="name" placeholder="your nickname">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+							<i class="fas fa-signature"></i>
+						</span>
+                    </div>
                     <div class="wrap-input100 validate-input m-b-16" data-validate = "! 이메일 형식을 입력해주세요">
-                        <input class="input100" type="text" name="email" placeholder="yourname@tomo.com">
+                        <input class="input100" type="text" name="email" placeholder="your email">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
 							<i class="far fa-envelope"></i>
@@ -31,34 +38,30 @@
 							<i class="fas fa-unlock-alt"></i>
 						</span>
                     </div>
-
-                    <div class="contact100-form-checkbox m-l-4 p-t-10">
-                        <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
-                        <label class="label-checkbox100" for="ckb1">
-                            로그인 상태 유지
-                        </label>
-                    </div>
-
                     <div class="container-login100-form-btn p-t-20">
                         <button class="login100-form-btn">
-                            로그인
+                            회원가입
                         </button>
                     </div>
 
                     <a href="#" class="btn-naver m-t-20 m-b-10">
                         <img src="img/sns/naver.png" alt="naver">
-                        네이버 로그인
+                        네이버 회원가입
                     </a>
 
                     <a href="#" class="btn-google m-t-20 m-b-10">
                         <img src="img/sns/google.png" alt="google">
-                        구글 로그인
+                        구글 회원가입
                     </a>
 
                     <div class="text-center w-full p-t-10">
-                        <a class="txt1 hov1" href="./signup">
-                            회원가입
+                        <a class="txt1 hov1" href="./login">
+                            로그인 화면 돌아가기
                         </a>
+                    </div>
+
+                    <div class="text-center w-full p-t-10">
+                        By continuing, you agree to Repl.it's Terms of Service and Privacy Policy, and to receiving emails with updates.
                     </div>
                 </form>
             </div>

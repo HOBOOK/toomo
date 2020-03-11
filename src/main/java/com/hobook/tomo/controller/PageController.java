@@ -12,6 +12,12 @@ public class PageController {
         return "login";
     }
 
+    @RequestMapping(value = "/signup", method = RequestMethod.GET)
+    public String goSignup()
+    {
+        return "signup";
+    }
+
     @RequestMapping(value = "/memo", method = RequestMethod.GET)
     public String goMemo()
     {
