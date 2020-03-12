@@ -1,6 +1,5 @@
 package com.hobook.tomo.config;
 
-import com.hobook.tomo.controller.AccountController;
 import com.hobook.tomo.service.AccountService;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -33,21 +32,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception{
         http.authorizeRequests()
                 .antMatchers("/admin/**").hasRole("ADMIN")
-                .antMatchers("/user/**").hasRole("BASIC")
+                .antMatchers("/memo").hasRole("BASIC")
+                .antMatchers("/manage").hasRole("BASIC")
+                .antMatchers("/schedule").hasRole("BASIC")
                 .antMatchers("/**").permitAll()
                 .and() // 로그인 설정
                 .formLogin()
-                .loginPage("/user/login")
-                .defaultSuccessUrl("/user/login/result")
+                .loginPage("/login")
+                .defaultSuccessUrl("/memo")
                 .permitAll()
                 .and() // 로그아웃 설정
                 .logout()
-                .logoutRequestMatcher(new AntPathRequestMatcher("/user/logout"))
-                .logoutSuccessUrl("/user/logout/result")
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/")
                 .invalidateHttpSession(true)
                 .and()
                 // 403 예외처리 핸들링
-                .exceptionHandling().accessDeniedPage("/user/denied");
+                .exceptionHandling().accessDeniedPage("/denied");
     }
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {

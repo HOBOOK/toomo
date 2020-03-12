@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>TOMO | 회원가입</title>
@@ -16,30 +16,35 @@
                 <img src="img/logo.png" alt="logo" height="50px"/>
             </div>
             <div class="panel_login">
-                <form class="form_login validate-form" action="/signup/" method="post" autocomplete="off">
+                <form modelAttribute="accountDto" class="form_login validate-form" th:action="@{/signup}" method="post" autocomplete="off">
                     <div class="wrap-input100 validate-input m-b-16" data-validate = "! 닉네임을 입력해주세요.">
-                        <input class="input100" type="text" name="name" placeholder="your nickname">
+                        <input class="input100" type="text" name="nickname" th:value="${accountDto!=null} ? ${accountDto.nickname}" placeholder="your nickname">
                         <span class="focus-input100"></span>
+                        <span class="error nickname" th:text="${valid_nickname}"></span>
                         <span class="symbol-input100">
 							<i class="fas fa-signature"></i>
 						</span>
                     </div>
                     <div class="wrap-input100 validate-input m-b-16" data-validate = "! 이메일 형식을 입력해주세요">
-                        <input class="input100" type="text" name="email" placeholder="your email">
+                        <input class="input100" type="text" name="email" th:value="${accountDto!=null} ? ${accountDto.email}" placeholder="your email">
                         <span class="focus-input100"></span>
+                        <span class="error email" th:text="${valid_email}"></span>
                         <span class="symbol-input100">
 							<i class="far fa-envelope"></i>
 						</span>
+
                     </div>
                     <div class="wrap-input100 validate-input m-b-16" data-validate = "! 비밀번호를 입력해주세요">
-                        <input class="input100" type="password" name="pass" placeholder="password">
+                        <input class="input100" type="password" name="pwd" placeholder="password">
                         <span class="focus-input100"></span>
+                        <span class="error pwd" th:text="${valid_pwd}"></span>
                         <span class="symbol-input100">
 							<i class="fas fa-unlock-alt"></i>
 						</span>
                     </div>
+                    <input type="hidden" name="profileImageUrl" value="img/anonymous.png">
                     <div class="container-login100-form-btn p-t-20">
-                        <button class="login100-form-btn">
+                        <button type="submit" class="login100-form-btn">
                             회원가입
                         </button>
                     </div>
@@ -71,6 +76,5 @@
 
     <!--Script-->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="js/login.js"></script>
 </body>
 </html>

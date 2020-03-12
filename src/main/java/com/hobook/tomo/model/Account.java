@@ -1,8 +1,9 @@
 package com.hobook.tomo.model;
 
 import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
-import java.util.List;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
@@ -10,25 +11,30 @@ import java.util.List;
 @Table(name ="accounts")
 public class Account {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GenericGenerator(name="account_seq",strategy="increment")
+    @GeneratedValue(generator = "account_seq")
+    @Column(name="id", nullable=false)
     private Long id;
 
-    @Column(name="nickname", nullable = false, length=20)
+    @Column(name="nickname", nullable=false, length=20)
     private String nickname;
-    @Column(name="email",nullable = false, unique = true, length = 50)
+
+    @Column(name="email",nullable=false, unique=true, length = 50)
     private String email;
-    @Column(name="pwd",nullable = false, length = 100)
+
+    @Column(name="pwd",nullable=false, length = 100)
     private String pwd;
-    @Column(name="profileImageUrl",nullable = false)
-    private String profileImageUrl;
+
+    @Column(name="profile_image_url",nullable=false)
+    private String profile_image_url;
 
     @Builder
-    public Account(Long id, String nickname, String email, String password, String profileImageUrl)
+    public Account(Long id, String nickname, String email, String password, String profile_image_url)
     {
         this.id = id;
         this.nickname = nickname;
         this.email = email;
         this.pwd = password;
-        this.profileImageUrl = profileImageUrl;
+        this.profile_image_url = profile_image_url;
     }
 }

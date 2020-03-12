@@ -3,9 +3,8 @@ package com.hobook.tomo.model;
 public class Memo {
     private String id;
     private String content;
-    private String dateOfCreate;
+    private String date_create;
     private int state; //0:보여짐, 1:가려짐, 2>= 제거
-
     private int fix;
 
     public String getId() {
@@ -25,11 +24,11 @@ public class Memo {
     }
 
     public String getDateOfCreate() {
-        return dateOfCreate;
+        return date_create;
     }
 
     public void setDateOfCreate(String dateOfCreate) {
-        this.dateOfCreate = dateOfCreate;
+        this.date_create = dateOfCreate;
     }
 
     public int getState() {

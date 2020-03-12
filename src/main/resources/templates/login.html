@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>TOMO | 로그인</title>
@@ -16,16 +16,17 @@
                 <img src="img/logo.png" alt="logo" height="50px"/>
             </div>
             <div class="panel_login">
-                <form class="form_login validate-form">
+                <form action="/login" method="post" class="form_login validate-form">
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
                     <div class="wrap-input100 validate-input m-b-16" data-validate = "! 이메일 형식을 입력해주세요">
-                        <input class="input100" type="text" name="email" placeholder="yourname@tomo.com">
+                        <input class="input100" type="text" name="username" placeholder="yourname@tomo.com">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
 							<i class="far fa-envelope"></i>
 						</span>
                     </div>
                     <div class="wrap-input100 validate-input m-b-16" data-validate = "! 비밀번호를 입력해주세요">
-                        <input class="input100" type="password" name="pass" placeholder="password">
+                        <input class="input100" type="password" name="password" placeholder="password">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
 							<i class="fas fa-unlock-alt"></i>
@@ -33,14 +34,14 @@
                     </div>
 
                     <div class="contact100-form-checkbox m-l-4 p-t-10">
-                        <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+                        <input class="input-checkbox100" id="ckb1" type="checkbox">
                         <label class="label-checkbox100" for="ckb1">
                             로그인 상태 유지
                         </label>
                     </div>
 
                     <div class="container-login100-form-btn p-t-20">
-                        <button class="login100-form-btn">
+                        <button type="submit" class="login100-form-btn">
                             로그인
                         </button>
                     </div>
@@ -68,6 +69,5 @@
 
     <!--Script-->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="js/login.js"></script>
 </body>
 </html>

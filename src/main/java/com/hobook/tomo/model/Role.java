@@ -1,4 +1,4 @@
-package com.hobook.tomo;
+package com.hobook.tomo.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
