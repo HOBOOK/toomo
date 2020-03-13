@@ -95,7 +95,10 @@ public class PageController implements ErrorController {
         }else if(principal!=null){
             model.addAttribute("account", accountService.getAccountDto(principal.getName()));
         }
-        return "index";
+        if(principal==null)
+            return "index";
+        else
+            return "memo";
     }
 
     @RequestMapping(value = "/schedule", method = RequestMethod.GET)

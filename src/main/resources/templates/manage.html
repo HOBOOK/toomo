@@ -8,7 +8,17 @@
 <section layout:fragment="content" class="container_main">
     <div class="main">
         <div class="container_context">
-            관리
+            <div class="profile_header" th:object="${account}">
+                <span style="z-index:-5; position: absolute; width: 100%; height: 228px; top:0; left: 0; background-color: gray;"></span>
+                <h1 class="m-b-10" th:text="${account} ? ${account.getNickname()}"></h1>
+                <h3 class="m-b-10" th:text="${account} ? ${account.getEmail()}"></h3>
+                <span style="background-color: rgba(255,255,255,1); width: 128px; height: 128px; border-radius: 100%; display: inline-block;">
+                    <img th:src="${account} ? ${account.getProfile_image_url()}" width="128" height="128" alt="profile_image"/>
+                </span>
+            </div>
+            <div class="profile_body">
+                설정 바디
+            </div>
         </div>
     </div>
 </section>

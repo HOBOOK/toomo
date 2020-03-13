@@ -17,3 +17,26 @@
         color: royalblue;
     }
 }
+
+h1{
+    color: #333333;
+    font-size: 32px;
+}
+h3{
+    color: #acacac;
+    font-size: 21px;
+}
+.container_context{
+    min-height: 100%;
+    background-color: rgba(255,255,255,0.9);
+    border-left: 1px solid rgba(0,0,0,0.1);
+}
+.profile_header{
+    z-index: 100;
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+    margin:0 auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
