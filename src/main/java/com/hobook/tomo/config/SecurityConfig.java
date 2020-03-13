@@ -41,6 +41,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/login")
                 .defaultSuccessUrl("/memo")
                 .permitAll()
+                .and() // Remember me 설정
+                .rememberMe()
+                .key("myUniqueKey")
+                .rememberMeCookieName("websparrow-login-remember-me")
+                .tokenValiditySeconds(10000000)
                 .and() // 로그아웃 설정
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
