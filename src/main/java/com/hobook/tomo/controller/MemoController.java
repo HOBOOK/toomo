@@ -2,6 +2,7 @@ package com.hobook.tomo.controller;
 
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.hobook.tomo.dto.MemoDto;
+import com.hobook.tomo.service.AccountService;
 import com.hobook.tomo.service.MemoService;
 import lombok.AllArgsConstructor;
 import net.minidev.json.JSONObject;
@@ -14,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.security.Principal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,6 +26,7 @@ import java.util.Map;
 @AllArgsConstructor
 public class MemoController {
     private MemoService memoService;
+    private AccountService accountService;
 
     @RequestMapping(value = "memo/list", method = RequestMethod.GET)
     public ResponseEntity<Object> getList()
@@ -41,25 +44,19 @@ public class MemoController {
         }
         return new ResponseEntity<Object>(entities, HttpStatus.OK);
     }
-    @RequestMapping(value="memo/create", method = RequestMethod.POST)
-    public ResponseEntity<Void> create(@RequestBody MemoDto memoDto, final UriComponentsBuilder ucBuilder)
+    @RequestMapping(value="memo/create", method = {RequestMethod.POST,RequestMethod.PUT})
+    public @ResponseBody ResponseEntity<MemoDto> create(@RequestBody MemoDto memoDto, Principal principal)
     {
-        if(memoService.getMemoList().contains(memoDto)){
-            update(memoDto,ucBuilder);
+        try{
+            memoDto.setCreator(principal.getName());
+            memoService.saveMemo(memoDto);
+            return new ResponseEntity(memoDto, HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity("Error", HttpStatus.BAD_REQUEST);
         }
-        memoService.saveMemo(memoDto);
-        System.out.println("------------------------------");
-        System.out.println(memoDto.getContext());
-        System.out.println("------------------------------");
-        HttpHeaders headers = new HttpHeaders();
-        return new ResponseEntity<>(headers, HttpStatus.CREATED);
+
     }
-    @PutMapping(value="memo/update")
-    public ResponseEntity<Void> update(@RequestBody MemoDto memoDto, final UriComponentsBuilder ucBuilder)
-    {
-        HttpHeaders headers = new HttpHeaders();
-        return new ResponseEntity<>(headers, HttpStatus.CREATED);
-    }
+
     @DeleteMapping(value = "memo/delete")
     public String delete(@RequestBody MemoDto memoDto){
         //memoService.saveMemo(memoDto);

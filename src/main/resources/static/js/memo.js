@@ -5,12 +5,16 @@ Date.prototype.yyyyMMddHHmmss = function () {
     var HH = this.getHours().toString();
     var mm = this.getMinutes().toString();
     var ss = this.getSeconds().toString();
-    return yyyy + '-'+(MM[1] ? MM : '0'+MM[0]) + '-'+(dd[1] ? dd : '0'+dd[0]) + ' ' + (HH[1]?HH : '0'+HH[0]) + ':' + (mm[1]?mm : '0'+mm[0]) + ':'+(ss[1]?ss:'0'+ss[0]);
+    return yyyy + '-'+(MM[1] ? MM : '0'+MM[0]) + '-'+(dd[1] ? dd : '0'+dd[0]) + ' ' + (HH[1]?HH : '0'+HH[0]) + ':' + (mm[1]?mm : '0'+mm[0]) + ':'+(ss[1]?ss:'0'+ss[0])+".";
 }
+var token = $("meta[name='_csrf']").attr("content");
+var header = $("meta[name='_csrf_header']").attr("content");
+
 var app = angular.module('MyApp', ['ngAnimate','ngSanitize'])
 
-app.config(['$qProvider', function($qProvider){
+app.config(['$qProvider','$httpProvider', function($qProvider, $httpProvider){
     $qProvider.errorOnUnhandledRejections(false);
+    $httpProvider.defaults.headers.common[header] = token;
 }]);
 app.controller('memoController', function ($scope, $http, $compile) {
     $scope.memos = [];
@@ -27,7 +31,7 @@ app.controller('memoController', function ($scope, $http, $compile) {
     $scope.addMemo = function () {
         var date = new Date().yyyyMMddHHmmss();
         $scope.memos.unshift({
-            id: $scope.config.tempId++,
+            id: -1,
             context: 'New?',
             date_create: date,
             state: '0',
@@ -55,31 +59,43 @@ app.controller('memoController', function ($scope, $http, $compile) {
             return;
         var context = document.getElementById("memo_context_"+memo.id).innerHTML;
         memo.context = context;
+
         $scope.config.eventDelay = 1;
         $scope.config.editMode = false;
         $scope.config.editTarget = -1;
 
-        var sendDate = JSON.stringify({
-            id: memo.id,
-            creator: memo.creator,
-            context: memo.context,
-            state: memo.state,
-            fix: memo.fix,
-            date_create: memo.date_create,
-            date_update: memo.date_create
-        });
-        $http({
-           method: 'POST',
-           url: 'memo/create',
-           data: JSON.stringify(sendDate),
-            headers: {
-                'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'
-            }
-        }).then(function successCallback(response){
-            console.log(response);
-        }, function errorCallback(response){
-            console.log('error -> ' +response.data);
-        });
+        if(memo.id===-1){
+            $http({
+                method: 'POST',
+                url: 'memo/create',
+                data: {
+                    context: context,
+                    state: memo.state,
+                    fix: memo.fix,
+                },
+            }).then(function successCallback(response){
+                memo.id= $scope.config.tempId++;
+                console.log(response);
+            }, function errorCallback(response){
+                console.log('error create -> ' +response);
+            });
+        }else{
+            $http({
+                method: 'PUT',
+                url: 'memo/create',
+                data: {
+                    context: context,
+                    state: memo.state,
+                    fix: memo.fix,
+                    id: memo.id,
+                },
+            }).then(function successCallback(response){
+                console.log(response);
+            }, function errorCallback(response){
+                console.log('error update -> ' +response);
+            });
+        }
+
 
         setTimeout(function() {
             $scope.config.eventDelay = 0;

@@ -20,6 +20,7 @@ public class MemoService {
         return memoRepository.save(memoDto.toEntity()).getId();
     }
 
+
     @Transactional
     public List<MemoDto> getMemoList(){
         List<Memo> memoEntities = memoRepository.findAll();

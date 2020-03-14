@@ -17,13 +17,13 @@ public class Memo extends Time{
     @Id
     @GenericGenerator(name="memo_seq",strategy="increment")
     @GeneratedValue(generator = "memo_seq")
-    @Column(name="id", nullable=false)
+    @Column(name="id", nullable=false, updatable = false)
     private Long id;
 
     @Column(name="creator", nullable = false, length = 50)
     private String creator;
 
-    @Column(name="context", columnDefinition = "TEXT")
+    @Column(name="context")
     private String context;
 
     @Column(name="state")
