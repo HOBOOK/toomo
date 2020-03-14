@@ -8,37 +8,15 @@ Date.prototype.yyyyMMddHHmmss = function () {
     return yyyy + '-'+(MM[1] ? MM : '0'+MM[0]) + '-'+(dd[1] ? dd : '0'+dd[0]) + ' ' + (HH[1]?HH : '0'+HH[0]) + ':' + (mm[1]?mm : '0'+mm[0]) + ':'+(ss[1]?ss:'0'+ss[0]);
 }
 var app = angular.module('MyApp', ['ngAnimate','ngSanitize'])
-app.controller('memoController', function ($scope, $compile) {
 
-    $scope.memos = [{
-        id: '0',
-        context: '<h1>0번메모</h1>',
-        dateOfCreate: '2020-03-06 14:27:20',
-        state: '0',
-        fix: '0'
-    },
-        {
-            id: '1',
-            context: '1번 메모',
-            dateOfCreate: '2020-03-06 14:27:21',
-            state: '0',
-            fix: '0'
-        },
-        {
-            id: '2',
-            context: '고정된 2번메모',
-            dateOfCreate: '2020-03-06 14:27:22',
-            state: '0',
-            fix: '1'
-        },
-        {
-            id: '3',
-            context: 'hide된 3번메모',
-            dateOfCreate: '2020-03-06 14:27:23',
-            state: '1',
-            fix: '0'
-        }
-    ];
+app.config(['$qProvider', function($qProvider){
+    $qProvider.errorOnUnhandledRejections(false);
+}]);
+app.controller('memoController', function ($scope, $http, $compile) {
+    $scope.memos = [];
+    $http.get('memo/list').then(function (data) {
+       $scope.memos = data.data;
+    });
     $scope.config = {
         editMode: false,
         editTarget: '-1',
@@ -51,7 +29,7 @@ app.controller('memoController', function ($scope, $compile) {
         $scope.memos.unshift({
             id: $scope.config.tempId++,
             context: 'New?',
-            dateOfCreate: date,
+            date_create: date,
             state: '0',
             fix: '0'
         });
@@ -80,6 +58,29 @@ app.controller('memoController', function ($scope, $compile) {
         $scope.config.eventDelay = 1;
         $scope.config.editMode = false;
         $scope.config.editTarget = -1;
+
+        var sendDate = JSON.stringify({
+            id: memo.id,
+            creator: memo.creator,
+            context: memo.context,
+            state: memo.state,
+            fix: memo.fix,
+            date_create: memo.date_create,
+            date_update: memo.date_create
+        });
+        $http({
+           method: 'POST',
+           url: 'memo/create',
+           data: JSON.stringify(sendDate),
+            headers: {
+                'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'
+            }
+        }).then(function successCallback(response){
+            console.log(response);
+        }, function errorCallback(response){
+            console.log('error -> ' +response.data);
+        });
+
         setTimeout(function() {
             $scope.config.eventDelay = 0;
         }, 300);

@@ -8,7 +8,7 @@
 <section ng-app="MyApp" ng-controller="memoController" layout:fragment="content" class="container_main">
     <div class="main">
         <div class="container_context" id="memo_parent">
-            <article ng-repeat="memo in memos | orderBy:['!-fix', '-dateOfCreate'] | filter:{ state: 0}" class="memo" id="memo_{{memo.id}}">
+            <article ng-repeat="memo in memos | orderBy:['!-fix', '-date_create'] | filter:{ state: 0}" class="memo" id="memo_{{memo.id}}">
                 <img src="img/pin.png" height="32" ng-click="setPin(false, memo)" ng-show="memo.fix=='1'" class="memo-pin fix"></img>
                 <img src="img/pin.png" height="32" ng-click="setPin(true, memo)" ng-show="memo.fix=='0'" class="memo-pin"></img>
                 <div  class="container_memo" ng-click="editMemo(memo.id)">

@@ -77,7 +77,7 @@ public class PageController implements ErrorController {
         return "denied";
     }
 
-    @RequestMapping(value = "/memo", method = RequestMethod.GET)
+    @RequestMapping(value = "/memo", method = {RequestMethod.GET,RequestMethod.POST})
     public String goMemo(Principal principal, Model model)
     {
         if(model.containsAttribute("account")){
