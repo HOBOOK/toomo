@@ -57,10 +57,15 @@ public class MemoController {
 
     }
 
-    @DeleteMapping(value = "memo/delete")
-    public String delete(@RequestBody MemoDto memoDto){
-        //memoService.saveMemo(memoDto);
-        return "memo/list";
+    @RequestMapping(value="memo/delete", method = {RequestMethod.PUT})
+    public @ResponseBody ResponseEntity<MemoDto> delete(@RequestBody MemoDto memoDto, Principal principal){
+        try{
+            memoDto.setCreator(principal.getName());
+            memoDto.setState(1);
+            memoService.saveMemo(memoDto);
+            return new ResponseEntity(memoDto, HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity("Error", HttpStatus.BAD_REQUEST);
+        }
     }
-
 }

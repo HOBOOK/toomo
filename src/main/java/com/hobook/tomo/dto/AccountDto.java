@@ -29,9 +29,9 @@ public class AccountDto {
 
     private String profile_image_url;
 
-    private LocalDateTime date_Create;
+    private LocalDateTime date_create;
 
-    private LocalDateTime date_Update;
+    private LocalDateTime date_update;
 
     public Account toEntitiy(){
         return Account.builder()
@@ -44,13 +44,15 @@ public class AccountDto {
     }
 
     @Builder
-    public AccountDto(Long id, String name, String email, String password, String profile_image_url)
+    public AccountDto(Long id, String name, String email, String password, String profile_image_url, LocalDateTime date_create, LocalDateTime date_update)
     {
         this.id = id;
         this.nickname = name;
         this.email = email;
         this.pwd = password;
         this.profile_image_url = profile_image_url;
+        this.date_create = date_create;
+        this.date_update = date_update;
     }
 
     public AccountDto(Account account){
@@ -58,6 +60,8 @@ public class AccountDto {
         this.nickname = account.getNickname();
         this.email = account.getEmail();
         this.profile_image_url = account.getProfile_image_url();
+        this.date_create = account.getDate_create();
+        this.date_update = account.getDate_update();
     }
 
 }

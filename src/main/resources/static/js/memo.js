@@ -39,8 +39,24 @@ app.controller('memoController', function ($scope, $http, $compile) {
         });
     }
     $scope.removeMemo = function (memo){
-        memo.state = 1;
-        $scope.config.editMode=false;
+        if(confirm("메모를 삭제하시겠습니까? 삭제된 메모는 휴지통에서 복원할 수 있습니다.")){
+            $http({
+                method: 'PUT',
+                url: 'memo/delete',
+                data: {
+                    id: memo.id,
+                    context: memo.context,
+                    state: 1,
+                    fix: memo.fix
+                }
+            }).then(function successCallback(response){
+                memo.state = 1;
+                $scope.config.editMode=false;
+                console.log(response);
+            }, function errorCallback(response){
+                console.log('error delete -> ' +response);
+            });
+        }
     }
     $scope.editMemo = function (id){
         if($scope.config.eventDelay!=0)
@@ -71,8 +87,8 @@ app.controller('memoController', function ($scope, $http, $compile) {
                 data: {
                     context: context,
                     state: memo.state,
-                    fix: memo.fix,
-                },
+                    fix: memo.fix
+                }
             }).then(function successCallback(response){
                 memo.id= $scope.config.tempId++;
                 console.log(response);
@@ -87,8 +103,8 @@ app.controller('memoController', function ($scope, $http, $compile) {
                     context: context,
                     state: memo.state,
                     fix: memo.fix,
-                    id: memo.id,
-                },
+                    id: memo.id
+                }
             }).then(function successCallback(response){
                 console.log(response);
             }, function errorCallback(response){

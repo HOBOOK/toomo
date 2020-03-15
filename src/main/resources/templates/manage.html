@@ -4,17 +4,29 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorator="layout/layout_main">
 <th:block layout:fragment="title">TOMO | 관리</th:block>
+<th:block layout:fragment="js">
+    <script src="js/ng-file-upload-shim.min.js"></script>
+    <script src="js/ng-file-upload.min.js"></script>
+    <script src="js/manage.js"></script>
+</th:block>
 <th:block layout:fragment="css"><link rel="stylesheet" href="css/manage.css"></th:block>
-<section layout:fragment="content" class="container_main">
+<section ng-app="ManageApp" ng-controller="manageController" layout:fragment="content" class="container_main">
     <div class="main">
         <div class="container_context">
             <div class="profile_header" th:object="${account}">
                 <span style="z-index:-5; position: absolute; width: 100%; height: 228px; top:0; left: 0; background-color: gray;"></span>
                 <h1 class="m-b-10" th:text="${account} ? ${account.getNickname()}"></h1>
                 <h3 class="m-b-10" th:text="${account} ? ${account.getEmail()}"></h3>
-                <span style="background-color: rgba(255,255,255,1); width: 128px; height: 128px; border-radius: 100%; display: inline-block;">
-                    <img th:src="${account} ? ${account.getProfile_image_url()}" width="128" height="128" alt="profile_image"/>
-                </span>
+
+                <form name="form">
+                    <input ng-model="imageSource" type="file" name="file" ngf-select ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="200KB" ng-change="imageChanged(this)"/>
+                    <span style="background-color: rgba(255,255,255,1); width: 128px; height: 128px; border-radius: 100%; display: inline-block;">
+                        <img th:src="${account} ? ${account.getProfile_image_url()}" width="128" height="128" alt="profile_image"/>
+                    </span>
+                    <br/>
+                    <button type="submit" ng-click="submit()">업로드</button>
+                </form>
+
             </div>
             <div class="profile_body">
                 설정 바디

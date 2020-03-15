@@ -20,6 +20,10 @@ public class MemoService {
         return memoRepository.save(memoDto.toEntity()).getId();
     }
 
+    @Transactional
+    public Long deleteMemo(MemoDto memoDto){
+        return memoRepository.save(memoDto.toEntity()).getId();
+    }
 
     @Transactional
     public List<MemoDto> getMemoList(){

@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Getter
 @Entity
 @Table(name ="accounts")
-public class Account {
+public class Account extends Time {
     @Id
     @GenericGenerator(name="account_seq",strategy="increment")
     @GeneratedValue(generator = "account_seq")
@@ -27,6 +27,8 @@ public class Account {
 
     @Column(name="profile_image_url",nullable=false)
     private String profile_image_url;
+
+
 
     @Builder
     public Account(Long id, String nickname, String email, String password, String profile_image_url)
