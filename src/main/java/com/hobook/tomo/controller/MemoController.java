@@ -29,10 +29,10 @@ public class MemoController {
     private AccountService accountService;
 
     @RequestMapping(value = "memo/list", method = RequestMethod.GET)
-    public ResponseEntity<Object> getList()
+    public ResponseEntity<Object> getList(Principal principal)
     {
         List<JSONObject> entities = new ArrayList<JSONObject>();
-        List<MemoDto> memoList = memoService.getMemoList();
+        List<MemoDto> memoList = memoService.getMemoList(principal.getName());
         for(MemoDto memo : memoList){
             JSONObject entity = new JSONObject();
             entity.put("id", memo.getId());

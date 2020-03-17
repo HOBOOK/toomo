@@ -18,13 +18,17 @@
                 <h1 class="m-b-10" th:text="${account} ? ${account.getNickname()}"></h1>
                 <h3 class="m-b-10" th:text="${account} ? ${account.getEmail()}"></h3>
 
-                <form name="form">
-                    <input ng-model="imageSource" type="file" name="file" ngf-select ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="200KB" ng-change="imageChanged(this)"/>
+                <form name="form" class="form_manage_profile">
                     <span style="background-color: rgba(255,255,255,1); width: 128px; height: 128px; border-radius: 100%; display: inline-block;">
                         <img th:src="${account} ? ${account.getProfile_image_url()}" width="128" height="128" alt="profile_image"/>
+                        <span style="background-color: white; padding:5px; border-radius: 100%; display: inline-block; position: relative; right:-42px; bottom: 42px;">
+                            <label class="label_profile_image" for="input_profile_image"><i class="far fa-image" style="line-height: 27px; font-size: 21px; color: #666666"></i></label>
+                            <input id="input_profile_image" ng-model="imageSource" type="file" name="file" ngf-select ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="200KB" ng-change="imageChanged(this)"/>
+                        </span>
                     </span>
                     <br/>
-                    <button type="submit" ng-click="submit()">업로드</button>
+                    <label class="label_profile_button" for="input_profile_save">변경사항 저장</label>
+                    <input id="input_profile_save" type="submit" ng-click="submit()"/>
                 </form>
 
             </div>

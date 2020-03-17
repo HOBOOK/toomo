@@ -26,8 +26,8 @@ public class MemoService {
     }
 
     @Transactional
-    public List<MemoDto> getMemoList(){
-        List<Memo> memoEntities = memoRepository.findAll();
+    public List<MemoDto> getMemoList(String email){
+        List<Memo> memoEntities = memoRepository.findMemosByCreator(email);
         List<MemoDto> memoDtoList = new ArrayList<>();
 
         for(Memo memo : memoEntities){

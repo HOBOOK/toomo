@@ -111,19 +111,16 @@ app.controller('memoController', function ($scope, $http, $compile) {
                 console.log('error update -> ' +response);
             });
         }
-
-
         setTimeout(function() {
             $scope.config.eventDelay = 0;
         }, 300);
     }
     $scope.setPin = function (set, memo) {
-        $scope.config.eventDelay = 1;
+        if($scope.config.eventDelay!=0)
+            return;
         var m = $scope.memos[$scope.memos.indexOf(memo)];
         m.fix = set ? 1 : 0;
-        setTimeout(function() {
-            $scope.config.eventDelay = 0;
-        }, 100);
+        $scope.updateMemo(memo);
     }
     $scope.highlightText = function() {
 
