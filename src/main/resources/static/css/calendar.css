@@ -68,10 +68,12 @@ calendar div.week span.day{
     cursor:pointer;
     color:black;
     max-height: 25%;
-    height: calc(16.67vh - 20px);
-    line-height: calc(16.67vh - 20px);
+    height: calc(16.67vh - 27px);
+    line-height: calc(16.67vh - 27px);
     display: inline-block;
     vertical-align: middle;
+    padding: 0;
+    margin: 0;
 
 }
 calendar div.week span.day:first-child{

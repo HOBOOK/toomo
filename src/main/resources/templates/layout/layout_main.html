@@ -12,12 +12,15 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular-animate.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular-sanitize.min.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script src="js/main.js"></script>
         <th:block layout:fragment="js"></th:block>
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.0/css/all.css">
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/header.css">
         <link rel="stylesheet" href="css/fontAwesome.css">
+        <link rel="stylesheet" href="css/jquery.mCustomScrollbar.css" />
         <th:block layout:fragment="css"></th:block>
     </head>
 
@@ -25,7 +28,7 @@
     <body>
         <header th:replace="fragments/header :: header"></header>
         <div class="container">
-            <nav>
+            <nav class="nav">
                 <div class="menu">
                     <ul style="display: inline-block;">
                         <a href="./memo"><li style="display: inline-block;"><span><i class="far fa-sticky-note"></i></span><br/><br/>Notes</li></a>
