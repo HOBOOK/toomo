@@ -1,7 +1,7 @@
 <div class="modal" id="calendarModal">
-    <div class="modal-content">
+    <div id="modal_content" ng-init="show()" class="modal-content">
         <div class="modal-header">
-            <span class="close">&times;</span>
+            <span class="close" ng-click="cancel()">&times;</span>
             <h2>Modal Header</h2>
         </div>
         <div class="modal-body">

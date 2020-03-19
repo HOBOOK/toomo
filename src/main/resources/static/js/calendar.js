@@ -17,7 +17,7 @@ app.directive("calendar", function($uibModal) {
         uibModal: {
 
         },
-        link: function(scope) {
+        link: function(scope, element) {
             scope.month = scope.selected.clone(); // 선택된 날짜 정보를 복사한다.
             var start = scope.selected.clone();
             start.date(1); // 선택된 달의 첫번째 날짜 객체
@@ -27,16 +27,16 @@ app.directive("calendar", function($uibModal) {
             //templates/calendar.html 에서 ng-repeat을 통해 그림.
             // 이벤트 추가
             //날짜 선택 이벤트.
-            scope.select = function(day) {
+            scope.select = function(day, event) {
                 scope.selected = day.date;
                 var modalInstance = $uibModal.open({
                     templateUrl: "modal/modal_calendar",
                     controller: "ModalContentCtrl",
                     size: ''
                 });
-
+                modalInstance.positionX = event.clientX;
                 modalInstance.result.then(function (response) {
-                    $scope.result = '${response} button hitted';
+                    scope.result = '${response} button hitted';
                 });
             };
             // 다음달 로 넘기는 이벤트
@@ -91,6 +91,16 @@ app.directive("calendar", function($uibModal) {
 });
 
 app.controller('ModalContentCtrl', function($scope, $uibModalInstance) {
+    $scope.show = function(){
+        var posX = $uibModalInstance.positionX;
+        var elem = document.getElementById('modal_content');
+        if(posX * 2> $(document).width()){
+            elem.style.marginLeft= posX-450+'px';
+        }else{
+            elem.style.marginLeft= posX+150+'px';
+        }
+
+    }
     $scope.ok = function(){
         $uibModalInstance.close("Ok");
     }
