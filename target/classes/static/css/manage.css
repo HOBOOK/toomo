@@ -1,0 +1,80 @@
+.fas.fa-tasks{
+    color: royalblue;
+    font-size: 30px;
+    animation: menuOn 0.5s;
+    -moz-animation: menuOn 0.5s; /* Firefox */
+    -webkit-animation: menuOn 0.5s; /* Safari and Chrome */
+    -o-animation: menuOn 0.5s; /* Opera */
+}
+
+@keyframes menuOn {
+    0% {
+        font-size: 24px;
+        color: #999999;
+    }
+    100% {
+        font-size: 30px;
+        color: royalblue;
+    }
+}
+
+h1{
+    color: #333333;
+    font-size: 32px;
+}
+h3{
+    color: #acacac;
+    font-size: 21px;
+}
+.container_context{
+    min-height: 100%;
+    background-color: rgba(255,255,255,0.9);
+    border-left: 1px solid rgba(0,0,0,0.1);
+}
+.profile_header{
+    z-index: 100;
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+    margin:0 auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.label_profile_button{
+    display: inline-block;
+    padding: .5em .75em;
+    border-radius: 5px;
+    border: 1px solid rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+.label_profile_button:hover{
+    background-color: rgba(0,0,0,0.05);
+}
+
+.label_profile_image{
+    display: inline-block;
+    padding: .5em .75em;
+    font-size: inherit;
+    vertical-align: middle;
+    cursor: pointer;
+    text-align: center;
+    background-color: white;
+    border-radius: 100%;
+    box-shadow: 1px 2px 5px 1px rgba(0,0,0,0.2);
+    transition: all 0.2s ease-in-out;
+}
+.label_profile_image:hover{
+    background-color: rgba(0,0,0,0.05);
+}
+
+.form_manage_profile input[type="file"], input[type="submit"]{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+}

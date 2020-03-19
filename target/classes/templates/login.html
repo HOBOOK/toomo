@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>TOMO | 로그인</title>
+
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.0/css/all.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/util.css">
+</head>
+<body>
+    <div class="container">
+        <div class="container_login">
+            <div class="panel_logo">
+                <img src="img/logo.png" alt="logo" height="50px"/>
+            </div>
+            <div class="panel_login">
+                <form action="/login" method="post" class="form_login validate-form">
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                    <div class="wrap-input100 validate-input m-b-16" data-validate = "! 이메일 형식을 입력해주세요">
+                        <input class="input100" type="text" name="username" placeholder="yourname@tomo.com">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+							<i class="far fa-envelope"></i>
+						</span>
+                    </div>
+                    <div class="wrap-input100 validate-input m-b-16" data-validate = "! 비밀번호를 입력해주세요">
+                        <input class="input100" type="password" name="password" placeholder="password">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+							<i class="fas fa-unlock-alt"></i>
+						</span>
+                    </div>
+
+                    <div class="contact100-form-checkbox m-l-4 p-t-10">
+                        <input class="input-checkbox100" name="remember-me" id="ckb1" type="checkbox">
+                        <label class="label-checkbox100" for="ckb1">
+                            로그인 상태 유지
+                        </label>
+                    </div>
+
+                    <div class="container-login100-form-btn p-t-20">
+                        <button type="submit" class="login100-form-btn">
+                            로그인
+                        </button>
+                    </div>
+
+                    <a href="#" class="btn-naver m-t-20 m-b-10">
+                        <img src="img/sns/naver.png" alt="naver">
+                        네이버 로그인
+                    </a>
+
+                    <a href="#" class="btn-google m-t-20 m-b-10">
+                        <img src="img/sns/google.png" alt="google">
+                        구글 로그인
+                    </a>
+
+                    <div class="text-center w-full p-t-10">
+                        <a class="txt1 hov1" href="./signup">
+                            회원가입
+                        </a>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <!--Script-->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</body>
+</html>

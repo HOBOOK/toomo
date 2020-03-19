@@ -118,6 +118,12 @@ public class PageController implements ErrorController {
         return "calendar";
     }
 
+    @RequestMapping(value = "/modal/modal_calendar", method = RequestMethod.GET)
+    public String goCalendarModal()
+    {
+        return "modal/modal_calendar";
+    }
+
     @RequestMapping(value = "/manage", method = RequestMethod.GET)
     public String goManage(Principal principal, Model model)
     {

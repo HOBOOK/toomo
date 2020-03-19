@@ -1,0 +1,103 @@
+/*//////////////////////////////////////////////////////////////////
+[ FONT ]*/
+
+@font-face {
+    font-family: Poppins-Regular;
+    src: url('../fonts/poppins/Poppins-Regular.ttf');
+}
+
+@font-face {
+    font-family: Poppins-Bold;
+    src: url('../fonts/poppins/Poppins-Bold.ttf');
+}
+
+@font-face {
+    font-family: Poppins-Medium;
+    src: url('../fonts/poppins/Poppins-Medium.ttf');
+}
+
+@font-face {
+    font-family: Raleway-Regular;
+    src: url('../fonts/raleway/Raleway-Regular.ttf');
+}
+
+@font-face {
+    font-family: Raleway-Black;
+    src: url('../fonts/raleway/Raleway-Black.ttf');
+}
+
+@font-face {
+    font-family: Raleway-SemiBold;
+    src: url('../fonts/raleway/Raleway-SemiBold.ttf');
+}
+
+@font-face {
+    font-family: Raleway-Bold;
+    src: url('../fonts/raleway/Raleway-Bold.ttf');
+}
+
+html,body {
+    -ms-user-select: none; -moz-user-select: -moz-none; -webkit-user-select: none; -khtml-user-select: none; user-select:none;
+    font-family: Raleway-Regular;
+    max-width: 100%;
+    min-width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    background: rgb(38,33,48);
+    background: linear-gradient(139deg, rgba(38,33,48,1) 0%, rgba(44,38,55,1) 100%);
+}
+a{
+    text-decoration: none;
+}
+.container{
+    width:100%;
+    height:100%;
+
+}
+
+header{
+    background: transparent;
+    box-shadow: none;
+    color: rgba(255,255,255,0.7);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.info{
+    width: 100%;
+    text-align: center;
+}
+
+.info h1{
+    color: white;
+}
+.info p{
+    color: rgba(255,255,255,0.6);
+}
+.info span{
+}
+.btn_start{
+    padding: 10px;
+    background-color: royalblue;
+    border-radius: 5px;
+    color: white;
+    transition: all 0.3s ease-in-out;
+}
+.btn_start:hover{
+    background-color: blueviolet;
+}
+
+footer{
+    text-align: center;
+    color: rgba(255,255,255,0.7);
+    height: 300px;
+}
+footer ul{
+    list-style: none;
+    margin: 0 auto;
+    display: inline-block;
+}
+footer li{
+    float: left;
+    margin-right: 30px;
+}
