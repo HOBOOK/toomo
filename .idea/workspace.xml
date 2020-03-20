@@ -3,14 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="e8dee576-308c-4951-92c8-237d8e03e46f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/calendar.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/calendar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/memo.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/memo.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/modal.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/modal.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/calendar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/calendar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/calendar.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/calendar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/layout/layout_main.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/layout/layout_main.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/modal/modal_calendar.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/modal/modal_calendar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/calendar.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/calendar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/memo.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/memo.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/js/calendar.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/calendar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/calendar.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/calendar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/layout/layout_main.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/layout/layout_main.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -158,6 +160,8 @@
       <workItem from="1584585518906" duration="2939000" />
       <workItem from="1584597343525" duration="10954000" />
       <workItem from="1584630034892" duration="8581000" />
+      <workItem from="1584678431820" duration="981000" />
+      <workItem from="1584686569401" duration="6170000" />
     </task>
     <servers />
   </component>

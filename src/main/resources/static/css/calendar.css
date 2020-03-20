@@ -78,13 +78,11 @@ calendar div.week span.day{
     font-size:0.75em;
     text-align:center;
     background:white;
-    cursor:pointer;
     color:black;
     vertical-align: middle;
     padding: 0;
     margin: 0;
 }
-
 calendar div.week span.day:first-child{
     border-left: none;
 }
@@ -99,8 +97,7 @@ calendar div.week span.day.different-month{
     color:#C0C0C0;
 }
 calendar div.week span.day.selected {
-    background:royalblue;
-    color:white;
+
 }
 calendar div.week.names>span {
     color:#44A88A;
@@ -111,6 +108,34 @@ calendar div.container_days{
     width:100%;
     height: calc(100% - 112px);
 }
+calendar div.item{
+    color:white;
+    background-color: cornflowerblue;
+    border-radius: 3px;
+    box-shadow: 0 0 1px 1px rgba(0,0,0,0.1);
+    display: inline-block;
+    padding: 2px;
+    margin:2px;
+    cursor: pointer;
+}
+calendar div.item:hover{
+    background-color: royalblue;
+}
+calendar p.day_number{
+    display: inline-block;
+    cursor:pointer;
+    width:30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 100%;
+    background-color:transparent;
+}
+calendar p.day_number:hover{
+    background-color:whitesmoke;
+}
+
 
 @keyframes fadeIn {
     0% {

@@ -73,11 +73,16 @@ app.directive("calendar", function($uibModal) {
         var days = []; // 총 7일의 정보가 들어간다.
         for (var i = 0; i < 7; i++) {
             days.push({
+                animation: true,
                 name: date.format("dd").substring(0, 1),
                 number: date.date(),
                 isCurrentMonth: date.month() === month.month(),
                 isToday: date.isSame(new Date(), "day"),
-                date: date
+                date: date,
+                items: [{
+                    title: '기념일',
+                    type: 0
+                }]
             });
             date = date.clone();
             date.add(1, "d");
@@ -95,7 +100,7 @@ app.controller('ModalContentCtrl', function($scope, $uibModalInstance) {
         var posX = $uibModalInstance.positionX;
         var elem = document.getElementById('modal_content');
         if(posX * 2> $(document).width()){
-            elem.style.marginLeft= posX-450+'px';
+            elem.style.marginLeft= posX-550+'px';
         }else{
             elem.style.marginLeft= posX+150+'px';
         }
@@ -106,5 +111,10 @@ app.controller('ModalContentCtrl', function($scope, $uibModalInstance) {
     }
     $scope.cancel = function(){
         $uibModalInstance.dismiss();
+    }
+    $scope.cancelOutside = function($event){
+        if($event.target.getAttribute('id')!=='modal_content'){
+            $uibModalInstance.dismiss();
+        }
     }
 });

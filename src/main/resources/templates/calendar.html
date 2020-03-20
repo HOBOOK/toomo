@@ -14,6 +14,11 @@
 </div>
 <div class="container_days">
     <div ng-repeat="week in weeks" ng-class="{ true: 'week', false: 'week six' }[weeks.length===6]">
-        <span class="day" ng-class="{ today: day.isToday, 'different-month': !day.isCurrentMonth, selected: day.date.isSame(selected) }" ng-click="select(day, $event)" ng-repeat="day in week.days"><p>{{day.number}}</p></span>
+        <span class="day" ng-class="{ today: day.isToday, 'different-month': !day.isCurrentMonth, selected: day.date.isSame(selected) }"  ng-repeat="day in week.days">
+            <p class="day_number" ng-click="select(day, $event)">{{day.number}}</p><br/>
+            <div class="item" ng-repeat="item in day.items">
+                {{item.title}}
+            </div>
+        </span>
     </div>
 </div>

@@ -3,17 +3,17 @@
     z-index: 1; /* Sit on top */
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
+    width: 100vw; /* Full width */
+    height: 100vh; /* Full height */
     overflow: hidden; /* Enable scroll if needed */
-    /*background-color: rgb(0,0,0); !* Fallback color *!*/
-    /*background-color: rgba(0,0,0,0.4); !* Black w/ opacity *!*/
+    transition: 0.3s all ease-in-out;
+    -webkit-transition: 0.3s all ease-in-out;
 }
 /* The Close Button */
 .close {
     color: #aaa;
     float: right;
-    font-size: 28px;
+    font-size: 40px;
     font-weight: bold;
 }
 
@@ -48,7 +48,7 @@
     background-color: #fefefe;
     padding: 0;
     height: calc(100% - 60px);
-    width:360px;
+    width:400px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.15),0 6px 20px 0 rgba(0,0,0,0.1);
     animation-name: animateRight;
     animation-duration: 0.4s;
