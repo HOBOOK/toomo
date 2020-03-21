@@ -1,37 +1,69 @@
+
 <div class="modal" id="calendarModal" ng-click="cancelOutside($event)">
     <div id="modal_content" ng-init="show()" class="modal-content">
         <div class="modal-header">
-            <span class="close" ng-click="cancel()">&times;</span>
+            <span class="close" ng-click="cancel()"><i class="fas fa-times"></i></span>
             <h1>2020년 3월 21일</h1>
         </div>
         <div class="modal-body">
-            <form method="post">
+            <script>
+                $("textarea").keydown(function(e){
+                    if (e.which == 13 && !e.shiftKey)
+                    {
+                        e.preventDefault();
+                    }
+                });
+            </script>
+            <form class="form_input_day" method="post">
                 <ul>
                     <li>
-                        <i class="fas fa-calendar-day"></i>
-                        <input id="day_title" name="title" type="text" placeholder="제목"/>
+                        <input id="day_title" name="title" type="text" maxlength="20" placeholder="제목"/>
                     </li>
                     <li>
-                        <i class="fas fa-align-left"></i>
-                        <input id="day_title" name="title" type="text" placeholder="설명"/>
+                        <textarea name="title" placeholder="설명 추가(50자 이내)" maxlength="50" rows="3"></textarea>
                     </li>
                 </ul>
-                <label for="day_submit">추가</label>
-                <input id="day_submit" name="submit" type="submit"/>
+                <button id="day_submit" name="submit"><i class="far fa-calendar-plus"></i>&nbsp;일정 추가&nbsp;&nbsp;</button>
             </form>
-            <hr/>
-            <div class="day_list">
-                <div class="item">
-                    <span style="display:inline-block; border-radius: 100%; background-color: royalblue; padding:4px; margin-left:10px; margin-right:10px;"></span>
-                    1번 리스트
-                </div>
-                <div class="item">
-                    <span style="display:inline-block; border-radius: 100%; background-color: royalblue; padding:4px; margin-left:10px; margin-right:10px;"></span>
-                    2번 리스트
-                </div>
-                <div class="item">
-                    <span style="display:inline-block; border-radius: 100%; background-color: royalblue; padding:4px; margin-left:10px; margin-right:10px;"></span>
-                    3번 리스트
+
+            <div class="container_day_list">
+                <div class="day_list">
+                    <div class="item">
+                        <span style="display:inline-block; border-radius: 100%; background-color: royalblue; padding:4px; margin-left:10px; margin-right:10px;"></span>
+                        <h3 style="display: inline-block;">1번 리스트</h3>
+                        <span class="close_item"><i class="fas fa-minus"></i></span>
+                        <p>설명란 입니다.</p>
+                    </div>
+                    <div class="item">
+                        <span style="display:inline-block; border-radius: 100%; background-color: royalblue; padding:4px; margin-left:10px; margin-right:10px;"></span>
+                        <h3 style="display: inline-block;">2번 리스트</h3>
+                        <span class="close_item"><i class="fas fa-minus"></i></span>
+                        <p>설명란 입니다.</p>
+                    </div>
+                    <div class="item">
+                        <span style="display:inline-block; border-radius: 100%; background-color: royalblue; padding:4px; margin-left:10px; margin-right:10px;"></span>
+                        <h3 style="display: inline-block;">2번 리스트</h3>
+                        <span class="close_item"><i class="fas fa-minus"></i></span>
+                        <p>설명란 입니다.</p>
+                    </div>
+                    <div class="item">
+                        <span style="display:inline-block; border-radius: 100%; background-color: royalblue; padding:4px; margin-left:10px; margin-right:10px;"></span>
+                        <h3 style="display: inline-block;">2번 리스트</h3>
+                        <span class="close_item"><i class="fas fa-minus"></i></span>
+                        <p>설명란 입니다.</p>
+                    </div>
+                    <div class="item">
+                        <span style="display:inline-block; border-radius: 100%; background-color: royalblue; padding:4px; margin-left:10px; margin-right:10px;"></span>
+                        <h3 style="display: inline-block;">2번 리스트</h3>
+                        <span class="close_item"><i class="fas fa-minus"></i></span>
+                        <p>설명란 입니다.</p>
+                    </div>
+                    <div class="item">
+                        <span style="display:inline-block; border-radius: 100%; background-color: royalblue; padding:4px; margin-left:10px; margin-right:10px;"></span>
+                        <h3 style="display: inline-block;">2번 리스트</h3>
+                        <span class="close_item"><i class="fas fa-minus"></i></span>
+                        <p>설명란 입니다.</p>
+                    </div>
                 </div>
             </div>
         </div>

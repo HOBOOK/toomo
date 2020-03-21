@@ -90,7 +90,6 @@ calendar div.week span.day.today{
     background-color:antiquewhite;
 }
 calendar div.week span.day.today p{
-    font-size: 1.2rem;
     font-weight: bold;
 }
 calendar div.week span.day.different-month{
@@ -116,7 +115,7 @@ calendar div.item{
     text-align: left;
 }
 calendar div.item:hover{
-    box-shadow: 0 0 1px 1px rgba(0,0,0,0.1);
+    box-shadow: 0 0 1px 1px rgba(0,0,0,0.05);
     background-color: whitesmoke;
 }
 calendar p.day_number{

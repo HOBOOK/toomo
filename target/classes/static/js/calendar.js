@@ -1,3 +1,4 @@
+
 var app = angular.module("calendar", ['ngAnimate', 'ui.bootstrap']);
 
 app.controller("calendarWidget", function($scope, $uibModal) {
@@ -35,6 +36,7 @@ app.directive("calendar", function($uibModal) {
                     size: ''
                 });
                 modalInstance.positionX = event.clientX;
+                modalInstance.width = event.target.offsetWidth;
                 modalInstance.result.then(function (response) {
                     scope.result = '${response} button hitted';
                 });
@@ -98,11 +100,12 @@ app.directive("calendar", function($uibModal) {
 app.controller('ModalContentCtrl', function($scope, $uibModalInstance) {
     $scope.show = function(){
         var posX = $uibModalInstance.positionX;
+        var width = $uibModalInstance.width;
         var elem = document.getElementById('modal_content');
-        if(posX * 2> $(document).width()){
-            elem.style.marginLeft= posX-550+'px';
+        if(posX * 2> $(document).width()+200){
+            elem.style.marginLeft= posX-(400+width)+'px';
         }else{
-            elem.style.marginLeft= posX+150+'px';
+            elem.style.marginLeft= posX+width+'px';
         }
 
     }
@@ -110,13 +113,22 @@ app.controller('ModalContentCtrl', function($scope, $uibModalInstance) {
         $uibModalInstance.close("Ok");
     }
     $scope.cancel = function(){
-        $uibModalInstance.dismiss();
+        $scope.close();
     }
     $scope.cancelOutside = function($event){
-        if($event.target.classList.contains('modal-content')){
-            Console.log($event.target.name);
-        }else{
+        // if($event.target.classList.contains('modal-content')){
+        //     Console.log($event.target.name);
+        // }else{
+        //     $uibModalInstance.dismiss();
+        // }
+    }
+    $scope.close = function(){
+        var elem = document.getElementById('modal_content');
+        elem.style.animationName='animateHide';
+        elem.style.opacity='0';
+        elem.style.marginTop='100px';
+        setTimeout(function() {
             $uibModalInstance.dismiss();
-        }
+        }, 250);
     }
 });
