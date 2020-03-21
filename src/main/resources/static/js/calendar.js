@@ -113,7 +113,9 @@ app.controller('ModalContentCtrl', function($scope, $uibModalInstance) {
         $uibModalInstance.dismiss();
     }
     $scope.cancelOutside = function($event){
-        if($event.target.getAttribute('id')!=='modal_content'){
+        if($event.target.classList.contains('modal-content')){
+            Console.log($event.target.name);
+        }else{
             $uibModalInstance.dismiss();
         }
     }

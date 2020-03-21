@@ -109,17 +109,15 @@ calendar div.container_days{
     height: calc(100% - 112px);
 }
 calendar div.item{
-    color:white;
-    background-color: cornflowerblue;
     border-radius: 3px;
-    box-shadow: 0 0 1px 1px rgba(0,0,0,0.1);
-    display: inline-block;
     padding: 2px;
     margin:2px;
     cursor: pointer;
+    text-align: left;
 }
 calendar div.item:hover{
-    background-color: royalblue;
+    box-shadow: 0 0 1px 1px rgba(0,0,0,0.1);
+    background-color: whitesmoke;
 }
 calendar p.day_number{
     display: inline-block;
