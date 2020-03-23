@@ -71,7 +71,7 @@ calendar div.week.names{
 calendar div.week span.day{
     float:left;
     width:14.28%;
-
+    transition: 0.3s all ease-in-out;
 .border-box;
     border-right:1px solid rgba(0,0,0,0.1);
     height: 100%;
@@ -96,7 +96,7 @@ calendar div.week span.day.different-month{
     color:#C0C0C0;
 }
 calendar div.week span.day.selected {
-
+    background-color: rgba(0,0,0,0.1);
 }
 calendar div.week.names>span {
     color:#44A88A;

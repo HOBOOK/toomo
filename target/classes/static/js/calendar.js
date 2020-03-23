@@ -1,3 +1,12 @@
+Date.prototype.yyyyMMddHHmmss = function () {
+    var yyyy = this.getFullYear().toString();
+    var MM = (this.getMonth() + 1).toString();
+    var dd = this.getDate().toString();
+    var HH = this.getHours().toString();
+    var mm = this.getMinutes().toString();
+    var ss = this.getSeconds().toString();
+    return yyyy + '-'+(MM[1] ? MM : '0'+MM[0]) + '-'+(dd[1] ? dd : '0'+dd[0]) + 'T' + (HH[1]?HH : '0'+HH[0]) + ':' + (mm[1]?mm : '0'+mm[0]) + ':'+(ss[1]?ss:'0'+ss[0])+".000";
+}
 
 var app = angular.module("calendar", ['ngAnimate', 'ui.bootstrap']);
 
@@ -19,6 +28,34 @@ app.directive("calendar", function($uibModal) {
 
         },
         link: function(scope, element) {
+            scope.dayInfoList = [{
+                id: '2020-03-23_pkh879@gmail.com',
+                value: [{
+                    id: 0,
+                    dayId: '2020-03-23_pkh879@gmail.com',
+                    type: 0,
+                    date: '2020-03-23',
+                    title: '특별한 날23',
+                    description: '특별한 날 설명'
+                },{
+                    id: 1,
+                    dayId: '2020-03-23_pkh879@gmail.com',
+                    type: 0,
+                    date: '2020-03-23',
+                    title: '특별한 날23',
+                    description: '특별한 날2 설명'
+                }]
+            },{
+                id: '2020-03-22_pkh879@gmail.com',
+                value: [{
+                    id: 0,
+                    dayId: '2020-03-22_pkh879@gmail.com',
+                    type: 0,
+                    date: '2020-03-22',
+                    title: '특별한 날22',
+                    description: '특별한 날 설명'
+                }]
+            }];
             scope.month = scope.selected.clone(); // 선택된 날짜 정보를 복사한다.
             var start = scope.selected.clone();
             start.date(1); // 선택된 달의 첫번째 날짜 객체
@@ -35,6 +72,15 @@ app.directive("calendar", function($uibModal) {
                     controller: "ModalContentCtrl",
                     size: ''
                 });
+
+                modalInstance.parent = scope;
+                modalInstance.date = new Date(day.date).yyyyMMddHHmmss();
+                for (var i = 0 ; i < scope.dayInfoList.length; i++) {
+                    if (scope.dayInfoList[i]["id"] === modalInstance.date.substring(0, 10) + '_pkh879@gmail.com') {
+                        modalInstance.dayInfos = scope.dayInfoList[i]["value"];
+                        break;
+                    }
+                }
                 modalInstance.positionX = event.clientX;
                 modalInstance.width = event.target.offsetWidth;
                 modalInstance.result.then(function (response) {
@@ -64,16 +110,17 @@ app.directive("calendar", function($uibModal) {
         var done = false, date = start.clone(), monthIndex = date.month(), count = 0;
         while (!done) {
             // start로 넘어온 일을 시작으로 달의 주정보를 생성 weeks 배열에 추가한다.ㅣ
-            scope.weeks.push({ days: _buildWeek(date.clone(), month) });
+            scope.weeks.push({ days: _buildWeek(date.clone(), month, scope) });
             date.add(1, "w"); // 다음 주로 이동.
             done = count++ > 2 && monthIndex !== date.month(); // 달이 넘어 가면 멈춘다.
             monthIndex = date.month();
         }
     }
-    function _buildWeek(date, month) {
+    function _buildWeek(date, month, scope) {
         // 한주의 첫번쨰 날과 달의 정보를 받는다.
         var days = []; // 총 7일의 정보가 들어간다.
         for (var i = 0; i < 7; i++) {
+            var dayInfos = [];
             days.push({
                 animation: true,
                 name: date.format("dd").substring(0, 1),
@@ -81,10 +128,7 @@ app.directive("calendar", function($uibModal) {
                 isCurrentMonth: date.month() === month.month(),
                 isToday: date.isSame(new Date(), "day"),
                 date: date,
-                items: [{
-                    title: '기념일',
-                    type: 0
-                }]
+                items: dayInfos
             });
             date = date.clone();
             date.add(1, "d");
@@ -98,10 +142,15 @@ app.directive("calendar", function($uibModal) {
 });
 
 app.controller('ModalContentCtrl', function($scope, $uibModalInstance) {
+    $scope.dayInfos = [];
     $scope.show = function(){
         var posX = $uibModalInstance.positionX;
         var width = $uibModalInstance.width;
         var elem = document.getElementById('modal_content');
+        var date = $uibModalInstance.date;
+        if($uibModalInstance.dayInfos!=null)
+            $scope.dayInfos = $uibModalInstance.dayInfos;
+        $scope.today = date.substring(0,4)+"년 "+date.substring(5,7)+"월 "+date.substring(8,10)+"일";
         if(posX * 2> $(document).width()+200){
             elem.style.marginLeft= posX-(400+width)+'px';
         }else{
@@ -109,7 +158,29 @@ app.controller('ModalContentCtrl', function($scope, $uibModalInstance) {
         }
 
     }
+    $scope.addDayInfo = function(){
+        if($scope.day_title != null && $scope.day_title.length>0){
+            $scope.dayInfos.push({
+                id: 2,
+                dayId: '20200323_pkh879@gmail.com',
+                type: 0,
+                date: '2020-03-23',
+                title: $scope.day_title,
+                description: $scope.day_description
+            });
+        }else{
+            alert('일정의 제목을 입력해주세요.');
+        }
+        $scope.day_title = null;
+        $scope.day_description = null;
+    }
+    $scope.removeDayInfo = function($index){
+        if(confirm("선택한 일정을 삭제하시겠습니까?")){
+            $scope.dayInfos.splice($index,1);
+        }
+    }
     $scope.ok = function(){
+        $uibModalInstance.parent.selected = null;
         $uibModalInstance.close("Ok");
     }
     $scope.cancel = function(){
@@ -128,6 +199,7 @@ app.controller('ModalContentCtrl', function($scope, $uibModalInstance) {
         elem.style.opacity='0';
         elem.style.marginTop='100px';
         setTimeout(function() {
+            $uibModalInstance.parent.selected = null;
             $uibModalInstance.dismiss();
         }, 250);
     }
