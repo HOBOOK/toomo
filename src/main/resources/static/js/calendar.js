@@ -75,9 +75,11 @@ app.directive("calendar", function($uibModal) {
 
                 modalInstance.parent = scope;
                 modalInstance.date = new Date(day.date).yyyyMMddHHmmss();
+                modalInstance.dataIndex = 0;
                 for (var i = 0 ; i < scope.dayInfoList.length; i++) {
                     if (scope.dayInfoList[i]["id"] === modalInstance.date.substring(0, 10) + '_pkh879@gmail.com') {
                         modalInstance.dayInfos = scope.dayInfoList[i]["value"];
+                        modalInstance.dataIndex = i;
                         break;
                     }
                 }
@@ -110,7 +112,9 @@ app.directive("calendar", function($uibModal) {
         var done = false, date = start.clone(), monthIndex = date.month(), count = 0;
         while (!done) {
             // start로 넘어온 일을 시작으로 달의 주정보를 생성 weeks 배열에 추가한다.ㅣ
-            scope.weeks.push({ days: _buildWeek(date.clone(), month, scope) });
+            scope.weeks.push({
+                days: _buildWeek(date.clone(), month, scope)
+            });
             date.add(1, "w"); // 다음 주로 이동.
             done = count++ > 2 && monthIndex !== date.month(); // 달이 넘어 가면 멈춘다.
             monthIndex = date.month();
@@ -120,7 +124,6 @@ app.directive("calendar", function($uibModal) {
         // 한주의 첫번쨰 날과 달의 정보를 받는다.
         var days = []; // 총 7일의 정보가 들어간다.
         for (var i = 0; i < 7; i++) {
-            var dayInfos = [];
             days.push({
                 animation: true,
                 name: date.format("dd").substring(0, 1),
@@ -128,7 +131,7 @@ app.directive("calendar", function($uibModal) {
                 isCurrentMonth: date.month() === month.month(),
                 isToday: date.isSame(new Date(), "day"),
                 date: date,
-                items: dayInfos
+                items: getDayInfos(new Date(date).yyyyMMddHHmmss().substring(0,10)+"_pkh879@gmail.com", scope.dayInfoList)
             });
             date = date.clone();
             date.add(1, "d");
@@ -138,6 +141,16 @@ app.directive("calendar", function($uibModal) {
     function _removeTime(date) {
         // 넘어온 날짜의 제일 첫일[일요일 00:00] 으로 맞추는 역활, 한주의 일요일로 맞추는 역활
         return date.day(0).hour(0).minute(0).second(0).millisecond(0);
+    }
+    function getDayInfos(id, list){
+        var dayInfos = [];
+        for(var i = 0; i < list.length; i++){
+            if (list[i]["id"] === id) {
+                dayInfos = list[i]["value"];
+                break;
+            }
+        }
+        return dayInfos;
     }
 });
 
@@ -160,14 +173,16 @@ app.controller('ModalContentCtrl', function($scope, $uibModalInstance) {
     }
     $scope.addDayInfo = function(){
         if($scope.day_title != null && $scope.day_title.length>0){
-            $scope.dayInfos.push({
+            var newDayInfo = {
                 id: 2,
-                dayId: '20200323_pkh879@gmail.com',
+                dayId: '2020-03-23_pkh879@gmail.com',
                 type: 0,
                 date: '2020-03-23',
                 title: $scope.day_title,
                 description: $scope.day_description
-            });
+            };
+            $scope.dayInfos.push(newDayInfo);
+            $uibModalInstance.parent.dayInfoList[$uibModalInstance.dataIndex]["value"].push(newDayInfo);
         }else{
             alert('일정의 제목을 입력해주세요.');
         }
