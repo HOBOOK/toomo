@@ -107,13 +107,13 @@
 
 .memo_content{
     font-family: JSDongkang-Regular;
-    -ms-overflow-style: none;
     font-size: 16px;
     line-height: 1.5rem;
     width: 280px;
     margin: 0 auto;
     height: calc(100% - 50px);
     resize: none;
+    -ms-overflow-style: none;
     overflow-y: auto;
     overflow-x: hidden;
     outline-style: none; /* 포커스시 발생하는 효과 제거를 원한다면 */

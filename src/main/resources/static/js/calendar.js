@@ -175,14 +175,14 @@ app.controller('ModalContentCtrl', function($scope, $uibModalInstance) {
         if($scope.day_title != null && $scope.day_title.length>0){
             var newDayInfo = {
                 id: 2,
-                dayId: '2020-03-23_pkh879@gmail.com',
+                dayId: $uibModalInstance.date.substring(0,10) + '_pkh879@gmail.com',
                 type: 0,
-                date: '2020-03-23',
+                date: $uibModalInstance.date.substring(0,10),
                 title: $scope.day_title,
                 description: $scope.day_description
             };
             $scope.dayInfos.push(newDayInfo);
-            $uibModalInstance.parent.dayInfoList[$uibModalInstance.dataIndex]["value"].push(newDayInfo);
+            $uibModalInstance.parent.dayInfoList[++$uibModalInstance.dataIndex]["value"].push(newDayInfo);
         }else{
             alert('일정의 제목을 입력해주세요.');
         }
