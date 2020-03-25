@@ -130,8 +130,8 @@ nav{
 
 .mybar_toggle{
     position: fixed;
-    top:75px;
-    right:15px;
+    top:80px;
+    right:20px;
     cursor: pointer;
     background-color: white;
     border-radius: 100%;

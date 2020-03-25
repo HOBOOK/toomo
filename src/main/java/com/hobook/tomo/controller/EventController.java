@@ -7,10 +7,7 @@ import net.minidev.json.JSONObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.ArrayList;
@@ -50,13 +47,13 @@ public class EventController {
 
     }
 
-    @RequestMapping(value="schedule/delete", method = {RequestMethod.DELETE})
-    public ResponseEntity<EventDto> delete(Long id){
+    @DeleteMapping(value="schedule/delete")
+    public ResponseEntity<Void> delete(@RequestParam String id){
         try{
-            eventService.deleteEvent(id);
-            return new ResponseEntity("Success", HttpStatus.OK);
+            eventService.deleteEvent(Long.parseLong(id));
+            return new ResponseEntity(HttpStatus.OK);
         }catch (Exception e){
-            return new ResponseEntity("Error", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
     }
 }

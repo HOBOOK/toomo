@@ -1,17 +1,7 @@
-Date.prototype.yyyyMMddHHmmss = function () {
-    var yyyy = this.getFullYear().toString();
-    var MM = (this.getMonth() + 1).toString();
-    var dd = this.getDate().toString();
-    var HH = this.getHours().toString();
-    var mm = this.getMinutes().toString();
-    var ss = this.getSeconds().toString();
-    return yyyy + '-'+(MM[1] ? MM : '0'+MM[0]) + '-'+(dd[1] ? dd : '0'+dd[0]) + 'T' + (HH[1]?HH : '0'+HH[0]) + ':' + (mm[1]?mm : '0'+mm[0]) + ':'+(ss[1]?ss:'0'+ss[0])+".000";
-}
-
 var token = $("meta[name='_csrf']").attr("content");
 var header = $("meta[name='_csrf_header']").attr("content");
 
-var app = angular.module("calendar", ['ngAnimate', 'ui.bootstrap']);
+var app = angular.module("calendar", ['ngAnimate', 'ui.bootstrap','ngSanitize']);
 
 app.config(['$qProvider','$httpProvider', function($qProvider, $httpProvider){
     $qProvider.errorOnUnhandledRejections(false);
@@ -50,7 +40,7 @@ app.directive("calendar", function($uibModal, $http) {
 
             // 이벤트 추가
             //날짜 선택 이벤트.
-            scope.select = function(day, event) {
+            scope.select = function(day, event, data) {
                 scope.selected = day.date;
                 var modalInstance = $uibModal.open({
                     templateUrl: "modal/modal_calendar",
@@ -61,6 +51,7 @@ app.directive("calendar", function($uibModal, $http) {
                 modalInstance.parent = scope;
                 modalInstance.date = new Date(day.date).yyyyMMddHHmmss();
                 modalInstance.events = [];
+                modalInstance.dayData = data;
                 for (var i = 0 ; i < scope.eventList.length; i++) {
                     if (scope.eventList[i]["date_event"] === modalInstance.date.substring(0, 10)) {
                         modalInstance.events.push(scope.eventList[i]);
@@ -87,6 +78,10 @@ app.directive("calendar", function($uibModal, $http) {
                 _buildMonth(scope, previous, scope.month);
 
             };
+
+            scope.refresh = function(day ,date, scope){
+                day.items = getDayEvents(date, scope.eventList);
+            }
         }
     };
     function _buildMonth(scope, start, month){
@@ -125,12 +120,12 @@ app.directive("calendar", function($uibModal, $http) {
         // 넘어온 날짜의 제일 첫일[일요일 00:00] 으로 맞추는 역활, 한주의 일요일로 맞추는 역활
         return date.day(0).hour(0).minute(0).second(0).millisecond(0);
     }
+
     function getDayEvents(id, list){
         var dayEvents = [];
         for(var i = 0; i < list.length; i++){
             if (list[i]["date_event"] === id) {
                 dayEvents.push(list[i]);
-
             }
         }
         return dayEvents;
@@ -183,13 +178,23 @@ app.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http) {
             $http({
                 method: 'DELETE',
                 url: 'schedule/delete',
-                id: target["id"]
+                params: {id:target.id},
+                headers: {
+                    'Content-type': 'application/json;charset=utf-8'
+                }
             }).then(function successCallback(response){
                 console.log(response);
+                $scope.events.splice($index,1);
+                for(var i = 0; i < $uibModalInstance.parent.eventList.length; i++){
+                    if($uibModalInstance.parent.eventList[i]["id"]===target.id){
+                        $uibModalInstance.parent.eventList.splice(i, 1);
+                        $uibModalInstance.parent.refresh($uibModalInstance.dayData, target.date, $uibModalInstance.parent);
+                        break;
+                    }
+                }
             }, function errorCallback(response){
                 console.log('error delete -> ' +response);
             });
-            // $scope.events.splice($index,1);
         }
     }
     $scope.ok = function(){
