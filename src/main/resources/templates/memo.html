@@ -37,13 +37,15 @@
                         {{memo.context}}
                     </div>
                 </div>
-                <div ng-show="config.editMode && config.editTarget!=memo.id" style="position:absolute; z-index: 10; width: 300px; height: 360px; background-color: rgba(0,0,0,0.05);top:0;left:0;"></div>
+                <div ng-show="config.editMode && config.editTarget!=memo.id" style="position:absolute; z-index: 10; width: 300px; height: 340px; background-color: rgba(0,0,0,0.05);top:0;left:0;"></div>
             </article>
             <br/>
             <br/>
         </div>
     </div>
-    <div class="button_add_memo" ng-click="addMemo()">
-        <i class="fas fa-edit" style="font-size: 20px;color: rgba(0,0,0,0.5); margin:0 auto;text-align: center;"></i>
+    <div class="button_add_memo">
+        <span data-tooltip-text="새 메모" ng-click="addMemo()">
+            <i class="fas fa-edit" style="font-size: 20px;color: lime; margin:0 auto;text-align: center;"></i>
+        </span>
     </div>
 </section>
