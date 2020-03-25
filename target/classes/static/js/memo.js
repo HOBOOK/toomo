@@ -21,6 +21,7 @@ app.controller('memoController', function ($scope, $http, $compile) {
     $http.get('memo/list').then(function (data) {
        $scope.memos = data.data;
     });
+
     $scope.config = {
         editMode: false,
         editTarget: '-1',
