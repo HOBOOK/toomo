@@ -21,8 +21,8 @@ public class EventService {
     }
 
     @Transactional
-    public Long deleteEvent(EventDto eventDto){
-        return eventRepository.save(eventDto.toEntity()).getId();
+    public void deleteEvent(Long id){
+        eventRepository.deleteById(id);
     }
 
     @Transactional

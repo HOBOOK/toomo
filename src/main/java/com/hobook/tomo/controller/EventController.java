@@ -38,8 +38,7 @@ public class EventController {
         return new ResponseEntity<Object>(entities, HttpStatus.OK);
     }
     @RequestMapping(value="schedule/create", method = {RequestMethod.POST,RequestMethod.PUT})
-    public @ResponseBody
-    ResponseEntity<EventDto> create(@RequestBody EventDto eventDto, Principal principal)
+    public @ResponseBody ResponseEntity<EventDto> create(@RequestBody EventDto eventDto, Principal principal)
     {
         try{
             eventDto.setCreator(principal.getName());
@@ -52,10 +51,10 @@ public class EventController {
     }
 
     @RequestMapping(value="schedule/delete", method = {RequestMethod.DELETE})
-    public @ResponseBody ResponseEntity<EventDto> delete(@RequestBody EventDto eventDto, Principal principal){
+    public ResponseEntity<EventDto> delete(Long id){
         try{
-            eventService.deleteEvent(eventDto);
-            return new ResponseEntity(eventDto, HttpStatus.OK);
+            eventService.deleteEvent(id);
+            return new ResponseEntity("Success", HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity("Error", HttpStatus.BAD_REQUEST);
         }

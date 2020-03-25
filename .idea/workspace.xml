@@ -2,17 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e8dee576-308c-4951-92c8-237d8e03e46f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/controller/EventController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/dto/EventDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/model/Event.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/repository/EventRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/service/EventService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/controller/EventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/controller/EventController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/service/EventService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/service/EventService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/calendar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/calendar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/memo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/memo.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/modal/modal_calendar.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/modal/modal_calendar.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/js/calendar.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/calendar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/memo.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/memo.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -169,7 +164,7 @@
       <workItem from="1584939317539" duration="8934000" />
       <workItem from="1585031497358" duration="8355000" />
       <workItem from="1585120420275" duration="9211000" />
-      <workItem from="1585136068288" duration="3871000" />
+      <workItem from="1585136068288" duration="8621000" />
     </task>
     <servers />
   </component>
@@ -194,7 +189,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/main/resources/static/js/calendar.js</url>
-          <line>160</line>
+          <line>150</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

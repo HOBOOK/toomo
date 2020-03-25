@@ -31,7 +31,7 @@
                     <div class="item" ng-repeat="event in events">
                         <span style="display:inline-block; border-radius: 100%; background-color: royalblue; padding:4px; margin-left:10px; margin-right:10px;"></span>
                         <h3 style="display: inline-block;">{{event.title}}</h3>
-                        <span class="close_item" ng-click="removeEvent($index)"><i class="fas fa-minus"></i></span>
+                        <span class="close_item" ng-click="removeEvent($index, event)"><i class="fas fa-minus"></i></span>
                         <p>{{event.event_description}}</p>
                     </div>
                 </div>

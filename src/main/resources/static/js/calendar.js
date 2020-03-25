@@ -13,12 +13,17 @@ var header = $("meta[name='_csrf_header']").attr("content");
 
 var app = angular.module("calendar", ['ngAnimate', 'ui.bootstrap']);
 
+app.config(['$qProvider','$httpProvider', function($qProvider, $httpProvider){
+    $qProvider.errorOnUnhandledRejections(false);
+    $httpProvider.defaults.headers.common[header] = token;
+}]);
+
 app.controller("calendarWidget", function($scope, $http, $uibModal) {
     //calendar directive에 selected=day 로 정의를 해 둔 상태, 즉 다른 선택된 값이 없는 초기의 경우에는 selected = day 값.
     $scope.day = moment();
 });
 
-app.directive("calendar", function($uibModal) {
+app.directive("calendar", function($uibModal, $http) {
     return {
         restrict: "E",
         templateUrl: "calendar",
@@ -27,38 +32,22 @@ app.directive("calendar", function($uibModal) {
             // "=" : 부모 scope의 property와 디렉티브의 property를 binding하여 directive에서 부모 scope에 접근하겠다.
             // 그래서 directive는 부모 스코프인 selected객체를 그대로 접근해서 사용이 가능.
         },
-        http: {
-          selected: "="
-        },
         uibModal: {
 
         },
         link: function(scope, element) {
-            scope.eventList = [{
-                id: 0,
-                date_event: '2020-03-25',
-                event_type : 0,
-                title: 'ddd',
-                event_description: 'ddd'
-            },{
-                id: 1,
-                date_event: '2020-03-25',
-                event_type : 0,
-                title: 'ddd',
-                event_description: 'ddd'
-            }];
-
-            // http.get('schedule/events').then(function (data) {
-            //     scope.eventList = data.data;
-            // });
-
             scope.month = scope.selected.clone(); // 선택된 날짜 정보를 복사한다.
             var start = scope.selected.clone();
             start.date(1); // 선택된 달의 첫번째 날짜 객체
-            _removeTime(start.day(0)); // 이달의 첫일의 일요일 날짜의 객체를 시작일로 세팅.
-            _buildMonth(scope, start, scope.month); // scope와 시작일, 해당 월의 정보를 넘긴다.
-            // 여기까지 진행이 되면 선택된 일을 기준으로 한달간의 정보의 세팅이 마침. scope.weeks 를 통해 그려려주는 작업 필요.
-            //templates/calendar.html 에서 ng-repeat을 통해 그림.
+            scope.eventList = [];
+            $http.get('schedule/events').then(function (data) {
+                scope.eventList = data.data;
+                _removeTime(start.day(0)); // 이달의 첫일의 일요일 날짜의 객체를 시작일로 세팅.
+                _buildMonth(scope, start, scope.month); // scope와 시작일, 해당 월의 정보를 넘긴다.
+            }, function errorCallback(response){
+                console.log('error get Events -> ' +response);
+            });
+
             // 이벤트 추가
             //날짜 선택 이벤트.
             scope.select = function(day, event) {
@@ -141,13 +130,14 @@ app.directive("calendar", function($uibModal) {
         for(var i = 0; i < list.length; i++){
             if (list[i]["date_event"] === id) {
                 dayEvents.push(list[i]);
+
             }
         }
         return dayEvents;
     }
 });
 
-app.controller('ModalContentCtrl', function($scope, $uibModalInstance) {
+app.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http) {
     $scope.events = [];
     $scope.show = function(){
         var posX = $uibModalInstance.positionX;
@@ -167,12 +157,20 @@ app.controller('ModalContentCtrl', function($scope, $uibModalInstance) {
     $scope.addEvent = function(){
         if($scope.day_title != null && $scope.day_title.length>0){
             var newEvent = {
-                id: -1,
                 date_event: $uibModalInstance.date.substring(0,10),
                 event_type : 0,
                 title: 'ddd',
                 event_description: 'ddd'
             };
+            $http({
+                method: 'POST',
+                url: 'schedule/create',
+                data: newEvent
+            }).then(function successCallback(response){
+                console.log(response);
+            }, function errorCallback(response){
+                console.log('error create -> ' +response);
+            });
             $scope.events.push(newEvent);
         }else{
             alert('이벤트 제목을 입력해주세요.');
@@ -180,9 +178,18 @@ app.controller('ModalContentCtrl', function($scope, $uibModalInstance) {
         $scope.day_title = null;
         $scope.day_description = null;
     }
-    $scope.removeEvent = function($index){
+    $scope.removeEvent = function($index, target){
         if(confirm("선택한 이벤트를 삭제하시겠습니까?")){
-            $scope.events.splice($index,1);
+            $http({
+                method: 'DELETE',
+                url: 'schedule/delete',
+                id: target["id"]
+            }).then(function successCallback(response){
+                console.log(response);
+            }, function errorCallback(response){
+                console.log('error delete -> ' +response);
+            });
+            // $scope.events.splice($index,1);
         }
     }
     $scope.ok = function(){
