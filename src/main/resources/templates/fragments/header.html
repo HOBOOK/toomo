@@ -6,10 +6,18 @@
             <a href="./"><img src="img/logo.png" height="32" alt="logo" style="margin-top:14px;"/></a>
         </div>
         <div class="account" th:object="${account}">
-            <img sec:authorize="isAuthenticated()" th:src="${account} ? ${account.getProfile_image_url()}" width="32" height="32"/>
-            <span th:text="${account} ? ${account.getNickname()}" sec:authorize="isAuthenticated()"></span>
+            <img onclick="toggleProfile()" sec:authorize="isAuthenticated()" th:src="${account} ? ${account.getProfile_image_url()}" width="32" height="32"/>
+            <span onclick="toggleProfile()" th:text="${account} ? ${account.getNickname()}" sec:authorize="isAuthenticated()"></span>
             <a sec:authorize="isAnonymous()" th:href="@{/login}">로그인</a>
-            <a sec:authorize="isAuthenticated()" th:href="@{/logout}">로그아웃</a>
+        </div>
+        <div class="account_remote">
+            <div class="account_profile">
+                <img style="margin-top: 5px;" sec:authorize="isAuthenticated()" th:src="${account} ? ${account.getProfile_image_url()}" width="32" height="32"/>
+                <p th:text="${account} ? ${account.getNickname()}" sec:authorize="isAuthenticated()"></p>
+                <p th:text="${account} ? ${account.getEmail()}" sec:authorize="isAuthenticated()"></p>
+            </div>
+            <span class="account_remote_list"><a sec:authorize="isAuthenticated()" th:href="@{/manage}">계정관리</a></span>
+            <span class="account_remote_list"><a sec:authorize="isAuthenticated()" th:href="@{/logout}">로그아웃</a></span>
         </div>
     </header>
 </th:header>

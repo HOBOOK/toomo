@@ -58,3 +58,12 @@ function getCookie(name){
     var value = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
     return value ? value[2] : null;
 }
+
+function toggleProfile(){
+    var element = $('.account_remote');
+    if(element.css( "display" )==='none'){
+        element.css('display','inline-block');
+    }else{
+        element.css('display','none');
+    }
+}
