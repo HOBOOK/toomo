@@ -40,25 +40,18 @@ app.directive("calendar", function($uibModal, $http) {
 
             // 이벤트 추가
             //날짜 선택 이벤트.
-            scope.select = function(day, event, data) {
+            scope.select = function(day, event) {
                 scope.selected = day.date;
                 var modalInstance = $uibModal.open({
                     templateUrl: "modal/modal_calendar",
                     controller: "ModalContentCtrl",
                     size: ''
                 });
-
                 modalInstance.parent = scope;
                 modalInstance.date = new Date(day.date).yyyyMMddHHmmss();
-                modalInstance.events = [];
-                modalInstance.dayData = data;
-                for (var i = 0 ; i < scope.eventList.length; i++) {
-                    if (scope.eventList[i]["date_event"] === modalInstance.date.substring(0, 10)) {
-                        modalInstance.events.push(scope.eventList[i]);
-                    }
-                }
+                modalInstance.events = day.items;
                 modalInstance.positionX = event.clientX;
-                modalInstance.width = event.target.offsetWidth;
+                modalInstance.width = event.target.parentElement.clientWidth;
                 modalInstance.result.then(function (response) {
                     scope.result = '${response} button hitted';
                 });
@@ -136,7 +129,7 @@ app.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http) {
     $scope.events = [];
     $scope.show = function(){
         var posX = $uibModalInstance.positionX;
-        var width = $uibModalInstance.width;
+        var width = $uibModalInstance.width/2 + 5;
         var elem = document.getElementById('modal_content');
         var date = $uibModalInstance.date;
         if($uibModalInstance.events!=null)
@@ -154,8 +147,8 @@ app.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http) {
             var newEvent = {
                 date_event: $uibModalInstance.date.substring(0,10),
                 event_type : 0,
-                title: 'ddd',
-                event_description: 'ddd'
+                title: $scope.day_title,
+                event_description: $scope.day_description
             };
             $http({
                 method: 'POST',
@@ -163,10 +156,10 @@ app.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http) {
                 data: newEvent
             }).then(function successCallback(response){
                 console.log(response);
+                $scope.events.push(newEvent);
             }, function errorCallback(response){
                 console.log('error create -> ' +response);
             });
-            $scope.events.push(newEvent);
         }else{
             alert('이벤트 제목을 입력해주세요.');
         }
@@ -185,13 +178,6 @@ app.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http) {
             }).then(function successCallback(response){
                 console.log(response);
                 $scope.events.splice($index,1);
-                for(var i = 0; i < $uibModalInstance.parent.eventList.length; i++){
-                    if($uibModalInstance.parent.eventList[i]["id"]===target.id){
-                        $uibModalInstance.parent.eventList.splice(i, 1);
-                        $uibModalInstance.parent.refresh($uibModalInstance.dayData, target.date, $uibModalInstance.parent);
-                        break;
-                    }
-                }
             }, function errorCallback(response){
                 console.log('error delete -> ' +response);
             });
