@@ -17,16 +17,17 @@
 }
 
 h1{
-    color: #333333;
+    color: var(--manage-h1-color);
     font-size: 32px;
 }
 h3{
-    color: #acacac;
+    color: var(--manage-h3-color);
     font-size: 21px;
 }
 .container_context{
     min-height: 100%;
-    background-color: rgba(255,255,255,0.9);
+    background-color: var(--manage-background-color);
+    color: var(--manage-color);
     border-left: 1px solid rgba(0,0,0,0.1);
 }
 .profile_header{
@@ -42,7 +43,7 @@ h3{
     display: inline-block;
     padding: .5em .75em;
     border-radius: 5px;
-    border: 1px solid rgba(0,0,0,0.1);
+    border: 1px solid var(--common-border-color);
     cursor: pointer;
     transition: all 0.2s ease-in-out;
 }
@@ -75,4 +76,81 @@ h3{
     overflow: hidden;
     clip: rect(0,0,0,0);
     border: 0;
+}
+.config{
+    width: 700px;
+    padding: 20px;
+    max-width: 100%;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid rgba(0,0,0,0.05);
+    margin: 0 auto;
+    background-color: var(--common-main-background-color);
+}
+.config h3{
+    margin: 0 0 20px 0;
+    color: #666666;
+}
+.config_item{
+    width: 100%;
+}
+.container_config_tgl{
+    float: right;
+}
+.config_tgl {
+    display: none;
+}
+.config_tgl, .config_tgl:after, .config_tgl:before, .config_tgl *, .config_tgl *:after, .config_tgl *:before, .config_tgl + .config_tgl_label {
+    box-sizing: border-box;
+}
+.config_tgl::-moz-selection, .config_tgl:after::-moz-selection, .config_tgl:before::-moz-selection, .config_tgl *::-moz-selection, .config_tgl *:after::-moz-selection, .config_tgl *:before::-moz-selection, .config_tgl + .config_tgl_label::-moz-selection {
+    background: none;
+}
+.config_tgl::selection, .config_tgl:after::selection, .config_tgl:before::selection, .config_tgl *::selection, .config_tgl *:after::selection, .config_tgl *:before::selection, .config_tgl + .config_tgl_label::selection {
+    background: none;
+}
+.config_tgl + .config_tgl_label {
+    outline: 0;
+    display: block;
+    width: 4em;
+    height: 2em;
+    position: relative;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.config_tgl + .config_tgl_label:after, .config_tgl + .config_tgl_label:before {
+    position: relative;
+    display: block;
+    content: "";
+    width: 50%;
+    height: 100%;
+}
+.config_tgl + .config_tgl_label:after {
+    left: 0;
+}
+.config_tgl + .config_tgl_label:before {
+    display: none;
+}
+.config_tgl:checked + .config_tgl_label:after {
+    left: 50%;
+}
+
+.config_tgl + .config_tgl_label {
+    background: #f0f0f0;
+    border-radius: 2em;
+    padding: 2px;
+    -webkit-transition: all .4s ease;
+    transition: all .4s ease;
+}
+.config_tgl + .config_tgl_label:after {
+    border-radius: 50%;
+    background: #fff;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+}
+.config_tgl:checked + .config_tgl_label {
+    background: #777777;
 }

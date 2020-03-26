@@ -35,7 +35,7 @@
     line-height: 60px;
 }
 .modal-header h1{
-    color: #333333;
+    color: var(--schedule-modal-color);
     margin:15px;
     font-size: 24px;
 }
@@ -63,11 +63,13 @@
 .form_input_day input{
     border:none;
     box-shadow: none;
+    background-color: transparent;
 }
 .form_input_day input:focus{
     outline: 0;
 }
 .form_input_day input[type='text']{
+    color: var(--schedule-modal-sub-color);
     font-size: 21px;
     padding: 3px;
     width:95%;
@@ -76,6 +78,8 @@
     border-bottom: 1px solid rgba(0,0,0,0.1);
 }
 .form_input_day textarea{
+    color: var(--schedule-modal-sub-color);
+    background-color: transparent;
     font-family: JSDongkang-Regular;
     font-size: 16px;
     width:95%;
@@ -98,7 +102,7 @@
     border-radius: 5px;
     background-color: transparent;
     cursor: pointer;
-    color: #333333;
+    color: var(--schedule-modal-sub-color);
 }
 .form_input_day button:hover{
     background-color: rgba(0,0,0,0.05);
@@ -135,7 +139,7 @@
     margin:5px 10px 5px 5px;
     text-align: left;
     font-size: 14px;
-    color: #505050;
+    color: var(--schedule-modal-color);
 }
 .item:hover{
     box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.1);
@@ -163,7 +167,8 @@
 /* Modal Content */
 .modal-content {
     margin-top:80px;
-    background-color: #fefefe;
+    background-color: var(--schedule-modal-background-color);
+    color: var(--schedule-modal-color);
     padding: 0;
     height: calc(100% - 100px);
     width:400px;

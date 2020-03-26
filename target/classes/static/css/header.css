@@ -4,7 +4,8 @@ header{
     display: block;
     border-bottom: 1px solid rgba(0,0,0,0.1);
     box-shadow: 0px 1px 5px 1px rgba(0,0,0,0.1);
-    background-color: white;
+    background-color: var(--header-background-color);
+    color: var(--header-color);
 }
 header div{
     display: inline-block;
@@ -30,10 +31,6 @@ header div{
 .account span:hover{
     color: #333333;
 }
-.account a{
-    text-decoration: none;
-    color: #3b5998;
-}
 
 .account_remote{
     line-height: 16px;
@@ -47,7 +44,7 @@ header div{
     width: 150px;
     border: 1px solid rgba(0,0,0,0.2);
     border-radius: 5px;
-    background-color: rgba(255,255,255,0.9);
+    background-color: var(--header-remote-background-color);
     z-index: 3000;
     text-align: center;
 }

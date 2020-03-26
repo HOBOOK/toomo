@@ -1,3 +1,12 @@
+$(document).ready(function(){
+    var toggleTheme = getCookie('toggleTheme');
+    if(toggleTheme==null || toggleTheme=='false'){
+        $('body').removeClass("dark");
+    }else{
+        $('body').addClass("dark");
+    }
+});
+
 $(window).on('load',(function() {
     $('.nav').mCustomScrollbar({
         theme: "minimal-dark",
@@ -7,6 +16,7 @@ $(window).on('load',(function() {
         documentTouchScroll : false,
         autoDraggerLength: false
     });
+
     var toggleVal = getCookie('toggleBar');
     if(toggleVal==null || toggleVal=='false'){
         $('.mybar').css('width','0px');

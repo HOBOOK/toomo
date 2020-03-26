@@ -22,7 +22,14 @@ app.config(['$qProvider','$httpProvider', function($qProvider, $httpProvider){
     $httpProvider.defaults.headers.common[header] = token;
 }]);
 app.controller('manageController', function ($scope, $http, $compile) {
-
+    $scope.init = function(){
+        var toggleTheme = getCookie('toggleTheme');
+        if(toggleTheme==null || toggleTheme=='false'){
+            $("input:checkbox[id='tgl1']").prop("checked", false);
+        }else{
+            $("input:checkbox[id='tgl1']").prop("checked", true);
+        }
+    }
     $scope.imageSource = "";
     $scope.imageChanged = function(element)
     {
@@ -59,4 +66,17 @@ app.controller('manageController', function ($scope, $http, $compile) {
             console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
         });
     };
+
+    $scope.setThemeToggle = function(){
+        var toggleTheme = getCookie('toggleTheme');
+        if(toggleTheme==null || toggleTheme=='false'){
+            $("input:checkbox[id='tgl1']").prop("checked", true);
+            $('body').addClass("dark");
+            setCookie('toggleTheme', true, 7);
+        }else{
+            $("input:checkbox[id='tgl1']").prop("checked", false);
+            $('body').removeClass("dark");
+            setCookie('toggleTheme', false, 7);
+        }
+    }
 });

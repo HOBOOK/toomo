@@ -11,7 +11,7 @@
 </th:block>
 <th:block layout:fragment="css"><link rel="stylesheet" href="css/manage.css"></th:block>
 <section ng-app="ManageApp" ng-controller="manageController" layout:fragment="content" class="container_main">
-    <div class="main">
+    <div class="main" ng-init="init()">
         <div class="container_context">
             <div class="profile_header" th:object="${account}">
                 <span style="z-index:-5; position: absolute; width: 100%; height: 228px; top:0; left: 0; background-color: gray;"></span>
@@ -21,7 +21,7 @@
                 <form name="form" class="form_manage_profile">
                     <span style="background-color: rgba(255,255,255,1); width: 128px; height: 128px; border-radius: 100%; display: inline-block;">
                         <img th:src="${account} ? ${account.getProfile_image_url()}" width="128" height="128" alt="profile_image"/>
-                        <span style="background-color: white; padding:5px; border-radius: 100%; display: inline-block; position: relative; right:-42px; bottom: 42px;">
+                        <span style="background-color: transparent; padding:5px; border-radius: 100%; display: inline-block; position: relative; right:-42px; bottom: 42px;">
                             <label class="label_profile_image" for="input_profile_image"><i class="far fa-image" style="line-height: 27px; font-size: 21px; color: #666666"></i></label>
                             <input id="input_profile_image" ng-model="imageSource" type="file" name="file" ngf-select ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="200KB" ng-change="imageChanged(this)"/>
                         </span>
@@ -33,7 +33,17 @@
 
             </div>
             <div class="profile_body">
-                설정 바디
+                <div class="config theme">
+                    <h3 class="config_title">테마</h3>
+                    <div class="config_item">
+                        어두운 테마
+                        <span class="container_config_tgl">
+                            <input ng-click="setThemeToggle()" class="config_tgl" id="tgl1" type="checkbox"/>
+                            <label class="config_tgl_label" for="tgl1"></label>
+                        </span>
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>
