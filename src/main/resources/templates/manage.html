@@ -14,7 +14,7 @@
     <div class="main" ng-init="init()">
         <div class="container_context">
             <div class="profile_header" th:object="${account}">
-                <span style="z-index:-5; position: absolute; width: 100%; height: 228px; top:0; left: 0; background-color: gray;"></span>
+                <span style="z-index:-5; position: absolute; width: 100%; height: 228px; top:0; left: 0; background-color: lightcoral;"></span>
                 <h1 class="m-b-10" th:text="${account} ? ${account.getNickname()}"></h1>
                 <h3 class="m-b-10" th:text="${account} ? ${account.getEmail()}"></h3>
 
@@ -42,8 +42,58 @@
                             <label class="config_tgl_label" for="tgl1"></label>
                         </span>
                     </div>
-
                 </div>
+                <div class="config memo">
+                    <h3 class="config_title">메모</h3>
+                    <div class="config_item">
+                        글꼴 크기
+                        <div class="container_config_dropdown">
+                            <div class="dropbtn">중간(기본) <i class="fas fa-caret-down"></i></div>
+
+                            <div class="dropdown-content">
+                                <a href="#">작게</a>
+                                <a href="#">중간(기본)</a>
+                                <a href="#">크게</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="config_item">
+                        메모지 크기
+                        <div class="container_config_dropdown">
+                            <div class="dropbtn">중간(기본) <i class="fas fa-caret-down"></i></div>
+
+                            <div class="dropdown-content">
+                                <a href="#">작게</a>
+                                <a href="#">중간(기본)</a>
+                                <a href="#">크게</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="config_item">
+                        메모지 색상
+                        <div class="container_config_dropdown">
+                            <div class="dropbtn"><span class="dropdown_color"></span> 기본색 <i class="fas fa-caret-down"></i></div>
+
+                            <div class="dropdown-content">
+                                <a href="#"><span class="dropdown_color"></span> 기본색</a>
+                                <a href="#"><span class="dropdown_color" style="background-color: white;"></span> 밝은색</a>
+                                <a href="#"><span class="dropdown_color" style="background-color: royalblue;"></span> 푸른색</a>
+                                <a href="#"><span class="dropdown_color" style="background-color: #333333"></span> 어두운색</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="config schedule">
+                    <h3 class="config_title">일정</h3>
+                    <div class="config_item">
+                        일정 시간 표시
+                        <span class="container_config_tgl">
+                            <input ng-click="" class="config_tgl" id="tgl2" type="checkbox"/>
+                            <label class="config_tgl_label" for="tgl2"></label>
+                        </span>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>

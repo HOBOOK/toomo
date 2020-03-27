@@ -16,11 +16,11 @@
     }
 }
 
-h1{
+.container_context h1{
     color: var(--manage-h1-color);
     font-size: 32px;
 }
-h3{
+.container_context h3{
     color: var(--manage-h3-color);
     font-size: 21px;
 }
@@ -85,6 +85,7 @@ h3{
     border-radius: 5px;
     border: 1px solid rgba(0,0,0,0.05);
     margin: 0 auto;
+    margin-bottom: 10px;
     background-color: var(--common-main-background-color);
 }
 .config h3{
@@ -93,7 +94,56 @@ h3{
 }
 .config_item{
     width: 100%;
+    margin-bottom: 20px;
 }
+.container_config_dropdown{
+    float: right;
+    color:#333333;
+    background-color: var(--manage-config-background-color);
+    border-radius: 5px;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: #333333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:focus, .dropdown-content a:hover {background-color: #ddd;}
+
+.container_config_dropdown:hover .dropdown-content {display: block;}
+
+.container_config_dropdown:hover .dropbtn {
+
+}
+
+.dropbtn{
+    width: 150px;
+    text-align: center;
+    padding:5px;
+    border-radius: 5px;
+}
+.dropbtn i{
+    float: right;
+}
+
+.dropdown_color{
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: antiquewhite;
+    margin-right: 10px;
+}
+
 .container_config_tgl{
     float: right;
 }

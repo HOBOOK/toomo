@@ -71,7 +71,7 @@ calendar div.week.names{
 calendar div.week span.day{
     float:left;
     width:14.28%;
-    transition: 0.3s all ease-in-out;
+
     overflow-y: auto;
     -ms-overflow-style: none;
     overflow-x: hidden;
@@ -139,6 +139,12 @@ calendar p.day_number{
 }
 calendar p.day_number:hover{
     background-color:whitesmoke;
+}
+calendar p.day_number.holiday{
+    color:red;
+}
+calendar p.day_number.saturday{
+    color:royalblue;
 }
 
 

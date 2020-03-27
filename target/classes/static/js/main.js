@@ -5,6 +5,17 @@ $(document).ready(function(){
     }else{
         $('body').addClass("dark");
     }
+
+    var toggleVal = getCookie('toggleBar');
+    if(toggleVal==null || toggleVal=='false'){
+        $('.mybar').css('right','-250px');
+        $('.mybar_toggle').css('box-shadow','1px 2px 3px 1px rgba(0,0,0,0.2)');
+        $('.container_main').css('width','calc(100% - 80px)');
+    }else{
+        $('.mybar').css('right','0px');
+        $('.mybar_toggle').css('box-shadow','none');
+        $('.container_main').css('width','calc(100% - 330px)');
+    }
 });
 
 $(window).on('load',(function() {
@@ -16,17 +27,6 @@ $(window).on('load',(function() {
         documentTouchScroll : false,
         autoDraggerLength: false
     });
-
-    var toggleVal = getCookie('toggleBar');
-    if(toggleVal==null || toggleVal=='false'){
-        $('.mybar').css('width','0px');
-        $('.mybar_toggle').css('box-shadow','1px 2px 3px 1px rgba(0,0,0,0.2)');
-        $('.container_main').css('width','calc(100% - 80px)');
-    }else{
-        $('.mybar').css('width','250px');
-        $('.mybar_toggle').css('box-shadow','none');
-        $('.container_main').css('width','calc(100% - 330px)');
-    }
 }));
 
 Date.prototype.yyyyMMddHHmmss = function () {
@@ -48,12 +48,14 @@ function toggleBar() {
         setCookie('toggleBar', false, 7);
         val = false;
     }
+    $('.mybar').css('transition','0.3s all ease-in-out');
+    $('.container_main').css('transition','0.3s all ease-in-out');
     if(val){
-        $('.mybar').css('width','250px');
+        $('.mybar').css('right','0px');
         $('.mybar_toggle').css('box-shadow','none');
         $('.container_main').css('width','calc(100% - 330px)');
     }else{
-        $('.mybar').css('width','0px');
+        $('.mybar').css('right','-250px');
         $('.mybar_toggle').css('box-shadow','1px 2px 3px 1px rgba(0,0,0,0.2)');
         $('.container_main').css('width','calc(100% - 80px)');
     }

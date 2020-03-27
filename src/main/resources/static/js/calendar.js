@@ -102,6 +102,7 @@ app.directive("calendar", function($uibModal, $http) {
                 isCurrentMonth: date.month() === month.month(),
                 isToday: date.isSame(new Date(), "day"),
                 date: date,
+                dateType: i,
                 items: getDayEvents(new Date(date).yyyyMMddHHmmss().substring(0,10), scope.eventList)
             });
             date = date.clone();

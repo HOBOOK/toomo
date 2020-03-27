@@ -65,6 +65,7 @@ body{
     --manage-color: #666666;
     --manage-h1-color: #333333;
     --manage-h3-color: #acacac;
+    --manage-config-background-color: #f0f0f0;
     --schedule-border-background-color: white;
     --schedule-border-color: black;
     --schedule-modal-background-color: #fefefe;
@@ -85,6 +86,7 @@ body.dark{
     --manage-color: #c0c0c0;
     --manage-h1-color: #e5e5e5;
     --manage-h3-color: #acacac;
+    --manage-config-background-color: #f1f1f1;
     --schedule-border-background-color: rgba(230,230,230,1);
     --schedule-border-color: rgba(30,30,30,1);
     --schedule-modal-background-color:  #272727;
@@ -103,7 +105,7 @@ body.dark{
     left:80px;
     height: calc(100% - 60px);
     background-color: var(--container-background-color);
-    transition: 0.3s width ease-in-out;
+    transition: none;
 }
 nav{
     position: absolute;
@@ -156,16 +158,23 @@ nav{
     width: 100%;
 }
 .mybar{
-    transition: 0.3s all ease-in-out;
+    transition: none;
     position: absolute;
     overflow: hidden;
     right: 0;
     height: calc(100% - 60px);
-    background-color: var(--nav-background-color);;
-    width:0px;
+    background-color: var(--nav-background-color);
+    color: var(--nav-color);
+    width:250px;
     z-index: 1000;
     border-left: 1px solid rgba(0,0,0,0.2);
 }
+.mybar h3{
+    font-size: 16px;
+    margin-top: 30px;
+    margin-left: 16px;
+}
+
 
 .mybar_toggle{
     position: fixed;
@@ -199,3 +208,4 @@ nav{
 .mybar_toggle:hover{
     opacity: 0.9;
 }
+
