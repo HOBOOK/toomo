@@ -47,40 +47,28 @@
                     <h3 class="config_title">메모</h3>
                     <div class="config_item">
                         글꼴 크기
-                        <div class="container_config_dropdown">
-                            <div class="dropbtn">중간(기본) <i class="fas fa-caret-down"></i></div>
-
-                            <div class="dropdown-content">
-                                <a href="#">작게</a>
-                                <a href="#">중간(기본)</a>
-                                <a href="#">크게</a>
-                            </div>
-                        </div>
+                        <select class="dropdown" name="options" ng-model="options_font_size">
+                            <option value="1">작게</option>
+                            <option value="">중간(기본)</option>
+                            <option value="3">크게</option>
+                        </select>
                     </div>
                     <div class="config_item">
                         메모지 크기
-                        <div class="container_config_dropdown">
-                            <div class="dropbtn">중간(기본) <i class="fas fa-caret-down"></i></div>
-
-                            <div class="dropdown-content">
-                                <a href="#">작게</a>
-                                <a href="#">중간(기본)</a>
-                                <a href="#">크게</a>
-                            </div>
-                        </div>
+                        <select class="dropdown" name="options" ng-model="options_memo_size">
+                            <option value="1">작게</option>
+                            <option value="">중간(기본)</option>
+                            <option value="3">크게</option>
+                        </select>
                     </div>
                     <div class="config_item">
                         메모지 색상
-                        <div class="container_config_dropdown">
-                            <div class="dropbtn"><span class="dropdown_color"></span> 기본색 <i class="fas fa-caret-down"></i></div>
-
-                            <div class="dropdown-content">
-                                <a href="#"><span class="dropdown_color"></span> 기본색</a>
-                                <a href="#"><span class="dropdown_color" style="background-color: white;"></span> 밝은색</a>
-                                <a href="#"><span class="dropdown_color" style="background-color: royalblue;"></span> 푸른색</a>
-                                <a href="#"><span class="dropdown_color" style="background-color: #333333"></span> 어두운색</a>
-                            </div>
-                        </div>
+                        <select class="dropdown" name="options" ng-model="options_memo_color">
+                            <option value=""><span class="dropdown_color"></span> 기본색</option>
+                            <option value="1"><span class="dropdown_color" style="background-color: white;"></span> 밝은색</option>
+                            <option value="2"><span class="dropdown_color" style="background-color: royalblue;"></span> 푸른색</option>
+                            <option value="3"><span class="dropdown_color" style="background-color: #333333"></span> 어두운색</option>
+                        </select>
                     </div>
                 </div>
                 <div class="config schedule">

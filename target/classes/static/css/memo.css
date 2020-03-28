@@ -75,8 +75,33 @@
     width: 300px;
     height: 340px;
     background-color: antiquewhite;
+    --memo-bar-color: rgba(255,255,0,0.1);
+    --memo-text-color: black;
+    --memo-menu-color: #505050;
+    --memo-edit-color: #666666;
     border: 1px solid rgba(0,0,0,0.1);
     border-radius: 2px;
+}
+.memo.white{
+    background-color: ghostwhite;
+    --memo-bar-color: #E0E0E0;
+    --memo-text-color: #333333;
+    --memo-menu-color: #505050;
+    --memo-edit-color: #666666;
+}
+.memo.blue{
+    background-color: royalblue;
+    --memo-bar-color: blueviolet;
+    --memo-text-color: #f0f0f0;
+    --memo-menu-color: #B5B5B5;
+    --memo-edit-color: #B0B0B0;
+}
+.memo.dark{
+    background-color: #454545;
+    --memo-bar-color: #333333;
+    --memo-text-color: #f0f0f0;
+    --memo-menu-color: #B5B5B5;
+    --memo-edit-color: #B0B0B0;
 }
 .memo.ng-move,
 .memo.ng-enter {
@@ -148,7 +173,7 @@
 
 }
 .bar_memo.selected{
-    background-color: rgba(255,255,0,0.1);
+    background-color: var(--memo-bar-color);
     border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
@@ -169,7 +194,7 @@
     appearance: none;
     background-color: transparent;
     border:none;
-    color: #252525;
+    color: var(--memo-text-color);
 }
 .memo_content ul{
     padding: 10px 10px 10px 20px;
@@ -185,23 +210,23 @@ hr{
     padding-left: 3px;
     padding-right: 3px;
     cursor: pointer;
-    color: #505050;
+    color: var(--memo-menu-color);
     transition: all 0.2s ease-in-out;
 }
 .memo_menu_controls> i:hover{
-    color: #333333;
+    opacity: 0.8;
 }
 
 .memo_menu_items> i{
     cursor: pointer;
-    color: #666666;
+    color: var(--memo-edit-color);
     font-size: 14px;
     padding-left: 5px;
     padding-right: 5px;
     transition: color 0.2s ease-in-out;
 }
 .memo_menu_items> i:hover{
-    color: #333333;
+    opacity: 0.8;
 }
 
 .context_bold{
