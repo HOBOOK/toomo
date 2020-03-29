@@ -33,7 +33,7 @@ public class AccountDto {
 
     private LocalDateTime date_update;
 
-    public Account toEntitiy(){
+    public Account toEntity(){
         return Account.builder()
                 .id(id)
                 .nickname(nickname)

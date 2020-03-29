@@ -21,7 +21,10 @@ app.config(['$qProvider','$httpProvider', function($qProvider, $httpProvider){
     $qProvider.errorOnUnhandledRejections(false);
     $httpProvider.defaults.headers.common[header] = token;
 }]);
-app.controller('manageController', function ($scope, $http, $compile) {
+app.controller('manageController', function ($scope, $http, $compile, Upload) {
+    $scope.profile_image = "";
+    $scope.profileInfo = {};
+
     $scope.init = function(){
         // 테마 토글 버튼
         var toggleTheme = getCookie('toggleTheme');
@@ -63,20 +66,32 @@ app.controller('manageController', function ($scope, $http, $compile) {
                 }
             }
         }
+        
+        // 프로필
+        $http({
+            method: 'GET',
+            url: 'getProfileInfo'
+        }).then(function successCallback(response){
+            $scope.profileInfo = response.data;
+            $scope.profile_image = $scope.profileInfo.profile_image_url;
+            //console.log(response.data);
+        }, function errorCallback(response){
+            console.log('error get profile Image -> ' +response);
+        });
     }
-    $scope.imageSource = "";
+
+
     $scope.imageChanged = function(element)
     {
-        console.log('이미지 변경');
         var reader = new FileReader();
         reader.onload = function(e)
         {
             $scope.$apply(function()
             {
-                $scope.imageSource = e.target.result;
+                $scope.profile_image = e.target.result;
             });
         };
-        reader.readAsDataURL(element.files[0]);
+        reader.readAsDataURL(element.file);
     };
 
     $scope.submit = function (file) {
@@ -85,19 +100,30 @@ app.controller('manageController', function ($scope, $http, $compile) {
         }
     };
     $scope.upload = function (file) {
+        var filename = 'profile_'+$scope.profileInfo.email +'_'+(new Date()).getTime()/1000+'_'+file.name;
         Upload.upload({
-            url: 'upload',
-            data:{
-                file: file,
-                email: $scope.email
-            }
+            url: '/api/img/users/profile',
+            method: 'POST',
+            filename: filename,
+            file:file
         }).then(function(response){
-            console.log('Success ' + response.config.data.file.name + 'uploaded. Response: ' + response.data);
+            console.log('Success ' + response.config.file.name + 'uploaded. Response: ' + response.data);
+            $http({
+                method: 'PUT',
+                url: 'updateProfileInfo',
+                data: {
+                    profile_image_url: filename
+                }
+            }).then(function successCallback(response){
+                console.log(response);
+            }, function errorCallback(response){
+                console.log('error update -> ' +response);
+            });
         }, function (response) {
-            console.log('Error Uploard ' + response.config.data.file.name + 'uploaded. Response: ' + response.data);
+            console.log('Error Upload ' + response.config.file.name + 'uploaded. Response: ' + response.data);
         }, function(evt){
             var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-            console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+            console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
         });
     };
 

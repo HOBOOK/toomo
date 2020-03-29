@@ -1,6 +1,7 @@
 package com.hobook.tomo.service;
 
 
+import com.hobook.tomo.dto.MemoDto;
 import com.hobook.tomo.model.Role;
 import com.hobook.tomo.dto.AccountDto;
 import com.hobook.tomo.model.Account;
@@ -41,7 +42,7 @@ public class AccountService implements UserDetailsService {
     public Long joinUser(AccountDto accountDto){
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         accountDto.setPwd(passwordEncoder.encode(accountDto.getPwd()));
-        return accountRepository.save(accountDto.toEntitiy()).getId();
+        return accountRepository.save(accountDto.toEntity()).getId();
     }
 
     @Override
@@ -67,5 +68,10 @@ public class AccountService implements UserDetailsService {
         Account account = accountWrapper.get();
         AccountDto accountDto = new AccountDto(account);
         return accountDto;
+    }
+
+    @Transactional
+    public Long updateAccount(AccountDto accountDto){
+        return accountRepository.save(accountDto.toEntity()).getId();
     }
 }

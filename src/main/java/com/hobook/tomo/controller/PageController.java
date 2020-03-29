@@ -1,11 +1,14 @@
 package com.hobook.tomo.controller;
 
 import com.hobook.tomo.dto.AccountDto;
+import com.hobook.tomo.dto.MemoDto;
 import com.hobook.tomo.model.Account;
 import com.hobook.tomo.service.AccountService;
 import lombok.AllArgsConstructor;
+import net.minidev.json.JSONObject;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,15 +16,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -72,6 +75,31 @@ public class PageController implements ErrorController {
         accountService.joinUser(accountDto);
         return "redirect:/login";
     }
+
+    @RequestMapping(value ="/getProfileInfo", method = RequestMethod.GET)
+    public ResponseEntity<Object> getProfileInfo(Principal principal)
+    {
+        List<JSONObject> entities = new ArrayList<JSONObject>();
+        JSONObject entity = new JSONObject();
+        AccountDto accountDto = accountService.getAccountDto(principal.getName());
+        entity.put("email", accountDto.getEmail());
+        entity.put("nickname", accountDto.getNickname());
+        entity.put("profile_image_url", accountDto.getProfile_image_url());
+        return new ResponseEntity<Object>(entity, HttpStatus.OK);
+    }
+
+    @RequestMapping(value="/updateProfileInfo", method = {RequestMethod.POST,RequestMethod.PUT})
+    public @ResponseBody
+    ResponseEntity<AccountDto> updateProfileInfo(@RequestBody AccountDto accountDto)
+    {
+        try{
+            accountService.updateAccount(accountDto);
+            return new ResponseEntity(accountDto, HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity("Error", HttpStatus.BAD_REQUEST);
+        }
+    }
+
     @RequestMapping(value ="/denied", method = RequestMethod.GET)
     public String goDenied(){
         return "denied";

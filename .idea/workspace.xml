@@ -3,18 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="e8dee576-308c-4951-92c8-237d8e03e46f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/manage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/manage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/memo.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/memo.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/controller/PageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/controller/PageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/dto/AccountDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/dto/AccountDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/service/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/service/AccountService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/manage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/manage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/memo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/memo.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/manage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/manage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/memo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/memo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/manage.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/manage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/memo.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/memo.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hobook/tomo/controller/PageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hobook/tomo/controller/PageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hobook/tomo/dto/AccountDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hobook/tomo/dto/AccountDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hobook/tomo/service/AccountService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hobook/tomo/service/AccountService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/js/manage.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/manage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/memo.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/memo.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/manage.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/manage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/memo.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/memo.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -70,18 +68,19 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\workspace\WebProject\tomo\src\main\resources\static\img\users" />
+      <recent name="D:\workspace\WebProject\tomo\src\main\resources\static\js" />
+      <recent name="D:\workspace\WebProject\tomo\src\main\resources\static\css" />
+      <recent name="D:\workspace\WebProject\tomo\src\main\resources\templates\fragments" />
+      <recent name="D:\workspace\WebProject\tomo\src\main\resources\templates\layout" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\workspace\WebProject\tomo\src\main\resources\static\js" />
       <recent name="D:\workspace\WebProject\tomo\src\main\resources\static\css" />
       <recent name="D:\workspace\WebProject\tomo\src\main\resources\static\js\file" />
       <recent name="D:\workspace\WebProject\tomo\src\main\resources\templates" />
       <recent name="D:\workspace\WebProject\tomo\src\main\resources\static\fonts" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\workspace\WebProject\tomo\src\main\resources\static\js" />
-      <recent name="D:\workspace\WebProject\tomo\src\main\resources\static\css" />
-      <recent name="D:\workspace\WebProject\tomo\src\main\resources\templates\fragments" />
-      <recent name="D:\workspace\WebProject\tomo\src\main\resources\templates\layout" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -178,7 +177,7 @@
       <workItem from="1585291462231" duration="8106000" />
       <workItem from="1585376610048" duration="1228000" />
       <workItem from="1585398856850" duration="3549000" />
-      <workItem from="1585464745858" duration="3708000" />
+      <workItem from="1585464745858" duration="10589000" />
     </task>
     <servers />
   </component>
