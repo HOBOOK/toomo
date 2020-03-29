@@ -14,6 +14,26 @@ app.controller('memoController', function ($scope, $http, $compile) {
        $scope.memos = data.data;
     });
 
+    $scope.init = function(){
+        // 메모 색상 옵션
+        var memoColor = getCookie('memoColor');
+        if(memoColor!=null && memoColor!=''){
+            $(".container_context").addClass(memoColor);
+        }
+
+        // 메모 크기 옵션
+        var memoSize = getCookie('memoSize');
+        if(memoSize!=null && memoSize!=''){
+            $(".container_context").addClass(memoSize);
+        }
+
+        // 메모 폰트 크기 옵션
+        var memoFontSize = getCookie('memoFontSize');
+        if(memoFontSize!=null && memoFontSize!=''){
+            $(".container_context").addClass(memoFontSize);
+        }
+    }
+
     $scope.config = {
         editMode: false,
         editTarget: '-1',

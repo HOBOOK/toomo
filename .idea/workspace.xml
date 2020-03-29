@@ -5,10 +5,16 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/manage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/manage.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/memo.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/memo.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/manage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/manage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/memo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/memo.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/manage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/manage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/memo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/memo.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/css/manage.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/manage.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/css/memo.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/memo.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/manage.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/manage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/memo.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/memo.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/manage.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/manage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/memo.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/memo.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -172,6 +178,7 @@
       <workItem from="1585291462231" duration="8106000" />
       <workItem from="1585376610048" duration="1228000" />
       <workItem from="1585398856850" duration="3549000" />
+      <workItem from="1585464745858" duration="3708000" />
     </task>
     <servers />
   </component>

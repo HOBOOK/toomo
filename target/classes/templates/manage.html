@@ -47,27 +47,17 @@
                     <h3 class="config_title">메모</h3>
                     <div class="config_item">
                         글꼴 크기
-                        <select class="dropdown" name="options" ng-model="options_font_size">
-                            <option value="1">작게</option>
-                            <option value="">중간(기본)</option>
-                            <option value="3">크게</option>
+                        <select class="dropdown" name="options" ng-model="selectedMemoFontSize" ng-options="data as data.name for data in optionsMemoFontSize" ng-change="onChangeMemoFontSize()">
                         </select>
                     </div>
                     <div class="config_item">
                         메모지 크기
-                        <select class="dropdown" name="options" ng-model="options_memo_size">
-                            <option value="1">작게</option>
-                            <option value="">중간(기본)</option>
-                            <option value="3">크게</option>
+                        <select class="dropdown" name="options" ng-model="selectedMemoSize" ng-options="data as data.name for data in optionsMemoSize" ng-change="onChangeMemoSize()">
                         </select>
                     </div>
                     <div class="config_item">
                         메모지 색상
-                        <select class="dropdown" name="options" ng-model="options_memo_color">
-                            <option value=""><span class="dropdown_color"></span> 기본색</option>
-                            <option value="1"><span class="dropdown_color" style="background-color: white;"></span> 밝은색</option>
-                            <option value="2"><span class="dropdown_color" style="background-color: royalblue;"></span> 푸른색</option>
-                            <option value="3"><span class="dropdown_color" style="background-color: #333333"></span> 어두운색</option>
+                        <select class="dropdown" name="options" ng-model="selectedMemoColor" ng-options="data as data.name for data in optionsMemoColor" ng-change="onChangeMemoColor()">
                         </select>
                     </div>
                 </div>
