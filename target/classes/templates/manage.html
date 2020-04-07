@@ -18,7 +18,7 @@
                 <h1 class="m-b-10" th:text="${account} ? ${account.getNickname()}"></h1>
                 <h3 class="m-b-10" th:text="${account} ? ${account.getEmail()}"></h3>
 
-                <form name="form" class="form_manage_profile">
+                <form name="form" class="form_manage_profile" ng-submit="submit()" enctype="multipart/form-data">
                     <span style="background-color: rgba(255,255,255,1); width: 128px; height: 128px; border-radius: 100%; display: inline-block;">
                         <img ng-src="{{profile_image}}" width="128" height="128" style="border-radius: 100%;" alt="profile_image"/>
                         <span style="background-color: transparent; padding:5px; border-radius: 100%; display: inline-block; position: relative; right:-42px; bottom: 42px;">
@@ -32,7 +32,7 @@
                     </span>
                     <br/>
                     <label class="label_profile_button" for="input_profile_save">변경사항 저장</label>
-                    <input id="input_profile_save" type="submit" ng-click="submit()"/>
+                    <input id="input_profile_save" type="submit"/>
                 </form>
 
             </div>

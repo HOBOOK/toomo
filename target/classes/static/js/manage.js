@@ -101,29 +101,15 @@ app.controller('manageController', function ($scope, $http, $compile, Upload) {
     };
     $scope.upload = function (file) {
         var filename = 'profile_'+$scope.profileInfo.email +'_'+(new Date()).getTime()/1000+'_'+file.name;
-        Upload.upload({
-            url: '/api/img/users/profile',
-            method: 'POST',
-            filename: filename,
-            file:file
-        }).then(function(response){
-            console.log('Success ' + response.config.file.name + 'uploaded. Response: ' + response.data);
-            $http({
-                method: 'PUT',
-                url: 'updateProfileInfo',
-                data: {
-                    profile_image_url: filename
-                }
-            }).then(function successCallback(response){
-                console.log(response);
-            }, function errorCallback(response){
-                console.log('error update -> ' +response);
-            });
-        }, function (response) {
-            console.log('Error Upload ' + response.config.file.name + 'uploaded. Response: ' + response.data);
-        }, function(evt){
-            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-            console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
+        var formData = new FormData();
+        formData.append("file", file);
+        $http.post('uploadFile', formData,{
+            transformRequest: angular.identity,
+            headers: {'Content-Type': undefined}
+        }).then(function successCallback(response){
+            console.log('success upload file -> ' + response.data);
+        }, function errorCallback(response){
+            console.log('error upload file -> ' + response);
         });
     };
 
