@@ -103,11 +103,12 @@ app.controller('manageController', function ($scope, $http, $compile, Upload) {
         var filename = 'profile_'+$scope.profileInfo.email +'_'+(new Date()).getTime()/1000+'_'+file.name;
         var formData = new FormData();
         formData.append("file", file);
-        $http.post('uploadFile', formData,{
+        $http.post('uploadProfileImageFile', formData,{
             transformRequest: angular.identity,
             headers: {'Content-Type': undefined}
         }).then(function successCallback(response){
-            console.log('success upload file -> ' + response.data);
+            console.log('success upload file -> ' + response);
+            alert('성공적으로 변경된 사항이 저장되었습니다.');
         }, function errorCallback(response){
             console.log('error upload file -> ' + response);
         });

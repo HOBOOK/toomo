@@ -29,7 +29,7 @@ header div{
     cursor: pointer;
 }
 .account span:hover{
-    color: #333333;
+    opacity: 0.8;
 }
 
 .account_remote{
@@ -69,5 +69,5 @@ header div{
     display: block;
 }
 .account_remote_list:hover{
-    background-color: rgba(0,0,0,0.05);
+    opacity: 0.8;
 }

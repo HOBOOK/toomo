@@ -20,7 +20,7 @@
 
                 <form name="form" class="form_manage_profile" ng-submit="submit()" enctype="multipart/form-data">
                     <span style="background-color: rgba(255,255,255,1); width: 128px; height: 128px; border-radius: 100%; display: inline-block;">
-                        <img ng-src="{{profile_image}}" width="128" height="128" style="border-radius: 100%;" alt="profile_image"/>
+                        <img ng-src="{{profile_image}}" width="128" height="128" style="border-radius: 100%; border:none;" alt="profile_image"/>
                         <span style="background-color: transparent; padding:5px; border-radius: 100%; display: inline-block; position: relative; right:-42px; bottom: 42px;">
                             <label class="label_profile_image" for="input_profile_image"><i class="far fa-image" style="line-height: 27px; font-size: 21px; color: #666666"></i></label>
                             <input id="input_profile_image" ng-model="file" type="file" name="file"

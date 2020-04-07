@@ -16,20 +16,16 @@ import java.nio.file.StandardCopyOption;
 
 @Component
 public class FileService {
-    private static final String PROFILE_IMAGE_DIR = "/img/users/profile/";
+    private static final String PROFILE_IMAGE_DIR = "/upload/profile/";
 
     @Autowired
     ServletContext context;
 
-    public void saveFile(MultipartFile file) throws IOException{
-        String absoluteFilePath = context.getRealPath(PROFILE_IMAGE_DIR);
-        System.out.println(absoluteFilePath);
-        File dir = new File(absoluteFilePath);
-        if(!dir.exists()){
-            dir.mkdir();
+    public void saveFile(MultipartFile file, String filename) throws IOException{
+        File parentDirectory = new File(PROFILE_IMAGE_DIR);
+        if(!parentDirectory.exists()){
+            parentDirectory.mkdirs();
         }
-        FileOutputStream fos = new FileOutputStream(absoluteFilePath);
-        fos.write(file.getBytes());
-        fos.close();
+        Files.copy(file.getInputStream(), Paths.get(PROFILE_IMAGE_DIR+filename), StandardCopyOption.REPLACE_EXISTING);
     }
 }

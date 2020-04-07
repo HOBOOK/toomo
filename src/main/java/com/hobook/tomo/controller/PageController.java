@@ -100,6 +100,10 @@ public class PageController implements ErrorController {
         }
     }
 
+    public void upadteProfileInfo(AccountDto accountDto){
+        accountService.updateAccount(accountDto);
+    }
+
     @RequestMapping(value ="/denied", method = RequestMethod.GET)
     public String goDenied(){
         return "denied";

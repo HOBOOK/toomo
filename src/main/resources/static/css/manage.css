@@ -64,7 +64,7 @@
     transition: all 0.2s ease-in-out;
 }
 .label_profile_image:hover{
-    background-color: rgba(0,0,0,0.05);
+    background-color: rgba(230,230,230,1);
 }
 
 .form_manage_profile input[type="file"], input[type="submit"]{
