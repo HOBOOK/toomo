@@ -8,17 +8,14 @@ $(document).ready(function(){
 
     var toggleVal = getCookie('toggleBar');
     if(toggleVal==null || toggleVal=='false'){
-        $('.mybar').css('right','-250px');
+        $('.mybar').css('right','-300px');
         $('.mybar_toggle').css('box-shadow','1px 2px 3px 1px rgba(0,0,0,0.2)');
         $('.container_main').css('width','calc(100% - 80px)');
     }else{
         $('.mybar').css('right','0px');
         $('.mybar_toggle').css('box-shadow','none');
-        $('.container_main').css('width','calc(100% - 330px)');
+        $('.container_main').css('width','calc(100% - 380px)');
     }
-});
-
-$(window).on('load',(function() {
     $('.nav').mCustomScrollbar({
         theme: "minimal-dark",
         axis:"y",
@@ -27,7 +24,7 @@ $(window).on('load',(function() {
         documentTouchScroll : false,
         autoDraggerLength: false
     });
-}));
+});
 
 Date.prototype.yyyyMMddHHmmss = function () {
     var yyyy = this.getFullYear().toString();
@@ -53,9 +50,9 @@ function toggleBar() {
     if(val){
         $('.mybar').css('right','0px');
         $('.mybar_toggle').css('box-shadow','none');
-        $('.container_main').css('width','calc(100% - 330px)');
+        $('.container_main').css('width','calc(100% - 380px)');
     }else{
-        $('.mybar').css('right','-250px');
+        $('.mybar').css('right','-300px');
         $('.mybar_toggle').css('box-shadow','1px 2px 3px 1px rgba(0,0,0,0.2)');
         $('.container_main').css('width','calc(100% - 80px)');
     }

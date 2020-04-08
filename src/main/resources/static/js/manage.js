@@ -1,3 +1,5 @@
+
+
 Date.prototype.yyyyMMddHHmmss = function () {
     var yyyy = this.getFullYear().toString();
     var MM = (this.getMonth() + 1).toString();
@@ -23,6 +25,7 @@ app.config(['$qProvider','$httpProvider', function($qProvider, $httpProvider){
 }]);
 app.controller('manageController', function ($scope, $http, $compile, Upload) {
     $scope.profile_image = "";
+    $scope.nickname = "";
     $scope.profileInfo = {};
 
     $scope.init = function(){
@@ -74,6 +77,7 @@ app.controller('manageController', function ($scope, $http, $compile, Upload) {
         }).then(function successCallback(response){
             $scope.profileInfo = response.data;
             $scope.profile_image = $scope.profileInfo.profile_image_url;
+            $scope.nickname = $scope.profileInfo.nickname;
             //console.log(response.data);
         }, function errorCallback(response){
             console.log('error get profile Image -> ' +response);
@@ -97,10 +101,12 @@ app.controller('manageController', function ($scope, $http, $compile, Upload) {
     $scope.submit = function (file) {
         if ($scope.form.file.$valid && $scope.file) {
             $scope.upload($scope.file);
+        }else{
+            $scope.updateProfileInfo();
         }
     };
     $scope.upload = function (file) {
-        var filename = 'profile_'+$scope.profileInfo.email +'_'+(new Date()).getTime()/1000+'_'+file.name;
+        var filename = 'profileImage_'+$scope.profileInfo.email.substring(0,$scope.profileInfo.email.indexOf('.')) + file.name.substring(file.name.lastIndexOf('.'));
         var formData = new FormData();
         formData.append("file", file);
         $http.post('uploadProfileImageFile', formData,{
@@ -108,9 +114,25 @@ app.controller('manageController', function ($scope, $http, $compile, Upload) {
             headers: {'Content-Type': undefined}
         }).then(function successCallback(response){
             console.log('success upload file -> ' + response);
-            alert('성공적으로 변경된 사항이 저장되었습니다.');
+            $scope.profile_image = 'upload/' + filename;
+            $scope.updateProfileInfo();
         }, function errorCallback(response){
             console.log('error upload file -> ' + response);
+        });
+    };
+    $scope.updateProfileInfo = function(){
+        $http({
+            method: 'PUT',
+            url: 'updateProfileInfo',
+            data:{
+                nickname: $scope.nickname,
+                profile_image_url: $scope.profile_image
+            }
+        }).then(function successCallback(response){
+            console.log('success update profile ->' + response);
+            alert('성공적으로 변경된 사항이 저장되었습니다.');
+        }, function errorCallback(response){
+            console.log('error update profile -> ' + response);
         });
     };
 

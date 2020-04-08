@@ -28,6 +28,9 @@ public class Event extends Time {
     @Column(name="event_type")
     private int event_type;
 
+    @Column(name="event_state")
+    private int event_state;
+
     @Column(name="title", nullable = false, length = 20)
     private String title;
 
@@ -35,11 +38,12 @@ public class Event extends Time {
     private String event_description;
 
     @Builder
-    public Event(Long id, String creator, String date_event, int event_type, String title, String event_description){
+    public Event(Long id, String creator, String date_event, int event_type, int event_state, String title, String event_description){
         this.id = id;
         this.creator = creator;
         this.date_event = date_event;
         this.event_type = event_type;
+        this.event_state = event_state;
         this.title = title;
         this.event_description = event_description;
     }

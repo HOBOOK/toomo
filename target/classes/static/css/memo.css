@@ -168,11 +168,11 @@
 
 .memo::before{
     left:15px;
-    transform: skew(-10deg) rotate(-10deg);
+    transform: skew(-7deg) rotate(-7deg);
 }
 .memo::after{
     right: 15px;
-    transform: skew(10deg) rotate(10deg);
+    transform: skew(7deg) rotate(7deg);
 }
 .memo:hover::before,
 .memo:hover::after{

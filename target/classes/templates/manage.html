@@ -14,11 +14,11 @@
     <div class="main" ng-init="init()">
         <div class="container_context">
             <div class="profile_header" th:object="${account}">
-                <span style="z-index:-5; position: absolute; width: 100%; height: 228px; top:0; left: 0; background-color: lightcoral;"></span>
-                <h1 class="m-b-10" th:text="${account} ? ${account.getNickname()}"></h1>
+                <span style="z-index:-5; position: absolute; width: 100%; height: 218px; top:0; left: 0; background-color: lightcoral;"></span>
                 <h3 class="m-b-10" th:text="${account} ? ${account.getEmail()}"></h3>
-
                 <form name="form" class="form_manage_profile" ng-submit="submit()" enctype="multipart/form-data">
+                    <input id="input_profile_nickname" ng-model="nickname" name="nickname" type="text" maxlength="20"/>
+
                     <span style="background-color: rgba(255,255,255,1); width: 128px; height: 128px; border-radius: 100%; display: inline-block;">
                         <img ng-src="{{profile_image}}" width="128" height="128" style="border-radius: 100%; border:none;" alt="profile_image"/>
                         <span style="background-color: transparent; padding:5px; border-radius: 100%; display: inline-block; position: relative; right:-42px; bottom: 42px;">

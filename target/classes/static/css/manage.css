@@ -66,6 +66,22 @@
 .label_profile_image:hover{
     background-color: rgba(230,230,230,1);
 }
+.form_manage_profile input[type="text"]{
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    text-align: center;
+    color: var(--manage-h1-color);
+    font-size: 32px;
+    background-color: transparent;
+    border:none;
+    border-bottom: 1px solid transparent;
+    transition: all 0.3s ease-in-out;
+}
+.form_manage_profile input[type="text"]:focus{
+    outline: none;
+    border-bottom: 1px solid var(--manage-h1-color);
+}
 
 .form_manage_profile input[type="file"], input[type="submit"]{
     position: absolute;

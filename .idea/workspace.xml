@@ -2,24 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e8dee576-308c-4951-92c8-237d8e03e46f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/controller/AccountController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/mybar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/mybar.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/config/WebMvcConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/config/WebMvcConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/controller/FileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/controller/FileController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/controller/PageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/controller/PageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/model/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/model/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/service/FileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/service/FileService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/dto/EventDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/dto/EventDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/model/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/model/Event.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/manage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/manage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/memo.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/memo.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/calendar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/calendar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/manage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/manage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/layout/layout_main.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/layout/layout_main.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/manage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/manage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hobook/tomo/config/WebMvcConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hobook/tomo/config/WebMvcConfig.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/hobook/tomo/controller/PageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hobook/tomo/controller/PageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hobook/tomo/model/Account.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hobook/tomo/model/Account.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/css/manage.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/manage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/memo.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/memo.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/calendar.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/calendar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/js/manage.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/manage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/fragments/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/fragments/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/layout/layout_main.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/layout/layout_main.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/manage.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/manage.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,10 +40,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="CSS File" />
-        <option value="JavaScript File" />
         <option value="Class" />
+        <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -76,19 +82,19 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\workspace\WebProject\tomo\src\main\resources\static\js" />
-      <recent name="D:\workspace\WebProject\tomo\src\main\resources\static\css" />
-      <recent name="D:\workspace\WebProject\tomo\src\main\resources\static\js\file" />
-      <recent name="D:\workspace\WebProject\tomo\src\main\resources\templates" />
-      <recent name="D:\workspace\WebProject\tomo\src\main\resources\static\fonts" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\workspace\WebProject\tomo\src\main\resources\static\img\users" />
       <recent name="D:\workspace\WebProject\tomo\src\main\resources\static\js" />
       <recent name="D:\workspace\WebProject\tomo\src\main\resources\static\css" />
       <recent name="D:\workspace\WebProject\tomo\src\main\resources\templates\fragments" />
       <recent name="D:\workspace\WebProject\tomo\src\main\resources\templates\layout" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\workspace\WebProject\tomo\src\main\resources\static\js" />
+      <recent name="D:\workspace\WebProject\tomo\src\main\resources\static\css" />
+      <recent name="D:\workspace\WebProject\tomo\src\main\resources\static\js\file" />
+      <recent name="D:\workspace\WebProject\tomo\src\main\resources\templates" />
+      <recent name="D:\workspace\WebProject\tomo\src\main\resources\static\fonts" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -193,6 +199,7 @@
       <workItem from="1586172680626" duration="608000" />
       <workItem from="1586238623566" duration="8706000" />
       <workItem from="1586255065115" duration="8675000" />
+      <workItem from="1586319507922" duration="16701000" />
     </task>
     <servers />
   </component>
@@ -217,7 +224,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/main/resources/static/js/calendar.js</url>
-          <line>139</line>
+          <line>144</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
