@@ -2,31 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e8dee576-308c-4951-92c8-237d8e03e46f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/controller/AccountController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/mybar.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/mybar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/controller/FileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/controller/FileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/controller/PageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/controller/PageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/controller/EventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/controller/EventController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/dto/EventDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/dto/EventDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/model/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/model/Event.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/service/EventService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/service/EventService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/manage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/manage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/memo.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/memo.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/calendar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/calendar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/manage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/manage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/mybar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/mybar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/mybar.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/mybar.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/layout/layout_main.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/layout/layout_main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/manage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/manage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hobook/tomo/controller/PageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hobook/tomo/controller/PageController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/manage.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/manage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/memo.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/memo.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/calendar.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/calendar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/manage.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/manage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/layout/layout_main.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/layout/layout_main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/manage.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/manage.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -200,6 +187,7 @@
       <workItem from="1586238623566" duration="8706000" />
       <workItem from="1586255065115" duration="8675000" />
       <workItem from="1586319507922" duration="16701000" />
+      <workItem from="1586341448683" duration="7210000" />
     </task>
     <servers />
   </component>

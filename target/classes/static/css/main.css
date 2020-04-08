@@ -277,6 +277,9 @@ nav{
     display: block;
     font-size: 13px;
 }
+.todo_event_title.clear{
+    text-decoration: line-through orangered;
+}
 .todo_event_time{
     margin-top:5px;
     margin-bottom:5px;
@@ -288,11 +291,20 @@ nav{
     opacity: 0.8;
     color: white;
 }
+.todo_event_time.before{
+    background-color: lightgray;
+}
+.todo_event_time.after{
+    background-color: orangered;
+}
 .todo_title{
     font-size: 14px;
-    padding: 10px;
-    display: block;
+    display: inline-block;
+    width: calc(100% - 10px);
+    height: 38px;
+    line-height: 38px;
     border-bottom: 1px solid rgba(0,0,0,0.05);
+    margin-left:5px;
 }
 
 .todo_list{
@@ -305,5 +317,21 @@ nav{
     border-top: 3px solid rgba(0,0,0,0.1);
     width: 100%;
     display: inline-block;
+}
+.todo_toggle{
+    cursor: pointer;
+    border-radius: 100%;
+    background-color: transparent;
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    text-align: center;
+    font-size: 14px;
+    line-height: 32px;
+    float: right;
+    margin-top:3px;
+}
+.todo_toggle:hover{
+    background-color: rgba(0,0,0,0.05);
 }
 

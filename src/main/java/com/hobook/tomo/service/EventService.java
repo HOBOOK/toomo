@@ -29,19 +29,44 @@ public class EventService {
     public List<EventDto> getEventList(String email){
         List<Event> eventEntities = eventRepository.findEventsByCreator(email);
         List<EventDto> eventDtoList = new ArrayList<>();
-
         for(Event event : eventEntities){
             EventDto eventDto = EventDto.builder()
                     .id(event.getId())
                     .creator(event.getCreator())
                     .date_event(event.getDate_event())
                     .event_type(event.getEvent_type())
+                    .event_state(event.getEvent_state())
+                    .event_time(event.getEvent_time())
                     .title(event.getTitle())
                     .event_description(event.getEvent_description())
                     .date_create(event.getDate_create())
                     .date_update(event.getDate_update())
                     .build();
             eventDtoList.add(eventDto);
+        }
+        return eventDtoList;
+    }
+
+    @Transactional
+    public List<EventDto> getTodoList(String email){
+        List<Event> eventEntities = eventRepository.findEventsByCreator(email);
+        List<EventDto> eventDtoList = new ArrayList<>();
+        for(Event event : eventEntities){
+            if(event.getEvent_type()==1){
+                EventDto eventDto = EventDto.builder()
+                        .id(event.getId())
+                        .creator(event.getCreator())
+                        .date_event(event.getDate_event())
+                        .event_type(event.getEvent_type())
+                        .event_state(event.getEvent_state())
+                        .event_time(event.getEvent_time())
+                        .title(event.getTitle())
+                        .event_description(event.getEvent_description())
+                        .date_create(event.getDate_create())
+                        .date_update(event.getDate_update())
+                        .build();
+                eventDtoList.add(eventDto);
+            }
         }
         return eventDtoList;
     }

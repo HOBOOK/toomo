@@ -2,6 +2,7 @@ package com.hobook.tomo.dto;
 
 import com.hobook.tomo.model.Event;
 import lombok.*;
+import org.apache.tomcat.jni.Local;
 
 import java.time.LocalDateTime;
 
@@ -15,6 +16,7 @@ public class EventDto {
     private String date_event;
     private int event_type;
     private int event_state;
+    private LocalDateTime event_time;
     private String title;
     private String event_description;
     private LocalDateTime date_create;
@@ -27,6 +29,7 @@ public class EventDto {
                 .date_event(date_event)
                 .event_type(event_type)
                 .event_state(event_state)
+                .event_time(event_time)
                 .title(title)
                 .event_description(event_description)
                 .build();
@@ -34,12 +37,13 @@ public class EventDto {
     }
 
     @Builder
-    public EventDto(Long id, String creator, String date_event, int event_type, int event_state, String title, String event_description, LocalDateTime date_create, LocalDateTime date_update){
+    public EventDto(Long id, String creator, String date_event, int event_type, int event_state, LocalDateTime event_time, String title, String event_description, LocalDateTime date_create, LocalDateTime date_update){
         this.id = id;
         this.creator = creator;
         this.date_event = date_event;
         this.event_type = event_type;
         this.event_state = event_state;
+        this.event_time = event_time;
         this.title = title;
         this.event_description = event_description;
         this.date_create = date_create;

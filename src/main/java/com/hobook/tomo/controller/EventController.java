@@ -28,12 +28,55 @@ public class EventController {
             entity.put("id", eventDto.getId());
             entity.put("date_event",eventDto.getDate_event());
             entity.put("event_type",eventDto.getEvent_type());
+            entity.put("event_state",eventDto.getEvent_state());
+            entity.put("event_time",eventDto.getEvent_time());
             entity.put("title",eventDto.getTitle());
             entity.put("event_description", eventDto.getEvent_description());
             entities.add(entity);
         }
         return new ResponseEntity<Object>(entities, HttpStatus.OK);
     }
+
+    @RequestMapping(value ="todolist/events", method = RequestMethod.GET)
+    public ResponseEntity<Object> getTodoList(Principal principal){
+        List<JSONObject> entities = new ArrayList<JSONObject>();
+        List<EventDto> eventDtos = eventService.getTodoList(principal.getName());
+        for(EventDto eventDto : eventDtos){
+            if(eventDto.getEvent_state()==0){
+                JSONObject entity = new JSONObject();
+                entity.put("id", eventDto.getId());
+                entity.put("date_event",eventDto.getDate_event());
+                entity.put("event_type",eventDto.getEvent_type());
+                entity.put("event_state",eventDto.getEvent_state());
+                entity.put("event_time",eventDto.getEvent_time());
+                entity.put("title",eventDto.getTitle());
+                entity.put("event_description", eventDto.getEvent_description());
+                entities.add(entity);
+            }
+        }
+        return new ResponseEntity<Object>(entities, HttpStatus.OK);
+    }
+
+    @RequestMapping(value ="todolist/clearevents", method = RequestMethod.GET)
+    public ResponseEntity<Object> getTodoClearList(Principal principal){
+        List<JSONObject> entities = new ArrayList<JSONObject>();
+        List<EventDto> eventDtos = eventService.getTodoList(principal.getName());
+        for(EventDto eventDto : eventDtos){
+            if(eventDto.getEvent_state()==1){
+                JSONObject entity = new JSONObject();
+                entity.put("id", eventDto.getId());
+                entity.put("date_event",eventDto.getDate_event());
+                entity.put("event_type",eventDto.getEvent_type());
+                entity.put("event_state",eventDto.getEvent_state());
+                entity.put("event_time",eventDto.getEvent_time());
+                entity.put("title",eventDto.getTitle());
+                entity.put("event_description", eventDto.getEvent_description());
+                entities.add(entity);
+            }
+        }
+        return new ResponseEntity<Object>(entities, HttpStatus.OK);
+    }
+
     @RequestMapping(value="schedule/create", method = {RequestMethod.POST,RequestMethod.PUT})
     public @ResponseBody ResponseEntity<EventDto> create(@RequestBody EventDto eventDto, Principal principal)
     {
