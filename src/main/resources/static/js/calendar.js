@@ -197,11 +197,9 @@ app.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http) {
         $scope.close();
     }
     $scope.cancelOutside = function($event){
-        // if($event.target.classList.contains('modal-content')){
-        //     Console.log($event.target.name);
-        // }else{
-        //     $uibModalInstance.dismiss();
-        // }
+        if($event.target==$event.currentTarget){
+            $scope.close();
+        }
     }
     $scope.close = function(){
         var elem = document.getElementById('modal_content');

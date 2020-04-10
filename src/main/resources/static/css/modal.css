@@ -177,6 +177,23 @@
     animation-duration: 0.4s;
 
 }
+
+
+
+
+/* modal Event */
+.modal_event-content {
+    background-color: var(--schedule-modal-background-color);
+    color: var(--schedule-modal-color);
+    padding: 0;
+    height: 300px;
+    width:400px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.15),0 6px 20px 0 rgba(0,0,0,0.1);
+    animation-name: animateFadeShow;
+    animation-duration: 0.4s;
+}
+
+
 /* Add Animation */
 @keyframes animateShow {
     from {margin-top:100px; opacity: 0}
@@ -185,5 +202,14 @@
 @keyframes animateHide {
     from {margin-top:80px; opacity: 1}
     to {margin-top:100px; opacity: 0}
+}
+
+@keyframes animateFadeShow {
+    from {opacity: 0}
+    to {opacity: 1}
+}
+@keyframes animateFadeHide {
+    from {opacity: 1}
+    to {opacity: 0}
 }
 

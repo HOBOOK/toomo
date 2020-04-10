@@ -1,6 +1,5 @@
-
-<div class="modal" id="calendarModal" ng-click="cancelOutside($event)">
-    <div id="modal_content" ng-init="show()" class="modal-content">
+<div class="modal" ng-click="cancelOutside($event)">
+    <div id="modal_event_content" ng-init="show()" class="modal_event-content">
         <div class="modal-header">
             <span class="close" ng-click="cancel()"><i class="fas fa-times"></i></span>
             <h1>{{today}}</h1>
@@ -23,19 +22,8 @@
                         <textarea ng-model="day_description" name="title" placeholder="설명 추가(50자 이내)" maxlength="50" rows="3"></textarea>
                     </li>
                 </ul>
-                <button id="day_submit" ng-click="addEvent()" name="submit"><i class="far fa-calendar-plus"></i>&nbsp;이벤트 추가&nbsp;&nbsp;</button>
+                <button id="day_submit" name="submit"><i class="far fa-calendar-plus"></i>&nbsp;이벤트 추가&nbsp;&nbsp;</button>
             </form>
-
-            <div class="container_day_list">
-                <div class="day_list">
-                    <div class="item" ng-repeat="event in events">
-                        <span style="display:inline-block; border-radius: 100%; background-color: royalblue; padding:4px; margin-left:10px; margin-right:10px;"></span>
-                        <h3 style="display: inline-block;">{{event.title}}</h3>
-                        <span class="close_item" ng-click="removeEvent($index, event)"><i class="fas fa-minus"></i></span>
-                        <p>{{event.event_description}}</p>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>

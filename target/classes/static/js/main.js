@@ -1,21 +1,8 @@
 $(document).ready(function(){
-    var toggleTheme = getCookie('toggleTheme');
-    if(toggleTheme==null || toggleTheme=='false'){
-        $('body').removeClass("dark");
-    }else{
-        $('body').addClass("dark");
-    }
+    initTheme();
+    initToggleBar();
+    initToggleTodoBar();
 
-    var toggleVal = getCookie('toggleBar');
-    if(toggleVal==null || toggleVal=='false'){
-        $('.mybar').css('right','-300px');
-        $('.mybar_toggle').css('box-shadow','1px 2px 3px 1px rgba(0,0,0,0.2)');
-        $('.container_main').css('width','calc(100% - 80px)');
-    }else{
-        $('.mybar').css('right','0px');
-        $('.mybar_toggle').css('box-shadow','none');
-        $('.container_main').css('width','calc(100% - 380px)');
-    }
     $('.nav').mCustomScrollbar({
         theme: "minimal-dark",
         axis:"y",
@@ -25,6 +12,9 @@ $(document).ready(function(){
         autoDraggerLength: false
     });
 });
+
+var isToggleBar;
+var isToggleTodoBar;
 
 Date.prototype.yyyyMMddHHmmss = function () {
     var yyyy = this.getFullYear().toString();
@@ -36,27 +26,65 @@ Date.prototype.yyyyMMddHHmmss = function () {
     return yyyy + '-'+(MM[1] ? MM : '0'+MM[0]) + '-'+(dd[1] ? dd : '0'+dd[0]) + 'T' + (HH[1]?HH : '0'+HH[0]) + ':' + (mm[1]?mm : '0'+mm[0]) + ':'+(ss[1]?ss:'0'+ss[0])+".000";
 }
 
-function toggleBar() {
-    var val = getCookie('toggleBar');
-    if(val==null || val=='false'){
-        setCookie('toggleBar', true, 7);
-        val = true;
+function initTheme(){
+    var toggleTheme = getCookie('toggleTheme');
+    if(toggleTheme==null || toggleTheme=='false'){
+        $('body').removeClass("dark");
     }else{
-        setCookie('toggleBar', false, 7);
-        val = false;
+        $('body').addClass("dark");
     }
-    $('.mybar').css('transition','0.3s all ease-in-out');
-    $('.container_main').css('transition','0.3s all ease-in-out');
-    if(val){
+}
+
+function toggleBar() {
+    if(isToggleBar==null || isToggleBar===false){
+        setCookie('toggleBar', true, 7);
+        isToggleBar = true;
         $('.mybar').css('right','0px');
         $('.mybar_toggle').css('box-shadow','none');
         $('.container_main').css('width','calc(100% - 380px)');
     }else{
+        setCookie('toggleBar', false, 7);
+        isToggleBar = false;
         $('.mybar').css('right','-300px');
         $('.mybar_toggle').css('box-shadow','1px 2px 3px 1px rgba(0,0,0,0.2)');
         $('.container_main').css('width','calc(100% - 80px)');
     }
+    $('.mybar').css('transition','0.3s all ease-in-out');
+    $('.container_main').css('transition','0.3s all ease-in-out');
 }
+function initToggleBar(){
+    isToggleBar = getCookie('toggleBar') === 'true';
+    if(isToggleBar){
+        $('.mybar').css('right','0px');
+        $('.mybar_toggle').css('box-shadow','none');
+        $('.container_main').css('width','calc(100% - 380px)');
+    }
+}
+
+function toggleTodoBar() {
+    $('.todo_list').css('transition','0.3s height ease-in-out');
+    $('.todo_complete').css('transition','0.3s height ease-in-out');
+
+    if(!isToggleTodoBar){
+        setCookie('toggleTodoBar', true, 7);
+        isToggleTodoBar = true;
+        $('.todo_complete').css('height','40px');
+        $('.todo_list').css('height','calc(100% - 40px)');
+    }else{
+        setCookie('toggleTodoBar', false, 7);
+        isToggleTodoBar = false;
+        $('.todo_list').css('height','50%');
+        $('.todo_complete').css('height','50%');
+    }
+}
+function initToggleTodoBar(){
+    isToggleTodoBar = getCookie('toggleTodoBar') === 'true';
+    if(isToggleTodoBar){
+        $('.todo_list').css('height','calc(100% - 40px)');
+        $('.todo_complete').css('height','40px');
+    }
+}
+
 function setCookie(name, value, exp){
     var date = new Date();
     date.setTime(date.getTime() + exp*24*60*1000);
