@@ -6,19 +6,19 @@ $(document).ready(function(){
 var token = $("meta[name='_csrf']").attr("content");
 var header = $("meta[name='_csrf_header']").attr("content");
 
-var app = angular.module("calendar", ['ngAnimate', 'ui.bootstrap','ngSanitize']);
+var calApp = angular.module("calendar", ['ngAnimate', 'ui.bootstrap','ngSanitize']);
 
-app.config(['$qProvider','$httpProvider', function($qProvider, $httpProvider){
+calApp.config(['$qProvider','$httpProvider', function($qProvider, $httpProvider){
     $qProvider.errorOnUnhandledRejections(false);
     $httpProvider.defaults.headers.common[header] = token;
 }]);
 
-app.controller("calendarWidget", function($scope, $http, $uibModal) {
+calApp.controller("calendarWidget", function($scope, $http, $uibModal) {
     //calendar directive에 selected=day 로 정의를 해 둔 상태, 즉 다른 선택된 값이 없는 초기의 경우에는 selected = day 값.
     $scope.day = moment();
 });
 
-app.directive("calendar", function($uibModal, $http) {
+calApp.directive("calendar", function($uibModal, $http) {
     return {
         restrict: "E",
         templateUrl: "calendar",
@@ -80,11 +80,28 @@ app.directive("calendar", function($uibModal, $http) {
             scope.refresh = function(day ,date, scope){
                 day.items = getDayEvents(date, scope.eventList);
             }
+
+            scope.moveDayEvent = function(fromDate, toDate){
+                // var idx = 0;
+                // var fromIdx = parseInt(fromDate.substring(8));
+                // var toIdx = parseInt(toDate.substring(8));
+                // console.log(fromIdx + " , " + toIdx);
+                // for(var i = 0; i < scope.weeks.length; i++){
+                //     if(scope.weeks[i].number===1){
+                //         break;
+                //     }else{
+                //         idx++;
+                //     }
+                // }
+                // scope.days[fromIdx+(idx-1)].items = getDayEvents(fromDate, scope.eventList);
+                // scope.days[toIdx+(idx-1)].items = getDayEvents(toDate, scope.eventList);
+            }
         }
     };
     function _buildMonth(scope, start, month){
         // 전달 받은 정보로 해당 월의 정보를 만듬.
         scope.weeks = [];
+        scope.days = [];
         var done = false, date = start.clone(), monthIndex = date.month(), count = 0;
         while (!done) {
             // start로 넘어온 일을 시작으로 달의 주정보를 생성 weeks 배열에 추가한다.ㅣ
@@ -100,7 +117,7 @@ app.directive("calendar", function($uibModal, $http) {
         // 한주의 첫번쨰 날과 달의 정보를 받는다.
         var days = []; // 총 7일의 정보가 들어간다.
         for (var i = 0; i < 7; i++) {
-            days.push({
+            var dayEvent ={
                 animation: true,
                 name: date.format("dd").substring(0, 1),
                 number: date.date(),
@@ -109,7 +126,9 @@ app.directive("calendar", function($uibModal, $http) {
                 date: date,
                 dateType: i,
                 items: getDayEvents(new Date(date).yyyyMMddHHmmss().substring(0,10), scope.eventList)
-            });
+            };
+            days.push(dayEvent);
+            scope.days.push(dayEvent);
             date = date.clone();
             date.add(1, "d");
         }
@@ -131,7 +150,7 @@ app.directive("calendar", function($uibModal, $http) {
     }
 });
 
-app.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http) {
+calApp.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http) {
     $scope.events = [];
     $scope.show = function(){
         var posX = $uibModalInstance.positionX;

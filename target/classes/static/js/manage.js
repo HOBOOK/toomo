@@ -1,14 +1,6 @@
 
 
-Date.prototype.yyyyMMddHHmmss = function () {
-    var yyyy = this.getFullYear().toString();
-    var MM = (this.getMonth() + 1).toString();
-    var dd = this.getDate().toString();
-    var HH = this.getHours().toString();
-    var mm = this.getMinutes().toString();
-    var ss = this.getSeconds().toString();
-    return yyyy + '-'+(MM[1] ? MM : '0'+MM[0]) + '-'+(dd[1] ? dd : '0'+dd[0]) + ' ' + (HH[1]?HH : '0'+HH[0]) + ':' + (mm[1]?mm : '0'+mm[0]) + ':'+(ss[1]?ss:'0'+ss[0])+".";
-}
+
 var token = $("meta[name='_csrf']").attr("content");
 var header = $("meta[name='_csrf_header']").attr("content");
 

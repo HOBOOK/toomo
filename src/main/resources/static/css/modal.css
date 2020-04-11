@@ -60,6 +60,7 @@
 
     margin-bottom: 10px;
 }
+
 .form_input_day input{
     border:none;
     box-shadow: none;
@@ -70,7 +71,6 @@
 }
 .form_input_day input[type='text']{
     color: var(--schedule-modal-color);
-    font-size: 21px;
     padding: 3px;
     width:95%;
     border:none;
@@ -81,7 +81,6 @@
     color: var(--schedule-modal-sub-color);
     background-color: transparent;
     font-family: JSDongkang-Regular;
-    font-size: 16px;
     width:95%;
     border:none;
     box-shadow: none;
@@ -186,11 +185,94 @@
     background-color: var(--schedule-modal-background-color);
     color: var(--schedule-modal-color);
     padding: 0;
+    height: auto;
     width:400px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.15),0 6px 20px 0 rgba(0,0,0,0.1);
     animation-name: animateFadeShow;
     animation-duration: 0.4s;
 }
+.modal-header.event{
+    height: 40px;
+    line-height: 40px;
+}
+.modal-body.event{
+    margin-top:0;
+}
+.modal_menu{
+    margin-left:12px;
+}
+.modal_menu i{
+    cursor: pointer;
+    margin-right:10px;
+}
+.form_todo_day{
+    font-family: JSDongkang-Regular;
+}
+.form_todo_day table{
+    margin-top:0;
+    display: inline-block;
+    width: 100%;
+}
+.form_todo_day table td{
+    margin: 10px 10px 10px 10px;
+    padding: 10px;
+}
+
+.form_todo_day input{
+    border:none;
+    box-shadow: none;
+    background-color: transparent;
+    border-radius: 5px;
+}
+.form_todo_day input[type='text']:focus, input[type='date']:focus, input[type='time']:focus{
+    outline: 0;
+    background-color: rgba(0,0,0,0.05);
+}
+.form_todo_day input[type='text'],input[type='date'],input[type='time']{
+    font-family: JSDongkang-Regular;
+    color: var(--schedule-modal-color);
+    padding: 3px;
+    width:95%;
+    border:none;
+    box-shadow: none;
+    transition: background-color 0.3s ease-in-out;
+    -moz-transition: background-color 0.3s ease-in-out;
+    -webkit-transition: background-color 0.3s ease-in-out;
+}
+.form_todo_day textarea{
+    font-family: JSDongkang-Regular;
+    border-radius: 5px;
+    color: var(--schedule-modal-sub-color);
+    background-color: transparent;
+    width:95%;
+    border:none;
+    box-shadow: none;
+    resize: none;
+    overflow: hidden;
+    transition: background-color 0.3s ease-in-out;
+    -moz-transition: background-color 0.3s ease-in-out;
+    -webkit-transition: background-color 0.3s ease-in-out;
+}
+.form_todo_day textarea:focus{
+    outline: none;
+    background-color: rgba(0,0,0,0.05);
+}
+.form_todo_day button{
+    outline: 0;
+    border:none;
+    box-shadow: none;
+    font-size: 18px;
+    padding:10px 20px 10px 20px;
+    margin:0 auto;
+    border-radius: 5px;
+    background-color: transparent;
+    cursor: pointer;
+    color: var(--schedule-modal-sub-color);
+}
+.form_input_day button:hover{
+    background-color: rgba(0,0,0,0.05);
+}
+
 
 
 /* Add Animation */
