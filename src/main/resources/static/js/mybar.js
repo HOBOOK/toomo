@@ -138,6 +138,8 @@ barApp.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http)
             for(var i = 0; i < items.length; i++){
                 if(items[i].id===$scope.event.id){
                     items[i].date_event = $scope.event.date_event;
+                    items[i].title = $scope.event.title;
+                    items[i].event_description = $scope.event.event_description;
                     calAppScope.moveDayEvent(beforeDateEvent,afterDateEvent.substring(0,10));
                     break;
                 }

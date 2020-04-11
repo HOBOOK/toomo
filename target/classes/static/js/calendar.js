@@ -79,35 +79,42 @@ calApp.directive("calendar", function($uibModal, $http) {
 
             scope.refresh = function(day ,date, scope){
                 day.items = getDayEvents(date, scope.eventList);
-            }
+            };
 
             scope.moveDayEvent = function(fromDate, toDate){
-                // var idx = 0;
-                // var fromIdx = parseInt(fromDate.substring(8));
-                // var toIdx = parseInt(toDate.substring(8));
-                // console.log(fromIdx + " , " + toIdx);
-                // for(var i = 0; i < scope.weeks.length; i++){
-                //     if(scope.weeks[i].number===1){
-                //         break;
-                //     }else{
-                //         idx++;
-                //     }
-                // }
-                // scope.days[fromIdx+(idx-1)].items = getDayEvents(fromDate, scope.eventList);
-                // scope.days[toIdx+(idx-1)].items = getDayEvents(toDate, scope.eventList);
+                var fromDay = parseInt(fromDate.substring(8));
+                var toDay = parseInt(toDate.substring(8));
+
+                var fromIdx = Math.floor((fromDay+(scope.startIndex-1))/7);
+                var toIdx = Math.floor((toDay+(scope.startIndex-1))/7);
+                var check = 0;
+                for(var i = 0; i < 7; i++){
+                    if(scope.weeks[fromIdx].days[i].number===fromDay){
+                        scope.weeks[fromIdx].days[i].items = getDayEvents(fromDate, scope.eventList);
+                        check++;
+                    }
+                    if(scope.weeks[toIdx].days[i].number===toDay){
+                        scope.weeks[toIdx].days[i].items = getDayEvents(toDate, scope.eventList);
+                        check++;
+                    }
+                    if(check===2)
+                        break;
+                }
+                scope.$apply();
             }
         }
     };
     function _buildMonth(scope, start, month){
         // 전달 받은 정보로 해당 월의 정보를 만듬.
         scope.weeks = [];
-        scope.days = [];
+        scope.startIndex = -1;
         var done = false, date = start.clone(), monthIndex = date.month(), count = 0;
         while (!done) {
             // start로 넘어온 일을 시작으로 달의 주정보를 생성 weeks 배열에 추가한다.ㅣ
             scope.weeks.push({
                 days: _buildWeek(date.clone(), month, scope)
             });
+
             date.add(1, "w"); // 다음 주로 이동.
             done = count++ > 2 && monthIndex !== date.month(); // 달이 넘어 가면 멈춘다.
             monthIndex = date.month();
@@ -127,8 +134,10 @@ calApp.directive("calendar", function($uibModal, $http) {
                 dateType: i,
                 items: getDayEvents(new Date(date).yyyyMMddHHmmss().substring(0,10), scope.eventList)
             };
+            if(scope.startIndex===-1 && dayEvent.number===1){
+                scope.startIndex = i;
+            }
             days.push(dayEvent);
-            scope.days.push(dayEvent);
             date = date.clone();
             date.add(1, "d");
         }
