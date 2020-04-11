@@ -82,10 +82,12 @@ barApp.controller('barController', function ($scope, $http, $uibModal) {
 });
 
 barApp.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http) {
+    $scope.event = {};
     $scope.show = function(){
         var posX = $uibModalInstance.positionX;
         var posY =  $uibModalInstance.positionY;
         var width = $uibModalInstance.width;
+        $scope.event = $uibModalInstance.eventInfo;
         var elem = document.getElementById('modal_event_content');
 
         if(posX * 2> $(document).width()+200){
