@@ -52,9 +52,8 @@ calApp.directive("calendar", function($uibModal, $http) {
                     controller: "ModalContentCtrl",
                     size: ''
                 });
+                modalInstance.day = day;
                 modalInstance.parent = scope;
-                modalInstance.date = new Date(day.date).yyyyMMddHHmmss();
-                modalInstance.events = day.items;
                 modalInstance.positionX = event.clientX;
                 modalInstance.width = event.target.parentElement.clientWidth;
                 modalInstance.result.then(function (response) {
@@ -161,25 +160,32 @@ calApp.directive("calendar", function($uibModal, $http) {
 
 calApp.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http) {
     $scope.events = [];
+    $scope.day = $uibModalInstance.day;
+    $scope.dateFormat = new Date($scope.day.date);
+    $scope.tabMenuIndex = 0;
+    $scope.target_time = false;
+    $scope.day_event_point = 2;
+    $scope.day_event_point_text = '보통';
     $scope.show = function(){
         var posX = $uibModalInstance.positionX;
         var width = $uibModalInstance.width/2 + 5;
         var elem = document.getElementById('modal_content');
-        var date = $uibModalInstance.date;
-        if($uibModalInstance.events!=null)
-            $scope.events = $uibModalInstance.events;
-        $scope.today = date.substring(0,4)+"년 "+date.substring(5,7)+"월 "+date.substring(8,10)+"일";
+        var date = $scope.dateFormat.yyyyMMddHHmmss();
+        if($scope.day.items!=null)
+            $scope.events = $scope.day.items;
+        $scope.today = parseInt(date.substring(5,7))+"월 "+parseInt(date.substring(8,10))+"일" +"("+$scope.day.name+"요일)";
         if(posX * 2> $(document).width()+200){
             elem.style.marginLeft= posX-(400+width)+'px';
         }else{
             elem.style.marginLeft= posX+width+'px';
         }
-
+        $scope.date_event_end = new Date($scope.day.date);
+        $scope.day_event_time = new Date($scope.day.date);
     }
     $scope.addEvent = function(){
         if($scope.day_title != null && $scope.day_title.length>0){
             var newEvent = {
-                date_event: $uibModalInstance.date.substring(0,10),
+                date_event: $uibModalInstance.day.date.substring(0,10),
                 event_type : 0,
                 title: $scope.day_title,
                 event_description: $scope.day_description
@@ -199,6 +205,8 @@ calApp.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http)
         }
         $scope.day_title = null;
         $scope.day_description = null;
+        $scope.date_event_end = new Date($scope.day.date);
+        $scope.day_event_time = new Date($scope.day.date);
     }
     $scope.removeEvent = function($index, target){
         if(confirm("선택한 이벤트를 삭제하시겠습니까?")){
@@ -238,5 +246,34 @@ calApp.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http)
             $uibModalInstance.parent.selected = null;
             $uibModalInstance.dismiss();
         }, 250);
+    }
+
+    $scope.tabMenuClick = function(index){
+        $scope.tabMenuIndex = index;
+        setTimeout(function () {
+            var height = $('.form_input_day').outerHeight();
+            $('.container_day_list').css('height', 'calc(100% - ' + (height-10) + 'px)');
+        },50)
+    }
+
+    $scope.setEventPoint = function(){
+
+        switch ($scope.day_event_point) {
+            case 0:
+                $scope.day_event_point_text = '매우 낮음';
+                break;
+            case 1:
+                $scope.day_event_point_text = '낮음';
+                break;
+            case 2:
+                $scope.day_event_point_text = '보통';
+                break;
+            case 3:
+                $scope.day_event_point_text = '중요';
+                break;
+            case 4:
+                $scope.day_event_point_text = '매우 중요';
+                break;
+        }
     }
 });
