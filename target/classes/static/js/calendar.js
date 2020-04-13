@@ -183,12 +183,16 @@ calApp.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http)
         $scope.day_event_time = new Date($scope.day.date);
     }
     $scope.addEvent = function(){
+
         if($scope.day_title != null && $scope.day_title.length>0){
             var newEvent = {
-                date_event: $uibModalInstance.day.date.substring(0,10),
-                event_type : 0,
+                date_event: $scope.dateFormat.yyyyMMddHHmmss().substring(0,10),
+                date_event_end: $scope.date_event_end.yyyyMMddHHmmss().substring(0,10),
+                event_type : $scope.tabMenuIndex,
                 title: $scope.day_title,
-                event_description: $scope.day_description
+                event_description: $scope.day_description,
+                event_time: $scope.tabMenuIndex===1 && $scope.target_time ? $scope.day_event_time : null,
+                event_point: $scope.tabMenuIndex===1?$scope.day_event_point : 0
             };
             $http({
                 method: 'POST',
@@ -205,6 +209,7 @@ calApp.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http)
         }
         $scope.day_title = null;
         $scope.day_description = null;
+        $scope.day_event_point = 2;
         $scope.date_event_end = new Date($scope.day.date);
         $scope.day_event_time = new Date($scope.day.date);
     }

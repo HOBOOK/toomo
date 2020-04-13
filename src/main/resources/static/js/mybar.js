@@ -14,9 +14,11 @@ barApp.controller('barController', function ($scope, $http, $uibModal) {
     $http.get('todolist/events').then(function (data) {
         $scope.events = data.data;
         for(var i = 0; i < $scope.events.length; i++){
-            var eTime = $scope.events[i].event_time;
-            $scope.events[i].diff_day = getDiffDay(eTime);
-            $scope.events[i].event_time_string = getEventTimeStringByDateTime(eTime, $scope.events[i].diff_day);
+            if($scope.events[i].event_time===null || $scope.events[i].event_time === ''){
+                $scope.events[i].event_time_string = getEventTimeStringByDateTime($scope.events[i].date_event, false);
+            }else{
+                $scope.events[i].event_time_string = getEventTimeStringByDateTime($scope.events[i].event_time, true);
+            }
         }
     });
     $http.get('todolist/clearevents').then(function (data) {
@@ -25,9 +27,10 @@ barApp.controller('barController', function ($scope, $http, $uibModal) {
 
     $scope.getEventTimeClass = function(day){
         var className = 'todo_event_time';
-        if(day>0){
+        var diffDay = new Date().getDate()- new Date(day).getDate();
+        if(diffDay>0){
             className = 'todo_event_time before';
-        }else if(day<0){
+        }else if(diffDay<0){
             className = 'todo_event_time after';
         }
         return className;
@@ -99,6 +102,19 @@ barApp.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http)
                 }else{
                     $uibModalInstance.parent.clearEvents.splice($uibModalInstance.parent.clearEvents.indexOf($uibModalInstance.eventInfo),1);
                 }
+
+                // 스케쥴페이지 갱신
+                var calAppScope = angular.element(document.querySelector('[ng-app=calendar]')).scope().$$childHead.$$childHead;
+                if(calAppScope==null)
+                    return;
+                var items = calAppScope.eventList;
+                for(var i = 0; i < items.length; i++){
+                    if(items[i].id===$scope.event.id){
+                        items.splice(i,1);
+                        calAppScope.moveDayEvent($scope.event.date_event,$scope.event.date_event);
+                        break;
+                    }
+                }
                 $scope.close();
             }, function errorCallback(response){
                 console.log('error delete -> ' +response);
@@ -127,9 +143,13 @@ barApp.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http)
             
             // 할일 목록창 갱신
             $uibModalInstance.eventInfo = $scope.event;
-            $uibModalInstance.eventInfo.diff_day = getDiffDay($scope.event.event_time);
-            $uibModalInstance.eventInfo.event_time_string = getEventTimeStringByDateTime($scope.event.event_time, $uibModalInstance.eventInfo.diff_day);
-            
+            if($uibModalInstance.event_time==null){
+                $uibModalInstance.eventInfo.event_time_string = getEventTimeStringByDateTime($scope.event.date_event, false);
+            }else{
+                $uibModalInstance.eventInfo.event_time_string = getEventTimeStringByDateTime($scope.event.event_time, true);
+            }
+
+
             // 스케쥴페이지에서 이벤트의 위치를 옮김
             var calAppScope = angular.element(document.querySelector('[ng-app=calendar]')).scope().$$childHead.$$childHead;
             if(calAppScope==null)
@@ -169,24 +189,21 @@ barApp.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http)
     }
 });
 
-function getDiffDay(datetime){
-    return new Date().getDate() - new Date(datetime).getDate();
-}
-function getEventTimeStringByDateTime(datetime, day){
-    if(day===0){
-        day = '오늘';
-    }else if(day===1){
-        day = '어제';
-    }else if(day===-1){
-        day = '내일';
-    }else if(day>=2){
-        day = day + '일전';
-    }else if(day<-1){
-        day = day*-1 + '일후';
+function getEventTimeStringByDateTime(datetime, isTargetTime){
+    var diffday = new Date().getDate() - new Date(datetime).getDate();
+
+    if(diffday===0){
+        diffday = '오늘';
+    }else if(diffday===1){
+        diffday = '어제';
+    }else if(diffday===-1){
+        diffday = '내일';
+    }else if(diffday>=2){
+        diffday = diffday + '일전';
+    }else if(diffday<-1){
+        diffday = diffday*-1 + '일후';
     }
-    var retDate = "";
-    retDate += day + " " + datetime.substring(11,16);
-    return retDate;
+    return isTargetTime ? diffday + " " + datetime.substring(11,16) : diffday;
 }
 
 angular.bootstrap(document.getElementById('mybar'), ['BarApp']);

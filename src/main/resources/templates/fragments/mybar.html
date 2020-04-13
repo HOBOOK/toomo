@@ -17,7 +17,7 @@
                             <span class="todo_event_title">
                             {{event.title}}
                             </span>
-                            <span ng-class="getEventTimeClass(event.diff_day)" class="todo_event_time" ng-if="event.event_time != null">
+                            <span ng-class="getEventTimeClass(event.date_event)" class="todo_event_time" ng-if="event.event_time_string != null">
                                 <i class="far fa-clock"></i>
                                 {{event.event_time_string}}
                             </span>
