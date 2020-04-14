@@ -225,9 +225,21 @@
 .modal_menu{
     margin-left:12px;
 }
-.modal_menu i{
+.modal_menu_cover{
+    border-radius: 100%;
+    background-color: transparent;
+    text-align: center;
+    width:24px;
+    height:24px;
+    line-height: 24px;
+    display: inline-block;
+}
+.modal_menu_cover i{
+    margin:0 auto;
     cursor: pointer;
-    margin-right:10px;
+}
+.modal_menu_cover:hover{
+    background-color: rgba(0,0,0,0.05);
 }
 .form_todo_day{
     font-family: JSDongkang-Regular;
@@ -237,9 +249,13 @@
     display: inline-block;
     width: 100%;
 }
+.form_todo_day tbody{
+    display: table;
+    width: 100%;
+}
 .form_todo_day table td{
-    margin: 10px 10px 10px 10px;
-    padding: 10px;
+    margin: 10px 5px 10px 5px;
+    padding: 5px;
 }
 
 .form_todo_day input{
@@ -263,9 +279,7 @@
     -moz-transition: background-color 0.3s ease-in-out;
     -webkit-transition: background-color 0.3s ease-in-out;
 }
-input[type='date'],input[type='time']{
-    text-align: right;
-}
+
 .form_todo_day textarea{
     font-family: JSDongkang-Regular;
     border-radius: 5px;
@@ -336,6 +350,21 @@ input[type='date'],input[type='time']{
 .tab_box.on {
     display:block;
 }
+
+
+
+
+
+
+
+/* Common */
+input[type=checkbox]{
+    width:16px;
+    height: 16px;
+    margin:0;
+}
+
+
 
 
 /* Add Animation */

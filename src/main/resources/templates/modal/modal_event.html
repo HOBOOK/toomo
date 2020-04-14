@@ -2,11 +2,11 @@
     <div id="modal_event_content" ng-init="show()" class="modal_event-content">
         <div class="modal-header event">
             <span class="modal_menu">
-                <span class="modal_menu_cover">
-                    <i class="far fa-trash-alt" ng-click="removeEvent()"></i>
+                <span class="modal_menu_cover" ng-click="removeEvent()">
+                    <i class="far fa-trash-alt"></i>
                 </span>
-                <span class="modal_menu_cover" ng-click="saveEvent()">
-                    <i class="fas fa-check"></i>
+                <span ng-show="isUpdated" class="modal_menu_cover" ng-click="saveEvent()">
+                    <i class="fas fa-check" style="transition: all 0.3s ease-in-out; -moz-transition: all 0.3s ease-in-out; -webkit-transition: all 0.3s ease-in-out;"></i>
                 </span>
             </span>
             <span class="close" ng-click="cancel()"><i class="fas fa-times"></i></span>
@@ -24,30 +24,36 @@
                 <table>
                     <tr>
                         <td></td>
-                        <td colspan="2">
+                        <td colspan="3">
                             <input class="fs-20" ng-model="event.title" id="day_title" name="title" type="text" maxlength="20" placeholder="제목"/>
                         </td>
                     </tr>
                     <tr>
-                        <td><i class="far fa-clock fs-16"></i></td>
-                        <td>
-                            <input class="fs-16" datetime="yyyy-MM-dd" ng-model="event.event_time_temp" id="day_day" name="event_day" type="date" placeholder="날짜"/>
-                        </td>
-                        <td>
-                            <input class="fs-16" datetime="HH:mm" ng-model="event.event_time_temp" id="day_time" name="event_time" type="time" placeholder="시간"/>
-                        </td>
-                    </tr>
-                    <tr>
                         <td><i class="far fa-comment-dots fs-16"></i></td>
-                        <td colspan="2" rowspan="3">
+                        <td colspan="3" rowspan="2">
                             <textarea class="fs-14" ng-model="event.event_description" name="title" placeholder="설명 추가(50자 이내)" maxlength="50" rows="3"></textarea>
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="3"></td>
+                        <td colspan="4"></td>
                     </tr>
-                    <tr>
-                        <td colspan="3"></td>
+                    <tr ng-show="event.event_type===1">
+                        <td><i class="far fa-clock fs-16"></i></td>
+                        <td>
+                            <input class="fs-14" datetime="yyyy-MM-dd" ng-model="event.event_time_temp" id="day_day" name="event_day" type="date" placeholder="날짜"/>
+                        </td>
+                        <td class="fs-12"><label for="chk_allday" class="fs-12">하루</label><input id="chk_allday" class="chk_target_time" type="checkbox" ng-model="event.isAllDay"/> </td>
+                        <td>
+                            <input class="fs-14" datetime="HH:mm" ng-show="!event.isAllDay" ng-model="event.event_time_temp" id="day_time" name="event_time" type="time" placeholder="시간"/>
+                        </td>
+                    </tr>
+                    <tr ng-show="event.event_type===1">
+                        <td><i class="far fa-star"></i></td>
+                        <td class="fs-12" style="text-align: left; padding-left:10px; color: coral;" ng-bind="event_point_text"></td>
+                        <td></td>
+                        <td>
+                            <input ng-change="setEventPoint($event)" class="fs-14" ng-model="event.event_point" id="day_point" name="event_point" type="range" min="0" max="4"/>
+                        </td>
                     </tr>
                 </table>
             </form>

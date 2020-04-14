@@ -42,21 +42,21 @@
                         <td><i class="far fa-clock fs-16"></i></td>
                         <td style="text-align: left; padding-left:10px;">끝나는 날짜</td>
                         <td>
-                            <input class="fs-14" datetime="yyyy-MM-dd" min="{{dateFormat | date:'yyyy-MM-dd'}}" ng-model="date_event_end" id="day_date_event_end" name="date_event_end" type="date"/>
+                            <input class="fs-12" datetime="yyyy-MM-dd" min="{{dateFormat | date:'yyyy-MM-dd'}}" ng-model="date_event_end" id="day_date_event_end" name="date_event_end" type="date"/>
                         </td>
                     </tr>
                     <tr ng-show="tabMenuIndex==1">
                         <td><i class="far fa-clock fs-16"></i></td>
-                        <td style="text-align: left; padding-left:10px;">특정 시간 <input class="chk_target_time" type="checkbox" ng-model="target_time"/> </td>
+                        <td><label for="chk_allday" class="fs-12" style="float: left; padding-left:10px;">하루</label><input id="chk_allday" class="chk_target_time" type="checkbox" ng-model="isAllDay"/> </td>
                         <td>
-                            <input class="fs-14" ng-show="target_time" datetime="HH:mm" ng-model="day_event_time" id="day_time" name="event_time" type="time"/>
+                            <input class="fs-14" ng-show="!isAllDay" datetime="HH:mm" ng-model="day_event_time" id="day_time" name="event_time" type="time"/>
                         </td>
                     </tr>
                     <tr ng-show="tabMenuIndex==1">
                         <td><i class="far fa-star"></i></td>
-                        <td style="text-align: left; padding-left:10px;" ng-bind="day_event_point_text"></td>
+                        <td class="fs-12" style="text-align: left; padding-left:10px;  color: coral;" ng-bind="day_event_point_text"></td>
                         <td>
-                            <input ng-change="setEventPoint($event)" class="fs-16" ng-model="day_event_point" id="day_point" name="event_point" type="range" min="0" max="4"/>
+                            <input ng-change="setEventPoint($event)" class="fs-14" ng-model="day_event_point" id="day_point" name="event_point" type="range" min="0" max="4"/>
                         </td>
                     </tr>
                 </table>
@@ -66,7 +66,7 @@
 
             <div class="container_day_list">
                 <div class="day_list">
-                    <div class="item" ng-repeat="event in events">
+                    <div class="item" ng-repeat="event in events" ng-click="viewEvent(event, $event)">
                         <span style="display:inline-block; border-radius: 100%; background-color: royalblue; padding:4px; margin-left:10px; margin-right:10px;"></span>
                         <h3 class="fs-14" style="display: inline-block;">{{event.title}}</h3>
                         <span class="close_item" ng-click="removeEvent($index, event)"><i class="fas fa-minus"></i></span>

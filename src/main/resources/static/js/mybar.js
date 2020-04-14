@@ -68,11 +68,14 @@ barApp.controller('barController', function ($scope, $http, $uibModal) {
 
 barApp.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http) {
     $scope.event = {};
+    $scope.isLoadCompleted = false;
+    $scope.isUpdated = false;
     $scope.show = function(){
         var posX = $uibModalInstance.positionX;
         var posY =  $uibModalInstance.positionY;
         var width = $uibModalInstance.width;
         $scope.event = $uibModalInstance.eventInfo;
+        $scope.setEventPoint();
         var elem = document.getElementById('modal_event_content');
 
         if(posX * 2> $(document).width()+200){
@@ -83,10 +86,21 @@ barApp.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http)
         elem.style.marginTop = posY+'px';
         if($scope.event.event_time!=null){
             $scope.event.event_time_temp = new Date($scope.event.event_time);
+            $scope.event.isAllDay = false;
         }else{
             $scope.event.event_time_temp = new Date($scope.event.date_event);
+            $scope.event.isAllDay = true;
         }
+        $scope.isLoadCompleted = true;
     };
+
+    $scope.$watch('event ', function (newValue, oldValue) {
+        if($scope.isLoadCompleted){
+            if(newValue!==oldValue && !$scope.isUpdated ){
+                $scope.isUpdated = true;
+            }
+        }
+    }, true);
     $scope.removeEvent = function(){
         if(confirm("일정을 삭제하시겠습니까?")){
             $http({
@@ -128,25 +142,25 @@ barApp.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http)
            data: {
                id: $scope.event.id,
                date_event: $scope.event.event_time_temp.yyyyMMddHHmmss().substring(0,10),
-               event_time: $scope.event.event_time_temp.yyyyMMddHHmmss(),
+               event_time: $scope.event.isAllDay ? null : $scope.event.event_time_temp.yyyyMMddHHmmss(),
                title: $scope.event.title,
                event_description: $scope.event.event_description,
                event_type: $scope.event.event_type,
-               event_state: $scope.event.event_state
+               event_state: $scope.event.event_state,
+               event_point: $scope.event.event_point
            }
         }).then(function successCallback(response){
             console.log('success update -> ' + response.data);
             var beforeDateEvent = $scope.event.date_event;
             var afterDateEvent = $scope.event.event_time_temp.yyyyMMddHHmmss();
             $scope.event.date_event = afterDateEvent.substring(0,10);
-            $scope.event.event_time = afterDateEvent;
+            $scope.event.event_time = $scope.event.isAllDay ? null : afterDateEvent;
             
             // 할일 목록창 갱신
-            $uibModalInstance.eventInfo = $scope.event;
-            if($uibModalInstance.event_time==null){
-                $uibModalInstance.eventInfo.event_time_string = getEventTimeStringByDateTime($scope.event.date_event, false);
+            if($scope.event.event_time==null){
+                $scope.event.event_time_string = getEventTimeStringByDateTime($scope.event.date_event, false);
             }else{
-                $uibModalInstance.eventInfo.event_time_string = getEventTimeStringByDateTime($scope.event.event_time, true);
+                $scope.event.event_time_string = getEventTimeStringByDateTime($scope.event.event_time, true);
             }
 
 
@@ -164,6 +178,7 @@ barApp.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http)
                     break;
                 }
             }
+            alert('성공적으로 변경된 사항이 저장되었습니다.');
         }, function errorCallback(response){
             console.log('error dupdate -> ' +response);
         });
@@ -187,6 +202,26 @@ barApp.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http)
             $uibModalInstance.dismiss();
         }, 250);
     }
+
+    $scope.setEventPoint = function(){
+        switch ($scope.event.event_point) {
+            case 0:
+                $scope.event_point_text = '매우 낮음';
+                break;
+            case 1:
+                $scope.event_point_text = '낮음';
+                break;
+            case 2:
+                $scope.event_point_text = '보통';
+                break;
+            case 3:
+                $scope.event_point_text = '중요';
+                break;
+            case 4:
+                $scope.event_point_text = '매우 중요';
+                break;
+        }
+    }
 });
 
 function getEventTimeStringByDateTime(datetime, isTargetTime){
@@ -199,11 +234,12 @@ function getEventTimeStringByDateTime(datetime, isTargetTime){
     }else if(diffday===-1){
         diffday = '내일';
     }else if(diffday>=2){
-        diffday = diffday + '일전';
+        diffday = diffday + '일 전';
     }else if(diffday<-1){
-        diffday = diffday*-1 + '일후';
+        diffday = diffday*-1 + '일 후';
     }
     return isTargetTime ? diffday + " " + datetime.substring(11,16) : diffday;
 }
+
 
 angular.bootstrap(document.getElementById('mybar'), ['BarApp']);

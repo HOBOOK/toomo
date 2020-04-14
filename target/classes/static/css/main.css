@@ -45,6 +45,8 @@
 html,body {
     -ms-user-select: none; -moz-user-select: -moz-none; -webkit-user-select: none; -khtml-user-select: none; user-select:none;
     font-family: Raleway-Regular;
+    font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
     max-width: 100%;
     min-width: 100%;
     max-height: 100%;

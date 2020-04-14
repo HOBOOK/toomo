@@ -60,6 +60,22 @@ calApp.directive("calendar", function($uibModal, $http) {
                     scope.result = '${response} button hitted';
                 });
             };
+            //일정 선택 이벤트
+            scope.viewEvent = function(event, $event) {
+                var modalInstance = $uibModal.open({
+                    templateUrl: "modal/modal_event",
+                    controller: "ModalEventContentCtrl",
+                    size: ''
+                });
+                modalInstance.positionX = $event.currentTarget.getBoundingClientRect().x;
+                modalInstance.positionY = $event.currentTarget.getBoundingClientRect().y;
+                modalInstance.width = $event.currentTarget.clientWidth;
+                modalInstance.parent = scope;
+                modalInstance.eventInfo = event;
+                modalInstance.result.then(function (response) {
+                    scope.result = '${response} button hitted';
+                });
+            };
             // 다음달 로 넘기는 이벤트
             scope.next = function() {
                 var next = scope.month.clone();
@@ -149,9 +165,18 @@ calApp.directive("calendar", function($uibModal, $http) {
 
     function getDayEvents(id, list){
         var dayEvents = [];
+        var targetDay = new Date(id);
         for(var i = 0; i < list.length; i++){
-            if (list[i]["date_event"] === id) {
-                dayEvents.push(list[i]);
+            if(list[i].event_type===0){
+                if (list[i]["date_event"] === id) {
+                    dayEvents.push(list[i]);
+                }else if (new Date(list[i]["date_event"])<=targetDay && new Date(list[i]["date_event_end"])>=targetDay) {
+                    dayEvents.push(list[i]);
+                }
+            }else if(list[i].event_type===1){
+                if (list[i]["date_event"] === id) {
+                    dayEvents.push(list[i]);
+                }
             }
         }
         return dayEvents;
@@ -163,9 +188,12 @@ calApp.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http)
     $scope.day = $uibModalInstance.day;
     $scope.dateFormat = new Date($scope.day.date);
     $scope.tabMenuIndex = 0;
-    $scope.target_time = false;
+    $scope.isAllDay = true;
     $scope.day_event_point = 2;
     $scope.day_event_point_text = '보통';
+    $scope.viewEvent = function(event, $event){
+        $uibModalInstance.parent.viewEvent(event, $event);
+    }
     $scope.show = function(){
         var posX = $uibModalInstance.positionX;
         var width = $uibModalInstance.width/2 + 5;
@@ -191,7 +219,7 @@ calApp.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http)
                 event_type : $scope.tabMenuIndex,
                 title: $scope.day_title,
                 event_description: $scope.day_description,
-                event_time: $scope.tabMenuIndex===1 && $scope.target_time ? $scope.day_event_time : null,
+                event_time: $scope.tabMenuIndex===1 && !$scope.isAllDay ? $scope.day_event_time : null,
                 event_point: $scope.tabMenuIndex===1?$scope.day_event_point : 0
             };
             $http({
@@ -262,7 +290,6 @@ calApp.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http)
     }
 
     $scope.setEventPoint = function(){
-
         switch ($scope.day_event_point) {
             case 0:
                 $scope.day_event_point_text = '매우 낮음';
@@ -282,3 +309,161 @@ calApp.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http)
         }
     }
 });
+
+calApp.controller('ModalEventContentCtrl', function($scope, $uibModalInstance, $http) {
+    $scope.event = {};
+    $scope.isLoadCompleted = false;
+    $scope.isUpdated = false;
+    $scope.show = function(){
+        var posX = $uibModalInstance.positionX;
+        var posY =  $uibModalInstance.positionY;
+        var width = $uibModalInstance.width;
+        $scope.event = $uibModalInstance.eventInfo;
+        $scope.setEventPoint();
+        var elem = document.getElementById('modal_event_content');
+
+        if(posX * 2> $(document).width()+200){
+            elem.style.marginLeft= posX-(405)+'px';
+        }else{
+            elem.style.marginLeft= posX+(width)+'px';
+        }
+        elem.style.marginTop = posY+'px';
+        if($scope.event.event_time!=null){
+            $scope.event.event_time_temp = new Date($scope.event.event_time);
+            $scope.event.isAllDay = false;
+        }else{
+            $scope.event.event_time_temp = new Date($scope.event.date_event);
+            $scope.event.isAllDay = true;
+        }
+        $scope.isLoadCompleted = true;
+    };
+
+    $scope.$watch('event ', function (newValue, oldValue) {
+        if($scope.isLoadCompleted && newValue!==oldValue && !$scope.isUpdated ){
+            $scope.isUpdated = true;
+
+        }
+    }, true);
+    $scope.removeEvent = function(){
+        if(confirm("일정을 삭제하시겠습니까?")){
+            $http({
+                method: 'DELETE',
+                url: 'schedule/delete',
+                params: {id:$scope.event.id},
+                headers: {
+                    'Content-type': 'application/json;charset=utf-8'
+                }
+            }).then(function successCallback(response){
+                if($scope.event.event_state==0){
+                    $uibModalInstance.parent.events.splice($uibModalInstance.parent.events.indexOf($uibModalInstance.eventInfo),1);
+                }else{
+                    $uibModalInstance.parent.clearEvents.splice($uibModalInstance.parent.clearEvents.indexOf($uibModalInstance.eventInfo),1);
+                }
+
+                // 스케쥴페이지 갱신
+                var calAppScope = angular.element(document.querySelector('[ng-app=calendar]')).scope().$$childHead.$$childHead;
+                if(calAppScope==null)
+                    return;
+                var items = calAppScope.eventList;
+                for(var i = 0; i < items.length; i++){
+                    if(items[i].id===$scope.event.id){
+                        items.splice(i,1);
+                        calAppScope.moveDayEvent($scope.event.date_event,$scope.event.date_event);
+                        break;
+                    }
+                }
+                $scope.close();
+            }, function errorCallback(response){
+                console.log('error delete -> ' +response);
+            });
+        }
+    }
+    $scope.saveEvent = function(){
+        $http({
+            method: 'PUT',
+            url: 'schedule/create',
+            data: {
+                id: $scope.event.id,
+                date_event: $scope.event.event_time_temp.yyyyMMddHHmmss().substring(0,10),
+                event_time: $scope.event.isAllDay ? null : $scope.event.event_time_temp.yyyyMMddHHmmss(),
+                title: $scope.event.title,
+                event_description: $scope.event.event_description,
+                event_type: $scope.event.event_type,
+                event_state: $scope.event.event_state,
+                event_point: $scope.event.event_point
+            }
+        }).then(function successCallback(response){
+            console.log('success update -> ' + response.data);
+            var beforeDateEvent = $scope.event.date_event;
+            var afterDateEvent = $scope.event.event_time_temp.yyyyMMddHHmmss();
+            $scope.event.date_event = afterDateEvent.substring(0,10);
+            $scope.event.event_time = $scope.event.isAllDay ? null : afterDateEvent;
+
+            // 할일 목록창 갱신
+            if($scope.event.event_time==null){
+                $scope.event.event_time_string = getEventTimeStringByDateTime($scope.event.date_event, false);
+            }else{
+                $scope.event.event_time_string = getEventTimeStringByDateTime($scope.event.event_time, true);
+            }
+
+
+            // 스케쥴페이지에서 이벤트의 위치를 옮김
+            var calAppScope = angular.element(document.querySelector('[ng-app=calendar]')).scope().$$childHead.$$childHead;
+            if(calAppScope==null)
+                return;
+            var items = calAppScope.eventList;
+            for(var i = 0; i < items.length; i++){
+                if(items[i].id===$scope.event.id){
+                    items[i].date_event = $scope.event.date_event;
+                    items[i].title = $scope.event.title;
+                    items[i].event_description = $scope.event.event_description;
+                    calAppScope.moveDayEvent(beforeDateEvent,afterDateEvent.substring(0,10));
+                    break;
+                }
+            }
+            alert('성공적으로 변경된 사항이 저장되었습니다.');
+        }, function errorCallback(response){
+            console.log('error dupdate -> ' +response);
+        });
+    }
+    $scope.ok = function(){
+        $uibModalInstance.close("Ok");
+    }
+    $scope.cancel = function(){
+        $scope.close();
+    }
+    $scope.cancelOutside = function($event){
+        if($event.target==$event.currentTarget){
+            $scope.close();
+        }
+    }
+    $scope.close = function(){
+        var elem = document.getElementById('modal_event_content');
+        elem.style.animationName='animateFadeHide';
+        elem.style.opacity='0';
+        setTimeout(function() {
+            $uibModalInstance.dismiss();
+        }, 250);
+    }
+
+    $scope.setEventPoint = function(){
+        switch ($scope.event.event_point) {
+            case 0:
+                $scope.event_point_text = '매우 낮음';
+                break;
+            case 1:
+                $scope.event_point_text = '낮음';
+                break;
+            case 2:
+                $scope.event_point_text = '보통';
+                break;
+            case 3:
+                $scope.event_point_text = '중요';
+                break;
+            case 4:
+                $scope.event_point_text = '매우 중요';
+                break;
+        }
+    }
+});
+
