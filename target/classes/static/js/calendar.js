@@ -16,6 +16,13 @@ calApp.config(['$qProvider','$httpProvider', function($qProvider, $httpProvider)
 calApp.controller("calendarWidget", function($scope, $http, $uibModal) {
     //calendar directive에 selected=day 로 정의를 해 둔 상태, 즉 다른 선택된 값이 없는 초기의 경우에는 selected = day 값.
     $scope.day = moment();
+
+    $(window).resize(function() {
+        $scope.$apply(function() {
+            var day_cover_height = $('.container_days').height()/$scope.$$childHead.weeks.length-30;
+            $scope.$$childHead.day_event_length = Math.floor(day_cover_height/22);
+        });
+    });
 });
 
 calApp.directive("calendar", function($uibModal, $http) {
@@ -39,6 +46,9 @@ calApp.directive("calendar", function($uibModal, $http) {
                 scope.eventList = data.data;
                 _removeTime(start.day(0)); // 이달의 첫일의 일요일 날짜의 객체를 시작일로 세팅.
                 _buildMonth(scope, start, scope.month); // scope와 시작일, 해당 월의 정보를 넘긴다.
+
+                var day_cover_height = $('.container_days').height()/scope.weeks.length-30;
+                scope.day_event_length = Math.floor(day_cover_height/22);
             }, function errorCallback(response){
                 console.log('error get Events -> ' +response);
             });
@@ -117,6 +127,20 @@ calApp.directive("calendar", function($uibModal, $http) {
                 }
                 scope.$apply();
             }
+            scope.hoverEvent = function (item, $event) {
+                if(item.event_type!==0) return;
+                var elements = document.getElementsByClassName('item ' + item.id);
+                for(var i = 0; i < elements.length; i++){
+                    elements[i].style.backgroundColor="royalblue";
+                }
+            }
+            scope.leaveEvent = function (item, $event) {
+                if(item.event_type!==0) return;
+                var elements = document.getElementsByClassName('item ' + item.id);
+                for(var i = 0; i < elements.length; i++){
+                    elements[i].style.backgroundColor="#7575FF";
+                }
+            }
         }
     };
     function _buildMonth(scope, start, month){
@@ -168,9 +192,16 @@ calApp.directive("calendar", function($uibModal, $http) {
         var targetDay = new Date(id);
         for(var i = 0; i < list.length; i++){
             if(list[i].event_type===0){
+                var startDate = new Date(list[i]["date_event"]);
+                var endDate = new Date(list[i]["date_event_end"]);
                 if (list[i]["date_event"] === id) {
+                    list[i].pos = 'start';
                     dayEvents.push(list[i]);
-                }else if (new Date(list[i]["date_event"])<=targetDay && new Date(list[i]["date_event_end"])>=targetDay) {
+                }else if(list[i]["date_event_end"] === id){
+                    list[i].pos = 'end';
+                    dayEvents.push(list[i]);
+                }else if(targetDay>=startDate && targetDay <= endDate){
+                    list[i].pos = 'path';
                     dayEvents.push(list[i]);
                 }
             }else if(list[i].event_type===1){
@@ -336,6 +367,7 @@ calApp.controller('ModalEventContentCtrl', function($scope, $uibModalInstance, $
             $scope.event.isAllDay = true;
         }
         $scope.isLoadCompleted = true;
+
     };
 
     $scope.$watch('event ', function (newValue, oldValue) {
@@ -443,7 +475,7 @@ calApp.controller('ModalEventContentCtrl', function($scope, $uibModalInstance, $
         elem.style.opacity='0';
         setTimeout(function() {
             $uibModalInstance.dismiss();
-        }, 250);
+        }, 200);
     }
 
     $scope.setEventPoint = function(){
@@ -466,4 +498,3 @@ calApp.controller('ModalEventContentCtrl', function($scope, $uibModalInstance, $
         }
     }
 });
-

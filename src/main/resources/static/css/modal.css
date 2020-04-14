@@ -18,6 +18,9 @@
     float: right;
     font-size: 18px;
     margin-right:20px;
+    transition: 0.2s color ease-in-out;
+    -moz-transition: 0.2s color ease-in-out;
+    -webkit-transition: 0.2s color ease-in-out;
 }
 
 .close:hover,
@@ -197,7 +200,7 @@
     width:400px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.15),0 6px 20px 0 rgba(0,0,0,0.1);
     animation-name: animateShow;
-    animation-duration: 0.4s;
+    animation-duration: 0.2s;
 
 }
 
@@ -213,7 +216,7 @@
     width:400px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.15),0 6px 20px 0 rgba(0,0,0,0.1);
     animation-name: animateFadeShow;
-    animation-duration: 0.4s;
+    animation-duration: 0.2s;
 }
 .modal-header.event{
     height: 40px;
@@ -229,17 +232,21 @@
     border-radius: 100%;
     background-color: transparent;
     text-align: center;
-    width:24px;
-    height:24px;
-    line-height: 24px;
+    width:32px;
+    height:32px;
+    line-height: 32px;
     display: inline-block;
 }
 .modal_menu_cover i{
     margin:0 auto;
     cursor: pointer;
+    color: #666666;
+    transition: 0.2s color ease-in-out;
+    -moz-transition: 0.2s color ease-in-out;
+    -webkit-transition: 0.2s color ease-in-out;
 }
-.modal_menu_cover:hover{
-    background-color: rgba(0,0,0,0.05);
+.modal_menu_cover:hover > i{
+    color: #333333;
 }
 .form_todo_day{
     font-family: JSDongkang-Regular;
