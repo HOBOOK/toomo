@@ -125,8 +125,11 @@
     margin-bottom: 5px;
     position: relative;
     display: inline-block;
+    width: 300px;
     width: var(--memo-width);
+    height: 340px;
     height: var(--memo-height);
+    background-color: antiquewhite;
     background-color: var(--memo-background-color);
     border: 1px solid rgba(0,0,0,0.1);
     border-radius: 2px;

@@ -3,43 +3,51 @@
 
 @font-face {
     font-family: Poppins-Regular;
-    src: url('../fonts/poppins/Poppins-Regular.ttf');
+    src: url('../fonts/poppins/Poppins-Regular.ttf') format("truetype");
+    src: url('../fonts/poppins/Poppins-Regular.eot');
 }
 
 @font-face {
     font-family: Poppins-Bold;
-    src: url('../fonts/poppins/Poppins-Bold.ttf');
+    src: url('../fonts/poppins/Poppins-Bold.ttf') format("truetype");
+    src: url('../fonts/poppins/Poppins-Bold.eot');
 }
 
 @font-face {
     font-family: Poppins-Medium;
-    src: url('../fonts/poppins/Poppins-Medium.ttf');
+    src: url('../fonts/poppins/Poppins-Medium.ttf') format("truetype");
+    src: url('../fonts/poppins/Poppins-Medium.eot');
 }
 
 @font-face {
     font-family: Raleway-Regular;
-    src: url('../fonts/raleway/Raleway-Regular.ttf');
+    src: url('../fonts/raleway/Raleway-Regular.ttf') format("truetype");
+    src: url('../fonts/raleway/Raleway-Regular.eot');
 }
 
 @font-face {
     font-family: Raleway-Black;
-    src: url('../fonts/raleway/Raleway-Black.ttf');
+    src: url('../fonts/raleway/Raleway-Black.ttf') format("truetype");
+    src: url('../fonts/raleway/Raleway-Black.eot');
 }
 
 @font-face {
     font-family: Raleway-SemiBold;
-    src: url('../fonts/raleway/Raleway-SemiBold.ttf');
+    src: url('../fonts/raleway/Raleway-SemiBold.ttf') format("truetype");
+    src: url('../fonts/raleway/Raleway-SemiBold.eot');
 }
 
 @font-face {
     font-family: Raleway-Bold;
-    src: url('../fonts/raleway/Raleway-Bold.ttf');
+    src: url('../fonts/raleway/Raleway-Bold.ttf') format("truetype");
+    src: url('../fonts/raleway/Raleway-Bold.eot');
 }
 
 
 @font-face{
     font-family: JSDongkang-Regular;
-    src: url('../fonts/JSDongkang-Regular/JSDongkang-Regular.ttf');
+    src: url('../fonts/JSDongkang-Regular/JSDongkang-Regular.ttf') format("truetype");
+    src: url('../fonts/JSDongkang-Regular/JSDongkang-Regular.eot')
 }
 
 html,body {
