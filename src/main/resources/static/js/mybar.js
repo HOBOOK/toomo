@@ -20,6 +20,7 @@ barApp.controller('barController', function ($scope, $http, $uibModal) {
                 $scope.events[i].event_time_string = getEventTimeStringByDateTime($scope.events[i].event_time, true);
             }
         }
+
     });
     $http.get('todolist/clearevents').then(function (data) {
         $scope.clearEvents = data.data;
@@ -53,6 +54,7 @@ barApp.controller('barController', function ($scope, $http, $uibModal) {
             controller: "ModalContentCtrl",
             size: ''
         });
+        modalInstance.calendarAppScope = angular.element(document.querySelector('[ng-app=calendar]')).scope().$$childHead.$$childHead;
         modalInstance.positionX = $event.currentTarget.getBoundingClientRect().x;
         modalInstance.positionY = $event.currentTarget.getBoundingClientRect().y;
         modalInstance.width = $event.currentTarget.clientWidth;
@@ -62,8 +64,6 @@ barApp.controller('barController', function ($scope, $http, $uibModal) {
             $scope.result = '${response} button hitted';
         });
     };
-
-
 });
 
 barApp.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http) {
@@ -118,14 +118,11 @@ barApp.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http)
                 }
 
                 // 스케쥴페이지 갱신
-                var calAppScope = angular.element(document.querySelector('[ng-app=calendar]')).scope().$$childHead.$$childHead;
-                if(calAppScope==null)
-                    return;
-                var items = calAppScope.eventList;
+                var items = $uibModalInstance.calendarAppScope.eventList;
                 for(var i = 0; i < items.length; i++){
                     if(items[i].id===$scope.event.id){
                         items.splice(i,1);
-                        calAppScope.moveDayEvent($scope.event.date_event,$scope.event.date_event);
+                        $uibModalInstance.calendarAppScope.moveDayEvent($scope.event.date_event,$scope.event.date_event);
                         break;
                     }
                 }
@@ -163,18 +160,14 @@ barApp.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http)
                 $scope.event.event_time_string = getEventTimeStringByDateTime($scope.event.event_time, true);
             }
 
-
             // 스케쥴페이지에서 이벤트의 위치를 옮김
-            var calAppScope = angular.element(document.querySelector('[ng-app=calendar]')).scope().$$childHead.$$childHead;
-            if(calAppScope==null)
-                return;
-            var items = calAppScope.eventList;
+            var items = $uibModalInstance.calendarAppScope.eventList;
             for(var i = 0; i < items.length; i++){
                 if(items[i].id===$scope.event.id){
                     items[i].date_event = $scope.event.date_event;
                     items[i].title = $scope.event.title;
                     items[i].event_description = $scope.event.event_description;
-                    calAppScope.moveDayEvent(beforeDateEvent,afterDateEvent.substring(0,10));
+                    $uibModalInstance.calendarAppScope.moveDayEvent(beforeDateEvent,afterDateEvent.substring(0,10));
                     break;
                 }
             }

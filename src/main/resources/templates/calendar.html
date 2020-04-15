@@ -16,7 +16,7 @@
     <div ng-repeat="week in weeks" ng-class="{ true: 'week', false: 'week six' }[weeks.length===6]">
         <span class="day" ng-class="{ today: day.isToday, 'different-month': !day.isCurrentMonth, selected: day.date.isSame(selected) }"  ng-repeat="day in week.days">
             <p ng-class="{'day_number holiday': $index===0, 'day_number saturday': $index===6, 'day_number': $index!=0 && $index!=6}"  ng-click="select(day, $event)">{{day.number}}</p><br/>
-            <div ng-mouseover="hoverEvent(item, $event)" ng-mouseleave="leaveEvent(item, $event)" ng-show="(day.items.length<=day_event_length && $index<day_event_length) || (day.items.length>day_event_length && $index<day_event_length-1)" ng-click="viewEvent(item, $event)" ng-class="{0:'item ' + item.id, 1:'item todo'}[item.event_type]" ng-repeat="item in day.items" >
+            <div ng-mouseover="hoverEvent(item, $event)" ng-mouseleave="leaveEvent(item, $event)" ng-show="(day.items.length<=day_event_length && $index<day_event_length) || (day.items.length>day_event_length && $index<day_event_length-1)" ng-click="viewEvent(day, item, $event)" ng-class="{0:'item ' + item.id, 1:'item todo'}[item.event_type]" ng-repeat="item in day.items" >
 <!--                <span style="display:inline-block; border-radius: 100%; background-color: royalblue; padding:4px; margin-left:10px; margin-right:10px;"></span>-->
                 <span ng-show="item.event_type===1" style="margin:3px;"><i class="far fa-calendar-check"></i></span> {{item.title}}
             </div>

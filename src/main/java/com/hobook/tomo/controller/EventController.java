@@ -88,7 +88,7 @@ public class EventController {
     {
         try{
             eventDto.setCreator(principal.getName());
-            eventService.saveEvent(eventDto);
+            eventDto.setId(eventService.saveEvent(eventDto));
             return new ResponseEntity(eventDto, HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity("Error", HttpStatus.BAD_REQUEST);

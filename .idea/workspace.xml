@@ -3,14 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="e8dee576-308c-4951-92c8-237d8e03e46f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/calendar.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/calendar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/modal.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/modal.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/controller/EventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/controller/EventController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/calendar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/calendar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/mybar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/mybar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/calendar.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/calendar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/modal/modal_event.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/modal/modal_event.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/calendar.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/calendar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/schedule.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/schedule.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/js/calendar.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/calendar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/calendar.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/calendar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/schedule.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/schedule.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -198,6 +200,7 @@
       <workItem from="1586774735785" duration="5967000" />
       <workItem from="1586834730585" duration="14674000" />
       <workItem from="1586860355185" duration="9167000" />
+      <workItem from="1586918065078" duration="11713000" />
     </task>
     <servers />
   </component>
@@ -272,8 +275,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/main/resources/static/js/calendar.js</url>
-          <line>343</line>
-          <properties lambdaOrdinal="-1" />
+          <line>390</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
