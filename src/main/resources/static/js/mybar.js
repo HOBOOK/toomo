@@ -39,9 +39,30 @@ barApp.controller('barController', function ($scope, $http, $uibModal) {
 
     $scope.clearEvent = function($index){
         var e = $scope.events[$index];
-        $scope.clearEvents.push(e);
-        $scope.events.splice($index, 1);
-
+        e.event_state = 1;
+        $http({
+            method: 'PUT',
+            url: 'schedule/create',
+            data: e
+        }).then(function successCallback(response){
+            console.log('success update -> ' + response.data);
+            $scope.clearEvents.push(e);
+            $scope.events.splice($index, 1);
+            // 스케쥴페이지에서 이벤트의 위치를 옮김
+            var calAppScope = angular.element(document.querySelector('[ng-app=calendar]')).scope().$$childHead.$$childHead;
+            var items = calAppScope.eventList;
+            for(var i = 0; i < items.length; i++){
+                if(items[i].id===e.id){
+                    items[i].event_state = 1;
+                    calAppScope.$apply();
+                    break;
+                }
+            }
+            alert('성공적으로 변경된 사항이 저장되었습니다.');
+        }, function errorCallback(response){
+            e.event_state = 0;
+            console.log('error update -> ' +response);
+        });
     };
 
     $scope.summaryEvent = function(){
@@ -49,6 +70,9 @@ barApp.controller('barController', function ($scope, $http, $uibModal) {
     };
 
     $scope.select = function(event, $event) {
+        if($event.target.className.includes('check')){
+            return;
+        }
         var modalInstance = $uibModal.open({
             templateUrl: "modal/modal_event",
             controller: "ModalContentCtrl",

@@ -153,6 +153,14 @@ calApp.directive("calendar", function($uibModal, $http) {
                     }
                 }
             };
+            scope.viewAllUpdate = function(){
+                for(var i = 0; scope.weeks.length; i++){
+                    for(var j = 0; j < scope.weeks[i].days.length; j++){
+                        scope.weeks[i].days[j].items = getDayEvents(scope.weeks[i].days[j].date._d.yyyyMMdd(), scope.eventList);
+                    }
+                }
+                return true;
+            };
             scope.hoverEvent = function (item, $event) {
                 if(item.event_type!==0) return;
                 var elements = document.getElementsByClassName('item ' + item.id);
@@ -288,7 +296,6 @@ calApp.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http)
                 newEvent.id = response.data.id;
                 $scope.events.push(newEvent);
                 $uibModalInstance.parent.eventList.push(newEvent);
-                $uibModalInstance.parent.viewUpdate(newEvent.date_event, newEvent.date_event_end);
                 if(newEvent.event_type===1){
                     // TodoList 갱신
                     if($uibModalInstance.todoListAppScope==null){
@@ -298,6 +305,7 @@ calApp.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http)
                     $uibModalInstance.todoListAppScope.events.push(newEvent);
                     $uibModalInstance.todoListAppScope.$apply();
                 }
+                $uibModalInstance.parent.viewAllUpdate();
                 console.log('success create -> ' + response);
             }, function errorCallback(response){
                 console.log('error create -> ' +response);
@@ -323,14 +331,14 @@ calApp.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http)
             }).then(function successCallback(response){
                 console.log(response);
                 $scope.events.splice($index,1);
-
                 for(var i = 0; i < $uibModalInstance.parent.eventList.length; i++){
                     if($uibModalInstance.parent.eventList[i].id===[target.id]){
                         $uibModalInstance.parent.eventList.splice(i,1);
-                        $uibModalInstance.parent.viewUpdate(target.date_event, target.date_event_end);
+                        $uibModalInstance.parent.viewAllUpdate();
                         break;
                     }
                 }
+
             }, function errorCallback(response){
                 console.log('error delete -> ' +response);
             });
@@ -405,12 +413,24 @@ calApp.controller('ModalEventContentCtrl', function($scope, $uibModalInstance, $
         }else{
             elem.style.marginLeft= posX+(width)+'px';
         }
-        elem.style.marginTop = posY+'px';
+        var correctHeight = window.outerHeight - (posY + elem.offsetHeight);
+
+        if(correctHeight<20){
+            if($scope.event.event_type===0)
+                elem.style.marginTop = posY - 164 +'px';
+            else if($scope.event.event_type===1){
+                elem.style.marginTop = posY - 248 +'px';
+            }
+        }else{
+            elem.style.marginTop = posY+'px';
+        }
+
         if($scope.event.event_time!=null){
             $scope.event.event_time_temp = new Date($scope.event.event_time);
             $scope.event.isAllDay = false;
         }else{
             $scope.event.event_time_temp = new Date($scope.event.date_event);
+            $scope.event.event_time_end_temp = new Date($scope.event.date_event_end);
             $scope.event.isAllDay = true;
         }
         $scope.isLoadCompleted = true;
@@ -420,7 +440,6 @@ calApp.controller('ModalEventContentCtrl', function($scope, $uibModalInstance, $
     $scope.$watch('event ', function (newValue, oldValue) {
         if($scope.isLoadCompleted && newValue!==oldValue && !$scope.isUpdated ){
             $scope.isUpdated = true;
-
         }
     }, true);
     $scope.removeEvent = function(){
@@ -445,14 +464,15 @@ calApp.controller('ModalEventContentCtrl', function($scope, $uibModalInstance, $
                         }
                     }
                 }
+
                 for(var j = 0; j < $uibModalInstance.parent.eventList.length; j++){
                     if($uibModalInstance.parent.eventList[j].id===$scope.event.id){
+                        $scope.close();
                         $uibModalInstance.parent.eventList.splice(j,1);
-                        $uibModalInstance.parent.viewUpdate($scope.event.date_event, $scope.event.date_event_end);
+                        $uibModalInstance.parent.viewAllUpdate();
                         break;
                     }
                 }
-                $scope.close();
             }, function errorCallback(response){
                 console.log('error delete -> ' +response);
             });
@@ -465,6 +485,7 @@ calApp.controller('ModalEventContentCtrl', function($scope, $uibModalInstance, $
             data: {
                 id: $scope.event.id,
                 date_event: $scope.event.event_time_temp.yyyyMMddHHmmss().substring(0,10),
+                date_event_end: $scope.event.event_time_end_temp.yyyyMMddHHmmss().substring(0,10),
                 event_time: $scope.event.isAllDay ? null : $scope.event.event_time_temp.yyyyMMddHHmmss(),
                 title: $scope.event.title,
                 event_description: $scope.event.event_description,
@@ -474,28 +495,35 @@ calApp.controller('ModalEventContentCtrl', function($scope, $uibModalInstance, $
             }
         }).then(function successCallback(response){
             console.log('success update -> ' + response);
-            var beforeDateEvent = $scope.event.date_event;
-            var afterDateEvent = $scope.event.event_time_temp.yyyyMMddHHmmss();
-            $scope.event.date_event = afterDateEvent.substring(0,10);
-            $scope.event.event_time = $scope.event.isAllDay ? null : afterDateEvent;
+            alert('성공적으로 변경된 사항이 저장되었습니다.');
+            if($scope.event.event_type===0){
+                $scope.event.date_event = $scope.event.event_time_temp.yyyyMMddHHmmss();
+                $scope.event.date_event_end = $scope.event.event_time_end_temp.yyyyMMddHHmmss();
+                $uibModalInstance.parent.viewAllUpdate();
+            }else{
+                var beforeDateEvent = $scope.event.date_event;
+                var afterDateEvent = $scope.event.event_time_temp.yyyyMMddHHmmss();
+                $scope.event.date_event = afterDateEvent.substring(0,10);
+                $scope.event.event_time = $scope.event.isAllDay ? null : afterDateEvent;
 
-            // 할일 목록창 갱신
-            if($scope.event.event_time==null){
-                $scope.event.event_time_string = getEventTimeStringByDateTime($scope.event.date_event, false);
-            }else {
-                $scope.event.event_time_string = getEventTimeStringByDateTime($scope.event.event_time, true);
-            }
-            var todoListScopeEvents = $uibModalInstance.todoListAppScope.events;
-            for(var i = 0; i < todoListScopeEvents.length; i++){
-                if(todoListScopeEvents[i].id===$scope.event.id){
-                    todoListScopeEvents[i] = $scope.event;
-                    $uibModalInstance.todoListAppScope.$apply();
-                    $uibModalInstance.parent.moveDayEvent(beforeDateEvent,afterDateEvent.substring(0,10));
-                    $uibModalInstance.parent.$apply();
-                    break;
+                // 할일 목록창 갱신
+                if($scope.event.event_time==null){
+                    $scope.event.event_time_string = getEventTimeStringByDateTime($scope.event.date_event, false);
+                }else {
+                    $scope.event.event_time_string = getEventTimeStringByDateTime($scope.event.event_time, true);
+                }
+                var todoListScopeEvents = $uibModalInstance.todoListAppScope.events;
+                for(var i = 0; i < todoListScopeEvents.length; i++){
+                    if(todoListScopeEvents[i].id===$scope.event.id){
+                        todoListScopeEvents[i] = $scope.event;
+                        $uibModalInstance.todoListAppScope.$apply();
+                        $uibModalInstance.parent.moveDayEvent(beforeDateEvent,afterDateEvent.substring(0,10));
+                        $uibModalInstance.parent.$apply();
+                        break;
+                    }
                 }
             }
-            alert('성공적으로 변경된 사항이 저장되었습니다.');
+
         }, function errorCallback(response){
             console.log('error dupdate -> ' +response);
         });

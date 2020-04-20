@@ -146,6 +146,12 @@ calendar div.item.more{
     font-weight: 700;
     opacity: 0.8;
 }
+calendar span.item_todo{
+    text-decoration: none;
+}
+calendar span.item_todo.clear{
+    text-decoration: line-through;
+}
 calendar p.day_number{
     display: inline-block;
     cursor:pointer;
