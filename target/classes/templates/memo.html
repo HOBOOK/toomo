@@ -4,7 +4,12 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorator="layout/layout_main">
 <th:block layout:fragment="title">TOMO | 메모</th:block>
-<th:block layout:fragment="css"><link rel="stylesheet" href="css/memo.css"></th:block>
+<th:block layout:fragment="js">
+    <script src="js/memo.js"></script>
+</th:block>
+<th:block layout:fragment="css">
+    <link rel="stylesheet" href="css/memo.css">
+</th:block>
 <section ng-app="MyApp" ng-controller="memoController" layout:fragment="content" class="container_main">
     <div class="main" ng-init="init()">
         <div class="container_context" id="memo_parent">

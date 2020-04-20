@@ -415,7 +415,7 @@ calApp.controller('ModalEventContentCtrl', function($scope, $uibModalInstance, $
         }
         var correctHeight = window.outerHeight - (posY + elem.offsetHeight);
 
-        if(correctHeight<20){
+        if(correctHeight<50){
             if($scope.event.event_type===0)
                 elem.style.marginTop = posY - 164 +'px';
             else if($scope.event.event_type===1){

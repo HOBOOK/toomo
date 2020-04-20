@@ -1,0 +1,53 @@
+.color-picker {
+    width: 100%;
+    background-color: white;
+    padding: 40px 0;
+    transition: all 1s;
+}
+
+.base-colors,
+.varied-colors {
+    overflow: hidden;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.color,
+.color-var {
+    float: left;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.color {
+    -webkit-transition: all .2s;
+    transition: all .2s;
+    width: 14px;
+    height: 14px;
+    margin: 6px;
+}
+.color.active {
+    -webkit-transform: scale(1.2, 1.2);
+    transform: scale(1.2, 1.2);
+}
+
+.color-var {
+    -webkit-transform: scale(0, 0);
+    transform: scale(0, 0);
+    width: 18px;
+    height: 18px;
+    margin: 8px;
+}
+.color-var.visible {
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+}
+.color-var.active {
+    -webkit-transform: scale(1.2, 1.2);
+    transform: scale(1.2, 1.2);
+}

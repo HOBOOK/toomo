@@ -2,17 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e8dee576-308c-4951-92c8-237d8e03e46f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/colorpick.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/colorpick.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/calendar.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/calendar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/modal.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/modal.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/calendar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/calendar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/mybar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/mybar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/calendar.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/calendar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/modal/modal_event.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/modal/modal_event.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/calendar.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/calendar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/layout/layout_main.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/layout/layout_main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/memo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/memo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/modal/modal_calendar.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/modal/modal_calendar.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/js/calendar.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/calendar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/calendar.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/calendar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/layout/layout_main.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/layout/layout_main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/memo.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/memo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tomo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/tomo.iml" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,8 +29,8 @@
       <list>
         <option value="Class" />
         <option value="HTML File" />
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -58,7 +61,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/static/img" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/templates/fragments" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -71,6 +74,13 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Work Space\WebProject\tomo\src\main\resources\templates\fragments" />
+      <recent name="D:\workspace\WebProject\tomo\src\main\resources\static\img" />
+      <recent name="D:\Work Space\WebProject\tomo\src\main\resources\templates\modal" />
+      <recent name="D:\workspace\WebProject\tomo\src\main\resources\static\js" />
+      <recent name="D:\workspace\WebProject\tomo\src\main\resources\static\css" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\workspace\WebProject\tomo\src\main\resources\static\img\users" />
       <recent name="D:\workspace\WebProject\tomo\src\main\resources\static\js" />
@@ -78,25 +88,6 @@
       <recent name="D:\workspace\WebProject\tomo\src\main\resources\templates\fragments" />
       <recent name="D:\workspace\WebProject\tomo\src\main\resources\templates\layout" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\workspace\WebProject\tomo\src\main\resources\static\img" />
-      <recent name="D:\Work Space\WebProject\tomo\src\main\resources\templates\modal" />
-      <recent name="D:\workspace\WebProject\tomo\src\main\resources\static\js" />
-      <recent name="D:\workspace\WebProject\tomo\src\main\resources\static\css" />
-      <recent name="D:\workspace\WebProject\tomo\src\main\resources\static\js\file" />
-    </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager" selected="Spring Boot.TomoApplication">
     <configuration name="AccountDtoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
@@ -203,6 +194,7 @@
       <workItem from="1587098110687" duration="793000" />
       <workItem from="1587363073249" duration="759000" />
       <workItem from="1587381782140" duration="8211000" />
+      <workItem from="1587396648831" duration="3962000" />
     </task>
     <servers />
   </component>
@@ -223,49 +215,53 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
+    <state x="808" y="409" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1587396661551">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="808" y="409" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587396661551" />
     <state x="2660" y="275" key="FileChooserDialogImpl" timestamp="1586527327134">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2660" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1586527327134" />
-    <state width="1877" height="239" key="GridCell.Tab.0.bottom" timestamp="1586581113256">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1877" height="239" key="GridCell.Tab.0.bottom" timestamp="1587400815596">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1586444657774" />
+    <state width="1877" height="239" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587400815596" />
     <state width="1877" height="239" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1586581113256" />
-    <state width="1877" height="239" key="GridCell.Tab.0.center" timestamp="1586581113256">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1877" height="239" key="GridCell.Tab.0.center" timestamp="1587400815596">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1586444657773" />
+    <state width="1877" height="239" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587400815596" />
     <state width="1877" height="239" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1586581113256" />
-    <state width="1877" height="239" key="GridCell.Tab.0.left" timestamp="1586581113256">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1877" height="239" key="GridCell.Tab.0.left" timestamp="1587400815595">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1586444657773" />
+    <state width="1877" height="239" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587400815595" />
     <state width="1877" height="239" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1586581113256" />
-    <state width="1877" height="239" key="GridCell.Tab.0.right" timestamp="1586581113256">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1877" height="239" key="GridCell.Tab.0.right" timestamp="1587400815596">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1586444657773" />
+    <state width="1877" height="239" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587400815596" />
     <state width="1877" height="239" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1586581113256" />
-    <state width="1877" height="239" key="GridCell.Tab.1.bottom" timestamp="1586581113257">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1877" height="239" key="GridCell.Tab.1.bottom" timestamp="1587400815596">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1586444657774" />
+    <state width="1877" height="239" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587400815596" />
     <state width="1877" height="239" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1586581113257" />
-    <state width="1877" height="239" key="GridCell.Tab.1.center" timestamp="1586581113257">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1877" height="239" key="GridCell.Tab.1.center" timestamp="1587400815596">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1586444657774" />
+    <state width="1877" height="239" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587400815596" />
     <state width="1877" height="239" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1586581113257" />
-    <state width="1877" height="239" key="GridCell.Tab.1.left" timestamp="1586581113257">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1877" height="239" key="GridCell.Tab.1.left" timestamp="1587400815596">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1586444657774" />
+    <state width="1877" height="239" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587400815596" />
     <state width="1877" height="239" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1586581113257" />
-    <state width="1877" height="239" key="GridCell.Tab.1.right" timestamp="1586581113257">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1877" height="239" key="GridCell.Tab.1.right" timestamp="1587400815596">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1586444657774" />
+    <state width="1877" height="239" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587400815596" />
     <state width="1877" height="239" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1586581113257" />
     <state x="2507" y="64" width="745" height="912" key="find.popup" timestamp="1586513917440">
       <screen x="1920" y="0" width="1920" height="1040" />
