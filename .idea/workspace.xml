@@ -2,19 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e8dee576-308c-4951-92c8-237d8e03e46f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/colorpick.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/colorpick.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/modal.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/modal.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/calendar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/calendar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/layout/layout_main.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/layout/layout_main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/memo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/memo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/modal/modal_calendar.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/modal/modal_calendar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/calendar.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/calendar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/layout/layout_main.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/layout/layout_main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/memo.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/memo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tomo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/tomo.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,17 +59,13 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Work Space\WebProject\tomo\src\main\resources\templates\fragments" />
-      <recent name="D:\workspace\WebProject\tomo\src\main\resources\static\img" />
-      <recent name="D:\Work Space\WebProject\tomo\src\main\resources\templates\modal" />
-      <recent name="D:\workspace\WebProject\tomo\src\main\resources\static\js" />
-      <recent name="D:\workspace\WebProject\tomo\src\main\resources\static\css" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\workspace\WebProject\tomo\src\main\resources\static\img\users" />
       <recent name="D:\workspace\WebProject\tomo\src\main\resources\static\js" />
@@ -88,6 +73,25 @@
       <recent name="D:\workspace\WebProject\tomo\src\main\resources\templates\fragments" />
       <recent name="D:\workspace\WebProject\tomo\src\main\resources\templates\layout" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Work Space\WebProject\tomo\src\main\resources\templates\fragments" />
+      <recent name="D:\workspace\WebProject\tomo\src\main\resources\static\img" />
+      <recent name="D:\Work Space\WebProject\tomo\src\main\resources\templates\modal" />
+      <recent name="D:\workspace\WebProject\tomo\src\main\resources\static\js" />
+      <recent name="D:\workspace\WebProject\tomo\src\main\resources\static\css" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
   </component>
   <component name="RunManager" selected="Spring Boot.TomoApplication">
     <configuration name="AccountDtoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
