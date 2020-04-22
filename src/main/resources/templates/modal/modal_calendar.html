@@ -47,8 +47,12 @@
                     </tr>
                     <tr ng-show="tabMenuIndex==0">
                         <td colspan="3">
-                            <div class="color-picker"></div>
-                            <script src="js/colorpick.js"></script>
+                            <div class="color-picker">
+                                <div class="base-colors">
+                                    <div ng-class="day_event_color===$index ? 'color active' : 'color'" ng-click="changeColor($index)" ng-repeat="color in colorPickerColors" ng-style="getColorPickColors(color)">
+                                    </div>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                     <tr ng-show="tabMenuIndex==1">

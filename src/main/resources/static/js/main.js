@@ -40,7 +40,6 @@ Date.prototype.yyyyMMdd = function () {
     var dd = this.getDate().toString();
     return yyyy + '-'+(MM[1] ? MM : '0'+MM[0]) + '-'+(dd[1] ? dd : '0'+dd[0]);
 }
-
 function initTheme(){
     var toggleTheme = getCookie('toggleTheme');
     if(toggleTheme==null || toggleTheme=='false'){
@@ -48,6 +47,9 @@ function initTheme(){
     }else{
         $('body').addClass("dark");
     }
+}
+function clone(obj) {
+    return JSON.parse(JSON.stringify(obj));
 }
 
 function toggleBar() {

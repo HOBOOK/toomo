@@ -46,6 +46,16 @@
                             <input class="fs-14" datetime="yyyy-MM-dd" ng-model="event.event_time_end_temp" id="date_event_end" name="date_event_end" type="date" placeholder="마감"/>
                         </td>
                     </tr>
+                    <tr ng-show="event.event_type===0">
+                        <td colspan="3">
+                            <div class="color-picker">
+                                <div class="base-colors">
+                                    <div ng-class="event.event_color===$index ? 'color active' : 'color'" ng-click="changeColor($index)" ng-repeat="color in colorPickerColors" ng-style="getColorPickColors(color)">
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
                     <tr ng-show="event.event_type===1">
                         <td><i class="far fa-clock fs-16"></i></td>
                         <td>

@@ -267,6 +267,7 @@ calApp.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http)
     $scope.day_event_point = 2;
     $scope.day_event_point_text = '보통';
     $scope.day_event_color = 0;
+    $scope.colorPickerColors = colorPickerColors;
 
     $scope.viewEvent = function(event, $event){
         $uibModalInstance.parent.viewEvent($scope.day, event, $event);
@@ -406,10 +407,23 @@ calApp.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http)
                 break;
         }
     }
+
+    //Color Pickers Method..
+    $scope.getColorPickColors = function (color) {
+        return {
+            "background-color" : "rgb(" + color[0] + ", " +color[1] + ", " +color[2] +")"
+        };
+    }
+
+    $scope.changeColor = function($index){
+        $scope.day_event_color = $index;
+    }
+    //
 });
 
 calApp.controller('ModalEventContentCtrl', function($scope, $uibModalInstance, $http) {
     $scope.event = {};
+    $scope.eventDefaultData = {};
     $scope.isLoadCompleted = false;
     $scope.isUpdated = false;
     $scope.show = function(){
@@ -445,7 +459,10 @@ calApp.controller('ModalEventContentCtrl', function($scope, $uibModalInstance, $
             $scope.event.event_time_end_temp = new Date($scope.event.date_event_end);
             $scope.event.isAllDay = true;
         }
+
+        $scope.colorPickerColors = colorPickerColors;
         $scope.isLoadCompleted = true;
+        $scope.eventDefaultData = clone($scope.event);
 
     };
 
@@ -512,6 +529,7 @@ calApp.controller('ModalEventContentCtrl', function($scope, $uibModalInstance, $
             if($scope.event.event_type===0){
                 $scope.event.date_event = $scope.event.event_time_temp.yyyyMMddHHmmss();
                 $scope.event.date_event_end = $scope.event.event_time_end_temp.yyyyMMddHHmmss();
+                $scope.eventDefaultData = clone($scope.event);
                 $uibModalInstance.parent.viewAllUpdate();
             }else{
                 var beforeDateEvent = $scope.event.date_event;
@@ -535,6 +553,7 @@ calApp.controller('ModalEventContentCtrl', function($scope, $uibModalInstance, $
                         break;
                     }
                 }
+                $scope.eventDefaultData = clone($scope.event);
             }
 
         }, function errorCallback(response){
@@ -553,12 +572,22 @@ calApp.controller('ModalEventContentCtrl', function($scope, $uibModalInstance, $
         }
     }
     $scope.close = function(){
+        $scope.rollbackData();
         var elem = document.getElementById('modal_event_content');
         elem.style.animationName='animateFadeHide';
         elem.style.opacity='0';
         setTimeout(function() {
             $uibModalInstance.dismiss();
         }, 200);
+    }
+
+    $scope.rollbackData = function(){
+        $scope.event.event_color = $scope.eventDefaultData.event_color;
+        $scope.event.title = $scope.eventDefaultData.title;
+        $scope.event.date_event = $scope.eventDefaultData.date_event;
+        $scope.event.date_event_end = $scope.eventDefaultData.date_event_end;
+        $scope.event.event_point = $scope.eventDefaultData.event_point;
+
     }
 
     $scope.setEventPoint = function(){
@@ -580,6 +609,19 @@ calApp.controller('ModalEventContentCtrl', function($scope, $uibModalInstance, $
                 break;
         }
     }
+
+    //Color Pickers Method..
+    $scope.getColorPickColors = function (color) {
+        return {
+            "background-color" : "rgb(" + color[0] + ", " +color[1] + ", " +color[2] +")"
+        };
+    }
+
+    $scope.changeColor = function($index){
+        $scope.event.event_color = $index;
+    }
+
+    //
 });
 
 angular.bootstrap(document.getElementById('calendar'), ['calendar']);
