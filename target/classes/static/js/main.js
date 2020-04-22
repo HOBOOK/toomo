@@ -15,6 +15,15 @@ $(document).ready(function(){
 
 var isToggleBar;
 var isToggleTodoBar;
+var colorPickerColors = [
+    [46, 204, 113],
+    [52, 152, 219],
+    [155, 89, 182],
+    [52, 73, 94],
+    [241, 196, 15],
+    [230, 126, 34],
+    [231, 76, 60]
+];
 
 Date.prototype.yyyyMMddHHmmss = function () {
     var yyyy = this.getFullYear().toString();

@@ -10,15 +10,7 @@
 var colorPicker = (function(){
 
     var config = {
-        baseColors: [
-            [46, 204, 113],
-            [52, 152, 219],
-            [155, 89, 182],
-            [52, 73, 94],
-            [241, 196, 15],
-            [230, 126, 34],
-            [231, 76, 60]
-        ],
+        baseColors: colorPickerColors,
         lightModifier: 20,
         darkModifier: 0,
         transitionDuration: 200,
@@ -52,8 +44,8 @@ var colorPicker = (function(){
         $('body').on('click', '.color', function(){
             var color = $(this).data('color').split(',');
             setActiveBaseColor($(this));
-            setBackgroundColor();
             console.log(state.activeColor);
+            console.log(colorPickerColors.indexOf([state.activeColor[0],state.activeColor[1],state.activeColor[2]]));
         });
     }
 
@@ -83,11 +75,6 @@ var colorPicker = (function(){
         }
     };
 
-    function setBackgroundColor(){
-        $('body').css({
-            'background-color': 'rgb(' + state.activeColor + ')'
-        });
-    }
     return{
         init: init
     };

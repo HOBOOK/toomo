@@ -266,6 +266,8 @@ calApp.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http)
     $scope.isAllDay = true;
     $scope.day_event_point = 2;
     $scope.day_event_point_text = '보통';
+    $scope.day_event_color = 0;
+
     $scope.viewEvent = function(event, $event){
         $uibModalInstance.parent.viewEvent($scope.day, event, $event);
     }
@@ -295,7 +297,7 @@ calApp.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http)
                 event_description: $scope.day_description,
                 event_time: $scope.tabMenuIndex===1 && !$scope.isAllDay ? $scope.day_event_time : null,
                 event_point: $scope.tabMenuIndex===1?$scope.day_event_point : 0,
-                event_color: $scope.tabMenuIndex===0 ?$scope.event_color : 0,
+                event_color: $scope.tabMenuIndex===0 ?$scope.day_event_color : 0,
                 event_state: 0
             };
             $http({

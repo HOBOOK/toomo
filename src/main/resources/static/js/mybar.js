@@ -78,7 +78,8 @@ barApp.controller('barController', function ($scope, $http, $uibModal) {
             controller: "ModalContentCtrl",
             size: ''
         });
-        modalInstance.calendarAppScope = angular.element(document.querySelector('[ng-app=calendar]')).scope().$$childHead.$$childHead;
+        if(document.querySelector('[ng-app=calendar]')!=null)
+            modalInstance.calendarAppScope = angular.element(document.querySelector('[ng-app=calendar]')).scope().$$childHead.$$childHead;
         modalInstance.positionX = $event.currentTarget.getBoundingClientRect().x;
         modalInstance.positionY = $event.currentTarget.getBoundingClientRect().y;
         modalInstance.width = $event.currentTarget.clientWidth;
