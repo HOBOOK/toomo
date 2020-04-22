@@ -43,6 +43,7 @@ calApp.directive("calendar", function($uibModal, $http) {
             var start = scope.selected.clone();
             start.date(1); // 선택된 달의 첫번째 날짜 객체
             scope.eventList = [];
+            var dateItemColos = ['a','b','c','d','e','f','g'];
             $http.get('schedule/events').then(function (data) {
                 scope.eventList = data.data;
                 _removeTime(start.day(0)); // 이달의 첫일의 일요일 날짜의 객체를 시작일로 세팅.
@@ -165,14 +166,23 @@ calApp.directive("calendar", function($uibModal, $http) {
                 if(item.event_type!==0) return;
                 var elements = document.getElementsByClassName('item ' + item.id);
                 for(var i = 0; i < elements.length; i++){
-                    elements[i].style.backgroundColor="royalblue";
+                    elements[i].style.opacity="0.9";
                 }
             }
             scope.leaveEvent = function (item, $event) {
                 if(item.event_type!==0) return;
                 var elements = document.getElementsByClassName('item ' + item.id);
                 for(var i = 0; i < elements.length; i++){
-                    elements[i].style.backgroundColor="#7575FF";
+                    elements[i].style.opacity="1";
+                }
+            }
+            scope.getDateItemClass = function (item) {
+
+
+                if(item.event_type===0){
+                    return "item " + item.id + " " + dateItemColos[item.event_color];
+                }else{
+                    return "item todo";
                 }
             }
         }
@@ -276,7 +286,6 @@ calApp.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http)
         $scope.day_event_time = new Date($scope.day.date);
     }
     $scope.addEvent = function(){
-
         if($scope.day_title != null && $scope.day_title.length>0){
             var newEvent = {
                 date_event: $scope.dateFormat.yyyyMMddHHmmss().substring(0,10),
@@ -286,6 +295,7 @@ calApp.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http)
                 event_description: $scope.day_description,
                 event_time: $scope.tabMenuIndex===1 && !$scope.isAllDay ? $scope.day_event_time : null,
                 event_point: $scope.tabMenuIndex===1?$scope.day_event_point : 0,
+                event_color: $scope.tabMenuIndex===0 ?$scope.event_color : 0,
                 event_state: 0
             };
             $http({
@@ -491,7 +501,8 @@ calApp.controller('ModalEventContentCtrl', function($scope, $uibModalInstance, $
                 event_description: $scope.event.event_description,
                 event_type: $scope.event.event_type,
                 event_state: $scope.event.event_state,
-                event_point: $scope.event.event_point
+                event_point: $scope.event.event_point,
+                event_color: $scope.event.event_color
             }
         }).then(function successCallback(response){
             console.log('success update -> ' + response);

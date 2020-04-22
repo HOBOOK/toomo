@@ -126,6 +126,27 @@ calendar div.item{
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+calendar div.item.a{
+    background-color: rgba(46,204,113,1);
+}
+calendar div.item.b{
+    background-color: rgba(52,152,219,1);
+}
+calendar div.item.c{
+    background-color: rgba(155,89,182,1);
+}
+calendar div.item.d{
+    background-color: rgba(52,73,94,1);
+}
+calendar div.item.e{
+    background-color: rgba(214,196,15,1);
+}
+calendar div.item.f{
+    background-color: rgba(230,126,34,1);
+}
+calendar div.item.g{
+    background-color: rgba(231,76,60,1);
+}
 
 calendar div.item.todo{
     text-align: left;

@@ -168,7 +168,8 @@ barApp.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http)
                event_description: $scope.event.event_description,
                event_type: $scope.event.event_type,
                event_state: $scope.event.event_state,
-               event_point: $scope.event.event_point
+               event_point: $scope.event.event_point,
+               event_color: $scope.event.event_color
            }
         }).then(function successCallback(response){
             console.log('success update -> ' + response.data);

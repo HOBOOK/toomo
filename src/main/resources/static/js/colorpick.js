@@ -45,11 +45,6 @@ var colorPicker = (function(){
     function setActiveBaseColor(el){
         $('.color.active').removeClass('active');
         el.addClass('active');
-    }
-
-    function setActiveColor(el){
-        $('.color-var.active').removeClass('active');
-        el.addClass('active');
         state.activeColor = el.data('color').split(',');
     }
 
@@ -57,24 +52,13 @@ var colorPicker = (function(){
         $('body').on('click', '.color', function(){
             var color = $(this).data('color').split(',');
             setActiveBaseColor($(this));
-
-            hideVariations(function(){
-                createVariations(color, function(){
-                    setDelays(function(){
-                        showVariations();
-                    });
-                });
-            });
-        });
-
-        $('body').on('click', '.color-var', function(){
-            setActiveColor($(this));
             setBackgroundColor();
+            console.log(state.activeColor);
         });
     }
 
     function setFirstColorActive(callback){
-        $('.color').eq(1).trigger('click');
+        $('.color').eq(0).trigger('click');
         callback();
     }
 
@@ -104,55 +88,6 @@ var colorPicker = (function(){
             'background-color': 'rgb(' + state.activeColor + ')'
         });
     }
-
-    function createVariations(color, callback){
-        $('.varied-colors').html('');
-
-        for(var i = 0; i < config.variationTotal; i++){
-            var newColor = [];
-
-            for (var x = 0; x < color.length; x++){
-                var modifiedColor = (Number(color[x]) - 100) + (config.lightModifier * i);
-
-                if(modifiedColor <= 0){
-                    modifiedColor = 0;
-                } else if (modifiedColor >= 255){
-                    modifiedColor = 255;
-                }
-
-                newColor.push(modifiedColor);
-            }
-
-            $('.varied-colors').append('<div data-color="' + newColor + '" class="color-var" style="background-color: rgb(' + newColor + ');"></div>');
-        }
-
-        callback();
-    }
-
-    function setDelays(callback){
-        $('.color-var').each(function(x){
-            $(this).css({
-                'transition': 'transform ' + (config.transitionDuration / 1000) + 's ' + ((config.transitionDelay / 1000) * x) + 's'
-            });
-        });
-
-        callback();
-    }
-
-    function showVariations(){
-        setTimeout(function(){
-            $('.color-var').addClass('visible');
-        },(config.transitionDelay * config.variationTotal));
-    }
-
-    function hideVariations(callback){
-        $('.color-var').removeClass('visible').removeClass('active');
-
-        setTimeout(function(){
-            callback();
-        },(config.transitionDelay * config.variationTotal));
-    }
-
     return{
         init: init
     };

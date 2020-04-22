@@ -18,6 +18,7 @@ public class EventDto {
     private int event_type;
     private int event_state;
     private int event_point;
+    private int event_color;
     private LocalDateTime event_time;
     private String title;
     private String event_description;
@@ -33,6 +34,7 @@ public class EventDto {
                 .event_type(event_type)
                 .event_state(event_state)
                 .event_point(event_point)
+                .event_color(event_color)
                 .event_time(event_time)
                 .title(title)
                 .event_description(event_description)
@@ -41,7 +43,7 @@ public class EventDto {
     }
 
     @Builder
-    public EventDto(Long id, String creator, String date_event, String date_event_end, int event_type, int event_state, int event_point, LocalDateTime event_time, String title, String event_description, LocalDateTime date_create, LocalDateTime date_update){
+    public EventDto(Long id, String creator, String date_event, String date_event_end, int event_type, int event_state, int event_point, int event_color, LocalDateTime event_time, String title, String event_description, LocalDateTime date_create, LocalDateTime date_update){
         this.id = id;
         this.creator = creator;
         this.date_event = date_event;
@@ -49,6 +51,7 @@ public class EventDto {
         this.event_type = event_type;
         this.event_state = event_state;
         this.event_point = event_point;
+        this.event_color = event_color;
         this.event_time = event_time;
         this.title = title;
         this.event_description = event_description;

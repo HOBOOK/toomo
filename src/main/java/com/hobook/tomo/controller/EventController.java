@@ -31,6 +31,7 @@ public class EventController {
             entity.put("event_type",eventDto.getEvent_type());
             entity.put("event_state",eventDto.getEvent_state());
             entity.put("event_point",eventDto.getEvent_point());
+            entity.put("event_color",eventDto.getEvent_color());
             entity.put("event_time",eventDto.getEvent_time());
             entity.put("title",eventDto.getTitle());
             entity.put("event_description", eventDto.getEvent_description());
@@ -52,6 +53,7 @@ public class EventController {
                 entity.put("event_type",eventDto.getEvent_type());
                 entity.put("event_state",eventDto.getEvent_state());
                 entity.put("event_point",eventDto.getEvent_point());
+                entity.put("event_color",eventDto.getEvent_color());
                 entity.put("event_time",eventDto.getEvent_time());
                 entity.put("title",eventDto.getTitle());
                 entity.put("event_description", eventDto.getEvent_description());
@@ -74,6 +76,7 @@ public class EventController {
                 entity.put("event_type",eventDto.getEvent_type());
                 entity.put("event_state",eventDto.getEvent_state());
                 entity.put("event_point",eventDto.getEvent_point());
+                entity.put("event_color",eventDto.getEvent_color());
                 entity.put("event_time",eventDto.getEvent_time());
                 entity.put("title",eventDto.getTitle());
                 entity.put("event_description", eventDto.getEvent_description());

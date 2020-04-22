@@ -38,6 +38,9 @@ public class Event extends Time {
     @Column(name="event_point")
     private int event_point;
 
+    @Column(name="event_color")
+    private int event_color;
+
     @Column(name="event_time")
     private LocalDateTime event_time;
 
@@ -48,7 +51,7 @@ public class Event extends Time {
     private String event_description;
 
     @Builder
-    public Event(Long id, String creator, String date_event, String date_event_end, int event_type, int event_state, int event_point, LocalDateTime event_time, String title, String event_description){
+    public Event(Long id, String creator, String date_event, String date_event_end, int event_type, int event_state, int event_point, int event_color, LocalDateTime event_time, String title, String event_description){
         this.id = id;
         this.creator = creator;
         this.date_event = date_event;
@@ -56,6 +59,7 @@ public class Event extends Time {
         this.event_type = event_type;
         this.event_state = event_state;
         this.event_point = event_point;
+        this.event_color = event_color;
         this.event_time = event_time;
         this.title = title;
         this.event_description = event_description;
