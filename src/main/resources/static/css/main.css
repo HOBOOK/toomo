@@ -320,7 +320,9 @@ nav{
     font-size: 13px;
 }
 .todo_event_title.clear{
-    text-decoration: line-through orangered;
+    text-decoration: line-through;
+    text-decoration-style: double;
+
 }
 .todo_event_time{
     margin-top:5px;
@@ -414,7 +416,7 @@ input[type=range]::-webkit-slider-thumb {
     height: 12px;
     width: 12px;
     border-radius: 100%;
-    background: #777777;
+    background: #4285f4;
     cursor: pointer;
     -webkit-appearance: none;
     margin-top: -4px;
@@ -440,7 +442,7 @@ input[type=range]::-moz-range-thumb {
     height: 12px;
     width: 12px;
     border-radius: 100%;
-    background: #777777;
+    background: #4285f4;
     cursor: pointer;
 }
 input[type=range]::-ms-track {
@@ -473,7 +475,7 @@ input[type=range]::-ms-thumb {
     height: 12px;
     width: 12px;
     border-radius: 100%;
-    background: #777777;
+    background: #4285f4;
     cursor: pointer;
 }
 input[type=range]:focus::-ms-fill-lower {

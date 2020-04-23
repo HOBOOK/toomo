@@ -2265,7 +2265,12 @@
 
 
 
-
+/*[ Text-Decoration]
+///////////////////////////////////////////////////////////
+ */
+.line-through{text-decoration: line-through;}
+.line-through-2{text-decoration: line-through; text-decoration-width: 2px;}
+.line-through-3{text-decoration: line-through; text-decoration-width: 3px;}
 
 /*[ SHAPE ]
 ///////////////////////////////////////////////////////////

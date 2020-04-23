@@ -40,9 +40,9 @@
                     <tr><td colspan="3"></td></tr>
                     <tr ng-show="tabMenuIndex==0">
                         <td><i class="far fa-clock fs-16"></i></td>
-                        <td style="text-align: left; padding-left:10px;">끝나는 날짜</td>
-                        <td>
-                            <input class="fs-12" datetime="yyyy-MM-dd" min="{{dateFormat | date:'yyyy-MM-dd'}}" ng-model="date_event_end" id="day_date_event_end" name="date_event_end" type="date"/>
+                        <td style="text-align: left; padding-left:10px;" class="fs-13">끝나는 날짜</td>
+                        <td style="height: 36px;">
+                            <input class="fs-13" datetime="yyyy-MM-dd" min="{{dateFormat | date:'yyyy-MM-dd'}}" ng-model="date_event_end" id="day_date_event_end" name="date_event_end" type="date"/>
                         </td>
                     </tr>
                     <tr ng-show="tabMenuIndex==0">
@@ -57,14 +57,23 @@
                     </tr>
                     <tr ng-show="tabMenuIndex==1">
                         <td><i class="far fa-clock fs-16"></i></td>
-                        <td><label for="chk_allday" class="fs-12" style="float: left; padding-left:10px;">하루</label><input id="chk_allday" class="chk_target_time" type="checkbox" ng-model="isAllDay"/> </td>
+                        <td class="fs-13" style="height: 36px;">
+                            <input id="chk_allday" class="chk_target_time" type="checkbox" ng-model="isAllDay" style="display: none;"/>
+                            <label for="chk_allday" class="check">
+                                <svg width="18px" height="18px" viewBox="0 0 18 18">
+                                    <path d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"></path>
+                                    <polyline points="1 9 7 14 15 4"></polyline>
+                                </svg>
+                            </label>
+                            <label for="chk_allday" class="m-l-5">하루</label>
+                        </td>
                         <td>
-                            <input class="fs-14" ng-show="!isAllDay" datetime="HH:mm" ng-model="day_event_time" id="day_time" name="event_time" type="time"/>
+                            <input class="fs-13" ng-show="!isAllDay" datetime="HH:mm" ng-model="day_event_time" id="day_time" name="event_time" type="time"/>
                         </td>
                     </tr>
                     <tr ng-show="tabMenuIndex==1">
                         <td><i class="far fa-star"></i></td>
-                        <td class="fs-12" style="text-align: left; padding-left:10px;  color: coral;" ng-bind="day_event_point_text"></td>
+                        <td class="fs-13" style="text-align: left; padding-left:10px; " ng-bind="day_event_point_text"></td>
                         <td>
                             <input ng-change="setEventPoint($event)" class="fs-14" ng-model="day_event_point" id="day_point" name="event_point" type="range" min="0" max="4"/>
                         </td>
@@ -77,10 +86,23 @@
             <div class="container_day_list">
                 <div class="day_list">
                     <div class="item" ng-repeat="event in events" ng-click="viewEvent(event, $event)">
-                        <span style="display:inline-block; border-radius: 100%; background-color: royalblue; padding:4px; margin-left:10px; margin-right:10px;"></span>
-                        <h3 class="fs-14" style="display: inline-block;">{{event.title}}</h3>
-                        <span class="close_item" ng-click="removeEvent($index, event)"><i class="fas fa-minus"></i></span>
-                        <p class="fs-12">{{event.event_description}}</p>
+                        <table>
+                            <tr>
+                                <td>
+                                    <span ng-show="event.event_type===1" style="display:inline-block; padding:4px; margin-left:10px; margin-right:10px;"><i class="far fa-calendar-check"/></span>
+                                    <span ng-show="event.event_type===0" ng-style="getColorPickColors(colorPickerColors[event.event_color])" style="display:inline-block; border-radius: 100%; padding:6px; margin-left:10px; margin-right:10px;"></span>
+                                </td>
+                                <td>
+                                    <h3 class="fs-14" ng-class="checkingTodoClear(event)">{{event.title}}</h3>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <p class="fs-12">{{event.event_description}}</p>
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
             </div>

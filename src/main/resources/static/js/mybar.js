@@ -37,17 +37,34 @@ barApp.controller('barController', function ($scope, $http, $uibModal) {
         return className;
     };
 
-    $scope.clearEvent = function($index){
-        var e = $scope.events[$index];
-        e.event_state = 1;
+    $scope.clearEvent = function(event){
+        var e = {};
+        var isClear = event.event_state===1;
+        var index = 0;
+        if(!isClear){
+            index = $scope.events.findIndex(ev => ev.id === event.id);
+            e = $scope.events[index];
+            e.event_state = 1;
+        }else{
+            index = $scope.clearEvents.findIndex(ev => ev.id === event.id);
+            e = $scope.clearEvents[index];
+            e.event_state = 0;
+        }
+
         $http({
             method: 'PUT',
             url: 'schedule/create',
             data: e
         }).then(function successCallback(response){
             console.log('success update -> ' + response.data);
-            $scope.clearEvents.push(e);
-            $scope.events.splice($index, 1);
+            if(!isClear){
+                $scope.clearEvents.push(e);
+                $scope.events.splice(index, 1);
+            }else{
+                $scope.clearEvents.splice(index, 1);
+                $scope.events.push(e);
+            }
+
             // 스케쥴페이지에서 이벤트의 위치를 옮김
             var calAppScope = angular.element(document.querySelector('[ng-app=calendar]')).scope().$$childHead.$$childHead;
             var items = calAppScope.eventList;
@@ -58,7 +75,6 @@ barApp.controller('barController', function ($scope, $http, $uibModal) {
                     break;
                 }
             }
-            alert('성공적으로 변경된 사항이 저장되었습니다.');
         }, function errorCallback(response){
             e.event_state = 0;
             console.log('error update -> ' +response);
@@ -109,7 +125,11 @@ barApp.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http)
         }else{
             elem.style.marginLeft= posX+'px';
         }
-        elem.style.marginTop = posY+'px';
+        if($scope.event.event_state===1){
+            elem.style.marginTop = posY - 248 +'px';
+        }else{
+            elem.style.marginTop = posY+'px';
+        }
         if($scope.event.event_time!=null){
             $scope.event.event_time_temp = new Date($scope.event.event_time);
             $scope.event.isAllDay = false;
@@ -198,6 +218,11 @@ barApp.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http)
                     $uibModalInstance.calendarAppScope.moveDayEvent(beforeDateEvent,afterDateEvent.substring(0,10));
                     break;
                 }
+            }
+
+            // 완료 상태 변경시
+            if($scope.eventDefaultData.event_state !== $scope.event.event_state){
+                $uibModalInstance.parent.clearEvent($scope.eventDefaultData);
             }
 
             $scope.eventDefaultData = clone($scope.event);

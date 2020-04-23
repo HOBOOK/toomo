@@ -12,7 +12,7 @@
                 <span class="todo_title">할 일 목록 ({{events.length}})<span class="todo_toggle"><i class="fas fa-ellipsis-v"></i></span></span>
                 <div class="container_todo_item">
                     <div class="todo_item" ng-repeat="event in events" ng-click="select(event, $event)">
-                        <span class="todo_check_cover" ng-click="clearEvent($index)"><span class="todo_check"></span></span>
+                        <span class="todo_check_cover" ng-click="clearEvent(event)"><span class="todo_check"></span></span>
                         <div class="todo_event_cover" ng-click="summaryEvent()">
                             <span class="todo_event_title">
                             {{event.title}}
@@ -28,8 +28,8 @@
             <div class="todo_complete">
                 <span class="todo_title">완료 목록 ({{clearEvents.length}})<span class="todo_toggle" onclick="toggleTodoBar()"><i class="fas fa-grip-lines"></i></span></span>
                 <div class="container_todo_item">
-                    <div class="todo_item" ng-repeat="event in clearEvents">
-                        <span class="todo_check_cover"><span class="todo_check checked"><i class="fas fa-check"></i></span></span>
+                    <div class="todo_item" ng-repeat="event in clearEvents" ng-click="select(event, $event)">
+                        <span class="todo_check_cover" ng-click="clearEvent(event)"><span class="todo_check checked"><i class="fas fa-check"></i></span></span>
                         <div class="todo_event_cover">
                             <span class="todo_event_title clear">
                                 {{event.title}}

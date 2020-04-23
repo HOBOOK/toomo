@@ -61,22 +61,32 @@
                         <td>
                             <input class="fs-14" datetime="yyyy-MM-dd" ng-model="event.event_time_temp" id="day_day" name="event_day" type="date" placeholder="날짜"/>
                         </td>
-                        <td class="fs-12"><label for="chk_allday" class="fs-12">하루</label><input id="chk_allday" class="chk_target_time" type="checkbox" ng-model="event.isAllDay"/> </td>
                         <td>
-                            <input class="fs-14" datetime="HH:mm" ng-show="!event.isAllDay" ng-model="event.event_time_temp" id="day_time" name="event_time" type="time" placeholder="시간"/>
+                            <div style="display: inline-block; width: 100px;">
+                                <input class="fs-14" datetime="HH:mm" ng-show="!event.isAllDay" ng-model="event.event_time_temp" id="day_time" name="event_time" type="time" placeholder="시간"/>
+                            </div>
+                        </td>
+                        <td class="fs-13" style="text-align: right;">
+                            <input id="chk_allday" class="chk_target_time" type="checkbox" ng-model="event.isAllDay" style="display: none;"/>
+                            <label for="chk_allday" class="check">
+                                <svg width="18px" height="18px" viewBox="0 0 18 18">
+                                    <path d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"></path>
+                                    <polyline points="1 9 7 14 15 4"></polyline>
+                                </svg>
+                            </label>
+                            <label for="chk_allday" class="m-l-5">하루</label>
                         </td>
                     </tr>
                     <tr ng-show="event.event_type===1">
                         <td><i class="far fa-star"></i></td>
-                        <td class="fs-12" style="text-align: left; padding-left:10px;" ng-bind="event_point_text"></td>
-                        <td></td>
-                        <td>
+                        <td class="fs-13" style="text-align: left; padding-left:10px;" ng-bind="event_point_text"></td>
+                        <td colspan="2">
                             <input ng-change="setEventPoint($event)" class="fs-14" ng-model="event.event_point" id="day_point" name="event_point" type="range" min="0" max="4"/>
                         </td>
                     </tr>
                 </table>
                 <div ng-show="event.event_type===1" class="container_todo_clear">
-                    <span class="fs-12 m-r-20" ng-bind="event.event_state===1 ? '완료' : '미완료'"></span>
+                    <span class="fs-13 m-r-20" ng-bind="event.event_state===1 ? '완료' : '미완료'"></span>
                     <span class="container_config_tgl">
                         <input ng-click="clearTodo()" class="config_tgl" id="tgl2" type="checkbox" ng-checked="event.event_state===1"/>
                         <label class="config_tgl_label" for="tgl2"></label>

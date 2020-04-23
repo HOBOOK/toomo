@@ -166,7 +166,7 @@ calApp.directive("calendar", function($uibModal, $http) {
                 if(item.event_type!==0) return;
                 var elements = document.getElementsByClassName('item ' + item.id);
                 for(var i = 0; i < elements.length; i++){
-                    elements[i].style.opacity="0.9";
+                    elements[i].style.opacity="0.85";
                 }
             }
             scope.leaveEvent = function (item, $event) {
@@ -287,6 +287,7 @@ calApp.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http)
         }
         $scope.date_event_end = new Date($scope.day.date);
         $scope.day_event_time = new Date($scope.day.date);
+        $scope.tabMenuClick(0);
     }
     $scope.addEvent = function(){
         if($scope.day_title != null && $scope.day_title.length>0){
@@ -331,31 +332,6 @@ calApp.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http)
         $scope.day_event_point = 2;
         $scope.date_event_end = new Date($scope.day.date);
         $scope.day_event_time = new Date($scope.day.date);
-    }
-    $scope.removeEvent = function($index, target){
-        if(confirm("선택한 이벤트를 삭제하시겠습니까?")){
-            $http({
-                method: 'DELETE',
-                url: 'schedule/delete',
-                params: {id:target.id},
-                headers: {
-                    'Content-type': 'application/json;charset=utf-8'
-                }
-            }).then(function successCallback(response){
-                console.log(response);
-                $scope.events.splice($index,1);
-                for(var i = 0; i < $uibModalInstance.parent.eventList.length; i++){
-                    if($uibModalInstance.parent.eventList[i].id===[target.id]){
-                        $uibModalInstance.parent.eventList.splice(i,1);
-                        $uibModalInstance.parent.viewAllUpdate();
-                        break;
-                    }
-                }
-
-            }, function errorCallback(response){
-                console.log('error delete -> ' +response);
-            });
-        }
     }
     $scope.ok = function(){
         $uibModalInstance.parent.selected = null;
@@ -407,6 +383,13 @@ calApp.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http)
                 break;
         }
     }
+    $scope.checkingTodoClear = function(event){
+        if(event.event_state===1 && event.event_type===1){
+            return "fs-14 line-through";
+        }else{
+            return "fs-14";
+        }
+    }
 
     //Color Pickers Method..
     $scope.getColorPickColors = function (color) {
@@ -453,10 +436,12 @@ calApp.controller('ModalEventContentCtrl', function($scope, $uibModalInstance, $
 
         if($scope.event.event_time!=null){
             $scope.event.event_time_temp = new Date($scope.event.event_time);
+            $scope.event.event_time_end_temp = $scope.event.date_event_end !== null ? new Date($scope.event.date_event_end) : new Date($scope.event.date_event);
             $scope.event.isAllDay = false;
         }else{
+
             $scope.event.event_time_temp = new Date($scope.event.date_event);
-            $scope.event.event_time_end_temp = new Date($scope.event.date_event_end);
+            $scope.event.event_time_end_temp = $scope.event.date_event_end !== null ? new Date($scope.event.date_event_end) : new Date($scope.event.date_event);
             $scope.event.isAllDay = true;
         }
 
@@ -513,8 +498,8 @@ calApp.controller('ModalEventContentCtrl', function($scope, $uibModalInstance, $
             url: 'schedule/create',
             data: {
                 id: $scope.event.id,
-                date_event: $scope.event.event_time_temp.yyyyMMddHHmmss().substring(0,10),
-                date_event_end: $scope.event.event_time_end_temp.yyyyMMddHHmmss().substring(0,10),
+                date_event: $scope.event.event_time_temp.yyyyMMdd(),
+                date_event_end: $scope.event.event_time_end_temp.yyyyMMdd(),
                 event_time: $scope.event.isAllDay ? null : $scope.event.event_time_temp.yyyyMMddHHmmss(),
                 title: $scope.event.title,
                 event_description: $scope.event.event_description,
@@ -553,6 +538,12 @@ calApp.controller('ModalEventContentCtrl', function($scope, $uibModalInstance, $
                         break;
                     }
                 }
+
+                // 완료 상태 변경시
+                if($scope.eventDefaultData.event_state !== $scope.event.event_state){
+                    $uibModalInstance.todoListAppScope.clearEvent($scope.eventDefaultData);
+                }
+
                 $scope.eventDefaultData = clone($scope.event);
             }
 

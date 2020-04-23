@@ -20,7 +20,7 @@
 <!--                <span style="display:inline-block; border-radius: 100%; background-color: royalblue; padding:4px; margin-left:10px; margin-right:10px;"></span>-->
                 <span ng-show="item.event_type===1" style="margin:3px;"><i class="far fa-calendar-check"></i></span> <span ng-class="{ true: 'item_todo', false: 'item_todo clear' }[item.event_state===0]">{{item.title}}</span>
             </div>
-            <div class="item more" ng-show="day.items.length>day_event_length">
+            <div class="item more" ng-show="day.items.length>day_event_length" ng-click="select(day, $event)">
                 {{day.items.length-day_event_length + 1}}개 더보기
             </div>
         </span>
