@@ -359,7 +359,16 @@
     display:block;
 }
 
+.container_todo_clear{
+    display: inline-block;
+    margin: 10px -10px 5px -10px;
+    padding: 10px 10px 5px 10px;
 
+    width:100%;
+    text-align: right;
+    font-weight: 700;
+    color: royalblue;
+}
 
 
 
@@ -370,6 +379,68 @@ input[type=checkbox]{
     width:16px;
     height: 16px;
     margin:0;
+}
+
+.container_config_tgl{
+    text-align: left;
+    float: right;
+}
+.config_tgl {
+    display: none;
+}
+.config_tgl, .config_tgl:after, .config_tgl:before, .config_tgl *, .config_tgl *:after, .config_tgl *:before, .config_tgl + .config_tgl_label {
+    box-sizing: border-box;
+}
+.config_tgl::-moz-selection, .config_tgl:after::-moz-selection, .config_tgl:before::-moz-selection, .config_tgl *::-moz-selection, .config_tgl *:after::-moz-selection, .config_tgl *:before::-moz-selection, .config_tgl + .config_tgl_label::-moz-selection {
+    background: none;
+}
+.config_tgl::selection, .config_tgl:after::selection, .config_tgl:before::selection, .config_tgl *::selection, .config_tgl *:after::selection, .config_tgl *:before::selection, .config_tgl + .config_tgl_label::selection {
+    background: none;
+}
+.config_tgl + .config_tgl_label {
+    outline: 0;
+    display: inline-block;
+    width: 3em;
+    height: 1.5em;
+    position: relative;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.config_tgl + .config_tgl_label:after, .config_tgl + .config_tgl_label:before {
+    position: relative;
+    display: inline-block;
+    content: "";
+    width: 50%;
+    height: 100%;
+}
+.config_tgl + .config_tgl_label:after {
+    left: 0;
+}
+.config_tgl + .config_tgl_label:before {
+    display: none;
+}
+.config_tgl:checked + .config_tgl_label:after {
+    left: 50%;
+}
+
+.config_tgl + .config_tgl_label {
+    background: #f0f0f0;
+    border-radius: 2em;
+    padding: 2px;
+    -webkit-transition: all .4s ease;
+    transition: all .4s ease;
+}
+.config_tgl + .config_tgl_label:after {
+    border-radius: 50%;
+    background: #fff;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+}
+.config_tgl:checked + .config_tgl_label {
+    background: #777777;
 }
 
 

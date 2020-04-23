@@ -93,6 +93,7 @@ barApp.controller('barController', function ($scope, $http, $uibModal) {
 
 barApp.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http) {
     $scope.event = {};
+    $scope.eventDefaultData = {};
     $scope.isLoadCompleted = false;
     $scope.isUpdated = false;
     $scope.show = function(){
@@ -117,6 +118,7 @@ barApp.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http)
             $scope.event.isAllDay = true;
         }
         $scope.isLoadCompleted = true;
+        $scope.eventDefaultData = clone($scope.event);
     };
 
     $scope.$watch('event ', function (newValue, oldValue) {
@@ -197,6 +199,8 @@ barApp.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http)
                     break;
                 }
             }
+
+            $scope.eventDefaultData = clone($scope.event);
             alert('성공적으로 변경된 사항이 저장되었습니다.');
         }, function errorCallback(response){
             console.log('error dupdate -> ' +response);
@@ -214,6 +218,7 @@ barApp.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http)
         }
     }
     $scope.close = function(){
+        $scope.rollbackData();
         var elem = document.getElementById('modal_event_content');
         elem.style.animationName='animateFadeHide';
         elem.style.opacity='0';
@@ -240,6 +245,20 @@ barApp.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http)
                 $scope.event_point_text = '매우 중요';
                 break;
         }
+    }
+
+    $scope.clearTodo = function(){
+        $scope.event.event_state = $scope.event.event_state===0 ? 1 : 0;
+    }
+
+    $scope.rollbackData = function(){
+        $scope.event.event_state = $scope.eventDefaultData.event_state;
+        $scope.event.event_color = $scope.eventDefaultData.event_color;
+        $scope.event.title = $scope.eventDefaultData.title;
+        $scope.event.date_event = $scope.eventDefaultData.date_event;
+        $scope.event.date_event_end = $scope.eventDefaultData.date_event_end;
+        $scope.event.event_point = $scope.eventDefaultData.event_point;
+
     }
 });
 

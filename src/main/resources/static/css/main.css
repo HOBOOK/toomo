@@ -402,8 +402,8 @@ input[type=range]::-webkit-slider-runnable-track {
     cursor: pointer;
     animate: 0.2s;
     box-shadow: 0px 0px 0px #000000;
-    background: rgba(0,0,0,0.05);
-    border-radius: 1px;
+    background: #f0f0f0;
+    border-radius: 2px;
     border: 0px solid #000000;
     transition: 0.3s background-color ease-in-out;
     -moz-transition: 0.3s background-color ease-in-out;
@@ -414,7 +414,7 @@ input[type=range]::-webkit-slider-thumb {
     height: 12px;
     width: 12px;
     border-radius: 100%;
-    background: royalblue;
+    background: #777777;
     cursor: pointer;
     -webkit-appearance: none;
     margin-top: -4px;
@@ -428,8 +428,8 @@ input[type=range]::-moz-range-track {
     cursor: pointer;
     animate: 0.2s;
     box-shadow: 0px 0px 0px #000000;
-    background: rgba(0,0,0,0.05);
-    border-radius: 1px;
+    background: #f0f0f0;
+    border-radius: 2px;
     border: 0px solid #000000;
     transition: 0.3s background-color ease-in-out;
     -moz-transition: 0.3s background-color ease-in-out;
@@ -440,7 +440,7 @@ input[type=range]::-moz-range-thumb {
     height: 12px;
     width: 12px;
     border-radius: 100%;
-    background: royalblue;
+    background: #777777;
     cursor: pointer;
 }
 input[type=range]::-ms-track {
@@ -456,13 +456,13 @@ input[type=range]::-ms-track {
     -webkit-transition: 0.3s background-color ease-in-out;
 }
 input[type=range]::-ms-fill-lower {
-    background: rgba(0,0,0,0.05);
+    background: #f0f0f0;
     border: 0px solid #000000;
     border-radius: 2px;
     box-shadow: 0px 0px 0px #000000;
 }
 input[type=range]::-ms-fill-upper {
-    background: rgba(0,0,0,0.05);
+    background: #f0f0f0;
     border: 0px solid #000000;
     border-radius: 2px;
     box-shadow: 0px 0px 0px #000000;
@@ -473,12 +473,12 @@ input[type=range]::-ms-thumb {
     height: 12px;
     width: 12px;
     border-radius: 100%;
-    background: royalblue;
+    background: #777777;
     cursor: pointer;
 }
 input[type=range]:focus::-ms-fill-lower {
-    background: rgba(0,0,0,0.05);
+    background: #f0f0f0;
 }
 input[type=range]:focus::-ms-fill-upper {
-    background: rgba(0,0,0,0.05);
+    background: #f0f0f0;
 }

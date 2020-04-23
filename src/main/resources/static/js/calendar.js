@@ -582,6 +582,7 @@ calApp.controller('ModalEventContentCtrl', function($scope, $uibModalInstance, $
     }
 
     $scope.rollbackData = function(){
+        $scope.event.event_state = $scope.eventDefaultData.event_state;
         $scope.event.event_color = $scope.eventDefaultData.event_color;
         $scope.event.title = $scope.eventDefaultData.title;
         $scope.event.date_event = $scope.eventDefaultData.date_event;
@@ -608,6 +609,9 @@ calApp.controller('ModalEventContentCtrl', function($scope, $uibModalInstance, $
                 $scope.event_point_text = '매우 중요';
                 break;
         }
+    }
+    $scope.clearTodo = function(){
+        $scope.event.event_state = $scope.event.event_state===0 ? 1 : 0;
     }
 
     //Color Pickers Method..
