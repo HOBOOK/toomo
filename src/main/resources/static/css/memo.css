@@ -96,7 +96,7 @@
 .container_context.dark{
     --memo-background-color: #404040;
     --memo-bar-color: #333333;
-    --memo-text-color: #f0f0f0;
+    --memo-text-color: #F0E090;
     --memo-menu-color: #B5B5B5;
     --memo-edit-color: #B0B0B0;
 }
@@ -233,7 +233,7 @@
     margin: 0;
 }
 hr{
-    background-color: rgba(0,0,0,0.1);
+    border-top: 1px solid var(--memo-text-color);
 }
 .memo_content::-webkit-scrollbar {display:none;}
 
