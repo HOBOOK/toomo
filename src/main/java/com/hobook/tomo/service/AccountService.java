@@ -6,6 +6,7 @@ import com.hobook.tomo.model.Role;
 import com.hobook.tomo.dto.AccountDto;
 import com.hobook.tomo.model.Account;
 import com.hobook.tomo.repository.AccountRepository;
+import com.hobook.tomo.security.SocialType;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -16,6 +17,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.rememberme.PersistentRememberMeToken;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
+
 import org.springframework.stereotype.Service;
 
 import org.springframework.transaction.annotation.Transactional;
@@ -42,6 +44,13 @@ public class AccountService implements UserDetailsService {
     public Long joinUser(AccountDto accountDto){
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         accountDto.setPwd(passwordEncoder.encode(accountDto.getPwd()));
+        return accountRepository.save(accountDto.toEntity()).getId();
+    }
+    @Transactional
+    public Long joinSocialUser(AccountDto accountDto, SocialType socialType){
+        if(socialType.getValue().equals("naver")){
+            accountDto.setSocial_provider("naver");
+        }
         return accountRepository.save(accountDto.toEntity()).getId();
     }
 

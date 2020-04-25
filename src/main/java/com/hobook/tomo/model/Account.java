@@ -28,15 +28,19 @@ public class Account extends Time {
     @Column(name="profile_image_url",nullable=false)
     private String profile_image_url;
 
+    @Column(name="social_provider")
+    private String social_provider;
+
 
 
     @Builder
-    public Account(Long id, String nickname, String email, String password, String profile_image_url)
+    public Account(Long id, String nickname, String email, String password, String profile_image_url, String social_provider)
     {
         this.id = id;
         this.nickname = nickname;
         this.email = email;
         this.pwd = password;
         this.profile_image_url = profile_image_url;
+        this.social_provider = social_provider;
     }
 }
