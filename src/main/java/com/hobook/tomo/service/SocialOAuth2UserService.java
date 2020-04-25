@@ -112,14 +112,20 @@ public class SocialOAuth2UserService extends DefaultOAuth2UserService {
                     null);
             throw new OAuth2AuthenticationException(oauth2Error, oauth2Error.toString(), ex);
         }
+        ObjectMapper objectMapper = new ObjectMapper();
+        Map<String, Object> responseMap = objectMapper.convertValue(response.getBody().get("response"), Map.class);
+        responseMap.put("id",responseMap.get("email"));
+        response.getBody().put("response", responseMap);
         Map<String, Object> userAttributes = getUserAttributes(response);
         Set<GrantedAuthority> authorities = new LinkedHashSet<>();
         authorities.add(new OAuth2UserAuthority(userAttributes));
         OAuth2AccessToken token = userRequest.getAccessToken();
         for (String authority : token.getScopes()) {
-            authorities.add(new SimpleGrantedAuthority("SCOPE_" + authority));
+            authorities.add(new SimpleGrantedAuthority("ROLE_" + "BASIC"));
         }
-        return new DefaultOAuth2User(authorities, userAttributes, userNameAttributeName);
+        DefaultOAuth2User defaultOAuth2User = new DefaultOAuth2User(authorities, userAttributes, userNameAttributeName);
+        Common.print(defaultOAuth2User.getName());
+        return defaultOAuth2User;
     }
 
     private Map<String, Object> getUserAttributes(ResponseEntity<Map<String, Object>> response){

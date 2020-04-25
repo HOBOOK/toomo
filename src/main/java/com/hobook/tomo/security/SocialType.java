@@ -12,7 +12,7 @@ public enum SocialType {
     SocialType(String name){ this.name = name;}
 
     public String getRoleType() {
-        return ROLE_PREFIX + "BASIC";
+        return ROLE_PREFIX + name.toUpperCase();
     }
 
     public String getValue(){

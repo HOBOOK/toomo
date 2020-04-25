@@ -50,7 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/memo").hasRole("BASIC")
                 .antMatchers("/manage").hasRole("BASIC")
                 .antMatchers("/schedule").hasRole("BASIC")
-                .antMatchers("/**","/oauth2/**")
+                .antMatchers("/**","/oauth2/**","/oauth/**","/login")
                 .permitAll()
                 .and() // 로그인 설정
                 .formLogin()
@@ -79,6 +79,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .oauth2Login()
+                .loginPage("/login")
                 .userInfoEndpoint().userService(new SocialOAuth2UserService(accountService)) // 네이버 USER INFO의 응답을 처리하기 위한 설정
                 .and()
                 .defaultSuccessUrl("/memo")
