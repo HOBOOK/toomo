@@ -5,6 +5,7 @@ header{
     border-bottom: 1px solid rgba(0,0,0,0.1);
     box-shadow: 0px 1px 5px 1px rgba(0,0,0,0.1);
     background-color: var(--header-background-color);
+    color: white;
     color: var(--header-color);
 }
 header div{
@@ -15,6 +16,11 @@ header div{
     height: 100%;
     margin-right: 20px;
     line-height: 60px;
+
+}
+.account a{
+    color: white;
+    color: var(--header-color);
 }
 .account img{
     margin-top:14px;

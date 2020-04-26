@@ -7,8 +7,8 @@
         </div>
         <div class="account" th:object="${account}">
             <img onclick="toggleProfile()" sec:authorize="isAuthenticated()" th:src="${account} ? ${account.getProfile_image_url()}" width="32" height="32"/>
-            <span onclick="toggleProfile()" th:text="${account} ? ${account.getNickname()}" sec:authorize="isAuthenticated()"></span>
-            <a sec:authorize="isAnonymous()" th:href="@{/login}">로그인</a>
+            <span class="fs-14" onclick="toggleProfile()" th:text="${account} ? ${account.getNickname()}" sec:authorize="isAuthenticated()"></span>
+            <a class="fs-14" sec:authorize="isAnonymous()" th:href="@{/login}">로그인</a>
         </div>
         <div class="account_remote">
             <div class="account_profile">

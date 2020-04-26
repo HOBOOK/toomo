@@ -88,9 +88,6 @@ public class SocialOAuth2UserService extends DefaultOAuth2UserService {
         ResponseEntity<Map<String, Object>> response;
         try{
             response = this.restOperations.exchange(request, PARAMETERIZED_RESPONSE_TYPE);
-            ObjectMapper objectMapper = new ObjectMapper();
-            String useremail = objectMapper.convertValue(response.getBody().get("response"), Map.class).get("email").toString();
-            AuthenticationAccount(useremail);
         }catch (OAuth2AuthenticationException ex){
             OAuth2Error oauth2Error = ex.getError();
             StringBuilder errorDetails = new StringBuilder();
@@ -112,10 +109,26 @@ public class SocialOAuth2UserService extends DefaultOAuth2UserService {
                     null);
             throw new OAuth2AuthenticationException(oauth2Error, oauth2Error.toString(), ex);
         }
-        ObjectMapper objectMapper = new ObjectMapper();
-        Map<String, Object> responseMap = objectMapper.convertValue(response.getBody().get("response"), Map.class);
-        responseMap.put("id",responseMap.get("email"));
-        response.getBody().put("response", responseMap);
+        // Naver 임시코드
+        if(response.getBody().get("response")!=null){
+            ObjectMapper objectMapper = new ObjectMapper();
+            Map<String, Object> responseMap = objectMapper.convertValue(response.getBody().get("response"), Map.class);
+            String useremail = responseMap.get("email").toString();
+            String username = responseMap.get("nickname").toString();
+            AuthenticationAccount(useremail, username);
+            responseMap.put("id",responseMap.get("email"));
+            response.getBody().put("response", responseMap);
+        }
+        // Google 임시코드
+        else{
+            ObjectMapper objectMapper = new ObjectMapper();
+            Map<String, Object> responseMap = objectMapper.convertValue(response.getBody(), Map.class);
+            String useremail = responseMap.get("email").toString();
+            String username = responseMap.get("name").toString();
+            AuthenticationAccount(useremail, username);
+            responseMap.put("sub",responseMap.get("email").toString());
+            response.getBody().put("response", responseMap);
+        }
         Map<String, Object> userAttributes = getUserAttributes(response);
         Set<GrantedAuthority> authorities = new LinkedHashSet<>();
         authorities.add(new OAuth2UserAuthority(userAttributes));
@@ -124,7 +137,6 @@ public class SocialOAuth2UserService extends DefaultOAuth2UserService {
             authorities.add(new SimpleGrantedAuthority("ROLE_" + "BASIC"));
         }
         DefaultOAuth2User defaultOAuth2User = new DefaultOAuth2User(authorities, userAttributes, userNameAttributeName);
-        Common.print(defaultOAuth2User.getName());
         return defaultOAuth2User;
     }
 
@@ -138,13 +150,13 @@ public class SocialOAuth2UserService extends DefaultOAuth2UserService {
         return userAttributes;
     }
 
-    private void AuthenticationAccount(String userEmail){
+    private void AuthenticationAccount(String userEmail, String userName){
         if(accountService.loadUserByUsername(userEmail)!=null){
 
         }else{
             AccountDto accountDto = new AccountDto();
             accountDto.setEmail(userEmail);
-            accountDto.setNickname(userEmail);
+            accountDto.setNickname(userName);
             accountDto.setProfile_image_url("img/anonymous.png");
             BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
             accountDto.setPwd(passwordEncoder.encode(Common.getRamdomPassword(16)));

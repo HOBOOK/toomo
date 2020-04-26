@@ -13,12 +13,12 @@
     <div class="container">
         <div class="container_login">
             <div class="panel_logo">
-                <img src="img/logo.png" alt="logo" height="50px"/>
+                <a href="/"><img src="img/logo.png" alt="logo" height="50px"/></a>
             </div>
             <div class="panel_login">
                 <form modelAttribute="accountDto" class="form_login validate-form" th:action="@{/signup}" method="post" autocomplete="off">
                     <div class="wrap-input100 validate-input m-b-16" data-validate = "! 닉네임을 입력해주세요.">
-                        <input class="input100" type="text" name="nickname" th:value="${accountDto!=null} ? ${accountDto.nickname}" placeholder="your nickname">
+                        <input class="input100" type="text" name="nickname" th:value="${accountDto!=null} ? ${accountDto.nickname}" placeholder="닉네임">
                         <span class="focus-input100"></span>
                         <span class="error nickname" th:text="${valid_nickname}"></span>
                         <span class="symbol-input100">
@@ -26,7 +26,7 @@
 						</span>
                     </div>
                     <div class="wrap-input100 validate-input m-b-16" data-validate = "! 이메일 형식을 입력해주세요">
-                        <input class="input100" type="text" name="email" th:value="${accountDto!=null} ? ${accountDto.email}" placeholder="your email">
+                        <input class="input100" type="text" name="email" th:value="${accountDto!=null} ? ${accountDto.email}" placeholder="이메일">
                         <span class="focus-input100"></span>
                         <span class="error email" th:text="${valid_email}"></span>
                         <span class="symbol-input100">
@@ -35,7 +35,7 @@
 
                     </div>
                     <div class="wrap-input100 validate-input m-b-16" data-validate = "! 비밀번호를 입력해주세요">
-                        <input class="input100" type="password" name="pwd" placeholder="password">
+                        <input class="input100" type="password" name="pwd" placeholder="비밀번호">
                         <span class="focus-input100"></span>
                         <span class="error pwd" th:text="${valid_pwd}"></span>
                         <span class="symbol-input100">
@@ -49,15 +49,6 @@
                         </button>
                     </div>
 
-                    <a href="#" class="btn-naver m-t-20 m-b-10">
-                        <img src="img/sns/naver.png" alt="naver">
-                        네이버 회원가입
-                    </a>
-
-                    <a href="#" class="btn-google m-t-20 m-b-10">
-                        <img src="img/sns/google.png" alt="google">
-                        구글 회원가입
-                    </a>
 
                     <div class="text-center w-full p-t-10">
                         <a class="txt1 hov1" href="./login">
@@ -65,8 +56,8 @@
                         </a>
                     </div>
 
-                    <div class="text-center w-full p-t-10">
-                        By continuing, you agree to Repl.it's Terms of Service and Privacy Policy, and to receiving emails with updates.
+                    <div class="text-center w-full p-t-10 fs-12 m-t-20">
+                        계속하면 귀하는 <b>'TOMO'</b>의 서비스 약관 및 개인 정보 보호 정책에 동의하고 업데이트 된 이메일을 수신하는 데 동의하게됩니다.
                     </div>
                 </form>
             </div>
