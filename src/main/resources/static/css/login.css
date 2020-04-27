@@ -109,7 +109,6 @@ a:focus {
 
 a:hover {
     text-decoration: none;
-    color: #d33f8d;
 }
 
 /*---------------------------------------------*/
@@ -399,9 +398,10 @@ iframe {
 
 /*------------------------------------------------------------------
 [ Button sign in with ]*/
+
 .btn-naver,
 .btn-google {
-    font-family: Raleway-Bold;
+    font-family: Nanum-Pen-Script;
     font-size: 14px;
     line-height: 1.2;
     margin:0 auto;
@@ -411,12 +411,11 @@ iframe {
     display: -moz-box;
     display: -ms-flexbox;
     display: flex;
-    justify-content: center;
     align-items: center;
     width: 280px;
     border-radius: 3px;
-    background-color: #fff;
-
+    border: 1px solid rgba(0,0,0,0.05);
+    font-weight: bold;
     -webkit-transition: all 0.4s;
     -o-transition: all 0.4s;
     -moz-transition: all 0.4s;
@@ -425,7 +424,8 @@ iframe {
 
 
 .btn-naver {
-    color: #3b5998;
+    color:#ffffff;
+    background-color: #1EC800;
 }
 
 .btn-naver i {
@@ -435,20 +435,25 @@ iframe {
 }
 
 .btn-google {
-    color: #555555;
+    font-family: 'Roboto', sans-serif;
+    color: rgba(0,0,0,0.54);
+    background-color: #FFFFFF;
+    border: 1px solid rgba(0,0,0,0.15);
 }
 .btn-naver img {
-    width: 100%;
+    width: 20px;
+    margin: 8px;
 }
 
 .btn-google img {
-    width: 100%;
+    width: 18px;
+    margin: 8px;
 }
 
 
 .btn-naver:hover,
 .btn-google:hover {
-    border-color: #d33f8d;
+    opacity: 0.9;
 }
 
 

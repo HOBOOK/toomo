@@ -65,7 +65,8 @@ public class AccountService implements UserDetailsService {
         if(("admin@tomo.com").equals(userEmail)){
             authorities.add(new SimpleGrantedAuthority(Role.ADMIN.getValue()));
         } else{
-            authorities.add(new SimpleGrantedAuthority(Role.BASIC.getValue()));
+            if(account.getAccount_auth_key().equals("Y"))
+                authorities.add(new SimpleGrantedAuthority(Role.BASIC.getValue()));
         }
         return new User(account.getEmail(), account.getPwd(), authorities);
     }

@@ -31,6 +31,8 @@ public class AccountDto {
 
     private String social_provider;
 
+    private String account_auth_key;
+
     private LocalDateTime date_create;
 
     private LocalDateTime date_update;
@@ -43,11 +45,12 @@ public class AccountDto {
                 .password(pwd)
                 .profile_image_url(profile_image_url)
                 .social_provider(social_provider)
+                .account_auth_key(account_auth_key)
                 .build();
     }
 
     @Builder
-    public AccountDto(Long id, String name, String email, String password, String profile_image_url, String social_provider, LocalDateTime date_create, LocalDateTime date_update)
+    public AccountDto(Long id, String name, String email, String password, String profile_image_url, String social_provider, String account_auth_key, LocalDateTime date_create, LocalDateTime date_update)
     {
         this.id = id;
         this.nickname = name;
@@ -55,6 +58,7 @@ public class AccountDto {
         this.pwd = password;
         this.profile_image_url = profile_image_url;
         this.social_provider = social_provider;
+        this.account_auth_key = account_auth_key;
         this.date_create = date_create;
         this.date_update = date_update;
     }
@@ -65,6 +69,7 @@ public class AccountDto {
         this.email = account.getEmail();
         this.profile_image_url = account.getProfile_image_url();
         this.social_provider = account.getSocial_provider();
+        this.account_auth_key = account.getAccount_auth_key();
         this.date_create = account.getDate_create();
         this.date_update = account.getDate_update();
     }

@@ -1,21 +1,22 @@
 package com.hobook.tomo.controller;
 
 import com.hobook.tomo.dto.AccountDto;
+import com.hobook.tomo.service.EmailService;
 import com.hobook.tomo.service.AccountService;
 import com.hobook.tomo.util.Common;
+import com.hobook.tomo.util.TempAuthKey;
 import lombok.AllArgsConstructor;
 import net.minidev.json.JSONObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import javax.mail.MessagingException;
 import javax.validation.Valid;
+import java.io.UnsupportedEncodingException;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +26,7 @@ import java.util.Map;
 @AllArgsConstructor
 public class AccountController {
     private final AccountService accountService;
+    private final EmailService emailService;
 
     @RequestMapping(value = "/updateProfileInfo", method = {RequestMethod.POST,RequestMethod.PUT})
     public @ResponseBody
@@ -64,14 +66,27 @@ public class AccountController {
                 model.addAttribute(key, validatorResult.get(key));
             }
             return "/signup";
-        }else if(accountService.loadUserByUsername(accountDto.getEmail())!=null){
+        }else if(accountService.loadUserByUsername(accountDto.getEmail())!=null) {
             model.addAttribute("valid_email", "! 중복된 이메일의 회원이 이미 있습니다.");
             return "/signup";
         }
+        accountDto.setProfile_image_url("img/anonymous.png");
+        accountDto.setAccount_auth_key(new TempAuthKey().getKey(25, false));
         accountService.joinUser(accountDto);
+        try{
+            emailService.sendAuthMail(accountDto);
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
         return "redirect:/login";
     }
 
-
+    @RequestMapping(value="/confirm", method=RequestMethod.GET)
+    public String emailConfirm(@ModelAttribute("AccountDto") AccountDto accountDto) throws Exception {
+        AccountDto setAccountDto = accountService.getAccountDto(accountDto.getEmail());
+        setAccountDto.setAccount_auth_key("Y");
+        accountService.updateAccount(setAccountDto);
+        return "redirect:/login";
+    }
 
 }

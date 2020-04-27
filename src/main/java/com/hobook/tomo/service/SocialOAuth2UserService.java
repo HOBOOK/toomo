@@ -158,6 +158,7 @@ public class SocialOAuth2UserService extends DefaultOAuth2UserService {
             accountDto.setEmail(userEmail);
             accountDto.setNickname(userName);
             accountDto.setProfile_image_url("img/anonymous.png");
+            accountDto.setAccount_auth_key("Y");
             BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
             accountDto.setPwd(passwordEncoder.encode(Common.getRamdomPassword(16)));
             accountService.joinSocialUser(accountDto, SocialType.NAVER);

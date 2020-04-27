@@ -31,10 +31,13 @@ public class Account extends Time {
     @Column(name="social_provider")
     private String social_provider;
 
+    @Column(name="account_auth_key")
+    private String account_auth_key;
+
 
 
     @Builder
-    public Account(Long id, String nickname, String email, String password, String profile_image_url, String social_provider)
+    public Account(Long id, String nickname, String email, String password, String profile_image_url, String social_provider, String account_auth_key)
     {
         this.id = id;
         this.nickname = nickname;
@@ -42,5 +45,6 @@ public class Account extends Time {
         this.pwd = password;
         this.profile_image_url = profile_image_url;
         this.social_provider = social_provider;
+        this.account_auth_key = account_auth_key;
     }
 }
