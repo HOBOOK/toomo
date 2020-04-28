@@ -2,24 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e8dee576-308c-4951-92c8-237d8e03e46f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/denied.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/mail-template.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/controller/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/controller/AccountController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/controller/PageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/controller/PageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/dto/AccountDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/dto/AccountDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/service/EmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/service/EmailService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/denied.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/denied.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/error/error.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/error/error.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/signup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hobook/tomo/config/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hobook/tomo/config/SecurityConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hobook/tomo/controller/PageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hobook/tomo/controller/PageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hobook/tomo/dto/AccountDto$AccountDtoBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hobook/tomo/dto/AccountDto$AccountDtoBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hobook/tomo/dto/AccountDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hobook/tomo/dto/AccountDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/denied.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/denied.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/error/error.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/error/error.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/signup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tomo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/tomo.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,9 +33,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="HTML File" />
         <option value="Class" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -110,18 +96,6 @@
       <recent name="D:\Work Space\WebProject\tomo\src\main\resources\templates\modal" />
       <recent name="D:\workspace\WebProject\tomo\src\main\resources\static\js" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager" selected="Spring Boot.TomoApplication">
     <configuration name="AccountDtoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
@@ -254,6 +228,7 @@
       <workItem from="1587782428356" duration="20794000" />
       <workItem from="1587898399876" duration="7955000" />
       <workItem from="1587957091804" duration="13374000" />
+      <workItem from="1588071180677" duration="3229000" />
     </task>
     <servers />
   </component>
@@ -278,10 +253,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="178" key="#Project_Structure/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587565725895" />
-    <state x="808" y="409" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1587957171419">
+    <state x="808" y="409" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1588071307988">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="808" y="409" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587957171419" />
+    <state x="808" y="409" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588071307988" />
     <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1587568158272">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -291,45 +266,45 @@
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587705260298" />
     <state x="2660" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1586527327134" />
-    <state width="1921" height="245" key="GridCell.Tab.0.bottom" timestamp="1587973455605">
+    <state width="1921" height="245" key="GridCell.Tab.0.bottom" timestamp="1588074447930">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1921" height="245" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587973455605" />
+    <state width="1921" height="245" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588074447930" />
     <state width="1877" height="239" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1586581113256" />
-    <state width="1921" height="245" key="GridCell.Tab.0.center" timestamp="1587973455605">
+    <state width="1921" height="245" key="GridCell.Tab.0.center" timestamp="1588074447930">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1921" height="245" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587973455605" />
+    <state width="1921" height="245" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588074447930" />
     <state width="1877" height="239" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1586581113256" />
-    <state width="1921" height="245" key="GridCell.Tab.0.left" timestamp="1587973455604">
+    <state width="1921" height="245" key="GridCell.Tab.0.left" timestamp="1588074447929">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1921" height="245" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587973455604" />
+    <state width="1921" height="245" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588074447929" />
     <state width="1877" height="239" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1586581113256" />
-    <state width="1921" height="245" key="GridCell.Tab.0.right" timestamp="1587973455605">
+    <state width="1921" height="245" key="GridCell.Tab.0.right" timestamp="1588074447930">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1921" height="245" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587973455605" />
+    <state width="1921" height="245" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588074447930" />
     <state width="1877" height="239" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1586581113256" />
-    <state width="1921" height="245" key="GridCell.Tab.1.bottom" timestamp="1587973455605">
+    <state width="1921" height="245" key="GridCell.Tab.1.bottom" timestamp="1588074447930">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1921" height="245" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587973455605" />
+    <state width="1921" height="245" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588074447930" />
     <state width="1877" height="239" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1586581113257" />
-    <state width="1921" height="245" key="GridCell.Tab.1.center" timestamp="1587973455605">
+    <state width="1921" height="245" key="GridCell.Tab.1.center" timestamp="1588074447930">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1921" height="245" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587973455605" />
+    <state width="1921" height="245" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588074447930" />
     <state width="1877" height="239" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1586581113257" />
-    <state width="1921" height="245" key="GridCell.Tab.1.left" timestamp="1587973455605">
+    <state width="1921" height="245" key="GridCell.Tab.1.left" timestamp="1588074447930">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1921" height="245" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587973455605" />
+    <state width="1921" height="245" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588074447930" />
     <state width="1877" height="239" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1586581113257" />
-    <state width="1921" height="245" key="GridCell.Tab.1.right" timestamp="1587973455605">
+    <state width="1921" height="245" key="GridCell.Tab.1.right" timestamp="1588074447930">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1921" height="245" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587973455605" />
+    <state width="1921" height="245" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588074447930" />
     <state width="1877" height="239" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1586581113257" />
     <state x="461" y="162" key="SettingsEditor" timestamp="1587957167455">
       <screen x="0" y="0" width="1920" height="1040" />

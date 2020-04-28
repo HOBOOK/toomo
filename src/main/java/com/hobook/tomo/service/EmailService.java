@@ -35,15 +35,25 @@ public class EmailService {
         MimeMessageHelper helper = new MimeMessageHelper(message, true);
         helper.setSubject("[TOMO - 메모, 일정관리 서비스] 회원가입 인증확인 메일입니다.");
         helper.setTo(accountDto.getEmail());
-        helper.setText(new StringBuffer().append("<h1>[TOMO 서비스 이메일 인증]</h1>")
-                .append("<p>아래 링크를 클릭하시면 이메일 인증이 완료됩니다.</p>")
-                .append("<a href='http://localhost:8080/confirm?")
+
+        Context context = new Context();
+        String mail_data = new StringBuffer().append("http://localhost:8080/confirm?")
                 .append("email=")
                 .append(accountDto.getEmail())
                 .append("&account_auth_key=")
-                .append(accountDto.getAccount_auth_key())
-                .append("' target='_blenk'>이메일 인증 확인</a>")
-                .toString(), true);
+                .append(accountDto.getAccount_auth_key()).toString();
+        context.setVariable("mail_data",mail_data);
+        String html = templateEngine.process("mail-template",context);
+        helper.setText(html, true);
+//        helper.setText(new StringBuffer().append("<h1>[TOMO 서비스 이메일 인증]</h1>")
+//                .append("<p>아래 링크를 클릭하시면 이메일 인증이 완료됩니다.</p>")
+//                .append("<a href='http://localhost:8080/confirm?")
+//                .append("email=")
+//                .append(accountDto.getEmail())
+//                .append("&account_auth_key=")
+//                .append(accountDto.getAccount_auth_key())
+//                .append("' target='_blenk'>이메일 인증 확인</a>")
+//                .toString(), true);
         mailSender.send(message);
     }
 
