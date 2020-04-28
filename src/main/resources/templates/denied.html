@@ -1,11 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>TOMO | 인증되지않음</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.0/css/all.css">
+    <link rel="stylesheet" href="css/denied.css">
+    <link rel="stylesheet" href="css/util.css">
 </head>
 <body>
-    이메일 인증이 완료되지 않았습니다.
-    이메일 인증을 해주세요
+    <div class="container">
+        <div class="container_denied">
+            <div class="panel_logo">
+                <a href="/"><img src="img/logo.png" alt="logo" height="50px"/></a>
+            </div>
+            <div class="panel_denied">
+                <div class="panel_user_info m-t-50 m-b-30" th:object="${deniedAccount}">
+                    <table>
+                        <tr>
+                            <td style="border-right: 1px solid rgba(0,0,0,0.15); font-weight: bold;">이름</td>
+                            <td colspan="2" th:text="${deniedAccount} ? ${deniedAccount.getNickname()}"></td>
+                        </tr>
+                        <tr>
+                            <td style="border-right: 1px solid rgba(0,0,0,0.15);  font-weight: bold;">이메일</td>
+                            <td colspan="2" th:text="${deniedAccount} ? ${deniedAccount.getEmail()}"></td>
+                        </tr>
+                        <tr>
+                            <td style="border-right: 1px solid rgba(0,0,0,0.15);  font-weight: bold;">인증상태</td>
+                            <td colspan="2" style="color: red;">인증되지 않음</td>
+                        </tr>
+                    </table>
+                </div>
+                <span class="fs-13">해당 정보로 인증메일이 발송되었습니다. 인증메일을 통해 인증을 하셔야만 TOMO 서비스를 이용할 수 있습니다.</span>
+
+                <div class="panel_btn m-t-50">
+                    <a href="/reauth" style="background-color: royalblue; color: white;">인증메일 재발송</a>
+                    <a href="/">돌아가기</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

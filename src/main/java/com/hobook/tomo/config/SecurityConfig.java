@@ -56,6 +56,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/login")
                 .defaultSuccessUrl("/memo")
+                .failureUrl("/login-error")
                 .permitAll()
                 .and() // Remember me 설정
                 .rememberMe()

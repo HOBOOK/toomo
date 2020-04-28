@@ -15,7 +15,10 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.mail.MessagingException;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.security.Principal;
 import java.util.ArrayList;
@@ -78,15 +81,50 @@ public class AccountController {
         }catch (Exception ex){
             ex.printStackTrace();
         }
-        return "redirect:/login";
+        return "redirect:/denied?email="+accountDto.getEmail();
+    }
+
+    @RequestMapping(value = "/reauth", method = RequestMethod.GET)
+    public void reauth(Principal principal, HttpServletResponse response) throws Exception{
+        response.setContentType("text/html; charset=UTF-8");
+        PrintWriter out = response.getWriter();
+
+        AccountDto accountDto = accountService.getAccountDto(principal.getName());
+        if(accountDto.getAccount_auth_key().equals("Y")){
+            out.println("<script>alert('이미 인증된 사용자입니다.');window.location.replace(\"/login\");</script>");
+            out.flush();
+            return;
+        }
+        accountDto.setAccount_auth_key(new TempAuthKey().getKey(25, false));
+        accountService.updateAccount(accountDto);
+        try{
+            emailService.sendAuthMail(accountDto);
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+        out.println("<script>alert('인증메일을 다시 전송하였습니다.');window.location.replace(\"/denied\");</script>");
+        out.flush();
     }
 
     @RequestMapping(value="/confirm", method=RequestMethod.GET)
-    public String emailConfirm(@ModelAttribute("AccountDto") AccountDto accountDto) throws Exception {
+    public void emailConfirm(@ModelAttribute("AccountDto") AccountDto accountDto, HttpServletResponse response) throws Exception {
         AccountDto setAccountDto = accountService.getAccountDto(accountDto.getEmail());
-        setAccountDto.setAccount_auth_key("Y");
-        accountService.updateAccount(setAccountDto);
-        return "redirect:/login";
+        response.setContentType("text/html; charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        if(setAccountDto.getAccount_auth_key().equals("Y")){
+            out.println("<script>alert('이미 인증이된 계정입니다.');window.location.replace(\"/login\");</script>");
+            out.flush();
+        }else{
+            if(setAccountDto.getAccount_auth_key().equals(accountDto.getAccount_auth_key())){
+                setAccountDto.setAccount_auth_key("Y");
+                accountService.updateAccount(setAccountDto);
+                out.println("<script>alert('성공적으로 이메일 인증이 완료되었습니다!');window.location.replace(\"/login\");</script>");
+                out.flush();
+            }else{
+                out.println("<script>alert('만료된 인증정보 입니다. 이메일을 다시 확인하거나 인증메일을 다시 요청해주세요.');window.location.replace(\"/login\");</script>");
+                out.flush();
+            }
+        }
     }
 
 }

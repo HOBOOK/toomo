@@ -21,7 +21,9 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.io.PrintWriter;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Date;
@@ -52,6 +54,14 @@ public class PageController implements ErrorController {
     {
         return "login";
     }
+    @RequestMapping(value = "/login-error", method = RequestMethod.GET)
+    public void goLoginError(HttpServletResponse response) throws Exception
+    {
+        response.setContentType("text/html; charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        out.println("<script>alert('이메일이나 비밀번호를 다시 확인해주세요.');window.location.replace(\"/login\");</script>");
+        out.flush();
+    }
 
     @RequestMapping(value = "/signup", method = RequestMethod.GET)
     public String goSignup()
@@ -60,8 +70,20 @@ public class PageController implements ErrorController {
     }
 
     @RequestMapping(value ="/denied", method = RequestMethod.GET)
-    public String goDenied(){
-        return "denied";
+    public String goDenied(@ModelAttribute("AccountDto") AccountDto accountDto, Principal principal, Model model){
+        if(accountDto.getEmail()!=null){
+            if(accountService.getAccountDto(accountDto.getEmail()).getAccount_auth_key().equals("Y"))
+                return "index";
+            model.addAttribute("deniedAccount", accountService.getAccountDto(accountDto.getEmail()));
+            return "denied";
+        }else if(principal!=null){
+            if(accountService.getAccountDto(principal.getName()).getAccount_auth_key().equals("Y"))
+                return "index";
+            model.addAttribute("deniedAccount", accountService.getAccountDto(principal.getName()));
+            return "denied";
+        }else{
+            return "index";
+        }
     }
 
     @RequestMapping(value = "/memo", method = {RequestMethod.GET,RequestMethod.POST})
@@ -84,8 +106,12 @@ public class PageController implements ErrorController {
         }
         if(principal==null)
             return "index";
-        else
-            return "memo";
+        else{
+            if(accountService.getAccountDto(principal.getName()).getAccount_auth_key().equals("Y"))
+                return goMemo(principal, model);
+            else
+                return "index";
+        }
     }
 
     @RequestMapping(value = "/schedule", method = RequestMethod.GET)

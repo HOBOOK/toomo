@@ -3,9 +3,7 @@ package com.hobook.tomo.dto;
 import com.hobook.tomo.model.Account;
 import lombok.*;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
+import javax.validation.constraints.*;
 import java.time.LocalDateTime;
 
 @Getter
@@ -18,7 +16,7 @@ public class AccountDto {
     @NotBlank(message = "! 닉네임을 입력해주세요.")
     private String nickname;
 
-    @NotBlank(message = "! 이메일일을 입해주세요.")
+    @NotBlank(message = "! 이메일을 입력해주세요.")
     @Email(message = "이메일 형식에 맞지 않습니다.")
     private String email;
 
@@ -26,6 +24,9 @@ public class AccountDto {
     @Pattern(regexp="(?=.*[0-9])(?=.*[a-zA-Z])(?=.*\\W)(?=\\S+$).{8,20}",
             message = "! 비밀번호는 영문 대,소문자와 숫자, 특수기호가 적어도 1개 이상씩 포함된 8자 ~ 20자의 비밀번호여야 합니다.")
     private String pwd;
+
+    @NotBlank(message = "! 비밀번호를 다시 입력해주세요.")
+    private String pwd2;
 
     private String profile_image_url;
 
@@ -36,6 +37,11 @@ public class AccountDto {
     private LocalDateTime date_create;
 
     private LocalDateTime date_update;
+
+    @AssertTrue(message = "비밀번호가 일치하지 않습니다.")
+    public boolean isEqualsPassword(){
+        return pwd.equals(pwd2) && pwd2.length()>=8;
+    }
 
     public Account toEntity(){
         return Account.builder()
@@ -73,5 +79,4 @@ public class AccountDto {
         this.date_create = account.getDate_create();
         this.date_update = account.getDate_update();
     }
-
 }

@@ -38,9 +38,9 @@ public class EmailService {
         helper.setText(new StringBuffer().append("<h1>[TOMO 서비스 이메일 인증]</h1>")
                 .append("<p>아래 링크를 클릭하시면 이메일 인증이 완료됩니다.</p>")
                 .append("<a href='http://localhost:8080/confirm?")
-                .append("&email=")
+                .append("email=")
                 .append(accountDto.getEmail())
-                .append("&authkey=")
+                .append("&account_auth_key=")
                 .append(accountDto.getAccount_auth_key())
                 .append("' target='_blenk'>이메일 인증 확인</a>")
                 .toString(), true);
