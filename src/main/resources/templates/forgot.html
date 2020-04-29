@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>TOMO | 회원가입</title>
+
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.0/css/all.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/util.css">
+</head>
+<body>
+    <div class="container">
+        <div class="container_login">
+            <div class="panel_logo">
+                <a href="/"><img src="img/logo.png" alt="logo" height="50px"/></a>
+            </div>
+            <div class="panel_login">
+                <form modelAttribute="accountDto" class="form_login validate-form" th:action="@{/resetemail}" method="post" autocomplete="off">
+                    <div class="wrap-input100 validate-input m-b-16" data-validate = "! 이메일주소를 입력해주세요.">
+                        <input class="input100" type="text" name="email" placeholder="이메일">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+							<i class="far fa-envelope"></i>
+						</span>
+                    </div>
+                    <div class="container-login100-form-btn p-t-20">
+                        <button type="submit" class="login100-form-btn">
+                            비밀번호 재설정 이메일 전송
+                        </button>
+                    </div>
+
+
+                    <div class="text-center w-full p-t-10">
+                        <a class="txt1 hov1" href="./login">
+                            로그인 화면 돌아가기
+                        </a>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <!--Script-->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</body>
+</html>

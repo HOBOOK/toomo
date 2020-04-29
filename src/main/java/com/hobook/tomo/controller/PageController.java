@@ -69,6 +69,12 @@ public class PageController implements ErrorController {
         return "signup";
     }
 
+    @RequestMapping(value = "/forgot", method = RequestMethod.GET)
+    public String goForgot()
+    {
+        return "forgot";
+    }
+
     @RequestMapping(value ="/denied", method = RequestMethod.GET)
     public String goDenied(@ModelAttribute("AccountDto") AccountDto accountDto, Principal principal, Model model){
         if(accountDto.getEmail()!=null){

@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import net.minidev.json.JSONObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -82,6 +83,69 @@ public class AccountController {
             ex.printStackTrace();
         }
         return "redirect:/denied?email="+accountDto.getEmail();
+    }
+
+    @PostMapping(value = "/resetemail")
+    public void resetemail(AccountDto accountDto, HttpServletResponse response) throws Exception{
+        response.setContentType("text/html; charset=UTF-8");
+        PrintWriter out = response.getWriter();
+
+        AccountDto resetAccount = accountService.getAccountDto(accountDto.getEmail());
+        if(resetAccount!=null && resetAccount.getAccount_auth_key().equals("Y")){
+            try{
+                emailService.sendResetPasswordMail(accountDto);
+            }catch (Exception ex){
+                ex.printStackTrace();
+            }
+            out.println("<script>alert('입력한 이메일 주소로 비밀번호 재설정 메일을 전송하였습니다. 확인해주세요.');window.location.replace(\"/login\");</script>");
+        }else{
+            out.println("<script>alert('가입되지 않거나 인증되지 않은 사용자입니다.');window.location.replace(\"/forgot\");</script>");
+        }
+        out.flush();
+    }
+    @RequestMapping(value = "/resetpassword", method = RequestMethod.GET)
+    public String resetpassword(@ModelAttribute("AccountDto") AccountDto accountDto, Model model) throws Exception{
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        if(passwordEncoder.matches(accountDto.getEmail(), accountDto.getAccount_auth_key())){
+            AccountDto resetAccount = accountService.getAccountDto(accountDto.getEmail());
+            if(resetAccount!=null && resetAccount.getAccount_auth_key().equals("Y")){
+                model.addAttribute("resetAccount", resetAccount);
+                return "reset_password";
+            }else{
+                return "index";
+            }
+        }else{
+            return "index";
+        }
+
+    }
+    @PostMapping(value = "/resetpassword")
+    public String resetpassword(@Valid AccountDto accountDto, Errors errors, Model model, HttpServletResponse response){
+
+        if(errors.hasErrors()) {
+
+            model.addAttribute("resetAccount", accountDto);
+            Map<String, String> validatorResult = accountService.validateHandling(errors);
+            for (String key : validatorResult.keySet()) {
+                model.addAttribute(key, validatorResult.get(key));
+            }
+            return "reset_password";
+        }
+        AccountDto resetAccount = accountService.getAccountDto(accountDto.getEmail());
+        if(resetAccount!=null && resetAccount.getAccount_auth_key().equals("Y")){
+            BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+            resetAccount.setPwd(passwordEncoder.encode(accountDto.getPwd()));
+            accountService.updateAccount(resetAccount);
+            try{
+                response.setContentType("text/html; charset=UTF-8");
+                PrintWriter out = response.getWriter();
+                out.println("<script>alert('비밀번호가 성공적으로 재설정되었습니다.');window.location.replace(\"/login\");</script>");
+                out.flush();
+            }catch (Exception ex){
+                ex.printStackTrace();
+            }
+        }
+        return "redirect:/login";
     }
 
     @RequestMapping(value = "/reauth", method = RequestMethod.GET)

@@ -6,6 +6,7 @@ import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.context.Context;
 import org.thymeleaf.spring5.SpringTemplateEngine;
@@ -45,17 +46,27 @@ public class EmailService {
         context.setVariable("mail_data",mail_data);
         String html = templateEngine.process("mail-template",context);
         helper.setText(html, true);
-//        helper.setText(new StringBuffer().append("<h1>[TOMO 서비스 이메일 인증]</h1>")
-//                .append("<p>아래 링크를 클릭하시면 이메일 인증이 완료됩니다.</p>")
-//                .append("<a href='http://localhost:8080/confirm?")
-//                .append("email=")
-//                .append(accountDto.getEmail())
-//                .append("&account_auth_key=")
-//                .append(accountDto.getAccount_auth_key())
-//                .append("' target='_blenk'>이메일 인증 확인</a>")
-//                .toString(), true);
         mailSender.send(message);
     }
+    public void sendResetPasswordMail(AccountDto accountDto) throws MessagingException{
+        MimeMessage message = mailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message, true);
+        helper.setSubject("[TOMO - 메모, 일정관리 서비스] 비밀번호 재설정 관련");
+        helper.setTo(accountDto.getEmail());
+
+        Context context = new Context();
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String mail_data = new StringBuffer().append("http://localhost:8080/resetpassword?")
+                .append("email=")
+                .append(accountDto.getEmail())
+                .append("&account_auth_key=")
+                .append(passwordEncoder.encode(accountDto.getEmail())).toString();
+        context.setVariable("mail_data",mail_data);
+        String html = templateEngine.process("mail-reset-template",context);
+        helper.setText(html, true);
+        mailSender.send(message);
+    }
+
 
     private SimpleMailMessage createMessage(String to, String subject, String text){
         SimpleMailMessage message = new SimpleMailMessage();

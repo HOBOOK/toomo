@@ -22,7 +22,7 @@ public class Account extends Time {
     @Column(name="email",nullable=false, updatable = false,  unique=true, length = 50)
     private String email;
 
-    @Column(name="pwd",nullable=false, updatable = false, length = 100)
+    @Column(name="pwd",nullable=false, length = 100)
     private String pwd;
 
     @Column(name="profile_image_url",nullable=false)
