@@ -1,6 +1,6 @@
 
 .modal {
-    font-family: JSDongkang-Regular;
+    font-family: 'Roboto', sans-serif;
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     left: 0;
@@ -38,6 +38,7 @@
     line-height: 50px;
 }
 .modal-header h1{
+    color: #666666;
     color: var(--schedule-modal-color);
     margin:15px;
     font-size: 21px;
@@ -78,6 +79,7 @@
     -webkit-transition: background-color 0.3s ease-in-out;
 }
 .form_input_day input[type='text']{
+    color: #666666;
     color: var(--schedule-modal-color);
     padding: 3px;
     width:95%;
@@ -98,9 +100,10 @@
 }
 
 .form_input_day textarea{
+    color: #808080;
     color: var(--schedule-modal-sub-color);
     background-color: transparent;
-    font-family: JSDongkang-Regular;
+    font-family: 'Roboto', sans-serif;
     width:95%;
     border:none;
     box-shadow: none;
@@ -166,6 +169,7 @@
     padding: 2px;
     margin:0px 10px 0px 5px;
     text-align: left;
+    color: #666666;
     color: var(--schedule-modal-color);
     cursor: pointer;
 }
@@ -179,7 +183,9 @@
 /* Modal Content */
 .modal-content {
     margin-top:80px;
+    background-color: #FEFEFE;
     background-color: var(--schedule-modal-background-color);
+    color: #666666;
     color: var(--schedule-modal-color);
     padding: 0;
     height: calc(100% - 100px);
@@ -195,7 +201,9 @@
 
 /* modal Event */
 .modal_event-content {
+    background-color: #FEFEFE;
     background-color: var(--schedule-modal-background-color);
+    color: #666666;
     color: var(--schedule-modal-color);
     padding: 0;
     height: auto;
@@ -235,7 +243,7 @@
     color: #333333;
 }
 .form_todo_day{
-    font-family: JSDongkang-Regular;
+    font-family: 'Roboto', sans-serif;
 }
 .form_todo_day table{
     margin-top:0;
@@ -263,7 +271,8 @@
     background-color: rgba(0,0,0,0.05);
 }
 .form_todo_day input[type='text'],input[type='date'],input[type='time']{
-    font-family: JSDongkang-Regular;
+    font-family: 'Roboto', sans-serif;
+    color: #666666;
     color: var(--schedule-modal-color);
     padding: 3px;
     border:none;
@@ -274,8 +283,9 @@
 }
 
 .form_todo_day textarea{
-    font-family: JSDongkang-Regular;
+    font-family: 'Roboto', sans-serif;
     border-radius: 5px;
+    color: #808080;
     color: var(--schedule-modal-sub-color);
     background-color: transparent;
     width:95%;
@@ -301,6 +311,7 @@
     border-radius: 5px;
     background-color: transparent;
     cursor: pointer;
+    color: #808080;
     color: var(--schedule-modal-sub-color);
 }
 .form_input_day button:hover{
@@ -324,6 +335,7 @@
     transition:0.3s all;
     cursor: pointer;
     border-radius: 5px;
+    color: #666666;
     color:var(--schedule-modal-color);
 }
 .tab_menu_btn.on {

@@ -14,6 +14,12 @@ app.controller('memoController', function ($scope, $http, $compile) {
        $scope.memos = data.data;
     });
 
+    $scope.display = function(){
+        return {
+            "display" : "inline-block"
+        };
+    }
+
     $scope.init = function(){
         // 메모 색상 옵션
         var memoColor = getCookie('memoColor');

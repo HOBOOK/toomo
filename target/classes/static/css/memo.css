@@ -1,3 +1,4 @@
+
 .button_add_memo{
     position: fixed;
     text-align: center;
@@ -101,14 +102,19 @@
     --memo-edit-color: #B0B0B0;
 }
 .container_context.small{
-    --memo-content-width: 220px;
-    --memo-width: 240px;
+    --memo-content-width: 260px;
+    --memo-width: 280px;
     --memo-height: 280px;
 }
 .container_context.big{
     --memo-content-width: 340px;
     --memo-width: 360px;
     --memo-height: 400px;
+}
+.container_context.long{
+    --memo-content-width: 280px;
+    --memo-width: 300px;
+    --memo-height: 600px;
 }
 .container_context.smallFont{
     --memo-bar-font-size: 12px;
@@ -120,19 +126,31 @@
 }
 
 .memo{
+    display: none;
     margin-left: 10px;
     margin-top: 5px;
     margin-bottom: 5px;
     position: relative;
-    display: inline-block;
     width: 300px;
     width: var(--memo-width);
     height: 340px;
     height: var(--memo-height);
     background-color: antiquewhite;
     background-color: var(--memo-background-color);
-    border: 1px solid rgba(0,0,0,0.1);
-    border-radius: 2px;
+    border: 1px solid rgba(0,0,0,0.05);
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+}
+.cover_memo{
+    width: 300px;
+    width: var(--memo-width);
+    height: 340px;
+    height: var(--memo-height);
+    position:absolute;
+    z-index: 10;
+    background-color: rgba(0,0,0,0.05);
+    top:0;
+    left:0;
 }
 
 .memo.ng-move,
@@ -205,14 +223,16 @@
 
 }
 .bar_memo.selected{
+    background-color: rgba(255,255,0,0.1);
     background-color: var(--memo-bar-color);
-    border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
 .memo_content{
-    font-family: JSDongkang-Regular;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
     font-size: var(--memo-content-font-size);
     line-height: 1.5rem;
+    width: 280px;
     width: var(--memo-content-width);
     margin: 0 auto;
     height: calc(100% - 50px);
@@ -226,6 +246,7 @@
     appearance: none;
     background-color: transparent;
     border:none;
+    color: black;
     color: var(--memo-text-color);
 }
 .memo_content ul{
@@ -233,6 +254,7 @@
     margin: 0;
 }
 hr{
+    border-top: 1px solid black;
     border-top: 1px solid var(--memo-text-color);
 }
 .memo_content::-webkit-scrollbar {display:none;}
@@ -242,6 +264,7 @@ hr{
     padding-left: 3px;
     padding-right: 3px;
     cursor: pointer;
+    color: #505050;
     color: var(--memo-menu-color);
     transition: all 0.2s ease-in-out;
 }
@@ -251,7 +274,9 @@ hr{
 
 .memo_menu_items> i{
     cursor: pointer;
+    color: #666666;
     color: var(--memo-edit-color);
+    font-size: 14px;
     font-size: var(--memo-bar-font-size);
     padding-left: 5px;
     padding-right: 5px;

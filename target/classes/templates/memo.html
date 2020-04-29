@@ -13,9 +13,9 @@
 <section ng-app="MyApp" ng-controller="memoController" layout:fragment="content" class="container_main">
     <div class="main" ng-init="init()">
         <div class="container_context" id="memo_parent">
-            <article ng-repeat="memo in memos | orderBy:['!-fix', '-date_create'] | filter:{ state: 0}" class="memo" id="memo_{{memo.id}}">
-                <img src="img/pin.png" height="32" ng-click="setPin(false, memo)" ng-show="memo.fix=='1'" class="memo-pin fix"></img>
-                <img src="img/pin.png" height="32" ng-click="setPin(true, memo)" ng-show="memo.fix=='0'" class="memo-pin"></img>
+            <article ng-style="display()" ng-repeat="memo in memos | orderBy:['!-fix', '-date_create'] | filter:{ state: 0}" class="memo" id="memo_{{memo.id}}">
+                <img src="img/pin.png" height="32" ng-click="setPin(false, memo)" ng-show="memo.fix=='1'" class="memo-pin fix"/>
+                <img src="img/pin.png" height="32" ng-click="setPin(true, memo)" ng-show="memo.fix=='0'" class="memo-pin"/>
                 <div  class="container_memo" ng-click="editMemo(memo.id)">
                     <div ng-class="{ true: 'bar_memo selected', false: 'bar_memo' }[config.editMode && config.editTarget==memo.id]">
                         <div ng-show="config.editMode && config.editTarget==memo.id">
@@ -42,7 +42,7 @@
                         {{memo.context}}
                     </div>
                 </div>
-                <div ng-show="config.editMode && config.editTarget!=memo.id" style="position:absolute; z-index: 10; width: 300px; height: 340px; background-color: rgba(0,0,0,0.05);top:0;left:0;"></div>
+                <div class="cover_memo" ng-show="config.editMode && config.editTarget!=memo.id"></div>
             </article>
             <br/>
             <br/>

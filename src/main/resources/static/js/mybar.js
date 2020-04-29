@@ -42,11 +42,21 @@ barApp.controller('barController', function ($scope, $http, $uibModal) {
         var isClear = event.event_state===1;
         var index = 0;
         if(!isClear){
-            index = $scope.events.findIndex(ev => ev.id === event.id);
+            for(var i = 0; i < $scope.events.length; i++){
+                if($scope.events.id === event.id){
+                    index = i;
+                    break;
+                }
+            }
             e = $scope.events[index];
             e.event_state = 1;
         }else{
-            index = $scope.clearEvents.findIndex(ev => ev.id === event.id);
+            for(var i = 0; i < $scope.clearEvents.length; i++){
+                if($scope.clearEvents.id === event.id){
+                    index = i;
+                    break;
+                }
+            }
             e = $scope.clearEvents[index];
             e.event_state = 0;
         }
@@ -86,7 +96,7 @@ barApp.controller('barController', function ($scope, $http, $uibModal) {
     };
 
     $scope.select = function(event, $event) {
-        if($event.target.className.includes('check')){
+        if($event.target.className.indexOf('check') !== -1){
             return;
         }
         var modalInstance = $uibModal.open({
@@ -99,6 +109,19 @@ barApp.controller('barController', function ($scope, $http, $uibModal) {
         modalInstance.positionX = $event.currentTarget.getBoundingClientRect().x;
         modalInstance.positionY = $event.currentTarget.getBoundingClientRect().y;
         modalInstance.width = $event.currentTarget.clientWidth;
+        //Internet Explorer 예외
+        if(modalInstance.positionX==undefined){
+            var elem = $event.currentTarget;
+            var top = 0, left = 0;
+            do {
+                top += elem.offsetTop  || 0;
+                left += elem.offsetLeft || 0;
+                elem = elem.offsetParent;
+            } while(elem);
+            modalInstance.positionX = left;
+            modalInstance.positionY = top;
+            modalInstance.width = $event.currentTarget.offsetWidth;
+        }
         modalInstance.parent = $scope;
         modalInstance.eventInfo = event;
         modalInstance.result.then(function (response) {

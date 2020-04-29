@@ -84,6 +84,20 @@ calApp.directive("calendar", function($uibModal, $http) {
                 modalInstance.positionX = $event.currentTarget.getBoundingClientRect().x;
                 modalInstance.positionY = $event.currentTarget.getBoundingClientRect().y;
                 modalInstance.width = $event.currentTarget.clientWidth;
+                //Internet Explorer 예외
+                if(modalInstance.positionX==undefined){
+                    var elem = $event.currentTarget;
+                    var top = 0, left = 0;
+                    do {
+                        top += elem.offsetTop  || 0;
+                        left += elem.offsetLeft || 0;
+                        elem = elem.offsetParent;
+                    } while(elem);
+                    modalInstance.positionX = left;
+                    modalInstance.positionY = top;
+                    modalInstance.width = $event.currentTarget.offsetWidth;
+                }
+
                 modalInstance.parent = scope;
                 modalInstance.day = day;
                 modalInstance.eventInfo = event;
@@ -426,9 +440,9 @@ calApp.controller('ModalEventContentCtrl', function($scope, $uibModalInstance, $
 
         if(correctHeight<50){
             if($scope.event.event_type===0)
-                elem.style.marginTop = posY - 164 +'px';
+                elem.style.marginTop = posY - 280 +'px';
             else if($scope.event.event_type===1){
-                elem.style.marginTop = posY - 248 +'px';
+                elem.style.marginTop = posY - 296 +'px';
             }
         }else{
             elem.style.marginTop = posY+'px';

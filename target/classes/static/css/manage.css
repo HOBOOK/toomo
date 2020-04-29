@@ -17,16 +17,20 @@
 }
 
 .container_context h1{
+    color: #333333;
     color: var(--manage-h1-color);
     font-size: 32px;
 }
 .container_context h3{
+    color: #ACACAC;
     color: var(--manage-h3-color);
     font-size: 21px;
 }
 .container_context{
     min-height: 100%;
+    background-color: rgba(255,255,255,0.9);
     background-color: var(--manage-background-color);
+    color: #666666;
     color: var(--manage-color);
     border-left: 1px solid rgba(0,0,0,0.1);
 }
@@ -43,6 +47,7 @@
     display: inline-block;
     padding: .5em .75em;
     border-radius: 5px;
+    border: 1px solid rgba(0,0,0,0.1);
     border: 1px solid var(--common-border-color);
     cursor: pointer;
     transition: all 0.2s ease-in-out;
@@ -71,6 +76,7 @@
     margin: 0 auto;
     margin-bottom: 20px;
     text-align: center;
+    color: #333333;
     color: var(--manage-h1-color);
     font-size: 32px;
     background-color: transparent;
@@ -80,6 +86,7 @@
 }
 .form_manage_profile input[type="text"]:focus{
     outline: none;
+    border-bottom: 1px solid #E5E5E5;
     border-bottom: 1px solid var(--manage-h1-color);
 }
 
@@ -102,6 +109,7 @@
     border: 1px solid rgba(0,0,0,0.05);
     margin: 0 auto;
     margin-bottom: 10px;
+    background-color: white;
     background-color: var(--common-main-background-color);
 }
 .config h3{
@@ -115,6 +123,7 @@
 .dropdown{
     float: right;
     color:#333333;
+    background-color: #f0f0f0;
     background-color: var(--manage-config-background-color);
     border: 1px solid rgba(0,0,0,0.1);
     border-radius: 5px;

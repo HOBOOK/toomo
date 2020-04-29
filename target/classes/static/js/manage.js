@@ -157,7 +157,8 @@ app.controller('manageController', function ($scope, $http, $compile, Upload) {
     $scope.optionsMemoSize = [
         {code:'',name:'중간(기본)'},
         {code:'small',name:'작게'},
-        {code:'big',name:'크게'}
+        {code:'big',name:'크게'},
+        {code:'long',name:'길게'}
     ];
 
     $scope.selectedMemoSize = $scope.optionsMemoSize[0];
