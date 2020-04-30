@@ -68,6 +68,8 @@ body{
     --schedule-modal-sub-color: #808080;
     --common-border-color: rgba(0,0,0,0.1);
     --common-main-background-color: white;
+    --tooltip-background-color: rgba(255,255,255,0.9);
+    --tooltip-color: black;
 }
 body.dark{
     --header-background-color: #272727;
@@ -89,6 +91,8 @@ body.dark{
     --schedule-modal-sub-color: #c0c0c0;
     --common-border-color: rgba(255,255,255,0.1);
     --common-main-background-color: #272727;
+    --tooltip-background-color: rgba(0,0,0,0.9);
+    --tooltip-color: white;
 }
 .container{
     width:100%;
@@ -99,7 +103,7 @@ body.dark{
     width: calc(100% - 80px);
     left:80px;
     height: calc(100% - 60px);
-    background-color: rgba(0,0,0,0.1);;
+    background-color: rgba(0,0,0,0.1);
     background-color: var(--container-background-color);
     transition: none;
 }
@@ -338,12 +342,11 @@ nav{
     font-size: 14px;
     display: inline-block;
     width: calc(100% - 10px);
-    height: 38px;
-    line-height: 38px;
+    height: 45px;
+    line-height: 45px;
     border-bottom: 1px solid rgba(0,0,0,0.05);
     margin-left:5px;
 }
-
 .todo_list{
     width: 100%;
     height:50%;
@@ -365,19 +368,64 @@ nav{
     cursor: pointer;
     border-radius: 100%;
     background-color: transparent;
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
     display: inline-block;
     text-align: center;
     font-size: 14px;
-    line-height: 32px;
+    line-height: 36px;
     float: right;
+    margin-right:3px;
     margin-top:3px;
+    transition: background-color 0.15s ease-in-out;
+    -webkit-transition: background-color 0.15s ease-in-out;
+    -moz-transition: background-color 0.15s ease-in-out;
 }
 .todo_toggle:hover{
     background-color: rgba(0,0,0,0.05);
 }
 
+.todo_popup_menu{
+    display: none;
+    position: absolute;
+    right: 12px;
+    top: 36px;
+    width: 32px;
+    transition: all 0.15s ease-in-out;
+    -webkit-transition: all 0.15s ease-in-out;
+    -moz-transition: all 0.15s ease-in-out;
+}
+.todo_popup_menu.show{
+    display: inline-block;
+}
+.todo_popup_menu_item{
+    text-align: center;
+    cursor: pointer;
+    border-radius: 100%;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    margin-top: 16px;
+    color: #666666;
+    color: var(--nav-color);
+    background-color: white;
+    background-color: var(--bar-background-color);
+    box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.15);
+    display: inline-block;
+    border:1px solid transparent;
+    transition: all 0.15s ease-in-out;
+    -webkit-transition: all 0.15s ease-in-out;
+    -moz-transition: all 0.15s ease-in-out;
+}
+
+.todo_popup_menu_item:hover{
+    opacity: 0.9;
+    border:1px solid rgba(0,0,0,0.15);
+    box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.1);
+}
+.todo_popup_menu_item i{
+    font-weight: bold;
+}
 
 
 /* input */
@@ -476,4 +524,46 @@ input[type=range]:focus::-ms-fill-lower {
 }
 input[type=range]:focus::-ms-fill-upper {
     background: #f0f0f0;
+}
+
+[data-tooltip-text]:after {
+
+    line-height: normal;
+    -webkit-transition: top .3s ease-in-out, opacity .3s ease-in-out;
+    -moz-transition: top .3s ease-in-out, opacity .3s ease-in-out;
+    transition: top .3s ease-in-out, opacity .3s ease-in-out;
+
+    background-color: rgba(255,255,255,0.9);
+    background-color: var(--tooltip-background-color);
+    -webkit-box-shadow: 0px 2px 3px 1px rgba(50, 50, 50, 0.1);
+    -moz-box-shadow: 0px 2px 3px 1px rgba(50, 50, 50, 0.1);
+    box-shadow: 0px 2px 3px 1px rgba(50, 50, 50, 0.1);
+
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+
+    color: black;
+    color: var(--tooltip-color);
+    font-size: 12px;
+    content: attr(data-tooltip-text);
+
+    margin-bottom: 10px;
+    padding: 3px 6px;
+    position: absolute;
+    width: auto;
+    min-width: 50px;
+    max-width: 300px;
+    word-wrap: break-word;
+    z-index: 9999;
+    left: -9999px;
+    opacity: 0;
+}
+[data-tooltip-text]:hover{
+    position: relative;
+}
+[data-tooltip-text]:hover::after {
+    bottom: 120%;
+    left: -35%;
+    opacity: 1;
 }

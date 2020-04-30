@@ -155,10 +155,10 @@ app.controller('manageController', function ($scope, $http, $compile, Upload) {
     }
 
     $scope.optionsMemoSize = [
-        {code:'',name:'중간(기본)'},
+        {code:'',name:'자동(기본)'},
         {code:'small',name:'작게'},
-        {code:'big',name:'크게'},
-        {code:'long',name:'길게'}
+        {code:'medium',name:'보통'},
+        {code:'big',name:'크게'}
     ];
 
     $scope.selectedMemoSize = $scope.optionsMemoSize[0];
@@ -177,5 +177,15 @@ app.controller('manageController', function ($scope, $http, $compile, Upload) {
 
     $scope.onChangeMemoFontSize = function(){
         setCookie('memoFontSize', $scope.selectedMemoFontSize.code, 7);
+    }
+
+    $scope.isConfigShow = function(){
+        var agent = navigator.userAgent.toLowerCase();
+        console.log(agent);
+        if((navigator.appName == 'Netscape' && navigator.userAgent.search('Trident') != -1) || (agent.indexOf("msie") != -1)){
+            return false;
+        }else{
+            return true;
+        }
     }
 });

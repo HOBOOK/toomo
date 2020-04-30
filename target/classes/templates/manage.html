@@ -36,7 +36,7 @@
                 </form>
 
             </div>
-            <div class="profile_body">
+            <div class="profile_body" ng-show="isConfigShow()">
                 <div class="config theme">
                     <h3 class="config_title">테마</h3>
                     <div class="config_item">
@@ -76,6 +76,13 @@
                     </div>
                 </div>
 
+            </div>
+            <div class="profile_body" ng-show="!isConfigShow()" style="text-align: center; margin-top: 15px;">
+                <span style="display: inline-block; margin: 0 auto; text-align: center;">
+                    <img src="/img/warning.png" alt="warning" width="48" height="48" style="display: inline-block; margin:0 auto;"/>
+                    <br/>
+                    <p class="fs-20" style="color:rgba(0,0,0,0.4); display: inline-block; margin-top:15px;">Internet Explorer 에서는 세부설정을 지원하지 않습니다.</p>
+                </span>
             </div>
         </div>
     </div>

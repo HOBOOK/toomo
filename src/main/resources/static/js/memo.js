@@ -12,7 +12,17 @@ app.controller('memoController', function ($scope, $http, $compile) {
     $scope.memos = [];
     $http.get('memo/list').then(function (data) {
        $scope.memos = data.data;
+
     });
+
+    $scope.isEmptyMemo = function(){
+        for(var i = 0; i < $scope.memos.length; i++){
+            if($scope.memos[i].state===0){
+                return false;
+            }
+        }
+        return true;
+    }
 
     $scope.display = function(){
         return {

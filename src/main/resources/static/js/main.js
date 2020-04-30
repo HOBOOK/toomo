@@ -85,8 +85,8 @@ function toggleTodoBar() {
     if(!isToggleTodoBar){
         setCookie('toggleTodoBar', true, 7);
         isToggleTodoBar = true;
-        $('.todo_complete').css('height','40px');
-        $('.todo_list').css('height','calc(100% - 40px)');
+        $('.todo_complete').css('height','47px');
+        $('.todo_list').css('height','calc(100% - 47px)');
     }else{
         setCookie('toggleTodoBar', false, 7);
         isToggleTodoBar = false;
@@ -97,8 +97,8 @@ function toggleTodoBar() {
 function initToggleTodoBar(){
     isToggleTodoBar = getCookie('toggleTodoBar') === 'true';
     if(isToggleTodoBar){
-        $('.todo_list').css('height','calc(100% - 40px)');
-        $('.todo_complete').css('height','40px');
+        $('.todo_list').css('height','calc(100% - 47px)');
+        $('.todo_complete').css('height','47px');
     }
 }
 

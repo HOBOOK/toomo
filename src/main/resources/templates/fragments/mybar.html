@@ -4,14 +4,17 @@
 <th:mybar th:fragment="mybar">
     <div id="mybar" class="mybar" ng-app="BarApp" ng-controller="barController">
         <span class="mybar_toggle" onclick="toggleBar()">
-            <i class="fas fa-clipboard-list"></i>
+            <i class="far fa-list-alt"></i>
         </span>
-        <h3>03월 27일 금요일</h3>
+        <div class="m-t-0 m-b-0 m-l-10" style="display: inline-block;">
+            <p class="fs-12 m-b-0 m-l-3" ng-bind="getToday()"></p>
+            <p class="fs-18 m-t-0 m-l-0" ng-bind="getTodayName()" style="font-weight: 700"></p>
+        </div>
         <div class="container_todo">
             <div class="todo_list">
-                <span class="todo_title">할 일 목록 ({{events.length}})<span class="todo_toggle"><i class="fas fa-ellipsis-v"></i></span></span>
+                <span class="todo_title">할 일 목록 ({{events.length}})<span class="todo_toggle" ng-click="popupSortMenu()"><i class="fas fa-ellipsis-v"></i></span></span>
                 <div class="container_todo_item">
-                    <div class="todo_item" ng-repeat="event in events" ng-click="select(event, $event)">
+                    <div class="todo_item" ng-repeat="event in events | orderBy:orderProperty" ng-click="select(event, $event)">
                         <span class="todo_check_cover" ng-click="clearEvent(event)"><span class="todo_check"></span></span>
                         <div class="todo_event_cover" ng-click="summaryEvent()">
                             <span class="todo_event_title">
@@ -36,6 +39,17 @@
                             </span>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <div class="todo_popup_menu">
+                <div class="todo_popup_menu_item" data-tooltip-text="시간순" ng-click="setOrder(0)">
+                    <i class="far fa-clock fs-16"></i>
+                    <i class="fas fa-sort-up fs-12" style="display: inline; position: absolute; margin-top: 18px;"></i>
+                </div>
+                <div class="todo_popup_menu_item" data-tooltip-text="중요도순" ng-click="setOrder(1)">
+                    <i class="far fa-star fs-16"></i>
+                    <i class="fas fa-sort-down fs-12" style="display: inline; position: absolute; margin-top: 14px;"></i>
                 </div>
             </div>
         </div>

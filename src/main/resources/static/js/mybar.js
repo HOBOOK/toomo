@@ -11,6 +11,8 @@ barApp.config(['$qProvider','$httpProvider', function($qProvider, $httpProvider)
 barApp.controller('barController', function ($scope, $http, $uibModal) {
     $scope.events = [];
     $scope.clearEvents = [];
+    $scope.orderProperty = initOrderby();
+
     $http.get('todolist/events').then(function (data) {
         $scope.events = data.data;
         for(var i = 0; i < $scope.events.length; i++){
@@ -36,6 +38,17 @@ barApp.controller('barController', function ($scope, $http, $uibModal) {
         }
         return className;
     };
+
+    $scope.getToday = function(){
+        var date = new Date();
+        return date.getMonth()+1 + "월 " + date.getDate() + "일";
+    }
+    $scope.getTodayName = function(){
+        var date = new Date();
+        var week = ['일', '월', '화', '수', '목', '금', '토'];
+        var dayOfWeek = week[date.getDay()];
+        return dayOfWeek + "요일";
+    }
 
     $scope.clearEvent = function(event){
         var e = {};
@@ -95,6 +108,26 @@ barApp.controller('barController', function ($scope, $http, $uibModal) {
 
     };
 
+
+    $scope.popupSortMenu = function () {
+        $('.todo_popup_menu').toggleClass('show');
+    }
+
+    $scope.setOrder = function(num){
+        switch (num) {
+            case 0:
+                $scope.orderProperty="event_time";
+                break;
+            case 1:
+                $scope.orderProperty="-event_point";
+                break;
+            default:
+                break;
+        }
+        setCookie('todoOrderby', $scope.orderProperty, 7);
+        $scope.popupSortMenu();
+    }
+
     $scope.select = function(event, $event) {
         if($event.target.className.indexOf('check') !== -1){
             return;
@@ -128,6 +161,14 @@ barApp.controller('barController', function ($scope, $http, $uibModal) {
             $scope.result = '${response} button hitted';
         });
     };
+
+    function initOrderby(){
+        var orderby = getCookie('todoOrderby');
+        if(orderby!=null)
+            return orderby;
+        else
+            return "event_time";
+    }
 });
 
 barApp.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http) {
@@ -308,6 +349,7 @@ barApp.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http)
         $scope.event.event_point = $scope.eventDefaultData.event_point;
 
     }
+
 });
 
 function getEventTimeStringByDateTime(datetime, isTargetTime){
