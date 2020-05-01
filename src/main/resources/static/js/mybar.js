@@ -28,12 +28,18 @@ barApp.controller('barController', function ($scope, $http, $uibModal) {
         $scope.clearEvents = data.data;
     });
 
+    $scope.display = function(){
+        return {
+            "display" : "inline-block"
+        };
+    }
+
     $scope.getEventTimeClass = function(day){
         var className = 'todo_event_time';
-        var diffDay = new Date().getDate()- new Date(day).getDate();
-        if(diffDay>0){
+        var diffday = Math.ceil((new Date().getTime() - new Date(day).getTime()) / (1000 * 3600 * 24)) - 1;
+        if(diffday>0){
             className = 'todo_event_time before';
-        }else if(diffDay<0){
+        }else if(diffday<0){
             className = 'todo_event_time after';
         }
         return className;
@@ -222,12 +228,11 @@ barApp.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http)
                     'Content-type': 'application/json;charset=utf-8'
                 }
             }).then(function successCallback(response){
-                if($scope.event.event_state==0){
+                if($scope.event.event_state===0){
                     $uibModalInstance.parent.events.splice($uibModalInstance.parent.events.indexOf($uibModalInstance.eventInfo),1);
                 }else{
                     $uibModalInstance.parent.clearEvents.splice($uibModalInstance.parent.clearEvents.indexOf($uibModalInstance.eventInfo),1);
                 }
-
                 // 스케쥴페이지 갱신
                 var items = $uibModalInstance.calendarAppScope.eventList;
                 for(var i = 0; i < items.length; i++){
@@ -244,6 +249,8 @@ barApp.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http)
         }
     }
     $scope.saveEvent = function(){
+        if($scope.event.event_type===2)
+            return;
         $http({
            method: 'PUT',
            url: 'schedule/create',
@@ -353,7 +360,7 @@ barApp.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http)
 });
 
 function getEventTimeStringByDateTime(datetime, isTargetTime){
-    var diffday = new Date().getDate() - new Date(datetime).getDate();
+    var diffday = Math.ceil((new Date().getTime() - new Date(datetime).getTime()) / (1000 * 3600 * 24)) - 1;
 
     if(diffday===0){
         diffday = '오늘';

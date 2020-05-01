@@ -166,6 +166,14 @@ calendar div.item.todo:hover{
     background-color: white;
     background-color: var(--schedule-border-background-color);
 }
+calendar div.item.holiday{
+    cursor: none;
+    border: none;
+    box-shadow: none;
+    color: black;
+    color: var(--schedule-border-color);
+    background-color: transparent;
+}
 calendar div.item.more{
     background-color: transparent;
     box-shadow: none;

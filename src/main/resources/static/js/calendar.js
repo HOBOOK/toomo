@@ -16,7 +16,6 @@ calApp.config(['$qProvider','$httpProvider', function($qProvider, $httpProvider)
 calApp.controller("calendarWidget", function($scope, $http, $uibModal) {
     //calendar directive에 selected=day 로 정의를 해 둔 상태, 즉 다른 선택된 값이 없는 초기의 경우에는 selected = day 값.
     $scope.day = moment();
-
     $(window).resize(function() {
         $scope.$apply(function() {
             var day_cover_height = $('.container_days').height()/$scope.$$childHead.weeks.length-30;
@@ -43,12 +42,12 @@ calApp.directive("calendar", function($uibModal, $http) {
             var start = scope.selected.clone();
             start.date(1); // 선택된 달의 첫번째 날짜 객체
             scope.eventList = [];
+            scope.holiday = [];
             var dateItemColos = ['a','b','c','d','e','f','g'];
             $http.get('schedule/events').then(function (data) {
                 scope.eventList = data.data;
-                _removeTime(start.day(0)); // 이달의 첫일의 일요일 날짜의 객체를 시작일로 세팅.
-                _buildMonth(scope, start, scope.month); // scope와 시작일, 해당 월의 정보를 넘긴다.
-
+                _removeTime(start.day(0));
+                _buildMonth(scope, start, scope.month);
                 var day_cover_height = $('.container_days').height()/scope.weeks.length-30;
                 scope.day_event_length = Math.floor(day_cover_height/22);
             }, function errorCallback(response){
@@ -195,8 +194,10 @@ calApp.directive("calendar", function($uibModal, $http) {
 
                 if(item.event_type===0){
                     return "item " + item.id + " " + dateItemColos[item.event_color];
-                }else{
+                }else if(item.event_type===1){
                     return "item todo";
+                }else if(item.event_type===2){
+                    return "item holiday";
                 }
             }
         }
@@ -507,6 +508,8 @@ calApp.controller('ModalEventContentCtrl', function($scope, $uibModalInstance, $
         }
     }
     $scope.saveEvent = function(){
+        if($scope.event.event_type===2)
+            return;
         $http({
             method: 'PUT',
             url: 'schedule/create',

@@ -1,5 +1,21 @@
 package com.hobook.tomo.util;
 
+import org.w3c.dom.*;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.IOException;
+import java.io.StringReader;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class Common {
     public static void print(String...log){
         System.out.println("############ [Log 시작] ###########");
@@ -15,5 +31,14 @@ public class Common {
             idx = (int) (charSet.length * Math.random()); // 36 * 생성된 난수를 Int로 추출 (소숫점제거)
         }
         return sb.toString();
+    }
+
+    public static String getElementValue(Element e) {
+        Node child = e.getFirstChild();
+        if(child instanceof CharacterData) {
+            CharacterData data = (CharacterData) child;
+            return data.getData();
+        }
+        return "-";
     }
 }
