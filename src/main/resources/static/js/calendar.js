@@ -533,9 +533,9 @@ calApp.controller('ModalEventContentCtrl', function($scope, $uibModalInstance, $
                 $scope.event.date_event_end = $scope.event.event_time_end_temp.yyyyMMddHHmmss();
                 $scope.eventDefaultData = clone($scope.event);
                 $uibModalInstance.parent.viewAllUpdate();
-            }else{
-                var beforeDateEvent = $scope.event.date_event;
-                var afterDateEvent = $scope.event.event_time_temp.yyyyMMddHHmmss();
+            }else if($scope.event.event_type===1){
+                let beforeDateEvent = $scope.event.date_event;
+                let afterDateEvent = $scope.event.event_time_temp.yyyyMMddHHmmss();
                 $scope.event.date_event = afterDateEvent.substring(0,10);
                 $scope.event.event_time = $scope.event.isAllDay ? null : afterDateEvent;
 
@@ -545,23 +545,26 @@ calApp.controller('ModalEventContentCtrl', function($scope, $uibModalInstance, $
                 }else {
                     $scope.event.event_time_string = getEventTimeStringByDateTime($scope.event.event_time, true);
                 }
-                var todoListScopeEvents = $uibModalInstance.todoListAppScope.events;
-                for(var i = 0; i < todoListScopeEvents.length; i++){
-                    if(todoListScopeEvents[i].id===$scope.event.id){
-                        todoListScopeEvents[i] = $scope.event;
-                        $uibModalInstance.todoListAppScope.$apply();
-                        $uibModalInstance.parent.moveDayEvent(beforeDateEvent,afterDateEvent.substring(0,10));
-                        $uibModalInstance.parent.$apply();
-                        break;
-                    }
-                }
-
                 // 완료 상태 변경시
                 if($scope.eventDefaultData.event_state !== $scope.event.event_state){
                     $uibModalInstance.todoListAppScope.clearEvent($scope.eventDefaultData);
                 }
 
+                let todoListScopeEvents ={};
+                if($scope.event.event_state===0){
+                    todoListScopeEvents = $uibModalInstance.todoListAppScope.events;
+                }else{
+                    todoListScopeEvents = $uibModalInstance.todoListAppScope.clearEvents;
+                }
                 $scope.eventDefaultData = clone($scope.event);
+                for(let i = 0; i < todoListScopeEvents.length; i++){
+                    if(todoListScopeEvents[i].id===$scope.event.id){
+                        todoListScopeEvents[i] = $scope.event;
+                        $uibModalInstance.todoListAppScope.$apply();
+                        $uibModalInstance.parent.viewAllUpdate();
+                        break;
+                    }
+                }
             }
 
         }, function errorCallback(response){
