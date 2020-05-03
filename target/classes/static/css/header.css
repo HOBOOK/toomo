@@ -6,7 +6,7 @@ header{
     box-shadow: 1px 0px 2px 1px rgba(0,0,0,0.1);
     background-color: white;
     background-color: var(--header-background-color);
-    color: E5E5E5;
+    color: #E5E5E5;
     color: var(--header-color);
 }
 header div{
@@ -20,7 +20,7 @@ header div{
 
 }
 .account a{
-    color: E5E5E5;
+    color: #E5E5E5;
     color: var(--header-color);
 }
 .account img{

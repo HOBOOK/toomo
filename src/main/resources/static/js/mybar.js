@@ -22,6 +22,9 @@ barApp.controller('barController', function ($scope, $http, $uibModal) {
     });
     $http.get('todolist/clearevents').then(function (data) {
         $scope.clearEvents = data.data;
+        for(var i = 0; i < $scope.clearEvents.length; i++){
+            $scope.addTimeString($scope.clearEvents[i]);
+        }
     });
 
     $scope.addTimeString = function(data){
@@ -81,6 +84,7 @@ barApp.controller('barController', function ($scope, $http, $uibModal) {
                 }
             }
             e = $scope.clearEvents[index];
+            console.log(e.event_time_string);
             e.event_state = 0;
         }
 

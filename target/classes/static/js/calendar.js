@@ -549,14 +549,13 @@ calApp.controller('ModalEventContentCtrl', function($scope, $uibModalInstance, $
                 if($scope.eventDefaultData.event_state !== $scope.event.event_state){
                     $uibModalInstance.todoListAppScope.clearEvent($scope.eventDefaultData);
                 }
-
+                $scope.eventDefaultData = clone($scope.event);
                 var todoListScopeEvents ={};
                 if($scope.event.event_state===0){
                     todoListScopeEvents = $uibModalInstance.todoListAppScope.events;
                 }else{
                     todoListScopeEvents = $uibModalInstance.todoListAppScope.clearEvents;
                 }
-                $scope.eventDefaultData = clone($scope.event);
                 for(var i = 0; i < todoListScopeEvents.length; i++){
                     if(todoListScopeEvents[i].id===$scope.event.id){
 

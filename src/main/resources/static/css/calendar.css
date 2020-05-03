@@ -6,7 +6,7 @@ calendar{
 .border-box;
     background:white;
     width:100%;
-    border:solid 1px #CCC;
+
     margin-bottom:10px;
 }
 calendar .cal_header{
@@ -42,6 +42,10 @@ calendar .cal_header i.fa-angle-right{
     margin-left:-40px;
 }
 calendar .cal_header span{
+    animation: calendar-day-animation 0.5s ease-in-out;
+    -moz-animation: calendar-day-animation 0.5s ease-in-out;
+    -o-animation: calendar-day-animation 0.5s ease-in-out;
+    -webkit-animation: calendar-day-animation 0.5s ease-in-out;
     float:left;
     font-weight:bold;
     text-transform:uppercase;
@@ -55,11 +59,12 @@ calendar .cal_header span{
 }
 
 calendar div.week{
-    border-bottom:1px solid rgba(200,200,200,1);
+    border-bottom:1px solid rgba(220,220,220,1);
     display: flex;
     height: 16.67%;
     float:left;
     width:100%;
+
 }
 calendar div.week.six{
     height: 20%;
@@ -74,8 +79,13 @@ calendar div.week span.day{
     width:14.28%;
     -ms-overflow-style: none;
     overflow: hidden;
+    animation: calendar-day-animation 0.3s ease-in-out;
+    -moz-animation: calendar-day-animation 0.3s ease-in-out;
+    -o-animation: calendar-day-animation 0.3s ease-in-out;
+    -webkit-animation: calendar-day-animation 0.3s ease-in-out;
+
 .border-box;
-    border-right:1px solid rgba(200,200,200,1);
+    border-right:1px solid rgba(220,220,220,1);
     height: 100%;
     font-size:0.75em;
     text-align:center;
@@ -86,6 +96,7 @@ calendar div.week span.day{
     vertical-align: middle;
     padding: 0;
     margin: 0;
+
 }
 calendar div.week span.day::-webkit-scrollbar {display:none;}
 calendar div.week span.day:first-child{
@@ -237,4 +248,14 @@ calendar p.day_number.saturday{
     to {
         opacity: 0;
     }
+}
+
+@keyframes calendar-day-animation {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+
 }
