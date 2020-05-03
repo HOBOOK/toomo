@@ -8,7 +8,7 @@ public enum APIType {
         }
         @Override
         public String getAPIKey(){
-            return "iJ6bXLuKFMtVG4Yssi1aEhxbdAG7JFhx64z2aHTAGB2d+TBJLaTRYn/o+F2oYcvbyeRb8vvEdZ83Ngn3TwA8Qw==";
+            return "+/CRPvy/bRJTp/Ac2fiOz7Haj9F36nRX5tKmvtlIguMbM4/1JfA0zWfuaoO2Vbo3szb8tnre3VpMx7xzx2WufA==";
         }
     };
 

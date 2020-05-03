@@ -16,17 +16,21 @@ barApp.controller('barController', function ($scope, $http, $uibModal) {
     $http.get('todolist/events').then(function (data) {
         $scope.events = data.data;
         for(var i = 0; i < $scope.events.length; i++){
-            if($scope.events[i].event_time===null || $scope.events[i].event_time === ''){
-                $scope.events[i].event_time_string = getEventTimeStringByDateTime($scope.events[i].date_event, false);
-            }else{
-                $scope.events[i].event_time_string = getEventTimeStringByDateTime($scope.events[i].event_time, true);
-            }
+            $scope.addTimeString($scope.events[i]);
         }
 
     });
     $http.get('todolist/clearevents').then(function (data) {
         $scope.clearEvents = data.data;
     });
+
+    $scope.addTimeString = function(data){
+        if(data.event_time===null || data.events[i].event_time === ''){
+            data.event_time_string = getEventTimeStringByDateTime(data.date_event, false);
+        }else{
+            data.event_time_string = getEventTimeStringByDateTime(data.event_time, true);
+        }
+    }
 
     $scope.display = function(){
         return {
@@ -62,7 +66,7 @@ barApp.controller('barController', function ($scope, $http, $uibModal) {
         var index = 0;
         if(!isClear){
             for(var i = 0; i < $scope.events.length; i++){
-                if($scope.events.id === event.id){
+                if($scope.events[i].id === event.id){
                     index = i;
                     break;
                 }
@@ -71,7 +75,7 @@ barApp.controller('barController', function ($scope, $http, $uibModal) {
             e.event_state = 1;
         }else{
             for(var i = 0; i < $scope.clearEvents.length; i++){
-                if($scope.clearEvents.id === event.id){
+                if($scope.clearEvents[i].id === event.id){
                     index = i;
                     break;
                 }

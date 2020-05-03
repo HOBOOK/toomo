@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e8dee576-308c-4951-92c8-237d8e03e46f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/api/APIType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/api/APIType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/calendar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/calendar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/mybar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/mybar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/js/calendar.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/calendar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tomo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/tomo.iml" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -98,6 +99,18 @@
       <recent name="D:\workspace\WebProject\tomo\src\main\resources\templates\fragments" />
       <recent name="D:\workspace\WebProject\tomo\src\main\resources\templates\layout" />
     </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
   </component>
   <component name="RunManager" selected="Spring Boot.TomoApplication">
     <configuration name="AccountDtoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
@@ -235,6 +248,7 @@
       <workItem from="1588225420753" duration="14294000" />
       <workItem from="1588301537056" duration="12925000" />
       <workItem from="1588343905065" duration="3377000" />
+      <workItem from="1588485816418" duration="2801000" />
     </task>
     <servers />
   </component>

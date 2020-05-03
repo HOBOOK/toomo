@@ -331,6 +331,7 @@ calApp.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http)
                         console.log('error update view -> TodoList');
                         return;
                     }
+                    $uibModalInstance.todoListAppScope.addTimeString(newEvent);
                     $uibModalInstance.todoListAppScope.events.push(newEvent);
                     $uibModalInstance.todoListAppScope.$apply();
                 }
@@ -534,8 +535,7 @@ calApp.controller('ModalEventContentCtrl', function($scope, $uibModalInstance, $
                 $scope.eventDefaultData = clone($scope.event);
                 $uibModalInstance.parent.viewAllUpdate();
             }else if($scope.event.event_type===1){
-                let beforeDateEvent = $scope.event.date_event;
-                let afterDateEvent = $scope.event.event_time_temp.yyyyMMddHHmmss();
+                var afterDateEvent = $scope.event.event_time_temp.yyyyMMddHHmmss();
                 $scope.event.date_event = afterDateEvent.substring(0,10);
                 $scope.event.event_time = $scope.event.isAllDay ? null : afterDateEvent;
 
@@ -550,15 +550,16 @@ calApp.controller('ModalEventContentCtrl', function($scope, $uibModalInstance, $
                     $uibModalInstance.todoListAppScope.clearEvent($scope.eventDefaultData);
                 }
 
-                let todoListScopeEvents ={};
+                var todoListScopeEvents ={};
                 if($scope.event.event_state===0){
                     todoListScopeEvents = $uibModalInstance.todoListAppScope.events;
                 }else{
                     todoListScopeEvents = $uibModalInstance.todoListAppScope.clearEvents;
                 }
                 $scope.eventDefaultData = clone($scope.event);
-                for(let i = 0; i < todoListScopeEvents.length; i++){
+                for(var i = 0; i < todoListScopeEvents.length; i++){
                     if(todoListScopeEvents[i].id===$scope.event.id){
+
                         todoListScopeEvents[i] = $scope.event;
                         $uibModalInstance.todoListAppScope.$apply();
                         $uibModalInstance.parent.viewAllUpdate();
