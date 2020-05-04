@@ -3,7 +3,9 @@ package com.hobook.tomo.controller;
 import com.hobook.tomo.dto.AccountDto;
 import com.hobook.tomo.dto.MemoDto;
 import com.hobook.tomo.model.Account;
+import com.hobook.tomo.model.SearchItem;
 import com.hobook.tomo.service.AccountService;
+import com.hobook.tomo.service.SearchService;
 import com.hobook.tomo.util.Common;
 import lombok.AllArgsConstructor;
 import net.minidev.json.JSONObject;
@@ -34,6 +36,7 @@ import java.util.Map;
 @AllArgsConstructor
 public class PageController implements ErrorController {
     private AccountService accountService;
+    private SearchService searchService;
 
     @Override
     public String getErrorPath(){
@@ -158,5 +161,18 @@ public class PageController implements ErrorController {
             model.addAttribute("account", accountService.getAccountDto(principal.getName()));
         }
         return "manage";
+    }
+
+    @RequestMapping(value="/search", method = RequestMethod.GET)
+    public String goSearch(@RequestParam(value = "search", required = false) String q, Model model){
+        List<SearchItem> searchResults = null;
+        try{
+            searchService.buildSearchIndex();
+            searchResults = searchService.search(q);
+        }catch(Exception e){
+            ;
+        }
+        model.addAttribute("search", searchResults);
+        return "index";
     }
 }

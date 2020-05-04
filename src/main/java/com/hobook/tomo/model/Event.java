@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Indexed;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -12,6 +14,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Entity
+@Indexed
 @Table(name="events")
 public class Event extends Time {
     @Id
@@ -44,9 +47,11 @@ public class Event extends Time {
     @Column(name="event_time")
     private LocalDateTime event_time;
 
+    @Field
     @Column(name="title", nullable = false, length = 20)
     private String title;
 
+    @Field
     @Column(name="event_description", length = 50)
     private String event_description;
 

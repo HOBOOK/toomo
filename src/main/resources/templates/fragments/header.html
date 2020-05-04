@@ -5,6 +5,15 @@
         <div class="logo" style="height: 60px;line-height: 60px;top:0;left:14px;position: absolute;">
             <a href="./"><img src="img/logo.png" height="32" alt="logo" style="margin-top:14px;"/></a>
         </div>
+        <div class="search" sec:authorize="isAuthenticated()">
+            <input type="text" placeholder="검색"/>
+            <span class="btn_search"><i class="fas fa-search"></i></span>
+            <div class="container_search_view">
+                <div class="search_view">
+
+                </div>
+            </div>
+        </div>
         <div class="account" th:object="${account}">
             <img onerror="this.src='/img/anonymous.png'" onclick="toggleProfile()" sec:authorize="isAuthenticated()" th:src="${account} ? ${account.getProfile_image_url()}" width="40" height="40"/>
             <a class="fs-14" sec:authorize="isAnonymous()" th:href="@{/login}">로그인</a>

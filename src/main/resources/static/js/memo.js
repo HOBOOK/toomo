@@ -55,9 +55,16 @@ app.controller('memoController', function ($scope, $http, $compile) {
         editTarget: '-1',
         tempId: 4,
         eventDelay: 0,
-        tempText: ''
+        tempText: '',
+        isAlreadyAdd: false
     };
     $scope.addMemo = function () {
+        if($scope.config.editMode===true){
+            return;
+        }else if($scope.config.isAlreadyAdd===true){
+            $scope.editMemo(-1);
+            return;
+        }
         var date = new Date().yyyyMMddHHmmss();
         $scope.memos.unshift({
             id: -1,
@@ -66,6 +73,7 @@ app.controller('memoController', function ($scope, $http, $compile) {
             state: 0,
             fix: 0
         });
+        $scope.config.isAlreadyAdd = true;
     }
     $scope.removeMemo = function (memo){
         if(confirm("메모를 삭제하시겠습니까? 삭제된 메모는 휴지통에서 복원할 수 있습니다.")){
@@ -104,7 +112,7 @@ app.controller('memoController', function ($scope, $http, $compile) {
             return;
         var context = document.getElementById("memo_context_"+memo.id).innerHTML;
         memo.context = context;
-
+        $scope.config.isAlreadyAdd = false;
         $scope.config.eventDelay = 1;
         $scope.config.editMode = false;
         $scope.config.editTarget = -1;
