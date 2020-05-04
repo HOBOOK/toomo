@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/layout_main">
+<th:block layout:fragment="title">TOMO | 검색결과</th:block>
+<th:block layout:fragment="js">
+
+</th:block>
+<th:block layout:fragment="css">
+
+</th:block>
+<section ng-app="SearchApp" ng-controller="searchController" layout:fragment="content" class="container_main">
+    <div class="main">
+        <div class="container_context">
+            검색결과가 없습니다.
+            <span th:text="${search.size()>0} ? ${search[0].getTitle()}"></span>
+        </div>
+    </div>
+</section>

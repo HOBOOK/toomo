@@ -148,6 +148,10 @@
     z-index: -1;
     animation: fadeIn 2s;
     -webkit-animation: fadeIn 2s;
+    transition: 0.5s all ease-in-out;
+    -webkit-transition: 0.5s all ease-in-out;
+    -o-transition: 0.5s all ease-in-out;
+    -moz-transition: 0.5s all ease-in-out;
 }
 
 .memo::before{

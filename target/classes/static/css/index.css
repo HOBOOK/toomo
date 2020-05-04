@@ -63,6 +63,9 @@ header{
     position: sticky;
     top:0;
 }
+header .search{
+    display: none;
+}
 
 .info{
     width: 100%;

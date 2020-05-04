@@ -1,42 +1,25 @@
 package com.hobook.tomo.controller;
 
 import com.hobook.tomo.dto.AccountDto;
-import com.hobook.tomo.dto.MemoDto;
-import com.hobook.tomo.model.Account;
-import com.hobook.tomo.model.SearchItem;
 import com.hobook.tomo.service.AccountService;
-import com.hobook.tomo.service.SearchService;
-import com.hobook.tomo.util.Common;
 import lombok.AllArgsConstructor;
-import net.minidev.json.JSONObject;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.validation.Valid;
 import java.io.PrintWriter;
 import java.security.Principal;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-import java.util.Map;
 
 @Controller
 @AllArgsConstructor
 public class PageController implements ErrorController {
     private AccountService accountService;
-    private SearchService searchService;
 
     @Override
     public String getErrorPath(){
@@ -163,16 +146,4 @@ public class PageController implements ErrorController {
         return "manage";
     }
 
-    @RequestMapping(value="/search", method = RequestMethod.GET)
-    public String goSearch(@RequestParam(value = "search", required = false) String q, Model model){
-        List<SearchItem> searchResults = null;
-        try{
-            searchService.buildSearchIndex();
-            searchResults = searchService.search(q);
-        }catch(Exception e){
-            ;
-        }
-        model.addAttribute("search", searchResults);
-        return "index";
-    }
 }
