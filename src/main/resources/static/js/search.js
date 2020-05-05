@@ -51,5 +51,8 @@ searchApp.controller('searchController', function ($scope, $http, $compile) {
             "display" : "inline-block"
         };
     }
+    $scope.getObjectDate = function (searchItem) {
+        return searchItem.date.toString().substring(0,10);
+    }
 
 })

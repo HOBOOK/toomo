@@ -1,0 +1,30 @@
+
+.container_context h1{
+    color: #333333;
+    color: var(--manage-h1-color);
+    font-size: 32px;
+}
+.container_context h3{
+    color: #ACACAC;
+    color: var(--manage-h3-color);
+    font-size: 21px;
+}
+.container_context{
+    min-height: 100%;
+    background-color: rgba(255,255,255,0.9);
+    background-color: var(--manage-background-color);
+    color: #666666;
+    color: var(--manage-color);
+    border-left: 1px solid rgba(0,0,0,0.1);
+}
+
+.container_search_item{
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    padding: 10px 0 10px 0;
+    margin: 5px 0 5px 30px;
+    line-height: 30px;
+    font-size: 14px;
+}
+.container_search_item span{
+    margin: 0 20px 0 0;
+}

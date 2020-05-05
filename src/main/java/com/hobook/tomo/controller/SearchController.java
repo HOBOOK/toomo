@@ -16,13 +16,14 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.WebUtils;
 
+import javax.naming.directory.SearchResult;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.security.Principal;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.*;
 
 @Controller
 @AllArgsConstructor
@@ -39,7 +40,8 @@ public class SearchController {
             if(StringUtils.hasText(keyword)){
                 for(SearchItem item : totalSearchList){
                     if(isSearchMatach(keyword,item.getFinder())){
-                        searchResults.add(item);
+                        if(!searchResults.contains(item))
+                            searchResults.add(item);
                     }
                 }
             }
@@ -60,6 +62,7 @@ public class SearchController {
                 entity.put("type",item.getType());
                 entity.put("title",item.getTitle());
                 entity.put("creator",item.getCreator());
+                entity.put("date",item.getDate());
                 entities.add(entity);
             }
         }else{
@@ -73,15 +76,18 @@ public class SearchController {
     @RequestMapping(value="/searchedtext", produces = {"application/xml", "application/json"})
     @ResponseStatus(HttpStatus.OK)
     public @ResponseBody List<SearchItem> searchedText(String keyword, Principal principal){
-        if(keyword.length()==0 || totalSearchList.size()==0){
+        if(totalSearchList.size()==0){
             buildSearchingItem(principal.getName());
         }
+        List<SearchItem> searchList = new ArrayList<>(totalSearchList);
 
         searchResults.clear();
+        HashSet<String> searchHash = new HashSet<>();
         if(StringUtils.hasText(keyword)){
-            for(SearchItem item : totalSearchList){
-                if(isSearchMatach(keyword,item.getFinder())){
-                    searchResults.add(item);
+            for(int i = 0; i < 10 && i < searchList.size(); i++){
+                if(!searchHash.contains(searchList.get(i).getFinder()) && isSearchMatach(keyword,searchList.get(i).getFinder())){
+                    searchResults.add(searchList.get(i));
+                    searchHash.add(searchList.get(i).getFinder());
                 }
             }
         }
@@ -96,12 +102,13 @@ public class SearchController {
         for(MemoDto memo : memoDtoList){
             if(memo.getState()==0){
                 String title = Common.getRemovedHtmlTag(memo.getContext()).split("\n")[0].length()>20 ? Common.getRemovedHtmlTag(memo.getContext()).split("\n")[0].substring(0,20)+"..." : Common.getRemovedHtmlTag(memo.getContext()).split("\n")[0];
-                SearchItem searchItem = SearchItem.builder().type(0).id(memo.getId()).crator(memo.getCreator()).title(title).finder(Common.getRemovedHtmlTag(memo.getContext())).build();
+                SearchItem searchItem = SearchItem.builder().type(0).id(memo.getId()).crator(memo.getCreator()).title(title).finder(Common.getRemovedHtmlTag(memo.getContext())).date(memo.getDate_create()).build();
                 totalSearchList.add(searchItem);
             }
         }
         for(EventDto event : eventDtoList){
-            SearchItem searchItem = SearchItem.builder().type(0).id(event.getId()).crator(event.getCreator()).title(event.getTitle()).finder(event.getTitle()+event.getEvent_description()).build();
+            Common.print(event.getDate_event());
+            SearchItem searchItem = SearchItem.builder().type(1).id(event.getId()).crator(event.getCreator()).title(event.getTitle()).finder(event.getTitle()+event.getEvent_description()).date(LocalDate.parse(event.getDate_event()).atStartOfDay()).build();
             totalSearchList.add(searchItem);
         }
 

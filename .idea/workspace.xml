@@ -2,19 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e8dee576-308c-4951-92c8-237d8e03e46f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/search.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/config/SecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/controller/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/controller/SearchController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/model/SearchItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/model/SearchItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/util/Common.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/util/Common.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/search.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/header.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/search.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/tomo.kotlin_module" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/tomo.kotlin_module" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hobook/tomo/config/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hobook/tomo/config/SecurityConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/fragments/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/fragments/header.html" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -75,7 +70,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/templates" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/static/css" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -91,6 +86,13 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\workspace\WebProject\tomo\src\main\resources\static\css" />
+      <recent name="D:\workspace\WebProject\tomo\src\main\resources\templates" />
+      <recent name="D:\Work Space\WebProject\tomo\src\main\resources\templates" />
+      <recent name="D:\Work Space\WebProject\tomo\src\main\resources\templates\fragments" />
+      <recent name="D:\workspace\WebProject\tomo\src\main\resources\static\img" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\workspace\WebProject\tomo\src\main\resources\static\img\users" />
       <recent name="D:\workspace\WebProject\tomo\src\main\resources\static\js" />
@@ -98,13 +100,18 @@
       <recent name="D:\workspace\WebProject\tomo\src\main\resources\templates\fragments" />
       <recent name="D:\workspace\WebProject\tomo\src\main\resources\templates\layout" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\workspace\WebProject\tomo\src\main\resources\templates" />
-      <recent name="D:\Work Space\WebProject\tomo\src\main\resources\templates" />
-      <recent name="D:\workspace\WebProject\tomo\src\main\resources\static\css" />
-      <recent name="D:\Work Space\WebProject\tomo\src\main\resources\templates\fragments" />
-      <recent name="D:\workspace\WebProject\tomo\src\main\resources\static\img" />
-    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
   </component>
   <component name="RunManager" selected="Spring Boot.TomoApplication">
     <configuration name="AccountDtoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
@@ -248,6 +255,7 @@
       <workItem from="1588576976938" duration="4069000" />
       <workItem from="1588590999806" duration="7145000" />
       <workItem from="1588636318060" duration="13846000" />
+      <workItem from="1588656500077" duration="5045000" />
     </task>
     <servers />
   </component>

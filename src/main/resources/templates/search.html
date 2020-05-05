@@ -8,14 +8,18 @@
     <script src="js/search.js"></script>
 </th:block>
 <th:block layout:fragment="css">
-
+    <link rel="stylesheet" href="css/search.css">
 </th:block>
 <section ng-app="SearchApp" ng-controller="searchController" layout:fragment="content" class="container_main">
     <div class="main">
         <div class="container_context" style="display: none;" ng-style="display()">
             <div ng-show="searchedItems.length===0">검색결과가 없습니다.</div>
-            <div ng-repeat="item in searchedItems">
-                <p>{{item.title}}</p>
+
+            <div ng-repeat="item in searchedItems" class="container_search_item">
+                <span ng-show="item.type===0"><img src="img/type_memo.png" alt="type_memo" height="30"/></span>
+                <span ng-show="item.type===1"><img src="img/type_schedule.png" alt="type_schedule" height="30"/></span>
+                <span ng-bind="getObjectDate(item)"></span>
+                <span>{{item.title}}</span>
             </div>
         </div>
     </div>
