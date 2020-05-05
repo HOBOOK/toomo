@@ -10,22 +10,34 @@ $("#input_search").on("propertychange change keyup paste input", function() {
     if(currentVal == oldVal) {
         return;
     }
-
-    $('.search_view').empty();
+    var cnt = 0;
     $.getJSON('searchedtext', {keyword:$('#input_search').val()}, function (data) {
+        cnt = data.length;
+        $('.search_view').empty();
+        var key = $('#input_search').val();
         $.each(data,function () {
-            $('.search_view').append(this.title+'</br>');
+            var keyIdx = this.title.toLowerCase().indexOf(key.toLowerCase());
+            if(keyIdx===-1){
+                $('.search_view').append('<span>'+this.title+'</span></br>');
+            }else{
+                var prefix = '<span>'+this.title.substring(0,keyIdx);
+                var target = '<b>'+this.title.substring(keyIdx, keyIdx+key.length) + '</b>';
+                var suffix = this.title.substring(keyIdx+key.length) + '</span></br>';
+                $('.search_view').append(prefix + target + suffix);
+            }
         });
+        oldVal = currentVal;
+        if(oldVal.toString().length>0){
+            $('.btn_search_remove').css("display","inline-block");
+            if(cnt>0)
+                $('.search_view').css("display","inline-block");
+            else
+                $('.search_view').css("display","none");
+        }else{
+            $('.btn_search_remove').css("display","none");
+            $('.search_view').css("display","none");
+        }
     });
-
-    oldVal = currentVal;
-    if(oldVal.toString().length>0){
-        $('.btn_search_remove').css("display","inline-block");
-        $('.search_view').css("display","inline-block");
-    }else{
-        $('.btn_search_remove').css("display","none");
-        $('.search_view').css("display","none");
-    }
 });
 
 function searching() {
@@ -52,7 +64,8 @@ searchApp.controller('searchController', function ($scope, $http, $compile) {
         };
     }
     $scope.getObjectDate = function (searchItem) {
-        return searchItem.date.toString().substring(0,10);
+        var date = new Date(searchItem.date.toString());
+        return date.getFullYear() + "년 " + date.getMonth()+"월 " + date.getDate()+"일";
     }
 
 })

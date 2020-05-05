@@ -80,15 +80,18 @@ public class SearchController {
             buildSearchingItem(principal.getName());
         }
         List<SearchItem> searchList = new ArrayList<>(totalSearchList);
-
         searchResults.clear();
         HashSet<String> searchHash = new HashSet<>();
+        int max = 10;
         if(StringUtils.hasText(keyword)){
-            for(int i = 0; i < 10 && i < searchList.size(); i++){
-                if(!searchHash.contains(searchList.get(i).getFinder()) && isSearchMatach(keyword,searchList.get(i).getFinder())){
-                    searchResults.add(searchList.get(i));
-                    searchHash.add(searchList.get(i).getFinder());
+            for(SearchItem item : searchList){
+                if(!searchHash.contains(item.getTitle()) && isSearchMatach(keyword,item.getFinder())){
+                    searchResults.add(item);
+                    searchHash.add(item.getTitle());
+                    max--;
                 }
+                if(max<0)
+                    break;
             }
         }
         return searchResults;
@@ -98,18 +101,21 @@ public class SearchController {
         totalSearchList.clear();
         List<MemoDto> memoDtoList = memoService.getMemoList(email);
         List<EventDto> eventDtoList = eventService.getEventList(email);
-
+        memoDtoList.sort(Comparator.comparing(MemoDto::getDate_create));
+        eventDtoList.sort(Comparator.comparing(EventDto::getDate_event));
         for(MemoDto memo : memoDtoList){
             if(memo.getState()==0){
-                String title = Common.getRemovedHtmlTag(memo.getContext()).split("\n")[0].length()>20 ? Common.getRemovedHtmlTag(memo.getContext()).split("\n")[0].substring(0,20)+"..." : Common.getRemovedHtmlTag(memo.getContext()).split("\n")[0];
+                String title = Common.getRemovedHtmlTag(memo.getContext()).split("\n")[0].length()>30 ? Common.getRemovedHtmlTag(memo.getContext()).split("\n")[0].substring(0,30)+"..." : Common.getRemovedHtmlTag(memo.getContext()).split("\n")[0];
                 SearchItem searchItem = SearchItem.builder().type(0).id(memo.getId()).crator(memo.getCreator()).title(title).finder(Common.getRemovedHtmlTag(memo.getContext())).date(memo.getDate_create()).build();
-                totalSearchList.add(searchItem);
+                if(!totalSearchList.contains(searchItem))
+                    totalSearchList.add(searchItem);
             }
         }
         for(EventDto event : eventDtoList){
             Common.print(event.getDate_event());
             SearchItem searchItem = SearchItem.builder().type(1).id(event.getId()).crator(event.getCreator()).title(event.getTitle()).finder(event.getTitle()+event.getEvent_description()).date(LocalDate.parse(event.getDate_event()).atStartOfDay()).build();
-            totalSearchList.add(searchItem);
+            if(!totalSearchList.contains(searchItem))
+                totalSearchList.add(searchItem);
         }
 
     }

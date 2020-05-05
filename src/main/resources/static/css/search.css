@@ -22,9 +22,27 @@
     border-bottom: 1px solid rgba(0,0,0,0.1);
     padding: 10px 0 10px 0;
     margin: 5px 0 5px 30px;
-    line-height: 30px;
     font-size: 14px;
+    max-height: 40px;
+    overflow: hidden;
+
 }
+.search_view span{
+    margin: 5px;
+}
+
 .container_search_item span{
     margin: 0 20px 0 0;
+}
+
+.search_item_date{
+    float: right;
+}
+
+.search_item_title{
+    max-width: calc(100% - 200px);
+    display: inline-block;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
