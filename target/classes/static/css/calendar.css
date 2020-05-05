@@ -64,10 +64,10 @@ calendar div.week{
     height: 16.67%;
     float:left;
     width:100%;
-
 }
 calendar div.week.six{
     height: 20%;
+
 }
 calendar div.week.names{
     border:none;
