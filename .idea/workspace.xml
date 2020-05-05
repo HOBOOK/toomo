@@ -2,23 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e8dee576-308c-4951-92c8-237d8e03e46f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/controller/SearchController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/search.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/controller/PageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/controller/PageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/service/SearchService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/memo.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/memo.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/controller/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/controller/SearchController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/model/SearchItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/model/SearchItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/util/Common.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/util/Common.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/search.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hobook/tomo/controller/PageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hobook/tomo/controller/PageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/memo.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/memo.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/search.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/tomo.kotlin_module" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/tomo.kotlin_module" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hobook/tomo/config/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hobook/tomo/config/SecurityConfig.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/fragments/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/fragments/header.html" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -109,18 +105,6 @@
       <recent name="D:\Work Space\WebProject\tomo\src\main\resources\templates\fragments" />
       <recent name="D:\workspace\WebProject\tomo\src\main\resources\static\img" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager" selected="Spring Boot.TomoApplication">
     <configuration name="AccountDtoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
@@ -263,6 +247,7 @@
       <workItem from="1588565162238" duration="9959000" />
       <workItem from="1588576976938" duration="4069000" />
       <workItem from="1588590999806" duration="7145000" />
+      <workItem from="1588636318060" duration="13846000" />
     </task>
     <servers />
   </component>
@@ -287,10 +272,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="178" key="#Project_Structure/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587565725895" />
-    <state x="808" y="409" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1588577198450">
+    <state x="808" y="409" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1588636785516">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="808" y="409" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588577198450" />
+    <state x="808" y="409" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588636785516" />
     <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1587568158272">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -300,54 +285,54 @@
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587705260298" />
     <state x="2660" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1586527327134" />
-    <state width="1921" height="245" key="GridCell.Tab.0.bottom" timestamp="1588582272076">
+    <state width="1921" height="245" key="GridCell.Tab.0.bottom" timestamp="1588650480006">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1921" height="245" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588582272076" />
+    <state width="1921" height="245" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588650480006" />
     <state width="1877" height="239" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1586581113256" />
-    <state width="1921" height="245" key="GridCell.Tab.0.center" timestamp="1588582272076">
+    <state width="1921" height="245" key="GridCell.Tab.0.center" timestamp="1588650480006">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1921" height="245" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588582272076" />
+    <state width="1921" height="245" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588650480006" />
     <state width="1877" height="239" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1586581113256" />
-    <state width="1921" height="245" key="GridCell.Tab.0.left" timestamp="1588582272076">
+    <state width="1921" height="245" key="GridCell.Tab.0.left" timestamp="1588650480006">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1921" height="245" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588582272076" />
+    <state width="1921" height="245" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588650480006" />
     <state width="1877" height="239" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1586581113256" />
-    <state width="1921" height="245" key="GridCell.Tab.0.right" timestamp="1588582272076">
+    <state width="1921" height="245" key="GridCell.Tab.0.right" timestamp="1588650480006">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1921" height="245" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588582272076" />
+    <state width="1921" height="245" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588650480006" />
     <state width="1877" height="239" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1586581113256" />
-    <state width="1921" height="245" key="GridCell.Tab.1.bottom" timestamp="1588582272076">
+    <state width="1921" height="245" key="GridCell.Tab.1.bottom" timestamp="1588650480007">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1921" height="245" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588582272076" />
+    <state width="1921" height="245" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588650480007" />
     <state width="1877" height="239" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1586581113257" />
-    <state width="1921" height="245" key="GridCell.Tab.1.center" timestamp="1588582272076">
+    <state width="1921" height="245" key="GridCell.Tab.1.center" timestamp="1588650480007">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1921" height="245" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588582272076" />
+    <state width="1921" height="245" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588650480007" />
     <state width="1877" height="239" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1586581113257" />
-    <state width="1921" height="245" key="GridCell.Tab.1.left" timestamp="1588582272076">
+    <state width="1921" height="245" key="GridCell.Tab.1.left" timestamp="1588650480007">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1921" height="245" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588582272076" />
+    <state width="1921" height="245" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588650480007" />
     <state width="1877" height="239" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1586581113257" />
-    <state width="1921" height="245" key="GridCell.Tab.1.right" timestamp="1588582272076">
+    <state width="1921" height="245" key="GridCell.Tab.1.right" timestamp="1588650480007">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1921" height="245" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588582272076" />
+    <state width="1921" height="245" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588650480007" />
     <state width="1877" height="239" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1586581113257" />
     <state x="461" y="162" key="SettingsEditor" timestamp="1587957167455">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="162" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587957167455" />
-    <state x="587" y="64" width="745" height="912" key="find.popup" timestamp="1587957971756">
+    <state x="587" y="64" width="745" height="912" key="find.popup" timestamp="1588647086926">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="587" y="64" width="745" height="912" key="find.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587957971756" />
+    <state x="587" y="64" width="745" height="912" key="find.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588647086926" />
     <state x="2507" y="64" width="745" height="912" key="find.popup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1586513917440" />
     <state x="339" y="130" key="new project wizard" timestamp="1587705247107">
       <screen x="0" y="0" width="1920" height="1040" />

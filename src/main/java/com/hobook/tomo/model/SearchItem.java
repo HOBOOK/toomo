@@ -12,12 +12,14 @@ public class SearchItem {
     private int type;
     private String title;
     private String creator;
+    private String finder;
 
     @Builder
-    public SearchItem(Long id, int type, String title, String crator){
+    public SearchItem(Long id, int type, String title, String crator, String finder){
         this.id = id;
         this.type =type;
         this.title = title;
         this.creator = crator;
+        this.finder = finder;
     }
 }

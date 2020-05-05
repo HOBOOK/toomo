@@ -50,6 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/memo").hasRole("BASIC")
                 .antMatchers("/manage").hasRole("BASIC")
                 .antMatchers("/schedule").hasRole("BASIC")
+                .antMatchers("/search").hasRole("BASIC")
                 .antMatchers("/**","/oauth2/**","/oauth/**","/login")
                 .permitAll()
                 .and() // 로그인 설정
