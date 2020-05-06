@@ -12,12 +12,14 @@ app.controller('memoController', function ($scope, $http, $compile) {
     $scope.memos = [];
     $http.get('memo/list').then(function (data) {
        $scope.memos = data.data;
-    });
 
-    $http.get('memo/get_select').then(function (data) {
-        if(data.data.id!=null){
-            $scope.editMemo(data.data.id);
-        }
+
+        $http.get('memo/get_select').then(function (data) {
+            if(data.data.id!=null){
+                $scope.editMemo(data.data.id);
+            }
+        });
+
     });
 
     $scope.isEmptyMemo = function(){

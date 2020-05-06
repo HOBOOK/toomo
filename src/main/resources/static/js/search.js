@@ -51,7 +51,14 @@ function clearSearch() {
 }
 
 
+var token = $("meta[name='_csrf']").attr("content");
+var header = $("meta[name='_csrf_header']").attr("content");
 var searchApp = angular.module('SearchApp', ['ngAnimate','ngSanitize']);
+
+searchApp.config(['$qProvider','$httpProvider', function($qProvider, $httpProvider){
+    $qProvider.errorOnUnhandledRejections(false);
+    $httpProvider.defaults.headers.common[header] = token;
+}]);
 
 searchApp.controller('searchController', function ($scope, $http, $compile) {
     $scope.searchedItems = [];
@@ -71,9 +78,7 @@ searchApp.controller('searchController', function ($scope, $http, $compile) {
 
     $scope.select = function (searchItem, $event){
         if(searchItem.type===0){
-            $http.get('memo/select?id='+searchItem.id).then(function (data) {
-                console.log('go to memo' + data);
-            });
+            window.location.replace("/memo/set_select?id="+ searchItem.id);
         }else{
             $http.get('schedule/event?id='+searchItem.id).then(function (data) {
                 $scope.todoListAppScope.select(data.data, $event);

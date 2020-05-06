@@ -45,4 +45,12 @@ public class Common {
     public static String getRemovedHtmlTag(String html){
         return html.replaceAll("<(/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\s)*(/)?>", "");
     }
+
+    private static long selectedMemoId = -1;
+    public static long getSelectedMemoId(){
+        return selectedMemoId;
+    }
+    public static void setSelectedMemoId(long id){
+        selectedMemoId = id;
+    }
 }

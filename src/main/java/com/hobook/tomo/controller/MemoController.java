@@ -5,6 +5,7 @@ import com.hobook.tomo.dto.EventDto;
 import com.hobook.tomo.dto.MemoDto;
 import com.hobook.tomo.service.AccountService;
 import com.hobook.tomo.service.MemoService;
+import com.hobook.tomo.util.Common;
 import lombok.AllArgsConstructor;
 import net.minidev.json.JSONObject;
 import org.springframework.data.repository.query.Param;
@@ -16,6 +17,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.PrintWriter;
 import java.security.Principal;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -27,7 +30,6 @@ import java.util.Map;
 @AllArgsConstructor
 public class MemoController {
     private MemoService memoService;
-    private AccountService accountService;
 
     @RequestMapping(value = "memo/list", method = RequestMethod.GET)
     public ResponseEntity<Object> getList(Principal principal)
@@ -70,20 +72,21 @@ public class MemoController {
         }
     }
 
-    @RequestMapping(value = "memo/select", method = RequestMethod.GET)
-    public String select(@RequestParam Long id, Model model){
-        model.addAttribute("selectedMemo", id);
+    @RequestMapping(value = "memo/set_select", method = RequestMethod.GET)
+    public String setSelect(@RequestParam Long id, Model model){
+        Common.setSelectedMemoId(id);
         return "redirect:/memo";
     }
 
     @RequestMapping(value = "memo/get_select", method = RequestMethod.GET)
     public ResponseEntity<Object> getSelect(Model model){
         JSONObject entity = new JSONObject();
-        if(model.getAttribute("selectedMemo")!=null){
-            entity.put("id", model.getAttribute("selectedMemo"));
-            model.addAttribute("selectedMemo", null);
+        if(Common.getSelectedMemoId()!=-1){
+            entity.put("id", Common.getSelectedMemoId());
+            Common.setSelectedMemoId(-1);
+        }else{
+            entity.put("id", null);
         }
-        entity.put("id", null);
         return new ResponseEntity<Object>(entity, HttpStatus.OK);
     }
 }

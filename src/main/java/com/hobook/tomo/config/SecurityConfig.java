@@ -48,6 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/memo").hasRole("BASIC")
+                .antMatchers("/memo/**").hasRole("BASIC")
                 .antMatchers("/manage").hasRole("BASIC")
                 .antMatchers("/schedule").hasRole("BASIC")
                 .antMatchers("/search").hasRole("BASIC")

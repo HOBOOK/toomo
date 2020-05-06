@@ -12,5 +12,5 @@ import java.util.Optional;
 @CrossOrigin
 public interface MemoRepository extends JpaRepository<Memo, Long> {
     List<Memo> findMemosByCreator(String userEmail);
-
+    Memo findMemoByIdAndCreator(Long id, String userEmail);
 }
