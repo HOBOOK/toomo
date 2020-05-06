@@ -102,7 +102,13 @@ public class SearchController {
         List<MemoDto> memoDtoList = memoService.getMemoList(email);
         List<EventDto> eventDtoList = eventService.getEventList(email);
         memoDtoList.sort(Comparator.comparing(MemoDto::getDate_create));
-        eventDtoList.sort(Comparator.comparing(EventDto::getDate_event));
+        eventDtoList.sort((x, y) -> {
+            if (x.getEvent_type() == y.getEvent_type()) {
+                return x.getDate_event().compareTo(y.getDate_event());
+            } else {
+                return y.getEvent_type() - x.getEvent_type();
+            }
+        });
         for(MemoDto memo : memoDtoList){
             if(memo.getState()==0){
                 String title = Common.getRemovedHtmlTag(memo.getContext()).split("\n")[0].length()>30 ? Common.getRemovedHtmlTag(memo.getContext()).split("\n")[0].substring(0,30)+"..." : Common.getRemovedHtmlTag(memo.getContext()).split("\n")[0];
@@ -112,8 +118,8 @@ public class SearchController {
             }
         }
         for(EventDto event : eventDtoList){
-            Common.print(event.getDate_event());
-            SearchItem searchItem = SearchItem.builder().type(1).id(event.getId()).crator(event.getCreator()).title(event.getTitle()).finder(event.getTitle()+event.getEvent_description()).date(LocalDate.parse(event.getDate_event()).atStartOfDay()).build();
+            int type = event.getEvent_type() + 1;
+            SearchItem searchItem = SearchItem.builder().type(type).id(event.getId()).crator(event.getCreator()).title(event.getTitle()).finder(event.getTitle()+event.getEvent_description()).date(LocalDate.parse(event.getDate_event()).atStartOfDay()).build();
             if(!totalSearchList.contains(searchItem))
                 totalSearchList.add(searchItem);
         }

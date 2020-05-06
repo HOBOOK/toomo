@@ -1,6 +1,7 @@
 package com.hobook.tomo.controller;
 
 import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.hobook.tomo.dto.EventDto;
 import com.hobook.tomo.dto.MemoDto;
 import com.hobook.tomo.service.AccountService;
 import com.hobook.tomo.service.MemoService;
@@ -67,5 +68,22 @@ public class MemoController {
         }catch (Exception e){
             return new ResponseEntity("Error", HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @RequestMapping(value = "memo/select", method = RequestMethod.GET)
+    public String select(@RequestParam Long id, Model model){
+        model.addAttribute("selectedMemo", id);
+        return "redirect:/memo";
+    }
+
+    @RequestMapping(value = "memo/get_select", method = RequestMethod.GET)
+    public ResponseEntity<Object> getSelect(Model model){
+        JSONObject entity = new JSONObject();
+        if(model.getAttribute("selectedMemo")!=null){
+            entity.put("id", model.getAttribute("selectedMemo"));
+            model.addAttribute("selectedMemo", null);
+        }
+        entity.put("id", null);
+        return new ResponseEntity<Object>(entity, HttpStatus.OK);
     }
 }

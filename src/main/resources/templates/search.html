@@ -13,14 +13,29 @@
 <section ng-app="SearchApp" ng-controller="searchController" layout:fragment="content" class="container_main">
     <div class="main">
         <div class="container_context" style="display: none;" ng-style="display()">
-            <div ng-repeat="item in searchedItems" class="container_search_item">
-                <span ng-show="item.type===0"><img src="img/type_memo.png" alt="type_memo" height="30"/></span>
-                <span ng-show="item.type===1"><img src="img/type_schedule.png" alt="type_schedule" height="30"/></span>
+            <div ng-repeat="item in searchedItems | filter:{ type: 0}" class="container_search_item" ng-click="select(item, $event)">
+                <span><img src="img/type_memo.png" alt="type_memo" height="30"/></span>
+                <span class="search_item_date fs-12" ng-bind="getObjectDate(item)"></span>
+                <span class="search_item_title">{{item.title}}</span>
+            </div>
+            <br/>
+            <div style="width: 100%; border-top: 1px solid rgba(0,0,0,0.1);"></div>
+            <br/>
+            <div ng-repeat="item in searchedItems | filter:{ type: 2}" class="container_search_item" ng-click="select(item, $event)">
+                <span><img src="img/type_todo.png" alt="type_todo" height="30"/></span>
+                <span class="search_item_date fs-12" ng-bind="getObjectDate(item)"></span>
+                <span class="search_item_title">{{item.title}}</span>
+            </div>
+            <br/>
+            <div style="width: 100%; border-top: 1px solid rgba(0,0,0,0.1);"></div>
+            <br/>
+            <div ng-repeat="item in searchedItems | filter:{ type: 1}" class="container_search_item" ng-click="select(item, $event)">
+                <span><img src="img/type_schedule.png" alt="type_schedule" height="30"/></span>
                 <span class="search_item_date fs-12" ng-bind="getObjectDate(item)"></span>
                 <span class="search_item_title">{{item.title}}</span>
             </div>
 
-            <div class="fs-13" style="display: inline-block; margin-top: 50px; width: 100%; text-align: center;">총 {{searchedItems.length}}개의 검색결과가 있습니다.</div>
+            <div class="fs-13" style="display: inline-block; margin-top: 50px; margin-bottom:50px; width: 100%; text-align: center;">총 {{searchedItems.length}}개의 검색결과가 있습니다.</div>
         </div>
     </div>
 </section>

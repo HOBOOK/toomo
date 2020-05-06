@@ -26,6 +26,27 @@ public class EventService {
     }
 
     @Transactional
+    public EventDto getEvent(Long id, String email){
+        Event event = eventRepository.findEventByIdAndCreator(id, email);
+        EventDto eventDto = EventDto.builder()
+                .id(event.getId())
+                .creator(event.getCreator())
+                .date_event(event.getDate_event())
+                .date_event_end(event.getDate_event_end())
+                .event_type(event.getEvent_type())
+                .event_state(event.getEvent_state())
+                .event_point(event.getEvent_point())
+                .event_color(event.getEvent_color())
+                .event_time(event.getEvent_time())
+                .title(event.getTitle())
+                .event_description(event.getEvent_description())
+                .date_create(event.getDate_create())
+                .date_update(event.getDate_update())
+                .build();
+        return eventDto;
+    }
+
+    @Transactional
     public List<EventDto> getEventList(String email){
         List<Event> eventEntities = eventRepository.findEventsByCreator(email);
         List<EventDto> eventDtoList = new ArrayList<>();

@@ -9,4 +9,5 @@ import java.util.List;
 @CrossOrigin
 public interface EventRepository extends JpaRepository<Event, Long> {
     List<Event> findEventsByCreator(String userEmail);
+    Event findEventByIdAndCreator(Long id, String userEmail);
 }

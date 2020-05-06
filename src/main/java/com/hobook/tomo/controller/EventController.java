@@ -40,6 +40,23 @@ import java.util.Map;
 public class EventController {
     private EventService eventService;
 
+    @RequestMapping(value = "schedule/event", method = RequestMethod.GET)
+    public ResponseEntity<Object> getEvent(@RequestParam Long id, Principal principal){
+        JSONObject entity = new JSONObject();
+        EventDto eventDto = eventService.getEvent(id, principal.getName());
+        entity.put("id", eventDto.getId());
+        entity.put("date_event",eventDto.getDate_event());
+        entity.put("date_event_end", eventDto.getDate_event_end());
+        entity.put("event_type",eventDto.getEvent_type());
+        entity.put("event_state",eventDto.getEvent_state());
+        entity.put("event_point",eventDto.getEvent_point());
+        entity.put("event_color",eventDto.getEvent_color());
+        entity.put("event_time",eventDto.getEvent_time());
+        entity.put("title",eventDto.getTitle());
+        entity.put("event_description", eventDto.getEvent_description());
+        return new ResponseEntity<Object>(entity, HttpStatus.OK);
+    }
+
     @RequestMapping(value = "schedule/events", method = RequestMethod.GET)
     public ResponseEntity<Object> getList(Principal principal)
     {

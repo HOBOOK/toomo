@@ -55,6 +55,7 @@ var searchApp = angular.module('SearchApp', ['ngAnimate','ngSanitize']);
 
 searchApp.controller('searchController', function ($scope, $http, $compile) {
     $scope.searchedItems = [];
+    $scope.todoListAppScope = angular.element(document.querySelector('[ng-app=BarApp]')).scope();
     $http.get('/search/result').then(function (data) {
         $scope.searchedItems = data.data;
     });
@@ -68,4 +69,18 @@ searchApp.controller('searchController', function ($scope, $http, $compile) {
         return date.getFullYear() + "년 " + date.getMonth()+"월 " + date.getDate()+"일";
     }
 
+    $scope.select = function (searchItem, $event){
+        if(searchItem.type===0){
+            $http.get('memo/select?id='+searchItem.id).then(function (data) {
+                console.log('go to memo' + data);
+            });
+        }else{
+            $http.get('schedule/event?id='+searchItem.id).then(function (data) {
+                $scope.todoListAppScope.select(data.data, $event);
+            }, function errorCallback(response){
+                console.log('error get Event -> ' +response);
+            });
+
+        }
+    }
 })

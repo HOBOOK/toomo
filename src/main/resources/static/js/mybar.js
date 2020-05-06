@@ -203,11 +203,19 @@ barApp.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http)
         }else{
             elem.style.marginLeft= posX+'px';
         }
-        if($scope.event.event_state===1){
-            elem.style.marginTop = posY - 248 +'px';
+
+        var correctHeight = window.outerHeight - (posY + elem.offsetHeight);
+
+        if(correctHeight<50){
+            if($scope.event.event_type===0)
+                elem.style.marginTop = posY - 280 +'px';
+            else if($scope.event.event_type===1){
+                elem.style.marginTop = posY - 296 +'px';
+            }
         }else{
-            elem.style.marginTop = posY+'px';
+            elem.style.marginTop = (posY + 45)+'px';
         }
+
         if($scope.event.event_time!=null){
             $scope.event.event_time_temp = new Date($scope.event.event_time);
             $scope.event.isAllDay = false;
@@ -288,14 +296,16 @@ barApp.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http)
             }
 
             // 스케쥴페이지에서 이벤트의 위치를 옮김
-            var items = $uibModalInstance.calendarAppScope.eventList;
-            for(var i = 0; i < items.length; i++){
-                if(items[i].id===$scope.event.id){
-                    items[i].date_event = $scope.event.date_event;
-                    items[i].title = $scope.event.title;
-                    items[i].event_description = $scope.event.event_description;
-                    $uibModalInstance.calendarAppScope.moveDayEvent(beforeDateEvent,afterDateEvent.substring(0,10));
-                    break;
+            if($uibModalInstance.calendarAppScope!=null){
+                var items = $uibModalInstance.calendarAppScope.eventList;
+                for(var i = 0; i < items.length; i++){
+                    if(items[i].id===$scope.event.id){
+                        items[i].date_event = $scope.event.date_event;
+                        items[i].title = $scope.event.title;
+                        items[i].event_description = $scope.event.event_description;
+                        $uibModalInstance.calendarAppScope.moveDayEvent(beforeDateEvent,afterDateEvent.substring(0,10));
+                        break;
+                    }
                 }
             }
 
