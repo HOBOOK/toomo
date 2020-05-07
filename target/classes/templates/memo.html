@@ -18,8 +18,8 @@
         </div>
         <div class="container_context" id="memo_parent">
             <article ng-style="display()" ng-repeat="memo in memos | orderBy:['!-fix', '-date_create'] | filter:{ state: 0}" class="memo" id="memo_{{memo.id}}">
-                <img src="img/pin.png" height="32" ng-click="setPin(false, memo)" ng-show="memo.fix=='1'" class="memo-pin fix"/>
-                <img src="img/pin.png" height="32" ng-click="setPin(true, memo)" ng-show="memo.fix=='0'" class="memo-pin"/>
+                <img src="img/pin.png" height="36" ng-click="setPin(false, memo)" ng-show="memo.fix=='1'" class="memo-pin fix"/>
+                <img src="img/pin.png" height="36" ng-click="setPin(true, memo)" ng-show="memo.fix=='0'&&config.editMode && config.editTarget==memo.id" class="memo-pin"/>
                 <div  class="container_memo" ng-click="editMemo(memo.id)">
                     <div ng-class="{ true: 'bar_memo selected', false: 'bar_memo' }[config.editMode && config.editTarget==memo.id]">
                         <div ng-show="config.editMode && config.editTarget==memo.id">

@@ -44,6 +44,7 @@ public class SearchController {
                             searchResults.add(item);
                     }
                 }
+                Common.currentSearchingId = "";
             }
         }catch(Exception e){
             e.printStackTrace();
@@ -76,8 +77,9 @@ public class SearchController {
     @RequestMapping(value="/searchedtext", produces = {"application/xml", "application/json"})
     @ResponseStatus(HttpStatus.OK)
     public @ResponseBody List<SearchItem> searchedText(String keyword, Principal principal){
-        if(totalSearchList.size()==0){
+        if(!Common.currentSearchingId.equals(principal.getName())){
             buildSearchingItem(principal.getName());
+            Common.currentSearchingId = principal.getName();
         }
         List<SearchItem> searchList = new ArrayList<>(totalSearchList);
         searchResults.clear();

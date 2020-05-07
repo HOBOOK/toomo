@@ -46,6 +46,12 @@ public class Common {
         return html.replaceAll("<(/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\s)*(/)?>", "");
     }
 
+
+    /*
+    * Controller 속성 관련
+    * */
+    public static String currentSearchingId;
+
     private static long selectedMemoId = -1;
     public static long getSelectedMemoId(){
         return selectedMemoId;

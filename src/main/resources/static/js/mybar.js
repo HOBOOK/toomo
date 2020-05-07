@@ -250,14 +250,17 @@ barApp.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http)
                     $uibModalInstance.parent.clearEvents.splice($uibModalInstance.parent.clearEvents.indexOf($uibModalInstance.eventInfo),1);
                 }
                 // 스케쥴페이지 갱신
-                var items = $uibModalInstance.calendarAppScope.eventList;
-                for(var i = 0; i < items.length; i++){
-                    if(items[i].id===$scope.event.id){
-                        items.splice(i,1);
-                        $uibModalInstance.calendarAppScope.moveDayEvent($scope.event.date_event,$scope.event.date_event);
-                        break;
+                if($uibModalInstance.calendarAppScope!=null){
+                    var items = $uibModalInstance.calendarAppScope.eventList;
+                    for(var i = 0; i < items.length; i++){
+                        if(items[i].id===$scope.event.id){
+                            items.splice(i,1);
+                            $uibModalInstance.calendarAppScope.moveDayEvent($scope.event.date_event,$scope.event.date_event);
+                            break;
+                        }
                     }
                 }
+
                 $scope.close();
             }, function errorCallback(response){
                 console.log('error delete -> ' +response);

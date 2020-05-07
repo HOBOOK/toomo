@@ -155,6 +155,7 @@ public class EventController {
     @DeleteMapping(value="schedule/delete")
     public ResponseEntity<Void> delete(@RequestParam String id){
         try{
+            Common.print(id);
             eventService.deleteEvent(Long.parseLong(id));
             return new ResponseEntity(HttpStatus.OK);
         }catch (Exception e){

@@ -5,8 +5,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.search.annotations.Field;
-import org.hibernate.search.annotations.Indexed;
 
 import javax.persistence.*;
 
@@ -14,7 +12,6 @@ import javax.persistence.*;
 @Getter
 @Entity
 @Table(name="memos")
-@Indexed
 public class Memo extends Time{
 
     @Id
@@ -26,7 +23,6 @@ public class Memo extends Time{
     @Column(name="creator", nullable = false, length = 50)
     private String creator;
 
-    @Field
     @Column(name="context")
     private String context;
 
