@@ -81,6 +81,7 @@ app.controller('memoController', function ($scope, $http, $compile) {
             fix: 0
         });
         $scope.config.isAlreadyAdd = true;
+        $scope.editMemo(-1);
     }
     $scope.removeMemo = function (memo){
         if(confirm("메모를 삭제하시겠습니까? 삭제된 메모는 휴지통에서 복원할 수 있습니다.")){

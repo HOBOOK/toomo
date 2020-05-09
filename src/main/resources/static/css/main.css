@@ -118,7 +118,7 @@ nav{
     position: absolute;
     height: calc(100% - 60px);
     width: 80px;
-    border-right: 1px solid rgba(0,0,0,0.2);
+    border-right: 1px solid rgba(0,0,0,0.1);
     background-color: white;
     background-color: var(--nav-background-color);
     z-index: 1000;
@@ -197,7 +197,7 @@ nav{
     color: var(--nav-color);
     width:300px;
     z-index: 1000;
-    border-left: 1px solid rgba(0,0,0,0.2);
+    border-left: 1px solid rgba(0,0,0,0.1);
 }
 .mybar h3{
     font-size: 16px;
