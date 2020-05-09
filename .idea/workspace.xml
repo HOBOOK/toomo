@@ -2,32 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e8dee576-308c-4951-92c8-237d8e03e46f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__antlr_antlr_2_7_7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_activation_javax_activation_api_1_2_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_persistence_javax_persistence_api_2_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_dom4j_dom4j_2_1_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_common_hibernate_commons_annotations_5_0_4_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_hibernate_core_5_3_7_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_javassist_javassist_3_23_1_GA.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_jandex_2_0_5_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_spec_javax_transaction_jboss_transaction_api_1_2_spec_1_1_1_Final.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/controller/EventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/controller/EventController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/controller/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/controller/SearchController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/model/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/model/Event.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/model/Memo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/model/Memo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/util/Common.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/util/Common.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/memo.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/memo.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/mybar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/mybar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/memo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/memo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hobook/tomo/model/Memo$MemoBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hobook/tomo/model/Memo$MemoBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hobook/tomo/model/Memo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hobook/tomo/model/Memo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/memo.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/memo.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/memo.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/memo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tomo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/tomo.iml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -283,6 +259,7 @@
       <workItem from="1588765353383" duration="7179000" />
       <workItem from="1588775028929" duration="5328000" />
       <workItem from="1588834618671" duration="7240000" />
+      <workItem from="1588998088410" duration="1266000" />
     </task>
     <servers />
   </component>

@@ -28,7 +28,7 @@ barApp.controller('barController', function ($scope, $http, $uibModal) {
     });
 
     $scope.addTimeString = function(data){
-        if(data.event_time===null || data.events[i].event_time === ''){
+        if(data.event_time===null || data.event_time === ''){
             data.event_time_string = getEventTimeStringByDateTime(data.date_event, false);
         }else{
             data.event_time_string = getEventTimeStringByDateTime(data.event_time, true);
@@ -381,8 +381,7 @@ barApp.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http)
 });
 
 function getEventTimeStringByDateTime(datetime, isTargetTime){
-    var diffday = Math.ceil((new Date().getTime() - new Date(datetime).getTime()) / (1000 * 3600 * 24)) - 1;
-
+    var diffday = Math.ceil((new Date().getTime() - new Date(datetime).getTime()) / (1000 * 3600 * 24));
     if(diffday===0){
         diffday = '오늘';
     }else if(diffday===1){
