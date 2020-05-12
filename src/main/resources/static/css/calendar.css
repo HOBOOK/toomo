@@ -35,6 +35,9 @@ calendar .cal_header i{
     padding:0 10px;
     cursor:pointer;
 }
+calendar .cal_header i:hover{
+    opacity: 0.8;
+}
 calendar .cal_header i.fa-angle-left {
     text-align:left;
 }

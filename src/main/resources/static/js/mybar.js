@@ -393,7 +393,7 @@ function getEventTimeStringByDateTime(datetime, isTargetTime){
     }else if(diffday<-1){
         diffday = diffday*-1 + '일 후';
     }
-    return isTargetTime ? diffday + " " + datetime.substring(11,16) : diffday;
+    return isTargetTime ? diffday + " " + datetime.substring(11,16) : diffday + " 종일";
 }
 
 

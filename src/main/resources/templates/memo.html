@@ -17,7 +17,7 @@
             <p class="fs-20 m-t-20" style="color: rgba(50,50,50,0.35);">메모가 없습니다.</p>
         </div>
         <div class="container_context" id="memo_parent">
-            <article ng-style="display()" ng-repeat="memo in memos | orderBy:['!-fix', '-date_create'] | filter:{ state: 0}" class="memo" id="memo_{{memo.id}}">
+            <article ng-style="display()" ng-repeat="memo in memos | orderBy:['!-fix', 'date_create'] | filter:{ state: 0}" class="memo" id="memo_{{memo.id}}">
                 <img src="img/pin.png" height="36" ng-click="setPin(false, memo)" ng-show="memo.fix=='1'" class="memo-pin fix"/>
                 <img src="img/pin.png" height="36" ng-click="setPin(true, memo)" ng-show="memo.fix=='0'&&config.editMode && config.editTarget==memo.id" class="memo-pin"/>
                 <div  class="container_memo" ng-click="editMemo(memo.id)">
@@ -54,7 +54,8 @@
     </div>
     <div class="button_add_memo">
         <span data-tooltip-text="새 메모" ng-click="addMemo()">
-            <i class="fas fa-edit" style="font-size: 20px;color: lime; margin:0 auto;text-align: center;"></i>
+            <img src="img/type_memo.png" height="28" style="margin-top: 4px;" alt="add_memo"/>
+
         </span>
     </div>
 </section>

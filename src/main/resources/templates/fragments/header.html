@@ -3,7 +3,7 @@
 <th:header th:fragment="header">
     <header>
         <div class="logo" style="height: 60px;line-height: 60px;top:0;left:14px;position: absolute;">
-            <a href="./"><img src="img/logo.png" height="32" alt="logo" style="margin-top:14px;"/></a>
+            <a href="./"><img src="img/logo.png" height="24" alt="logo" style="margin-top:18px;"/></a>
         </div>
         <div class="search" sec:authorize="isAuthenticated()">
             <input type="text" placeholder="검색" id="input_search"/>
@@ -23,7 +23,6 @@
         </div>
         <div class="account_remote">
             <div class="account_profile">
-                <img onerror="this.src='/img/anonymous.png'" style="margin-top: 5px; border-radius: 100%;" sec:authorize="isAuthenticated()" th:src="${account} ? ${account.getProfile_image_url()}" width="32" height="32"/>
                 <p th:text="${account} ? ${account.getNickname()}" sec:authorize="isAuthenticated()"></p>
                 <p th:text="${account} ? ${account.getEmail()}" sec:authorize="isAuthenticated()"></p>
             </div>
