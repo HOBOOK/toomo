@@ -180,11 +180,11 @@ calendar div.item.todo:hover{
     background-color: var(--schedule-border-background-color);
 }
 calendar div.item.holiday{
-    cursor: none;
+    cursor: auto;
     border: none;
     box-shadow: none;
-    color: black;
-    color: var(--schedule-border-color);
+    font-weight: bold;
+    color: orangered;
     background-color: transparent;
 }
 calendar div.item.more{

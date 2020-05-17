@@ -165,18 +165,20 @@ public class EventController {
 
     // 대한민국 공휴일 데이터
     private List<EventDto> getHolidays(String year){
-        String url = APIType.HOLIDAYS_AND_24DIVISIONS.getAPIUrl()+"/getHoliDeInfo?serviceKey="+APIType.HOLIDAYS_AND_24DIVISIONS.getAPIKey()
-                +"&solYear="+year;
-        Client client = Client.create();
-        WebResource webResource = client.resource(url);
-        ClientResponse response = webResource.accept("aplication/xml").get(ClientResponse.class);
         List<EventDto> holidays = new ArrayList<EventDto>();
-        if(response.getStatus() != 200){
-            Common.print("Failed : HTTP error code : " + response.getStatus());
-            return holidays;
-        }else{
-            return getParseHolidayXMLResult(response.getEntity(String.class));
+        for(int i = 0; i < 2; i++){
+            String url = APIType.HOLIDAYS_AND_24DIVISIONS.getAPIUrl()+"/getHoliDeInfo?serviceKey="+APIType.HOLIDAYS_AND_24DIVISIONS.getAPIKey()
+                    +"&solYear="+year+ "&pageNo="+ (i+1) + "&_type=xml";
+            Client client = Client.create();
+            WebResource webResource = client.resource(url);
+            ClientResponse response = webResource.accept("application/xml").get(ClientResponse.class);
+            if(response.getStatus() != 200){
+                Common.print("Failed : HTTP error code : " + response.getStatus());
+            }else{
+                holidays.addAll(getParseHolidayXMLResult(response.getEntity(String.class)));
+            }
         }
+        return holidays;
     }
 
     private List<EventDto> getParseHolidayXMLResult(String apiResult){

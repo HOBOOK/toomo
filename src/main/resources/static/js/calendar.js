@@ -267,6 +267,10 @@ calApp.directive("calendar", function($uibModal, $http) {
                 if (list[i]["date_event"] === id) {
                     dayEvents.push(list[i]);
                 }
+            }else if(list[i].event_type===2){
+                if (list[i]["date_event"] === id) {
+                    dayEvents.push(list[i]);
+                }
             }
         }
         return dayEvents;
