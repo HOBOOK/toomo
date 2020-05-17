@@ -22,18 +22,18 @@ app.controller('manageController', function ($scope, $http, $compile, Upload) {
 
     $scope.init = function(){
         // 테마 토글 버튼
-        var toggleTheme = getCookie('toggleTheme');
-        if(toggleTheme==null || toggleTheme=='false'){
+        var toggleThemeOpt = getCookie('toggleTheme');
+        if(toggleThemeOpt==null || toggleThemeOpt=='false'){
             $("input:checkbox[id='tgl1']").prop("checked", false);
         }else{
             $("input:checkbox[id='tgl1']").prop("checked", true);
         }
 
         // 메모 색상 옵션
-        var memoColor = getCookie('memoColor');
-        if(memoColor!=null && memoColor!=''){
+        var memoColorOpt = getCookie('memoColor');
+        if(memoColorOpt!=null && memoColorOpt!=''){
             for(var i = 0; i < $scope.optionsMemoColor.length; i++){
-                if($scope.optionsMemoColor[i]["code"]===memoColor){
+                if($scope.optionsMemoColor[i]["code"]===memoColorOpt){
                     $scope.selectedMemoColor = $scope.optionsMemoColor[i];
                     break;
                 }
@@ -41,10 +41,10 @@ app.controller('manageController', function ($scope, $http, $compile, Upload) {
         }
 
         // 메모 크기 옵션
-        var memoSize = getCookie('memoSize');
-        if(memoSize!=null && memoSize!=''){
+        var memoSizeOpt = getCookie('memoSize');
+        if(memoSizeOpt!=null && memoSizeOpt!=''){
             for(var i = 0; i < $scope.optionsMemoSize.length; i++){
-                if($scope.optionsMemoSize[i]["code"]===memoSize){
+                if($scope.optionsMemoSize[i]["code"]===memoSizeOpt){
                     $scope.selectedMemoSize = $scope.optionsMemoSize[i];
                     break;
                 }
@@ -52,14 +52,22 @@ app.controller('manageController', function ($scope, $http, $compile, Upload) {
         }
 
         // 메모 폰트 크기 옵션
-        var memoFontSize = getCookie('memoFontSize');
-        if(memoFontSize!=null && memoFontSize!=''){
+        var memoFontSizeOpt = getCookie('memoFontSize');
+        if(memoFontSizeOpt!=null && memoFontSizeOpt!=''){
             for(var i = 0; i < $scope.optionsMemoFontSize.length; i++){
-                if($scope.optionsMemoFontSize[i]["code"]===memoFontSize){
+                if($scope.optionsMemoFontSize[i]["code"]===memoFontSizeOpt){
                     $scope.selectedMemoFontSize = $scope.optionsMemoFontSize[i];
                     break;
                 }
             }
+        }
+
+        // 일정 공휴일 숨기기 옵션
+        var hideHolidayOpt = getCookie('hideHoliday');
+        if(hideHolidayOpt==null || hideHolidayOpt=='false'){
+            $("input:checkbox[id='tglHideHoliday']").prop("checked", false);
+        }else{
+            $("input:checkbox[id='tglHideHoliday']").prop("checked", true);
         }
         
         // 프로필
@@ -138,6 +146,18 @@ app.controller('manageController', function ($scope, $http, $compile, Upload) {
             $("input:checkbox[id='tgl1']").prop("checked", false);
             $('body').removeClass("dark");
             setCookie('toggleTheme', false, 7);
+        }
+    }
+
+
+    $scope.setHideHolidayToggle = function(){
+        var hideHolidayOpt = getCookie('hideHoliday');
+        if(hideHolidayOpt==null || hideHolidayOpt=='false'){
+            $("input:checkbox[id='tglHideHoliday']").prop("checked", true);
+            setCookie('hideHoliday', true, 7);
+        }else{
+            $("input:checkbox[id='tglHideHoliday']").prop("checked", false);
+            setCookie('hideHoliday', false, 7);
         }
     }
 

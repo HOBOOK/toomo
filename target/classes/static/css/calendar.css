@@ -228,6 +228,10 @@ calendar p.day_number.saturday{
     color:royalblue;
 }
 
+calendar .hide{
+    display: none;
+}
+
 
 @keyframes fadeIn {
     0% {
