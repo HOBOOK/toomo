@@ -1,30 +1,21 @@
 package com.hobook.tomo.util;
 
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 import org.w3c.dom.*;
-import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.IOException;
-import java.io.StringReader;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
+@Slf4j
+@Component
 public class Common {
-    public static void print(String...log){
+    public void print(String...text){
         System.out.println("############ [Log 시작] ###########");
-        for(String s : log){
-            System.out.println(s);
+        for(String s : text){
+            log.info(s);
         }
         System.out.println("############ [Log 종료] ###########");
     }
-    public static String getRamdomPassword(int len) {
+    public String getRamdomPassword(int len) {
         char[] charSet = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' }; int idx = 0;
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < len; i++) {
@@ -33,7 +24,7 @@ public class Common {
         return sb.toString();
     }
 
-    public static String getElementValue(Element e) {
+    public String getElementValue(Element e) {
         Node child = e.getFirstChild();
         if(child instanceof CharacterData) {
             CharacterData data = (CharacterData) child;
@@ -42,7 +33,7 @@ public class Common {
         return "-";
     }
 
-    public static String getRemovedHtmlTag(String html){
+    public String getRemovedHtmlTag(String html){
         return html.replaceAll("<(/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\s)*(/)?>", "");
     }
 
@@ -50,13 +41,13 @@ public class Common {
     /*
     * Controller 속성 관련
     * */
-    public static String currentSearchingId;
+    public String currentSearchingId;
 
-    private static long selectedMemoId = -1;
-    public static long getSelectedMemoId(){
+    private long selectedMemoId = -1;
+    public long getSelectedMemoId(){
         return selectedMemoId;
     }
-    public static void setSelectedMemoId(long id){
+    public void setSelectedMemoId(long id){
         selectedMemoId = id;
     }
 }

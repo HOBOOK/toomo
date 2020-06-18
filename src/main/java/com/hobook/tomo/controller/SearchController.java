@@ -8,6 +8,7 @@ import com.hobook.tomo.service.MemoService;
 import com.hobook.tomo.util.Common;
 import lombok.AllArgsConstructor;
 import net.minidev.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -21,9 +22,9 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.security.Principal;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.*;
+import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Controller
 @AllArgsConstructor
@@ -32,6 +33,7 @@ public class SearchController {
     private EventService eventService;
     private List<SearchItem> totalSearchList;
     private List<SearchItem> searchResults;
+    @Autowired Common common;
 
     @RequestMapping(value="/search", method = RequestMethod.GET)
     public String goSearch(@RequestParam(value = "keyword", required = false) String keyword){
@@ -44,7 +46,7 @@ public class SearchController {
                             searchResults.add(item);
                     }
                 }
-                Common.currentSearchingId = "";
+                common.currentSearchingId = "";
             }
         }catch(Exception e){
             e.printStackTrace();
@@ -67,7 +69,7 @@ public class SearchController {
                 entities.add(entity);
             }
         }else{
-            Common.print("searchItem null");
+            common.print("searchItem null");
         }
         return new ResponseEntity<Object>(entities, HttpStatus.OK);
     }
@@ -77,9 +79,9 @@ public class SearchController {
     @RequestMapping(value="/searchedtext", produces = {"application/xml", "application/json"})
     @ResponseStatus(HttpStatus.OK)
     public @ResponseBody List<SearchItem> searchedText(String keyword, Principal principal){
-        if(!Common.currentSearchingId.equals(principal.getName())){
+        if(!common.currentSearchingId.equals(principal.getName())){
             buildSearchingItem(principal.getName());
-            Common.currentSearchingId = principal.getName();
+            common.currentSearchingId = principal.getName();
         }
         List<SearchItem> searchList = new ArrayList<>(totalSearchList);
         searchResults.clear();
@@ -103,6 +105,7 @@ public class SearchController {
         totalSearchList.clear();
         List<MemoDto> memoDtoList = memoService.getMemoList(email);
         List<EventDto> eventDtoList = eventService.getEventList(email);
+        // Java 1.8 정렬
         memoDtoList.sort(Comparator.comparing(MemoDto::getDate_create));
         eventDtoList.sort((x, y) -> {
             if (x.getEvent_type() == y.getEvent_type()) {
@@ -113,8 +116,8 @@ public class SearchController {
         });
         for(MemoDto memo : memoDtoList){
             if(memo.getState()==0){
-                String title = Common.getRemovedHtmlTag(memo.getContext()).split("\n")[0].length()>30 ? Common.getRemovedHtmlTag(memo.getContext()).split("\n")[0].substring(0,30)+"..." : Common.getRemovedHtmlTag(memo.getContext()).split("\n")[0];
-                SearchItem searchItem = SearchItem.builder().type(0).id(memo.getId()).crator(memo.getCreator()).title(title).finder(Common.getRemovedHtmlTag(memo.getContext())).date(memo.getDate_create()).build();
+                String title = common.getRemovedHtmlTag(memo.getContext()).split("\n")[0].length()>30 ? common.getRemovedHtmlTag(memo.getContext()).split("\n")[0].substring(0,30)+"..." : common.getRemovedHtmlTag(memo.getContext()).split("\n")[0];
+                SearchItem searchItem = SearchItem.builder().type(0).id(memo.getId()).crator(memo.getCreator()).title(title).finder(common.getRemovedHtmlTag(memo.getContext())).date(memo.getDate_create()).build();
                 if(!totalSearchList.contains(searchItem))
                     totalSearchList.add(searchItem);
             }

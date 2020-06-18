@@ -9,7 +9,11 @@ import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import net.minidev.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -28,8 +32,6 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.io.StringReader;
 import java.security.Principal;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -39,6 +41,7 @@ import java.util.Map;
 @AllArgsConstructor
 public class EventController {
     private EventService eventService;
+    @Autowired private Common common;
 
     @RequestMapping(value = "schedule/event", method = RequestMethod.GET)
     public ResponseEntity<Object> getEvent(@RequestParam Long id, Principal principal){
@@ -155,7 +158,7 @@ public class EventController {
     @DeleteMapping(value="schedule/delete")
     public ResponseEntity<Void> delete(@RequestParam String id){
         try{
-            Common.print(id);
+            common.print(id);
             eventService.deleteEvent(Long.parseLong(id));
             return new ResponseEntity(HttpStatus.OK);
         }catch (Exception e){
@@ -173,7 +176,7 @@ public class EventController {
             WebResource webResource = client.resource(url);
             ClientResponse response = webResource.accept("application/xml").get(ClientResponse.class);
             if(response.getStatus() != 200){
-                Common.print("Failed : HTTP error code : " + response.getStatus());
+                common.print("Failed : HTTP error code : " + response.getStatus());
             }else{
                 holidays.addAll(getParseHolidayXMLResult(response.getEntity(String.class)));
             }
@@ -201,13 +204,13 @@ public class EventController {
                 //Element seq = (Element) element.getElementsByTagName("seq").item(0);
 
                 EventDto holiday = new EventDto();
-                holiday.setTitle(Common.getElementValue(dateName));
+                holiday.setTitle(common.getElementValue(dateName));
                 holiday.setEvent_description("대한민국 공휴일");
                 holiday.setEvent_type(2);
-                String dateHoliday = Common.getElementValue(locdate);
+                String dateHoliday = common.getElementValue(locdate);
                 holiday.setDate_event(dateHoliday.substring(0,4)+"-"+dateHoliday.substring(4,6)+"-"+dateHoliday.substring(6));
                 holiday.setDate_event_end(holiday.getDate_event());
-                holiday.setEvent_state(Common.getElementValue(isHoliday).toLowerCase().equals("false") ? 0 : 1);
+                holiday.setEvent_state(common.getElementValue(isHoliday).toLowerCase().equals("false") ? 0 : 1);
 //                holiday.put("DAY_CD", String.valueOf(dayNum));
 //                holiday.put("DAY_NM", day);
 //                holiday.put("D_REG_DT", LocalDate.now().format(formatter));

@@ -8,6 +8,7 @@ import com.hobook.tomo.service.MemoService;
 import com.hobook.tomo.util.Common;
 import lombok.AllArgsConstructor;
 import net.minidev.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -20,7 +21,6 @@ import org.springframework.web.util.UriComponentsBuilder;
 import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
 import java.security.Principal;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -30,6 +30,7 @@ import java.util.Map;
 @AllArgsConstructor
 public class MemoController {
     private MemoService memoService;
+    @Autowired Common common;
 
     @RequestMapping(value = "memo/list", method = RequestMethod.GET)
     public ResponseEntity<Object> getList(Principal principal)
@@ -74,16 +75,16 @@ public class MemoController {
 
     @RequestMapping(value = "memo/set_select", method = RequestMethod.GET)
     public String setSelect(@RequestParam Long id, Model model){
-        Common.setSelectedMemoId(id);
+        common.setSelectedMemoId(id);
         return "redirect:/memo";
     }
 
     @RequestMapping(value = "memo/get_select", method = RequestMethod.GET)
     public ResponseEntity<Object> getSelect(Model model){
         JSONObject entity = new JSONObject();
-        if(Common.getSelectedMemoId()!=-1){
-            entity.put("id", Common.getSelectedMemoId());
-            Common.setSelectedMemoId(-1);
+        if(common.getSelectedMemoId()!=-1){
+            entity.put("id", common.getSelectedMemoId());
+            common.setSelectedMemoId(-1);
         }else{
             entity.put("id", null);
         }

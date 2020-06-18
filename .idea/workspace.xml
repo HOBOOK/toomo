@@ -5,7 +5,38 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="730cba2b-dfb4-456e-8ea2-d38ffa6e3379" name="Default Changelist" comment="" />
+    <list default="true" id="730cba2b-dfb4-456e-8ea2-d38ffa6e3379" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/banner.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/controller/EventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/controller/EventController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/controller/MemoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/controller/MemoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/controller/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/controller/SearchController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/service/SocialOAuth2UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/service/SocialOAuth2UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/util/Common.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/util/Common.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hobook/tomo/TomoApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hobook/tomo/config/SecurityConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hobook/tomo/config/WebMvcConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hobook/tomo/controller/MemoController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hobook/tomo/controller/PageController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hobook/tomo/dto/AccountDto$AccountDtoBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hobook/tomo/dto/AccountDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hobook/tomo/dto/MemoDto$MemoDtoBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hobook/tomo/dto/MemoDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hobook/tomo/model/Account$AccountBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hobook/tomo/model/Account.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hobook/tomo/model/Memo$MemoBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hobook/tomo/model/Memo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hobook/tomo/model/Role.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hobook/tomo/model/Time.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hobook/tomo/repository/AccountRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hobook/tomo/repository/MemoRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hobook/tomo/service/AccountService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hobook/tomo/service/MemoService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/header.css" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -58,7 +89,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/static/css" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -71,9 +102,16 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\workspace\WebProject\tomo\src\main\resources" />
+      <recent name="D:\workspace\WebProject\tomo\src\main\resources\static\css" />
+      <recent name="D:\workspace\WebProject\tomo\src\main\resources\templates" />
+      <recent name="D:\Work Space\WebProject\tomo\src\main\resources\templates" />
+      <recent name="D:\Work Space\WebProject\tomo\src\main\resources\templates\fragments" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\workspace\WebProject\tomo\src\main\resources\static\img\users" />
       <recent name="D:\workspace\WebProject\tomo\src\main\resources\static\js" />
@@ -81,13 +119,18 @@
       <recent name="D:\workspace\WebProject\tomo\src\main\resources\templates\fragments" />
       <recent name="D:\workspace\WebProject\tomo\src\main\resources\templates\layout" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\workspace\WebProject\tomo\src\main\resources\static\css" />
-      <recent name="D:\workspace\WebProject\tomo\src\main\resources\templates" />
-      <recent name="D:\Work Space\WebProject\tomo\src\main\resources\templates" />
-      <recent name="D:\Work Space\WebProject\tomo\src\main\resources\templates\fragments" />
-      <recent name="D:\workspace\WebProject\tomo\src\main\resources\static\img" />
-    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
   </component>
   <component name="RunManager" selected="Spring Boot.TomoApplication">
     <configuration name="AccountDtoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
@@ -171,7 +214,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="e8dee576-308c-4951-92c8-237d8e03e46f" name="Default Changelist" comment="" />
+      <changelist id="730cba2b-dfb4-456e-8ea2-d38ffa6e3379" name="Default Changelist" comment="" />
       <created>1583460755394</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -275,6 +318,7 @@
       <workItem from="1589036573689" duration="4048000" />
       <workItem from="1589692711741" duration="5833000" />
       <workItem from="1589711451800" duration="1844000" />
+      <workItem from="1592467696072" duration="4357000" />
     </task>
     <servers />
   </component>
@@ -286,12 +330,13 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="178" key="#Project_Structure" timestamp="1587565725895">

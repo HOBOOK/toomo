@@ -10,6 +10,7 @@ import com.hobook.tomo.security.SocialType;
 import com.hobook.tomo.util.Common;
 import lombok.AllArgsConstructor;
 import org.hibernate.service.spi.InjectService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.http.RequestEntity;
@@ -46,6 +47,7 @@ import java.util.*;
 
 public class SocialOAuth2UserService extends DefaultOAuth2UserService {
     private AccountService accountService;
+    @Autowired Common common;
 
     private static final String MISSING_USER_INFO_URI_ERROR_CODE = "missing_user_info_uri";
     private static final String MISSING_USER_NAME_ATTRIBUTE_ERROR_CODE = "missing_user_name_attribute";
@@ -160,7 +162,7 @@ public class SocialOAuth2UserService extends DefaultOAuth2UserService {
             accountDto.setProfile_image_url("img/anonymous.png");
             accountDto.setAccount_auth_key("Y");
             BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-            accountDto.setPwd(passwordEncoder.encode(Common.getRamdomPassword(16)));
+            accountDto.setPwd(passwordEncoder.encode(common.getRamdomPassword(16)));
             accountService.joinSocialUser(accountDto, SocialType.NAVER);
         }
         UserDetails user = accountService.loadUserByUsername(userEmail);

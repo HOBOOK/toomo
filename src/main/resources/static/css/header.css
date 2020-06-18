@@ -33,7 +33,7 @@ header div{
 }
 
 .search input{
-    width: calc(100% - 90px);
+    width: calc(100% - 100px);
     background-color: transparent;
     border:none;
     outline: none;
