@@ -75,7 +75,7 @@ app.controller('memoController', function ($scope, $http, $compile) {
         var date = new Date().yyyyMMddHHmmss();
         $scope.memos.unshift({
             id: -1,
-            context: '새로운 메모',
+            context: '',
             date_create: date,
             state: 0,
             fix: 0

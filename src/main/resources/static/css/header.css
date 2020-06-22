@@ -123,14 +123,14 @@ header div{
     -webkit-transition:  0.3s all ease-in-out;
     -moz-transition:  0.3s all ease-in-out;
     position: absolute;
-    top: 60px;
-    right: 20px;
+    top: 62px;
+    right: 10px;
     width: 150px;
-    border: 1px solid rgba(0,0,0,0.1);
     border-radius: 5px;
     background-color: white;
     background-color: var(--header-remote-background-color);
-    box-shadow: 0 0 3px rgba(0,0,0,0.1);
+    /*box-shadow: 0 0 3px rgba(0,0,0,0.1);*/
+    box-shadow: 0 8px 16px -4px rgba(9,30,66,.25), 0 0 0 1px rgba(9,30,66,.08);
     z-index: 3000;
     text-align: center;
 }
