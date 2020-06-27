@@ -197,7 +197,8 @@ nav{
     color: var(--nav-color);
     width:300px;
     z-index: 1000;
-    border-left: 1px solid rgba(0,0,0,0.1);
+    /*border-left: 1px solid rgba(0,0,0,0.1);*/
+    box-shadow: 0 8px 16px -12px rgba(0,0,0,.56), 0 2px 12px 0 rgba(0,0,0,.12), 0 1px 5px -3px rgba(0,0,0,.2);
 }
 .mybar h3{
     font-size: 16px;
@@ -334,11 +335,13 @@ nav{
 .todo_title{
     font-size: 14px;
     display: inline-block;
-    width: calc(100% - 10px);
+    width: calc(100% - 30px);
     height: 45px;
     line-height: 45px;
     border-bottom: 1px solid rgba(0,0,0,0.05);
-    margin-left:5px;
+    margin-left:15px;
+    margin-right:15px;
+    font-weight: 700;
 }
 .todo_list{
     width: 100%;
@@ -348,7 +351,7 @@ nav{
 .todo_complete{
     background-color: white;
     background-color: var(--nav-background-color);
-    border-top: 3px solid rgba(0,0,0,0.1);
+    border-top: 2px solid rgba(0,0,0,0.1);
     width: 100%;
     height: 50%;
     position: absolute;
