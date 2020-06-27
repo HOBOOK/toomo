@@ -46,6 +46,7 @@ html,body {
     margin: 0;
     background: rgb(38,33,48);
     background: linear-gradient(139deg, rgba(38,33,48,1) 0%, rgba(44,38,55,1) 100%);
+
 }
 a{
     text-decoration: none;
@@ -59,7 +60,6 @@ header{
     background: rgba(38,33,48,1);
     box-shadow: none;
     color: rgba(255,255,255,0.7);
-    border-bottom: 1px solid rgba(255,255,255,0.1);
     position: sticky;
     top:0;
 }

@@ -142,7 +142,7 @@ nav{
     text-align: center;
     color: #666666;
     color: var(--nav-color);
-    font-size: 14px;
+    font-size: 13px;
     background-color: transparent;
 }
 .menu li:hover{
@@ -206,37 +206,8 @@ nav{
 }
 
 
-.mybar_toggle{
-    position: fixed;
-    top:80px;
-    right:20px;
-    cursor: pointer;
-    background-color: white;
-    background-color: var(--bar-background-color);
-    border-radius: 100%;
-    display: inline-block;
-    width: 32px;
-    height: 32px;
-    padding: 5px;
-    text-align: center;
-    box-shadow: 1px 2px 3px 1px rgba(0,0,0,0.2);
-}
-.mybar_toggle::after{
-    width: 100px;
-    background-color: white;
-    height: 100%;
-    display: block;
-    z-index: 2000;
-    position: absolute;
-}
-.mybar_toggle> img{
-    width: 28px;
-    height: 28px;
-    margin-top:2px;
-}
-.mybar_toggle:hover{
-    opacity: 0.8;
-}
+
+
 .container_todo{
     height: calc(100% - 70px);
     display: inline-block;
@@ -341,7 +312,6 @@ nav{
 }
 .todo_event_title.clear{
     text-decoration: line-through;
-    text-decoration-style: double;
 
 }
 .todo_event_time{

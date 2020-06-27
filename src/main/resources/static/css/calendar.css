@@ -17,7 +17,6 @@ calendar .cal_header{
     height:80px;
     background-color: white;
     background-color: var(--schedule-border-background-color);
-    border-bottom: 1px solid rgba(0,0,0,0.1);
     color:#606060;
 }
 calendar .cal_header *{
@@ -29,11 +28,16 @@ calendar .cal_header *{
 calendar .cal_header i{
     width:40px;
     font-size:1.5em;
-    font-weight:bold;
     position:relative;
 .border-box;
     padding:0 10px;
     cursor:pointer;
+}
+calendar .cal_header:before{
+    background-color: yellow;
+    border-radius: 100%;
+    box-shadow: 0 0 10px -3px rgba(0,0,0,0.15);
+    width: 50px;
 }
 calendar .cal_header i:hover{
     opacity: 0.8;
@@ -49,8 +53,7 @@ calendar .cal_header span{
     animation: calendar-day-animation 0.5s ease-in-out;
     -moz-animation: calendar-day-animation 0.5s ease-in-out;
     -o-animation: calendar-day-animation 0.5s ease-in-out;
-    -webkit-animation: calendar-day-animation 0.5s ease-in-out;
-    font-weight:bold;
+    -webkit-animation: ccal_headeralendar-day-animation 0.5s ease-in-out;
     text-transform:uppercase;
 .border-box;
     padding-left:50px;
@@ -61,7 +64,7 @@ calendar .cal_header span{
 }
 
 calendar div.week{
-    border-bottom:1px solid rgba(220,220,220,1);
+    border-top:1px solid rgba(220,220,220,1);
     display: flex;
     height: 16.67%;
     float:left;
@@ -87,7 +90,6 @@ calendar div.week span.day{
     -webkit-animation: calendar-day-animation 0.3s ease-in-out;
 
 .border-box;
-    border-right:1px solid rgba(220,220,220,1);
     height: 100%;
     font-size:0.75em;
     text-align:center;
@@ -98,8 +100,13 @@ calendar div.week span.day{
     vertical-align: middle;
     padding: 0;
     margin: 0;
+}
+calendar .container_days div.week span.day{
+.border-box;
+    border-right:1px solid rgba(220,220,220,1);
 
 }
+
 calendar div.week span.day::-webkit-scrollbar {display:none;}
 calendar div.week span.day:first-child{
     border-left: none;
@@ -138,7 +145,7 @@ calendar div.item{
     float: left;
     background-color: #7575FF;
     color: white;
-    box-shadow: 0px 1px 2px 2px rgba(0,0,0,0.1);
+    box-shadow:0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(153, 153, 153, 0.4);
     overflow: hidden !important;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -187,6 +194,9 @@ calendar div.item.holiday{
     color: orangered;
     background-color: transparent;
 }
+calendar div.item.holiday.hide{
+    display: none;
+}
 calendar div.item.more{
     background-color: transparent;
     box-shadow: none;
@@ -226,10 +236,6 @@ calendar p.day_number.holiday{
 }
 calendar p.day_number.saturday{
     color:royalblue;
-}
-
-calendar .hide{
-    display: none;
 }
 
 

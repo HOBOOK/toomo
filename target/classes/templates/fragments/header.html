@@ -18,8 +18,18 @@
             </div>
         </div>
         <div class="account" th:object="${account}">
-            <img onerror="this.src='/img/anonymous.png'" onclick="toggleProfile()" sec:authorize="isAuthenticated()" th:src="${account} ? ${account.getProfile_image_url()}" width="40" height="40"/>
-            <a class="fs-14" sec:authorize="isAnonymous()" th:href="@{/login}">로그인</a>
+            <span sec:authorize="isAuthenticated()">
+                <i class="fas fa-bell"></i>
+            </span>
+            <span sec:authorize="isAuthenticated()" onclick="toggleBar()">
+                <i class="fas fa-calendar-check"></i>
+            </span>
+            <span sec:authorize="isAuthenticated()">
+                <img onerror="this.src='/img/anonymous.png'" onclick="toggleProfile()" th:src="${account} ? ${account.getProfile_image_url()}"/>
+            </span>
+            <span sec:authorize="isAnonymous()" >
+                <a class="fs-14" th:href="@{/login}">로그인</a>
+            </span>
         </div>
         <div class="account_remote">
             <div class="account_profile">

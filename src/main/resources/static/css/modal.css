@@ -42,6 +42,7 @@
     color: var(--schedule-modal-color);
     margin:15px;
     font-size: 21px;
+    font-weight: normal;
 }
 
 /* Modal Body */
@@ -94,7 +95,11 @@
 
 .form_input_day input:focus{
     outline: 0;
-    background-color: rgba(0,0,0,0.05);
+    transition: box-shadow 0.1s ease-in-out;
+    -o-transition: box-shadow 0.1s ease-in-out;
+    -moz-transition: box-shadow 0.1s ease-in-out;
+    -webkit-transition: box-shadow 0.1s ease-in-out;
+    box-shadow: 0 0 10px -3px rgba(0,0,0,0.1), 0 2px 5px 0 rgba(0,0,0,0.18);
     border-bottom: 1px solid transparent;
 }
 .form_input_day input[type=range]:focus{
@@ -119,7 +124,11 @@
 }
 .form_input_day textarea:focus{
     outline: none;
-    background-color: rgba(0,0,0,0.05);
+    transition: box-shadow 0.1s ease-in-out;
+    -o-transition: box-shadow 0.1s ease-in-out;
+    -moz-transition: box-shadow 0.1s ease-in-out;
+    -webkit-transition: box-shadow 0.1s ease-in-out;
+    box-shadow: 0 0 10px -3px rgba(0,0,0,0.1), 0 2px 5px 0 rgba(0,0,0,0.18);
     border-bottom: 1px solid transparent;
 }
 .form_input_day button{
@@ -276,7 +285,7 @@
 }
 .form_todo_day input[type='text']:focus, input[type='date']:focus, input[type='time']:focus{
     outline: 0;
-    background-color: rgba(0,0,0,0.05);
+    box-shadow: 0 0 10px -3px rgba(0,0,0,0.1), 0 2px 5px 0 rgba(0,0,0,0.18);
 }
 .form_todo_day input[type='text'],input[type='date'],input[type='time']{
     font-family: 'Roboto', sans-serif;
@@ -307,7 +316,7 @@
 }
 .form_todo_day textarea:focus{
     outline: none;
-    background-color: rgba(0,0,0,0.05);
+    box-shadow: 0 0 10px -3px rgba(0,0,0,0.1), 0 2px 5px 0 rgba(0,0,0,0.18);
 }
 .form_todo_day button{
     outline: 0;

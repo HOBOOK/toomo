@@ -3,7 +3,8 @@ header{
     height: 60px;
     display: block;
     border-bottom: 1px solid rgba(0,0,0,0.1);
-    box-shadow: 1px 0px 2px rgba(0,0,0,0.1), 0px 1px 1px rgba(0,0,0,0.15);
+    /*box-shadow: 1px 0px 2px rgba(0,0,0,0.1), 0px 1px 1px rgba(0,0,0,0.15);*/
+    box-shadow: 8px 0 16px -12px rgba(0,0,0,.56), 2px 0 12px 0 rgba(0,0,0,.12), 1px 0 5px -3px rgba(0,0,0,.2);
     background-color: white;
     background-color: var(--header-background-color);
     color: #E5E5E5;
@@ -16,9 +17,8 @@ header div{
     margin: 0 auto;
     display: inline-block;
     border-radius: 3px;
-    border: 1px solid rgba(30,30,30,0.1);
-    border: 1px solid var(--header-search-board-color);
-    box-shadow: 0 0 3px rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba(30,30,30,0.1);
+    border-bottom: 1px solid var(--header-search-board-color);
     background-color: white;
     background-color: var(--header-search-background-color);
     color: #505050;
@@ -30,6 +30,13 @@ header div{
     top:12px;
     width: calc(100% - 500px);
     max-width: 600px;
+    transition: box-shadow 0.2s ease-in-out;
+    -o-transition: box-shadow 0.2s ease-in-out;
+    -moz-transition: box-shadow 0.2s ease-in-out;
+    -webkit-transition: box-shadow 0.2s ease-in-out;
+}
+.search:focus-within{
+    box-shadow: 0 0 10px -3px rgba(0,0,0,0.1), 0 2px 5px 0 rgba(0,0,0,0.18);
 }
 
 .search input{
@@ -37,13 +44,14 @@ header div{
     background-color: transparent;
     border:none;
     outline: none;
-    font-size:16px;
+    font-size:14px;
     margin:0 0 0 10px;
     color: #505050;
     color: var(--header-search-color);
 }
 .search input:focus{
     outline: none;
+
 }
 .container_search_view{
     position: relative;
@@ -93,7 +101,6 @@ header div{
 .account{
     float: right;
     height: 100%;
-    margin-right: 20px;
     line-height: 60px;
 
 }
@@ -101,17 +108,22 @@ header div{
     color: #E5E5E5;
     color: var(--header-color);
 }
-.account img{
-    margin-top:10px;
+.account span img{
+    width: 32px;
+    height: 32px;
     border-radius: 100%;
-    display: inline-block;
-    cursor: pointer;
+    margin-bottom:6px;
+    vertical-align:middle;
 }
 .account span{
-    margin-left:42px;
-    margin-right:10px;
+    margin-right:28px;
     cursor: pointer;
+    font-size: 20px;
+    display: inline-block;
+    height: 100%;
+    max-height: 100%;
 }
+
 .account span:hover{
     opacity: 0.8;
 }

@@ -26,9 +26,7 @@
     line-height: 36px;
     border-radius: 100%;
 }
-.button_add_memo span:hover{
-    background-color: rgba(0,0,0,0.05);
-}
+
 
 .container_context{
     margin:10px;
@@ -111,8 +109,8 @@
     min-height: 300px;
     background-color: #ffefd0;
     background-color: var(--memo-background-color);
-    box-shadow: 1px 3px 10px -1px rgba(0,0,0,0.12),
-                1px 7px 12px -1px rgba(0,0,0,0.1);
+    box-shadow: 1px 3px 10px -3px rgba(0,0,0,0.12),
+                1px 7px 12px -5px rgba(0,0,0,0.1);
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
 }

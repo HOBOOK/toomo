@@ -195,20 +195,18 @@ calApp.directive("calendar", function($uibModal, $http) {
                 }else if(item.event_type===1){
                     return "item todo";
                 }else if(item.event_type===2){
-                    return "item holiday";
+                    var hideHolidayOpt = getCookie('hideHoliday');
+                    if(hideHolidayOpt== null || hideHolidayOpt == 'false'){
+                        return 'item holiday'
+                    }else{
+                        return 'item holiday hide'
+                    }
                 }
             }
 
             scope.getDateItemSubClass = function(item){
                 if(item.event_state===1 && item.event_type===1){
                     return 'item todo clear';
-                }else if(item.event_type===2){
-                    var hideHolidayOpt = getCookie('hideHoliday');
-                    if(hideHolidayOpt== null || hideHolidayOpt == 'false'){
-                        return 'item todo'
-                    }else{
-                        return 'item todo hide'
-                    }
                 }
             }
         }

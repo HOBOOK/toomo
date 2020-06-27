@@ -57,30 +57,27 @@ function toggleBar() {
         setCookie('toggleBar', true, 7);
         isToggleBar = true;
         $('.mybar').css('right','0px');
-        $('.mybar_toggle').css('box-shadow','none');
         $('.container_main').css('width','calc(100% - 380px)');
     }else{
         setCookie('toggleBar', false, 7);
         isToggleBar = false;
         $('.mybar').css('right','-300px');
-        $('.mybar_toggle').css('box-shadow','1px 2px 3px 1px rgba(0,0,0,0.2)');
         $('.container_main').css('width','calc(100% - 80px)');
     }
-    $('.mybar').css('transition','0.3s all ease-in-out');
-    $('.container_main').css('transition','0.3s all ease-in-out');
+    $('.mybar').css('transition','0.15s all ease-in-out');
+    $('.container_main').css('transition','0.15s all ease-in-out');
 }
 function initToggleBar(){
     isToggleBar = getCookie('toggleBar') === 'true';
     if(isToggleBar){
         $('.mybar').css('right','0px');
-        $('.mybar_toggle').css('box-shadow','none');
         $('.container_main').css('width','calc(100% - 380px)');
     }
 }
 
 function toggleTodoBar() {
-    $('.todo_list').css('transition','0.3s height ease-in-out');
-    $('.todo_complete').css('transition','0.3s height ease-in-out');
+    $('.todo_list').css('transition','0.15s height ease-in-out');
+    $('.todo_complete').css('transition','0.15s height ease-in-out');
 
     if(!isToggleTodoBar){
         setCookie('toggleTodoBar', true, 7);
