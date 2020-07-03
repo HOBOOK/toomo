@@ -341,7 +341,7 @@ barApp.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http)
         elem.style.opacity='0';
         setTimeout(function() {
             $uibModalInstance.dismiss();
-        }, 250);
+        }, 200);
     }
 
     $scope.setEventPoint = function(){

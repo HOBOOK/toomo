@@ -7,8 +7,8 @@
     width: 100vw; /* Full width */
     height: 100vh; /* Full height */
     overflow: hidden; /* Enable scroll if needed */
-    transition: 0.3s all ease-in-out;
-    -webkit-transition: 0.3s all ease-in-out;
+    transition: 0.2s all ease-in-out;
+    -webkit-transition: 0.2s all ease-in-out;
     outline: 0;
 }
 /* The Close Button */
@@ -205,7 +205,7 @@
     width:400px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.15),0 6px 20px 0 rgba(0,0,0,0.1);
     animation-name: animateShow;
-    animation-duration: 0.2s;
+    animation-duration: 0.1s;
 
 }
 
@@ -223,7 +223,7 @@
     width:400px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.15),0 6px 20px 0 rgba(0,0,0,0.1);
     animation-name: animateFadeShow;
-    animation-duration: 0.2s;
+    animation-duration: 0.1s;
 }
 .modal-header.event{
     height: 40px;

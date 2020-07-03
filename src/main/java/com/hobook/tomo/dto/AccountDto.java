@@ -73,6 +73,7 @@ public class AccountDto {
         this.id = account.getId();
         this.nickname = account.getNickname();
         this.email = account.getEmail();
+        this.pwd = account.getPwd();
         this.profile_image_url = account.getProfile_image_url();
         this.social_provider = account.getSocial_provider();
         this.account_auth_key = account.getAccount_auth_key();

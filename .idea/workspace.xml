@@ -7,19 +7,15 @@
   <component name="ChangeListManager">
     <list default="true" id="730cba2b-dfb4-456e-8ea2-d38ffa6e3379" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/calendar.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/calendar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/header.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/controller/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/controller/AccountController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/dto/AccountDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/dto/AccountDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/modal.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/modal.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/tomo.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/calendar.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/calendar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/header.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/fragments/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/fragments/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/META-INF/tomo.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tomo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/tomo.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/calendar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/calendar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/mybar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/mybar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hobook/tomo/dto/AccountDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hobook/tomo/dto/AccountDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/calendar.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/calendar.js" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -110,7 +106,19 @@
       <recent name="D:\Work Space\WebProject\tomo\src\main\resources\templates\fragments" />
     </key>
   </component>
-  <component name="RunManager" selected="Maven.tomo [compile,war:war]">
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.TomoApplication">
     <configuration name="AccountDtoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="tomo" />
       <extension name="coverage">
@@ -307,6 +315,12 @@
       <workItem from="1593232733354" duration="101000" />
       <workItem from="1593251559140" duration="9247000" />
       <workItem from="1593263091066" duration="3478000" />
+      <workItem from="1593324539890" duration="593000" />
+      <workItem from="1593336147954" duration="196000" />
+      <workItem from="1593495383300" duration="21000" />
+      <workItem from="1593499095670" duration="78000" />
+      <workItem from="1593568791186" duration="598000" />
+      <workItem from="1593761524584" duration="1868000" />
     </task>
     <servers />
   </component>

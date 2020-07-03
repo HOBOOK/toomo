@@ -382,7 +382,7 @@ calApp.controller('ModalContentCtrl', function($scope, $uibModalInstance, $http)
         setTimeout(function() {
             $uibModalInstance.parent.selected = null;
             $uibModalInstance.dismiss();
-        }, 250);
+        }, 200);
     }
 
     $scope.tabMenuClick = function(index){

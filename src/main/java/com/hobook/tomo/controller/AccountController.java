@@ -7,6 +7,7 @@ import com.hobook.tomo.util.Common;
 import com.hobook.tomo.util.TempAuthKey;
 import lombok.AllArgsConstructor;
 import net.minidev.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -31,6 +32,7 @@ import java.util.Map;
 public class AccountController {
     private final AccountService accountService;
     private final EmailService emailService;
+    @Autowired private final Common common;
 
     @RequestMapping(value = "/updateProfileInfo", method = {RequestMethod.POST,RequestMethod.PUT})
     public @ResponseBody
@@ -39,6 +41,7 @@ public class AccountController {
             AccountDto account = accountService.getAccountDto(principal.getName());
             account.setProfile_image_url(accountDto.getProfile_image_url());
             account.setNickname(accountDto.getNickname());
+            common.print(account.toString());
             accountService.updateAccount(account);
             return new ResponseEntity(account, HttpStatus.OK);
         } catch (Exception e) {
