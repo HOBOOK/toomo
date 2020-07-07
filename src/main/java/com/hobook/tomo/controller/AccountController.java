@@ -97,10 +97,11 @@ public class AccountController {
         if(resetAccount!=null && resetAccount.getAccount_auth_key().equals("Y")){
             try{
                 emailService.sendResetPasswordMail(accountDto);
+                out.println("<script>alert('입력한 이메일 주소로 비밀번호 재설정 메일을 전송하였습니다. 확인해주세요.');window.location.replace(\"/login\");</script>");
             }catch (Exception ex){
                 ex.printStackTrace();
+                out.println("<script>alert('내부 서버 오류');window.location.replace(\"/login\");</script>");
             }
-            out.println("<script>alert('입력한 이메일 주소로 비밀번호 재설정 메일을 전송하였습니다. 확인해주세요.');window.location.replace(\"/login\");</script>");
         }else{
             out.println("<script>alert('가입되지 않거나 인증되지 않은 사용자입니다.');window.location.replace(\"/forgot\");</script>");
         }

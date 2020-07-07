@@ -38,7 +38,7 @@ public class EmailService {
         helper.setTo(accountDto.getEmail());
 
         Context context = new Context();
-        String mail_data = new StringBuffer().append("http://localhost:8080/confirm?")
+        String mail_data = new StringBuffer().append("http://www.toomo.site/confirm?")
                 .append("email=")
                 .append(accountDto.getEmail())
                 .append("&account_auth_key=")
@@ -56,7 +56,7 @@ public class EmailService {
 
         Context context = new Context();
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        String mail_data = new StringBuffer().append("http://localhost:8080/resetpassword?")
+        String mail_data = new StringBuffer().append("http://www.toomo.site/resetpassword?")
                 .append("email=")
                 .append(accountDto.getEmail())
                 .append("&account_auth_key=")
