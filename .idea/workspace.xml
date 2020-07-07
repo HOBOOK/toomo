@@ -8,9 +8,6 @@
     <list default="true" id="730cba2b-dfb4-456e-8ea2-d38ffa6e3379" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/controller/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/controller/AccountController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/service/EmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/service/EmailService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/mail-reset-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/mail-reset-template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/mail-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/mail-template.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -319,7 +316,7 @@
       <workItem from="1593568791186" duration="598000" />
       <workItem from="1593761524584" duration="1868000" />
       <workItem from="1593844723243" duration="622000" />
-      <workItem from="1594090172244" duration="1473000" />
+      <workItem from="1594090172244" duration="3531000" />
     </task>
     <servers />
   </component>

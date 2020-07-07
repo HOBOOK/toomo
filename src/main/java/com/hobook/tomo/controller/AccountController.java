@@ -53,13 +53,17 @@ public class AccountController {
     @RequestMapping(value ="/getProfileInfo", method = RequestMethod.GET)
     public ResponseEntity<Object> getProfileInfo(Principal principal)
     {
-        List<JSONObject> entities = new ArrayList<JSONObject>();
-        JSONObject entity = new JSONObject();
-        AccountDto accountDto = accountService.getAccountDto(principal.getName());
-        entity.put("email", accountDto.getEmail());
-        entity.put("nickname", accountDto.getNickname());
-        entity.put("profile_image_url", accountDto.getProfile_image_url());
-        return new ResponseEntity<Object>(entity, HttpStatus.OK);
+        try{
+            List<JSONObject> entities = new ArrayList<JSONObject>();
+            JSONObject entity = new JSONObject();
+            AccountDto accountDto = accountService.getAccountDto(principal.getName());
+            entity.put("email", accountDto.getEmail());
+            entity.put("nickname", accountDto.getNickname());
+            entity.put("profile_image_url", accountDto.getProfile_image_url());
+            return new ResponseEntity<Object>(entity, HttpStatus.OK);
+        } catch(Exception e){
+            return new ResponseEntity("Error", HttpStatus.BAD_REQUEST);
+        }
     }
 
 
