@@ -6,8 +6,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="730cba2b-dfb4-456e-8ea2-d38ffa6e3379" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/logback-spring.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/controller/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/controller/AccountController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/mail-reset-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/mail-reset-template.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/mail-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/mail-template.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tomo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/tomo.iml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,6 +46,8 @@
         <option value="Enum" />
         <option value="JavaScript File" />
         <option value="Class" />
+        <option value="Tag Library Descriptor" />
+        <option value="spring-beans.schema" />
       </list>
     </option>
   </component>
@@ -316,7 +324,14 @@
       <workItem from="1593568791186" duration="598000" />
       <workItem from="1593761524584" duration="1868000" />
       <workItem from="1593844723243" duration="622000" />
-      <workItem from="1594090172244" duration="3531000" />
+      <workItem from="1594090172244" duration="5078000" />
+      <workItem from="1594127489495" duration="723000" />
+      <workItem from="1594169839517" duration="101000" />
+      <workItem from="1594171672805" duration="210000" />
+      <workItem from="1594171973482" duration="53000" />
+      <workItem from="1594173195465" duration="2383000" />
+      <workItem from="1594178164980" duration="347000" />
+      <workItem from="1594178573089" duration="616000" />
     </task>
     <servers />
   </component>
