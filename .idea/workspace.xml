@@ -1,21 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
   <component name="BranchesTreeState">
-    <expand />
-    <select />
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:develop" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="730cba2b-dfb4-456e-8ea2-d38ffa6e3379" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/logback-spring.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/mail-reset-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/mail-reset-template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/mail-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/mail-template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/controller/EventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hobook/tomo/controller/EventController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tomo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/tomo.iml" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -55,10 +63,10 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MavenImportPreferences">
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="importAutomatically" value="true" />
-      </MavenImportingSettings>
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="C:\Users\pkh87\.m2\wrapper\dists\apache-maven-3.6.3-bin\1iopthnavndlasol9gbrbg6bf2\apache-maven-3.6.3" />
+      </MavenGeneralSettings>
     </option>
   </component>
   <component name="ProjectId" id="1Yjf7NYsB0wUSibwQezvky3Lf6R" />
@@ -75,6 +83,7 @@
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
     <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -86,11 +95,11 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -108,19 +117,33 @@
       <recent name="D:\Work Space\WebProject\tomo\src\main\resources\templates\fragments" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
   <component name="RunManager" selected="Spring Boot.TomoApplication">
+    <configuration name="TomoApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.hobook.tomo.TomoApplication" />
+      <module name="tomo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.hobook.tomo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="AccountDtoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="tomo" />
       <extension name="coverage">
@@ -185,6 +208,7 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.TomoApplication" />
       <item itemvalue="JUnit.AccountDtoTest" />
       <item itemvalue="JUnit.TomoApplicationTests" />
       <item itemvalue="Maven.tomo [compile,war:war]" />
@@ -192,11 +216,13 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.TomoApplication" />
         <item itemvalue="JUnit.TomoApplicationTests" />
         <item itemvalue="JUnit.AccountDtoTest" />
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -332,11 +358,13 @@
       <workItem from="1594173195465" duration="2383000" />
       <workItem from="1594178164980" duration="347000" />
       <workItem from="1594178573089" duration="616000" />
+      <workItem from="1598259955053" duration="634000" />
+      <workItem from="1598260605030" duration="897000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -344,18 +372,25 @@
         <entry key="MAIN">
           <value>
             <State>
-              <option name="COLUMN_ORDER" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="develop" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
             </State>
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="552" y="178" key="#Project_Structure" timestamp="1587565725895">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="552" y="178" key="#Project_Structure/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587565725895" />
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1591415736519">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -368,72 +403,46 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="540" y="175" key="#com.intellij.openapi.projectRoots.ui.ProjectJdksEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1593263594417" />
-    <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1587568158272">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587568158272" />
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1593263591703">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1593263591703" />
-    <state x="2660" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1586527327134" />
     <state width="1921" height="245" key="GridCell.Tab.0.bottom" timestamp="1593267036462">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1921" height="245" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1593267036462" />
-    <state width="1877" height="239" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1586581113256" />
     <state width="1921" height="245" key="GridCell.Tab.0.center" timestamp="1593267036462">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1921" height="245" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1593267036462" />
-    <state width="1877" height="239" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1586581113256" />
     <state width="1921" height="245" key="GridCell.Tab.0.left" timestamp="1593267036462">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1921" height="245" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1593267036462" />
-    <state width="1877" height="239" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1586581113256" />
     <state width="1921" height="245" key="GridCell.Tab.0.right" timestamp="1593267036462">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1921" height="245" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1593267036462" />
-    <state width="1877" height="239" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1586581113256" />
     <state width="1921" height="245" key="GridCell.Tab.1.bottom" timestamp="1593267036458">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1921" height="245" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1593267036458" />
-    <state width="1877" height="239" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1586581113257" />
     <state width="1921" height="245" key="GridCell.Tab.1.center" timestamp="1593267036458">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1921" height="245" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1593267036458" />
-    <state width="1877" height="239" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1586581113257" />
     <state width="1921" height="245" key="GridCell.Tab.1.left" timestamp="1593267036458">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1921" height="245" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1593267036458" />
-    <state width="1877" height="239" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1586581113257" />
     <state width="1921" height="245" key="GridCell.Tab.1.right" timestamp="1593267036458">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1921" height="245" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1593267036458" />
-    <state width="1877" height="239" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1586581113257" />
-    <state x="461" y="162" key="SettingsEditor" timestamp="1587957167455">
+    <state x="461" y="164" key="SettingsEditor" timestamp="1598260575181">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="461" y="162" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587957167455" />
-    <state x="587" y="64" width="745" height="912" key="find.popup" timestamp="1588647086926">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="587" y="64" width="745" height="912" key="find.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588647086926" />
-    <state x="2507" y="64" width="745" height="912" key="find.popup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1586513917440" />
-    <state x="339" y="130" key="new project wizard" timestamp="1587705247107">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="339" y="130" key="new project wizard/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587705247107" />
-    <state x="623" y="225" key="search.everywhere.popup" timestamp="1588517555654">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="623" y="225" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588517555654" />
+    <state x="461" y="164" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1598260575181" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

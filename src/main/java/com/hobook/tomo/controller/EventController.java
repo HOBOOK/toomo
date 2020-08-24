@@ -63,37 +63,41 @@ public class EventController {
     @RequestMapping(value = "schedule/events", method = RequestMethod.GET)
     public ResponseEntity<Object> getList(Principal principal)
     {
-        List<JSONObject> entities = new ArrayList<JSONObject>();
-        List<EventDto> eventDtos = eventService.getEventList(principal.getName());
-        for(EventDto eventDto : eventDtos){
-            JSONObject entity = new JSONObject();
-            entity.put("id", eventDto.getId());
-            entity.put("date_event",eventDto.getDate_event());
-            entity.put("date_event_end", eventDto.getDate_event_end());
-            entity.put("event_type",eventDto.getEvent_type());
-            entity.put("event_state",eventDto.getEvent_state());
-            entity.put("event_point",eventDto.getEvent_point());
-            entity.put("event_color",eventDto.getEvent_color());
-            entity.put("event_time",eventDto.getEvent_time());
-            entity.put("title",eventDto.getTitle());
-            entity.put("event_description", eventDto.getEvent_description());
-            entities.add(entity);
-        }
-        List<EventDto> holidays = getHolidays("2020");
-        for(EventDto holiday : holidays) {
-            JSONObject entity = new JSONObject();
-            entity.put("id", holiday.getId());
-            entity.put("date_event", holiday.getDate_event());
-            entity.put("date_event_end", holiday.getDate_event_end());
-            entity.put("event_type", holiday.getEvent_type());
-            entity.put("event_state", holiday.getEvent_state());
-            entity.put("event_time", holiday.getEvent_time());
-            entity.put("title", holiday.getTitle());
-            entity.put("event_description", holiday.getEvent_description());
-            entities.add(entity);
-        }
+        try{
+            List<JSONObject> entities = new ArrayList<JSONObject>();
+            List<EventDto> eventDtos = eventService.getEventList(principal.getName());
+            for(EventDto eventDto : eventDtos){
+                JSONObject entity = new JSONObject();
+                entity.put("id", eventDto.getId());
+                entity.put("date_event",eventDto.getDate_event());
+                entity.put("date_event_end", eventDto.getDate_event_end());
+                entity.put("event_type",eventDto.getEvent_type());
+                entity.put("event_state",eventDto.getEvent_state());
+                entity.put("event_point",eventDto.getEvent_point());
+                entity.put("event_color",eventDto.getEvent_color());
+                entity.put("event_time",eventDto.getEvent_time());
+                entity.put("title",eventDto.getTitle());
+                entity.put("event_description", eventDto.getEvent_description());
+                entities.add(entity);
+            }
+            List<EventDto> holidays = getHolidays("2020");
+            for(EventDto holiday : holidays) {
+                JSONObject entity = new JSONObject();
+                entity.put("id", holiday.getId());
+                entity.put("date_event", holiday.getDate_event());
+                entity.put("date_event_end", holiday.getDate_event_end());
+                entity.put("event_type", holiday.getEvent_type());
+                entity.put("event_state", holiday.getEvent_state());
+                entity.put("event_time", holiday.getEvent_time());
+                entity.put("title", holiday.getTitle());
+                entity.put("event_description", holiday.getEvent_description());
+                entities.add(entity);
+            }
+            return new ResponseEntity<Object>(entities, HttpStatus.OK);
 
-        return new ResponseEntity<Object>(entities, HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<Object>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @RequestMapping(value ="todolist/events", method = RequestMethod.GET)
