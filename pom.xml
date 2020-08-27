@@ -11,7 +11,8 @@
 	<groupId>com.hobook</groupId>
 	<artifactId>tomo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Tomo</name>
+	<packaging>jar</packaging>
+	<name>Toomo</name>
 	<description>Notes to do</description>
 
 	<properties>
